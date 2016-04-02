@@ -23,6 +23,16 @@ defines=werror=
 defines+=clang=0
 defines+=clang_use_chrome_plugins=
 
+# flags needed for arm
+ifeq ($(shell dpkg-architecture -qDEB_HOST_ARCH), armhf)
+defines+=target_arch=arm \
+         arm_version=7 \
+         arm_neon=0 \
+         enable_webrtc=0 \
+else
+defines+=enable_webrtc=1
+endif
+
 # disabled features
 defines+=use_ozone=0 \
          use_gconf=0 \
@@ -41,7 +51,6 @@ defines+=use_ozone=0 \
 
 # enabled features
 defines+=enable_hidpi=1 \
-         enable_webrtc=1 \
          use_gio=1 \
          use_pulseaudio=1 \
          use_gnome_keyring=1 \

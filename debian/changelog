@@ -1,3 +1,9 @@
+chromium-browser (49.0.2623.108-2) experimental; urgency=medium
+
+  * Build packages for armhf (closes: #799939).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Thu, 31 Mar 2016 00:57:07 +0000
+
 chromium-browser (49.0.2623.108-1) unstable; urgency=medium
 
   * New upstream security release:
