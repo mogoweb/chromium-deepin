@@ -72,6 +72,7 @@ Build-Depends:
  libhunspell-dev,
  libharfbuzz-dev (>= 1.2.7),
  libusb-1.0-0-dev,
+ libopenjp2-7-dev,
  libmodpbase64-dev,
  libgnome-keyring-dev,
  libnss3-dev (>= 3.12.3),
