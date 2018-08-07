@@ -8,6 +8,7 @@ gn/buildflags.patch
 arm/skia.patch
 arm/crashpad.patch
 arm/gcc_skcms_ice.patch
+arm/crashpad_binutils.patch
 
 fixes/mojo.patch
 fixes/sizet.patch
