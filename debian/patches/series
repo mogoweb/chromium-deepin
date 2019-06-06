@@ -84,3 +84,4 @@ system/jsoncpp.patch
 system/openjpeg.patch
 system/convertutf.patch
 system/fontconfig.patch
+arm/crc-buildfix.patch

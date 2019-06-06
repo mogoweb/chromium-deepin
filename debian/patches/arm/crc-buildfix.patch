@@ -1,0 +1,15 @@
+Index: chromium-74.0.3729.108/third_party/crc32c/BUILD.gn
+===================================================================
+--- chromium-74.0.3729.108.orig/third_party/crc32c/BUILD.gn
++++ chromium-74.0.3729.108/third_party/crc32c/BUILD.gn
+@@ -129,6 +129,10 @@ source_set("crc32c_arm64") {
+         "-Xclang",
+         "+crypto",
+       ]
++    } else {
++      cflags = [
++        "-march=armv8-a+crypto+crc",
++      ]
+     }
+   }
+ 
