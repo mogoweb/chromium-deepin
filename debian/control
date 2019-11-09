@@ -86,7 +86,6 @@ Build-Depends:
 
 Package: chromium
 Architecture: i386 amd64 arm64 armhf
-Built-Using: ${Built-Using}
 Depends:
  ${misc:Depends},
  ${shlibs:Depends},

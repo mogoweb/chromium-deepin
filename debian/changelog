@@ -1,3 +1,94 @@
+chromium (76.0.3809.100-1~deb10u1) buster-security; urgency=medium
+
+  * New upstream stable release.
+    - CVE-2019-5805: Use after free in PDFium. Reported by Anonymous
+    - CVE-2019-5806: Integer overflow in Angle. Reported by Wen Xu
+    - CVE-2019-5807: Memory corruption in V8. Reported by TimGMichaud
+    - CVE-2019-5808: Use after free in Blink. Reported by cloudfuzzer
+    - CVE-2019-5809: Use after free in Blink. Reported by Mark Brand
+    - CVE-2019-5810: User information disclosure in Autofill. Reported by Mark
+      Amery
+    - CVE-2019-5811: CORS bypass in Blink. Reported by Jun Kokatsu
+    - CVE-2019-5813: Out of bounds read in V8. Reported by Aleksandar Nikolic
+    - CVE-2019-5814: CORS bypass in Blink. Reported by @AaylaSecura1138
+    - CVE-2019-5815: Heap buffer overflow in Blink. Reported by Nicolas
+      Grégoire
+    - CVE-2019-5818: Uninitialized value in media reader. Reported by Adrian
+      Tolbaru
+    - CVE-2019-5819: Incorrect escaping in developer tools. Reported by Svyat
+      Mitin
+    - CVE-2019-5820: Integer overflow in PDFium. Reported by pdknsk
+    - CVE-2019-5821: Integer overflow in PDFium. Reported by pdknsk
+    - CVE-2019-5822: CORS bypass in download manager. Reported by Jun Kokatsu
+    - CVE-2019-5823: Forced navigation from service worker. Reported by David
+      Erceg
+    - CVE-2019-5824: Parameter passing error in media player. Reported by
+      leecraso and Guang Gong
+    - CVE-2019-5825: Out-of-bounds write in V8. Reported by Gengming Liu,
+      Jianyu Chen, Zhen Feng, and Jessica Liu
+    - CVE-2019-5826: Use-after-free in IndexedDB. Reported by Gengming Liu,
+      Jianyu Chen, Zhen Feng, and Jessica Liu
+    - CVE-2019-5827: Out-of-bounds access issue in SQLite. Reported by
+      mlfbrown
+    - CVE-2019-5828: Use after free in ServiceWorker. Reported by leecraso and
+      Guang Gong
+    - CVE-2019-5829: Use after free in Download Manager. Reported by Lucas
+      Pinheiro
+    - CVE-2019-5830: Incorrectly credentialed requests in CORS. Reported by
+      Andrew Krasichkov
+    - CVE-2019-5831: Incorrect map processing in V8. Reported by yngwei
+    - CVE-2019-5832: Incorrect CORS handling in XHR. Reported by Sergey Shekyan
+    - CVE-2019-5833: Inconsistent security UI placement. Reported by Khalil
+      Zhani
+    - CVE-2019-5834: URL spoof in Omnibox on iOS. Reported by Khalil Zhani
+    - CVE-2019-5835: Out of bounds read in Swiftshader. Reported by Wenxiang
+      Qian
+    - CVE-2019-5836: Heap buffer overflow in Angle. Reported by Omair
+    - CVE-2019-5837: Cross-origin resources size disclosure in Appcache.
+      Reported by Adam Iwaniuk
+    - CVE-2019-5838: Overly permissive tab access in Extensions. Reported by
+      David Erceg
+    - CVE-2019-5839: Incorrect handling of certain code points in Blink.
+      Reported by Masato Kinugawa
+    - CVE-2019-5840: Popup blocker bypass. Reported by Eliya Stein and Jerome
+      Dangu
+    - CVE-2019-5842: Use-after-free in Blink. Reported by BUGFENSE
+    - CVE-2019-5847: V8 sealed/frozen elements cause crash. Reported by m3plex
+    - CVE-2019-5848: Font sizes may expose sensitive information. Reported by
+      Mark Amery
+    - CVE-2019-5849: Out-of-bounds read in Skia. Reported by Zhen Zhou
+    - CVE-2019-5850: Use-after-free in offline page fetcher. Reported by
+      Brendon Tiszka
+    - CVE-2019-5851: Use-after-poison in offline audio context. Reported by Zhe
+      Jin
+    - CVE-2019-5852: Object leak of utility functions. Reported by David Erceg
+    - CVE-2019-5853: Memory corruption in regexp length check. Reported by
+      yngwei and sakura
+    - CVE-2019-5854: Integer overflow in PDFium text rendering. Reported by
+      Zhen Zhou
+    - CVE-2019-5855: Integer overflow in PDFium. Reported by Zhen Zhou
+    - CVE-2019-5856: Insufficient checks on filesystem: URI permissions.
+      Reported by Yongke Wang
+    - CVE-2019-5857: Comparison of -0 and null yields crash. Reported by
+      cloudfuzzer
+    - CVE-2019-5858: Insufficient filtering of Open URL service parameters.
+      Reported by evi1m0
+    - CVE-2019-5859: res: URIs can load alternative browsers. Reported by James
+      Lee
+    - CVE-2019-5860: Use-after-free in PDFium. Reported by Anonymous
+    - CVE-2019-5861: Click location incorrectly checked. Reported by Robin Linus
+    - CVE-2019-5862: AppCache not robust to compromised renderers. Reported by
+      Jun Kokatsu
+    - CVE-2019-5864: Insufficient port filtering in CORS for extensions.
+      Reported by Devin Grindle
+    - CVE-2019-5865: Site isolation bypass from compromised renderer. Reported
+      by Ivan Fratric
+    - CVE-2019-5867: Out-of-bounds read in V8. Reported by Lucas Pinheiro
+    - CVE-2019-5868: Use-after-free in PDFium ExecuteFieldAction. Reported by
+      banananapenguin
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sat, 10 Aug 2019 01:11:21 +0000
+
 chromium (73.0.3683.75-1) unstable; urgency=medium
 
   * New upstream stable release.

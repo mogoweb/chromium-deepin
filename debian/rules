@@ -20,6 +20,7 @@ export LDFLAGS+=-Wl,--stats
 
 # extra flags to reduce warnings that aren't very useful
 export CXXFLAGS+=-Wno-pedantic \
+                 -Wno-unused-result \
                  -Wno-unused-function \
                  -Wno-unused-variable \
                  -Wno-unused-but-set-variable \
@@ -27,6 +28,7 @@ export CXXFLAGS+=-Wno-pedantic \
 
 # ignore warnings for minor mistakes that are too common
 export CXXFLAGS+=-Wno-return-type \
+                 -Wno-parentheses \
                  -Wno-misleading-indentation \
 
 # ignore warnings that are not supported well until gcc 8
@@ -76,6 +78,7 @@ defines+=is_debug=false \
          use_custom_libcxx=false \
          use_gnome_keyring=false \
          use_unofficial_version_number=false \
+         enable_vr=false \
          enable_nacl=false \
          enable_nacl_nonsfi=false \
          enable_swiftshader=false \
@@ -84,13 +87,12 @@ defines+=is_debug=false \
          enable_iterator_debugging=false \
          enable_hangout_services_extension=false \
          optimize_webui=false \
+         blink_symbol_level=0 \
          treat_warnings_as_errors=false \
          linux_use_bundled_binutils=false \
-         remove_webcore_debug_symbols=true \
 
 # enabled features
 defines+=use_gio=true \
-         use_vaapi=true \
          use_pulseaudio=true \
          link_pulseaudio=true \
          enable_widevine=true \
@@ -100,6 +102,7 @@ defines+=use_gio=true \
          use_system_libjpeg=true \
          use_system_freetype=true \
          use_system_harfbuzz=true \
+         use_system_libopenjpeg2=true \
          use_jumbo_build=true \
          jumbo_file_merge_limit=8 \
          concurrent_links=1 \
@@ -125,7 +128,6 @@ flotpaths=/usr/share/javascript/jquery/*min.js \
 	dh $@
 
 out/Release/gn:
-	cp base/numerics/safe_conversions_arm_impl.h base/numerics/safe_math_arm_impl.h tools/gn/base/numerics
 	./tools/gn/bootstrap/bootstrap.py --skip-generate-buildfiles -j$(njobs)
 
 override_dh_auto_configure:
