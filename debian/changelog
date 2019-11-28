@@ -1,3 +1,11 @@
+chromium (78.0.3904.108-1~deb10u1) buster-security; urgency=medium
+
+  * New upstream security release.
+    - CVE-2019-13723: Use-after-free in Bluetooth. Reported by Yuxiang Li
+    - CVE-2019-13724: Out-of-bounds in Bluetooth. Reported by Yuxiang Li
+
+ -- Michael Gilbert <mgilbert@debian.org>  Fri, 22 Nov 2019 01:09:41 +0000
+
 chromium (78.0.3904.97-1~deb10u1) buster-security; urgency=medium
 
   * New upstream stable release.
