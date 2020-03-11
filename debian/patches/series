@@ -83,3 +83,5 @@ system/convertutf.patch
 buster/icu63.patch
 buster/vpx17.patch
 buster/opus13.patch
+buster/flags.patch # probably better to set var init in rules, since its wanted in unstable
+buster/re2.patch
