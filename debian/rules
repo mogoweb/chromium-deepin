@@ -18,12 +18,17 @@ export CXX=clang++
 # more verbose linker output
 export LDFLAGS+=-Wl,--stats
 
+# initial flags from dpkg-buildflags
+export DEB_CXXFLAGS_MAINT_STRIP=-g
+export CXXFLAGS=$(shell dpkg-buildflags --get CXXFLAGS)
+
 # extra flags to reduce warnings that aren't very useful
 export CXXFLAGS+=-Wno-conversion \
                  -Wno-unused-function \
                  -Wno-unused-variable \
                  -Wno-unused-private-field \
                  -Wno-deprecated-declarations \
+                 -Wno-unknown-pragmas \
 
 # disable clang plugins
 defines=clang_use_chrome_plugins=false
@@ -70,7 +75,6 @@ defines+=is_debug=false \
          closure_compile=false \
          blink_symbol_level=0 \
          treat_warnings_as_errors=false \
-         linux_use_bundled_binutils=false \
 
 # enabled features
 defines+=use_gio=true \
