@@ -1,3 +1,9 @@
+chromium (83.0.4103.116-1~deb10u3) buster-security; urgency=medium
+
+  * Fix crashes when a connection error occurs (closes: #963548).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sun, 12 Jul 2020 07:08:46 -0400
+
 chromium (83.0.4103.116-1~deb10u2) buster-security; urgency=medium
 
   * Rebuild with optimization (closes: #964145).
