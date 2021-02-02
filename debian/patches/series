@@ -6,27 +6,23 @@ debianization/master-preferences.patch
 gn/libcxx.patch
 gn/parallel.patch
 
-arm/pffffft-buildfix.patch
-
-gcc/int32.patch
-
 fixes/mojo.patch
 fixes/gnu-as.patch
 fixes/closure.patch
-fixes/breakpad.patch
+fixes/no-ozone.patch
 fixes/ps-print.patch
-fixes/ordering.patch
 fixes/inspector.patch
-fixes/gpu-timeout.patch
+fixes/not-constexpr.patch
+fixes/time64-sandbox.patch
 fixes/sequence-point.patch
-fixes/incomplete-type.patch
 fixes/missing-includes.patch
-fixes/lambda-expression.patch
 fixes/widevine-revision.patch
 fixes/widevine-locations.patch
 fixes/connection-message.patch
 fixes/nullptr-dereference.patch
-fixes/serviceworker-double-destruction.patch
+fixes/multiple-destruction.patch
+fixes/building-against-libstdc.patch
+fixes/ideographic-space-character-constant.patch
 
 disable/tests.patch
 disable/unrar.patch
@@ -44,27 +40,23 @@ disable/swiftshader.patch
 disable/welcome-page.patch
 disable/google-api-warning.patch
 disable/third-party-cookies.patch
-disable/device-notifications.patch
+disable/driver-chrome-path.patch
+disable/widevine-cdm-cu.patch
+disable/angle-perftests.patch
+disable/web-ui-tests.patch
+disable/ozone-unittests.patch
 
-warnings/pffft.patch
-warnings/friend.patch
 warnings/restrict.patch
-warnings/attribute.patch
 warnings/multichar.patch
 warnings/deprecated.patch
-warnings/bool-compare.patch
 warnings/sign-compare.patch
-warnings/format-enums.patch
-warnings/initialization.patch
-warnings/unused-typedefs.patch
+warnings/gcc-diagnostic.patch
 warnings/null-destination.patch
-warnings/pessimizing-move.patch
 warnings/stringop-overflow.patch
-warnings/attribute-ignored.patch
 warnings/int-in-bool-context.patch
 
-system/vpx.patch
 system/icu.patch
+system/vpx.patch
 system/jpeg.patch
 system/node.patch
 system/nspr.patch
@@ -76,8 +68,10 @@ system/harfbuzz.patch
 system/openjpeg.patch
 system/convertutf.patch
 system/clang-format.patch
+system/use-desktop-gl-as-default.patch
 
 buster/re2.patch
+buster/drm97.patch
 buster/icu63.patch
 buster/vpx17.patch
 buster/clang7.patch
