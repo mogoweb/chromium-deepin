@@ -72,7 +72,7 @@ defines+=is_debug=false \
          enable_iterator_debugging=false \
          enable_hangout_services_extension=false \
          optimize_webui=false \
-         closure_compile=false \
+         enable_js_type_check=false \
          blink_symbol_level=0 \
          treat_warnings_as_errors=false \
 
