@@ -4,7 +4,7 @@ chromium (89.0.4389.114-1~deb10u1) buster-security; urgency=medium
     - CVE-2021-21159: Heap buffer overflow in TabStrip. Reported by Khalil
       Zhani
     - CVE-2021-21160: Heap buffer overflow in WebAudio. Reported by Marcin
-      'Icewall' Noga of Cisco Talos
+      Noga
     - CVE-2021-21161: Heap buffer overflow in TabStrip. Reported by Khalil
       Zhani
     - CVE-2021-21162: Use after free in WebRTC. Reported by Anonymous
@@ -71,7 +71,7 @@ chromium (89.0.4389.114-1~deb10u1) buster-security; urgency=medium
     - CVE-2021-21197: Heap buffer overflow in TabStrip. Reported by Abdulrahman
       Alqabandi
     - CVE-2021-21198: Out of bounds read in IPC. Reported by Mark Brand
-    - CVE-2021-21199: Use Use after free in Aura. Reported by Weipeng Jiang
+    - CVE-2021-21199: Use after free in Aura. Reported by Weipeng Jiang
 
  -- Michael Gilbert <mgilbert@debian.org>  Sun, 04 Apr 2021 13:39:43 +0000
 
