@@ -1,3 +1,80 @@
+chromium (89.0.4389.114-1~deb10u1) buster-security; urgency=medium
+
+  * New upstream security release.
+    - CVE-2021-21159: Heap buffer overflow in TabStrip. Reported by Khalil
+      Zhani
+    - CVE-2021-21160: Heap buffer overflow in WebAudio. Reported by Marcin
+      'Icewall' Noga of Cisco Talos
+    - CVE-2021-21161: Heap buffer overflow in TabStrip. Reported by Khalil
+      Zhani
+    - CVE-2021-21162: Use after free in WebRTC. Reported by Anonymous
+    - CVE-2021-21163: Insufficient data validation in Reader Mode. Reported by
+      Alison Huffman
+    - CVE-2021-21165: Object lifecycle issue in audio. Reported by Alison
+      Huffman
+    - CVE-2021-21166: Object lifecycle issue in audio. Reported by Alison
+      Huffman
+    - CVE-2021-21167: Use after free in bookmarks. Reported by Leecraso and
+      Guang Gong
+    - CVE-2021-21168: Insufficient policy enforcement in appcache. Reported by
+      Luan Herrera
+    - CVE-2021-21169: Out of bounds memory access in V8. Reported by Bohan Liu
+      and Moon Liang
+    - CVE-2021-21170: Incorrect security UI in Loader. Reported by David Erceg
+    - CVE-2021-21171: Incorrect security UI in TabStrip and Navigation.
+      Reported by Irvan Kurniawan
+    - CVE-2021-21172: Insufficient policy enforcement in File System API.
+      Reported by Maciej Pulikowski
+    - CVE-2021-21173: Side-channel information leakage in Network Internals.
+      Reported by Tom Van Goethem
+    - CVE-2021-21174: Inappropriate implementation in Referrer. Reported by
+      Ashish Gautam Kamble
+    - CVE-2021-21175: Inappropriate implementation in Site isolation. Reported
+      by Jun Kokatsu
+    - CVE-2021-21176: Inappropriate implementation in full screen mode.
+      Reported by Luan Herrera
+    - CVE-2021-21177: Insufficient policy enforcement in Autofill. Reported by
+      Abdulrahman Alqabandi
+    - CVE-2021-21178: Inappropriate implementation in Compositing. Reported by
+      Japong
+    - CVE-2021-21179: Use after free in Network Internals. Reported by
+      Anonymous
+    - CVE-2021-21180: Use after free in tab search. Reported by Abdulrahman
+      Alqabandi
+    - CVE-2021-21181: Side-channel information leakage in autofill. Reported by
+      Xu Lin, Panagiotis Ilias, Jason Polakis
+    - CVE-2021-21182: Insufficient policy enforcement in navigations. Reported
+      by Luan Herrera
+    - CVE-2021-21183: Inappropriate implementation in performance APIs.
+      Reported by Takashi Yoneuchi
+    - CVE-2021-21184: Inappropriate implementation in performance APIs.
+      Reported by James Hartig
+    - CVE-2021-21185: Insufficient policy enforcement in extensions. Reported
+      by David Erceg
+    - CVE-2021-21186: Insufficient policy enforcement in QR scanning. Reported
+      by dhirajkumarnifty
+    - CVE-2021-21187: Insufficient data validation in URL formatting. Reported
+      by Kirtikumar Anandrao Ramchandani
+    - CVE-2021-21188: Use after free in Blink. Reported by Woojin Oh
+    - CVE-2021-21189: Insufficient policy enforcement in payments. Reported by
+      Khalil Zhani
+    - CVE-2021-21190: Uninitialized Use in PDFium. Reported by Zhou Aiting
+    - CVE-2021-21191: Use after free in WebRTC. Reported by raven
+    - CVE-2021-21192: Heap buffer overflow in tab groups. Reported by
+      Abdulrahman Alqabandi
+    - CVE-2021-21193: Use after free in Blink. Reported by Anonymous
+    - CVE-2021-21194: Use after free in screen capture. Reported by Leecraso
+      and Guang Gong
+    - CVE-2021-21195: Use after free in V8. Reported by Liu and Liang
+    - CVE-2021-21196: Heap buffer overflow in TabStrip. Reported by Khalil
+      Zhani
+    - CVE-2021-21197: Heap buffer overflow in TabStrip. Reported by Abdulrahman
+      Alqabandi
+    - CVE-2021-21198: Out of bounds read in IPC. Reported by Mark Brand
+    - CVE-2021-21199: Use Use after free in Aura. Reported by Weipeng Jiang
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sun, 04 Apr 2021 13:39:43 +0000
+
 chromium (88.0.4324.182-1~deb10u1) buster-security; urgency=medium
 
   * New upstream security release.
