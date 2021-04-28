@@ -20,12 +20,13 @@ fixes/widevine-locations.patch
 fixes/connection-message.patch
 fixes/nullptr-dereference.patch
 fixes/multiple-destruction.patch
-fixes/quiche.patch
 fixes/chromeos_devicetype.patch
+fixes/nomerge.patch
 
 disable/mojo.patch
 disable/tests.patch
 disable/unrar.patch
+disable/vaapi.patch
 disable/glmark.patch
 disable/owners.patch
 disable/signin.patch
@@ -46,6 +47,8 @@ disable/angle-perftests.patch
 disable/web-ui-tests.patch
 disable/ozone-unittests.patch
 disable/devtools-unittests.patch
+disable/ios.patch
+disable/tflite-test.patch
 
 warnings/restrict.patch
 warnings/multichar.patch
