@@ -1,3 +1,46 @@
+chromium (90.0.4430.85-1~deb10u1) buster-security; urgency=medium
+
+  * New upstream stable release.
+    - CVE-2021-21201: Use after free in permissions. Reported by Gengming Liu
+      and Jianyu Chen
+    - CVE-2021-21202: Use after free in extensions. Reported by David Erceg
+    - CVE-2021-21203: Use after free in Blink. Reported by asnine
+    - CVE-2021-21204: Use after free in Blink. Reported by Chelse Tsai-Simek,
+      Jeanette Ulloa, and Emily Voigtlander
+    - CVE-2021-21205: Insufficient policy enforcement in navigation. Reported
+      by Alison Huffman
+    - CVE-2021-21221: Insufficient validation of untrusted input in Mojo.
+      Reported by Guang Gong
+    - CVE-2021-21207: Use after free in IndexedDB. Reported by koocola and
+      Nan Wang
+    - CVE-2021-21208: Insufficient data validation in QR scanner. Reported by
+      Ahmed Elsobky
+    - CVE-2021-21209: Inappropriate implementation in storage. Reported by Tom
+      Van Goethem
+    - CVE-2021-21210: Inappropriate implementation in Network. Reported by
+      @bananabr
+    - CVE-2021-21211: Inappropriate implementation in Navigation. Reported by
+      Akash Labade
+    - CVE-2021-21212: Incorrect security UI in Network Config UI. Reported by
+      Hugo Hue and Sze Yiu Chau
+    - CVE-2021-21213: Use after free in WebMIDI. Reported by raven
+    - CVE-2021-21214: Use after free in Network API. Reported by Anonymous
+    - CVE-2021-21215: Inappropriate implementation in Autofill. Reported by
+      Abdulrahman Alqabandi
+    - CVE-2021-21216: Inappropriate implementation in Autofill. Reported by
+      Abdulrahman Alqabandi
+    - CVE-2021-21217: Uninitialized Use in PDFium. Reported by Zhou Aiting
+    - CVE-2021-21218: Uninitialized Use in PDFium. Reported by Zhou Aiting
+    - CVE-2021-21219: Uninitialized Use in PDFium. Reported by Zhou Aiting
+    - CVE-2021-21222: Heap buffer overflow in V8. Reported by Guang Gong
+    - CVE-2021-21223: Integer overflow in Mojo. Reported by Guang Gong
+    - CVE-2021-21224: Type Confusion in V8. Reported by Jose Martinez
+    - CVE-2021-21225: Out of bounds memory access in V8. Reported by Brendon
+      Tiszka
+    - CVE-2021-21226: Use after free in navigation. Reported by Brendon Tiszka
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sat, 24 Apr 2021 20:09:16 +0000
+
 chromium (89.0.4389.114-1~deb10u1) buster-security; urgency=medium
 
   * New upstream security release.

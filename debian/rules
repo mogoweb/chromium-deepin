@@ -56,8 +56,8 @@ endif
 defines+=is_debug=false \
          use_goma=false \
          use_ozone=false \
+         use_vaapi=false \
          use_sysroot=false \
-         use_openh264=false \
          use_allocator=\"none\" \
          use_libjpeg_turbo=true \
          use_custom_libcxx=false \
@@ -84,6 +84,7 @@ defines+=use_gio=true \
          v8_enable_backtrace=true \
          use_system_zlib=true \
          use_system_lcms2=true \
+         use_system_libpng=true \
          use_system_libjpeg=true \
          use_system_freetype=true \
          use_system_harfbuzz=true \
