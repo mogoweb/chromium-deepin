@@ -1,3 +1,6 @@
+description: AV1 is not supported by libva in buster
+author: Michael Gilbert <mgilbert@debian.org>
+
 --- a/media/gpu/vaapi/vaapi_unittest.cc
 +++ b/media/gpu/vaapi/vaapi_unittest.cc
 @@ -43,7 +43,9 @@ base::Optional<VAProfile> ConvertToVAPro
@@ -20,10 +23,8 @@
  #if BUILDFLAG(ENABLE_PLATFORM_HEVC)
      {"VAProfileHEVCMain", VAProfileHEVCMain},
      {"VAProfileHEVCMain10", VAProfileHEVCMain10},
-Index: chromium/media/gpu/vaapi/vaapi_wrapper.cc
-===================================================================
---- chromium.orig/media/gpu/vaapi/vaapi_wrapper.cc
-+++ chromium/media/gpu/vaapi/vaapi_wrapper.cc
+--- a/media/gpu/vaapi/vaapi_wrapper.cc
++++ b/media/gpu/vaapi/vaapi_wrapper.cc
 @@ -402,7 +402,9 @@ const ProfileCodecMap& GetProfileCodecMa
            {VP9PROFILE_PROFILE2, VAProfileVP9Profile2},
        // VaapiWrapper does not support Profile 3.

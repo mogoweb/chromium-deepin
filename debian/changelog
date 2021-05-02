@@ -1,3 +1,20 @@
+chromium (90.0.4430.93-1~deb10u1) buster-security; urgency=medium
+
+  * New upstream security release.
+    - CVE-2021-21227: Insufficient data validation in V8. Reported by Gengming
+      Liu
+    - CVE-2021-21228: Insufficient policy enforcement in extensions. Reported
+      by Rob Wu
+    - CVE-2021-21229: Incorrect security UI in downloads. Reported by Mohit Raj
+    - CVE-2021-21230: Type Confusion in V8. Reported by Manfred Paul
+    - CVE-2021-21231: Insufficient data validation in V8. Reported by Sergei
+      Glazunov
+    - CVE-2021-21232: Use after free in Dev Tools. Reported by Abdulrahman
+      Alqabandi
+    - CVE-2021-21233: Heap buffer overflow in ANGLE. Reported by Omair
+
+ -- Michael Gilbert <mgilbert@debian.org>  Sat, 01 May 2021 09:35:19 +0000
+
 chromium (90.0.4430.85-1~deb10u1) buster-security; urgency=medium
 
   * New upstream stable release.

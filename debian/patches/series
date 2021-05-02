@@ -26,7 +26,6 @@ fixes/nomerge.patch
 disable/mojo.patch
 disable/tests.patch
 disable/unrar.patch
-disable/vaapi.patch
 disable/glmark.patch
 disable/owners.patch
 disable/signin.patch
@@ -49,6 +48,7 @@ disable/ozone-unittests.patch
 disable/devtools-unittests.patch
 disable/ios.patch
 disable/tflite-test.patch
+disable/libaom-arm.patch
 
 warnings/restrict.patch
 warnings/multichar.patch
@@ -76,6 +76,7 @@ system/clang-format.patch
 system/use-desktop-gl-as-default.patch
 
 buster/re2.patch
+buster/va24.patch
 buster/drm97.patch
 buster/icu63.patch
 buster/vpx17.patch
