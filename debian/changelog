@@ -1,3 +1,10 @@
+chromium (99.0.4818.0-0.1) experimental; urgency=low
+
+  * Non-maintainer upload.
+  * New upstream development release.
+
+ -- Andres Salomon <dilinger@debian.org>  Mon, 10 Jan 2022 01:38:14 -0500
+
 chromium (97.0.4692.71-0.1) unstable; urgency=high
 
   * Non-maintainer upload.
