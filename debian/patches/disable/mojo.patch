@@ -3,7 +3,8 @@ author: Michael Gilbert <mgilbert@debian.org>
 
 --- a/BUILD.gn
 +++ b/BUILD.gn
-@@ -1052,7 +1052,5 @@ if (!is_ios) {
+@@ -1098,8 +1098,6 @@ if (!is_ios) {
+       ":layout_test_data_mojo_bindings",
        ":layout_test_data_mojo_bindings_lite",
        "//content/shell:content_shell",
 -      "//content/test:mojo_bindings_web_test_mojom_js_data_deps",
@@ -11,7 +12,7 @@ author: Michael Gilbert <mgilbert@debian.org>
        "//device/bluetooth/public/mojom:fake_bluetooth_interfaces_js_data_deps",
        "//device/vr/public/mojom:vr_service_js_data_deps",
        "//media/capture/mojom:image_capture_js_data_deps",
-@@ -1077,8 +1077,6 @@ if (!is_ios) {
+@@ -1133,8 +1131,6 @@ if (!is_ios) {
          "//third_party/breakpad:symupload",
          "//tools/android/forwarder2",
        ]
@@ -22,7 +23,7 @@ author: Michael Gilbert <mgilbert@debian.org>
      if (!is_win && !is_android) {
 --- a/content/browser/BUILD.gn
 +++ b/content/browser/BUILD.gn
-@@ -2865,7 +2865,6 @@ group("for_content_tests") {
+@@ -3098,7 +3098,6 @@ group("for_content_tests") {
    visibility = [
      "//content/public/test/android/*",
      "//content/test/*",
@@ -32,7 +33,7 @@ author: Michael Gilbert <mgilbert@debian.org>
      public_deps = [ ":browser" ]
 --- a/content/renderer/BUILD.gn
 +++ b/content/renderer/BUILD.gn
-@@ -571,7 +571,6 @@ target(link_target_type, "renderer") {
+@@ -569,7 +569,6 @@ target(link_target_type, "renderer") {
  group("for_content_tests") {
    visibility = [
      "//content/test/*",
@@ -42,7 +43,7 @@ author: Michael Gilbert <mgilbert@debian.org>
    if (!is_component_build) {
 --- a/content/shell/BUILD.gn
 +++ b/content/shell/BUILD.gn
-@@ -43,7 +43,7 @@ config("content_shell_lib_warnings") {
+@@ -46,7 +46,7 @@ config("content_shell_lib_warnings") {
  }
  
  # Web test support not built on android, but is everywhere else.
@@ -53,7 +54,7 @@ author: Michael Gilbert <mgilbert@debian.org>
    testonly = true
 --- a/content/shell/app/shell_main_delegate.h
 +++ b/content/shell/app/shell_main_delegate.h
-@@ -19,10 +19,6 @@ class ShellContentGpuClient;
+@@ -17,10 +17,6 @@ class ShellContentGpuClient;
  class ShellContentRendererClient;
  class ShellContentUtilityClient;
  
@@ -64,7 +65,7 @@ author: Michael Gilbert <mgilbert@debian.org>
  class ShellMainDelegate : public ContentMainDelegate {
   public:
    explicit ShellMainDelegate(bool is_content_browsertests = false);
-@@ -52,13 +48,6 @@ class ShellMainDelegate : public ContentMainDelegate {
+@@ -57,13 +53,6 @@ class ShellMainDelegate : public Content
    // content_browsertests should not set the kRunWebTests command line flag, so
    // |is_content_browsertests_| and |web_test_runner_| are mututally exclusive.
    bool is_content_browsertests_;
@@ -80,7 +81,7 @@ author: Michael Gilbert <mgilbert@debian.org>
    std::unique_ptr<ShellContentGpuClient> gpu_client_;
 --- a/content/shell/app/shell_main_delegate.cc
 +++ b/content/shell/app/shell_main_delegate.cc
-@@ -40,12 +40,6 @@
+@@ -44,12 +44,6 @@
      content::RegisterIPCLogger(msg_id, logger)
  #endif
  
@@ -93,7 +94,7 @@ author: Michael Gilbert <mgilbert@debian.org>
  #if defined(OS_ANDROID)
  #include "base/android/apk_assets.h"
  #include "base/posix/global_descriptors.h"
-@@ -171,17 +171,6 @@ bool ShellMainDelegate::BasicStartupComplete(int* exit_code) {
+@@ -170,17 +164,6 @@ bool ShellMainDelegate::BasicStartupComp
  
    InitLogging(command_line);
  
@@ -111,24 +112,23 @@ author: Michael Gilbert <mgilbert@debian.org>
    RegisterShellPathProvider();
  
    return false;
-@@ -230,16 +213,6 @@ int ShellMainDelegate::RunProcess(
+@@ -236,15 +219,6 @@ absl::variant<int, MainFunctionParams> S
        kTraceEventBrowserProcessSortIndex);
  
  #if !defined(OS_ANDROID)
 -  if (switches::IsRunWebTestsSwitchPresent()) {
 -    // Web tests implement their own BrowserMain() replacement.
--    web_test_runner_->RunBrowserMain(main_function_params);
+-    web_test_runner_->RunBrowserMain(std::move(main_function_params));
 -    web_test_runner_.reset();
 -    // Returning 0 to indicate that we have replaced BrowserMain() and the
 -    // caller should not call BrowserMain() itself. Web tests do not ever
 -    // return an error.
 -    return 0;
 -  }
--
-   // On non-Android, we can return -1 and have the caller run BrowserMain()
-   // normally.
-   return -1;
-@@ -331,12 +304,6 @@ ContentClient* ShellMainDelegate::CreateContentClient() {
+ 
+   // On non-Android, we can return the |main_function_params| back and have the
+   // caller run BrowserMain() normally.
+@@ -346,12 +320,6 @@ ContentClient* ShellMainDelegate::Create
  }
  
  ContentBrowserClient* ShellMainDelegate::CreateContentBrowserClient() {
@@ -141,7 +141,7 @@ author: Michael Gilbert <mgilbert@debian.org>
    browser_client_ = std::make_unique<ShellContentBrowserClient>();
    return browser_client_.get();
  }
-@@ -347,12 +314,6 @@ ContentGpuClient* ShellMainDelegate::CreateContentGpuClient() {
+@@ -362,12 +330,6 @@ ContentGpuClient* ShellMainDelegate::Cre
  }
  
  ContentRendererClient* ShellMainDelegate::CreateContentRendererClient() {
@@ -156,7 +156,7 @@ author: Michael Gilbert <mgilbert@debian.org>
  }
 --- a/third_party/blink/tools/BUILD.gn
 +++ b/third_party/blink/tools/BUILD.gn
-@@ -63,8 +63,6 @@ group("wpt_tests_base_mojo_bindings") {
+@@ -73,8 +73,6 @@ group("wpt_tests_base_mojo_bindings") {
    data_deps = [
      "//:layout_test_data_mojo_bindings",
      "//:layout_test_data_mojo_bindings_lite",

@@ -1,6 +1,6 @@
 --- a/media/BUILD.gn
 +++ b/media/BUILD.gn
-@@ -164,7 +164,6 @@ test("media_unittests") {
+@@ -167,7 +167,6 @@ test("media_unittests") {
      "//media/device_monitors:unit_tests",
      "//media/filters:unit_tests",
      "//media/formats:unit_tests",
@@ -10,7 +10,7 @@
      "//media/muxers:unit_tests",
 --- a/media/gpu/BUILD.gn
 +++ b/media/gpu/BUILD.gn
-@@ -470,66 +470,6 @@ static_library("test_support") {
+@@ -479,69 +479,6 @@ static_library("test_support") {
    ]
  }
  
@@ -72,16 +72,19 @@
 -  if (is_mac) {
 -    deps += [ "//media/gpu/mac:unit_tests" ]
 -  }
--}
 -
+-  if (is_win || use_vaapi) {
+-    sources += [ "vp9_svc_layers_unittest.cc" ]
+-  }
+-}
+ 
  # TODO(crbug.com/1006266): consider using |use_chromeos_video_acceleration|.
  if (use_v4l2_codec || use_vaapi) {
-   test("video_decode_accelerator_tests") {
 --- a/third_party/devtools-frontend/src/BUILD.gn
 +++ b/third_party/devtools-frontend/src/BUILD.gn
-@@ -136,7 +136,6 @@ foreach(module_file, non_autostart_non_r
+@@ -13,7 +13,6 @@ import("./third_party/blink/public/publi
+ 
  devtools_frontend_resources_deps = [
-   ":build_release_devtools",
    "front_end",
 -  "test",
  ]

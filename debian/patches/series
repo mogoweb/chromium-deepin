@@ -13,8 +13,8 @@ fixes/widevine-locations.patch
 fixes/connection-message.patch
 fixes/nomerge.patch
 
-upstream/skia-freetype-api.patch
-upstream/quiche-include.patch
+#upstream/skia-freetype-api.patch
+#upstream/quiche-include.patch
 
 disable/mojo.patch
 disable/tests.patch
@@ -61,7 +61,7 @@ system/clang-format.patch
 system/opus.patch
 system/eu-strip.patch
 
-bullseye/icu-types.patch
-bullseye/clang11.patch
-bullseye/node-tsc.patch
-bullseye/blink-constexpr.patch
+#bullseye/icu-types.patch
+#bullseye/clang11.patch
+#bullseye/node-tsc.patch
+#bullseye/blink-constexpr.patch
