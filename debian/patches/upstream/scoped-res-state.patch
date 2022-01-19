@@ -1,0 +1,29 @@
+description: ftbfs taken from upstream
+
+https://chromium.googlesource.com/chromium/src/+/6dce3b2e9974fb5c0c9540c3471d7277bc3f4ec4%5E%21/net/dns/public/scoped_res_state.cc
+
+commit	6dce3b2e9974fb5c0c9540c3471d7277bc3f4ec4	[log] [tgz]
+author	Jose Dapena Paz <jdapena@igalia.com>	Mon Jan 10 19:25:53 2022
+committer	Chromium LUCI CQ <chromium-scoped@luci-project-accounts.iam.gserviceaccount.com>	Mon Jan 10 19:25:53 2022
+tree	95443ef5b0a5b5bc208ba80475176eb130178c2e
+parent	bbc55f6f8a7d2636a2800662b0b8ec282d99c79c [diff] [blame]
+
+IWYU: missing include for using memset in ScopedResState.
+
+Fix build error with libstdc++:
+    ../../net/dns/public/scoped_res_state.cc: In constructor ‘net::ScopedResState::ScopedResState()’:
+    ../../net/dns/public/scoped_res_state.cc:20:3: error: ‘memset’ was not declared in this scope
+       20 |   memset(&res_, 0, sizeof(res_));
+          |   ^~~~~~
+
+
+--- a/net/dns/public/scoped_res_state.cc
++++ b/net/dns/public/scoped_res_state.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "net/dns/public/scoped_res_state.h"
+ 
++#include <cstring>
+ #include <memory>
+ 
+ #include "base/check.h"
