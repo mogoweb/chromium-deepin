@@ -65,3 +65,7 @@ system/eu-strip.patch
 #bullseye/clang11.patch
 #bullseye/node-tsc.patch
 #bullseye/blink-constexpr.patch
+
+
+# patches specific to experimental:
+fixes/drm-fourcc.patch
