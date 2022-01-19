@@ -2,6 +2,8 @@ chromium (99.0.4818.0-0.1) experimental; urgency=low
 
   * Non-maintainer upload.
   * New upstream development release.
+  * Build-dep on rapidjson-dev and actually use rapidjson instead of disabling
+    it in ANGLE.
 
  -- Andres Salomon <dilinger@debian.org>  Mon, 10 Jan 2022 01:38:14 -0500
 
