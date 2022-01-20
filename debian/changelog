@@ -5,7 +5,7 @@ chromium (99.0.4818.0-0.1) experimental; urgency=low
   * Build-dep on rapidjson-dev and actually use rapidjson instead of disabling
     it in ANGLE.
 
- -- Andres Salomon <dilinger@debian.org>  Mon, 10 Jan 2022 01:38:14 -0500
+ -- Andres Salomon <dilinger@debian.org>  Thu, 20 Jan 2022 01:09:01 -0500
 
 chromium (97.0.4692.71-0.1) unstable; urgency=high
 
