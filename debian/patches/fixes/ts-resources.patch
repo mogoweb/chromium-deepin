@@ -1,0 +1,63 @@
+description: revert upstream patch for build
+
+The upstream patch:
+https://chromium.googlesource.com/chromium/src/+/a39d71218aa51feb618871b9bbb64e9f2adfd993%5E%21/tools/typescript/ts_definitions.gni
+WebUI: Add chrome://resources to rewrite paths for ts_definitions.gni
+
+Similar to the ts_library.gni, also rewrite the path of
+chrome://resources to the correct location. This allows ts_definitions
+to be used to generate .d.ts for files importing those resources.
+
+Bug: 1189595, b:172340451
+Test: build chrome
+Change-Id: Id67bd9f7ad2e0f11c163dec69702b119247bc72a
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3193983
+Reviewed-by: dpapad <dpapad@chromium.org>
+Commit-Queue: Pi-Hsun Shih <pihsun@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#926216}
+
+
+
+ 
+I don't know why this patch breaks stuff. Build error:
+python3 ../../tools/typescript/ts_definitions.py --root_dir gen/ui/webui/resources/preprocessed --gen_dir gen/ui/webui/resources --out_dir gen/ui/webui/resources/preprocessed --js_files cr_components/managed_dialog/managed_dialog.js cr_elements/action_link_css.m.js cr_elements/cr_a11y_announcer/cr_a11y_announcer.js cr_elements/cr_actionable_row_style.m.js cr_elements/cr_fingerprint/cr_fingerprint_icon.m.js cr_elements/cr_grid/cr_grid.js cr_elements/cr_icons_css.m.js cr_elements/cr_auto_img/cr_auto_img.js cr_elements/cr_container_shadow_mixin.js cr_elements/cr_input/cr_input_style_css.m.js cr_elements/cr_link_row/cr_link_row.js cr_elements/cr_lottie/cr_lottie.m.js cr_elements/cr_menu_selector/cr_menu_selector.js cr_elements/cr_page_host_style_css.js cr_elements/cr_profile_avatar_selector/cr_profile_avatar_selector_grid.js cr_elements/cr_profile_avatar_selector/cr_profile_avatar_selector.js cr_elements/cr_radio_button/cr_radio_button_style_css.m.js cr_elements/cr_splitter/cr_splitter.js cr_elements/cr_tabs/cr_tabs.js cr_elements/cr_toolbar/cr_toolbar.js cr_elements/cr_toolbar/cr_toolbar_selection_overlay.js cr_elements/hidden_style_css.m.js cr_elements/icons.m.js cr_elements/md_select_css.m.js cr_elements/mouse_hoverable_mixin.js cr_elements/mwb_element_shared_style.js cr_elements/mwb_shared_style.js cr_elements/mwb_shared_vars.js cr_elements/search_highlight_style_css.js cr_elements/shared_style_css.m.js cr_elements/shared_vars_css.m.js js/action_link.js js/assert.m.js js/color_utils.js js/cr/event_target.m.js js/cr.m.js js/cr/ui/drag_wrapper.js js/cr/ui/focus_grid.js js/cr/ui/focus_outline_manager.m.js js/cr/ui/focus_row.m.js js/cr/ui/keyboard_shortcut_list.m.js js/cr/ui/store_client.m.js js/cr/ui/store.m.js js/custom_element.js js/event_tracker.m.js js/icon.js js/load_time_data.m.js js/plural_string_proxy.js js/search_highlight_utils.js js/util.m.js js/cr/ui/focus_without_ink.m.js --path_mappings chrome://resources/\*\|preprocessed/\* //resources/\*\|preprocessed/\* chrome://resources/polymer/v3_0/\*\|../../../../../../third_party/polymer/v3_0/components-chromium/\* //resources/polymer/v3_0/\*\|../../../../../../third_party/polymer/v3_0/components-chromium/\* chrome://resources/polymer/v3_0/polymer/polymer_bundled.min.js\|../../../../../../third_party/polymer/v3_0/components-chromium/polymer/polymer-element.d.ts //resources/polymer/v3_0/polymer/polymer_bundled.min.js\|../../../../../../third_party/polymer/v3_0/components-chromium/polymer/polymer-element.d.ts
+Traceback (most recent call last):
+  File "/chromium-96.0.4664.110/out/Release/../../tools/typescript/ts_definitions.py", line 114, in <module>
+    main(sys.argv[1:])
+  File "/chromium-96.0.4664.110/out/Release/../../tools/typescript/ts_definitions.py", line 93, in main
+    if os.path.dirname(js_file) != os.path.dirname(generated_files[i]):
+IndexError: list index out of range
+
+
+The ts_definitions.py script is calling tsc internally, which is failing:
+
+/usr/bin/tsc --project gen/ui/webui/resources/tsconfig_definitions.json
+
+
+gen/ui/webui/resources/preprocessed/mojo/skia/public/mojom/skcolor.mojom-webui.d.ts:2:14 - error TS2503: Cannot find namespace 'mojo'.
+
+2     const $: mojo.internal.MojomType;
+               ~~~~
+
+
+Found 1 error.
+
+
+
+Index: chromium-96.0.4664.110/tools/typescript/ts_definitions.gni
+===================================================================
+--- chromium-96.0.4664.110.orig/tools/typescript/ts_definitions.gni
++++ chromium-96.0.4664.110/tools/typescript/ts_definitions.gni
+@@ -52,12 +52,6 @@ template("ts_definitions") {
+     }
+ 
+     path_mappings = [
+-      "chrome://resources/*|" +
+-          rebase_path("$root_gen_dir/ui/webui/resources/preprocessed/*",
+-                      target_gen_dir),
+-      "//resources/*|" +
+-          rebase_path("$root_gen_dir/ui/webui/resources/preprocessed/*",
+-                      target_gen_dir),
+       "chrome://resources/polymer/v3_0/*|" +
+           rebase_path("//third_party/polymer/v3_0/components-chromium/*",
+                       target_gen_dir),
