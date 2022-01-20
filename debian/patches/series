@@ -72,3 +72,4 @@ system/rapidjson.patch
 fixes/drm-fourcc.patch
 upstream/scoped-res-state.patch
 upstream/prediction-common.patch
+fixes/icu-types.patch
