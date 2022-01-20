@@ -71,3 +71,4 @@ system/rapidjson.patch
 # patches specific to experimental:
 fixes/drm-fourcc.patch
 upstream/scoped-res-state.patch
+upstream/prediction-common.patch
