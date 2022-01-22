@@ -1,3 +1,9 @@
+chromium (97.0.4692.99-1~deb11u2) bullseye-security; urgency=high
+
+  * Revert the terser build-dep for bullseye.
+
+ -- Andres Salomon <dilinger@debian.org>  Sat, 22 Jan 2022 16:46:08 -0500
+
 chromium (97.0.4692.99-1~deb11u1) bullseye-security; urgency=high
 
   * Add myself as an uploader.
