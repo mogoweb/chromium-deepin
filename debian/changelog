@@ -1,6 +1,7 @@
 chromium (98.0.4758.80-1) UNRELEASED; urgency=high
 
   * Update manpage for package rename and everyone moving to https.
+  * Use embedded (newer) libicu instead of the debian system version.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 24 Jan 2022 03:40:43 -0500
 

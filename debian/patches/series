@@ -37,8 +37,6 @@ disable/web-ui-tests.patch
 disable/devtools-unittests.patch
 disable/libaom-arm.patch
 
-system/icu.patch
-system/icu-shim.patch
 system/jpeg.patch
 system/node.patch
 system/zlib.patch
@@ -46,13 +44,11 @@ system/event.patch
 system/jsoncpp.patch
 system/harfbuzz.patch
 system/openjpeg.patch
-system/convertutf.patch
 system/clang-format.patch
 system/opus.patch
 system/eu-strip.patch
 
 bullseye/nomerge.patch
-bullseye/icu-types.patch
 bullseye/clang11.patch
 bullseye/node-tsc.patch
 bullseye/blink-constexpr.patch

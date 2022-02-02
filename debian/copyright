@@ -73,7 +73,6 @@ Files-Excluded:
  native_client*
  android_webview
  third_party/re2
- third_party/icu
  third_party/opus
  third_party/flac
  third_party/llvm
@@ -217,7 +216,6 @@ Files-Excluded:
  third_party/pdfium/third_party/libpng16
  third_party/pdfium/third_party/libopenjpeg20
  third_party/breakpad/breakpad/src/client/mac
- third_party/breakpad/breakpad/src/common/convert_UTF.*
  third_party/boringssl/src/crypto/cipher_extra/test
  third_party/dom_distiller_js/dist/js/domdistiller_wrapped.js
  third_party/devtools-frontend/src/test
