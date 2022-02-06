@@ -32,7 +32,6 @@ Files-Excluded:
  ui/chromeos/user*
  base/mac
  base/test/data
- base/third_party/nspr
  base/third_party/libevent
  chromeos/third_party
  chrome/android
@@ -71,7 +70,6 @@ Files-Excluded:
  components/test/data
  components/test/android
  components/drive/chromeos
- testing/buildbot
  native_client*
  android_webview
  third_party/re2
