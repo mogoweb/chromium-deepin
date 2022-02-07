@@ -153,11 +153,11 @@ override_dh_auto_clean:
 
 ###################### upstream source downloading ############################
 
-url=https://gsdview.appspot.com/chromium-browser-official
+url=https://chromium.googlesource.com/chromium/src/+archive/refs/tags
 version=$(shell dpkg-parsechangelog -S Version | sed s/-.*//)
 extract=chromium-$(version)
-tarfile=$(extract)-lite.tar
-tarball=$(tarfile).xz
+tarfile=$(version).tar
+tarball=$(tarfile).gz
 debvers=../chromium_$(version)
 seconds=$(debvers).seconds
 origtxz=$(debvers).orig.tar.xz
@@ -173,7 +173,8 @@ get-orig-source:
 	@echo $$(($$(date +%s) - $$(cat $(seconds)))) seconds
 	@echo
 	test ! -e $(extract) || rm -rf $(extract)
-	tar xf ../$(tarball)
+	mkdir $(extract)
+	cd $(extract) && tar xf ../../$(tarball)
 	@echo $$(($$(date +%s) - $$(cat $(seconds)))) seconds
 	@echo
 	while read line; do rm -rf $$line; done < $(removed)

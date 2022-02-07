@@ -1,6 +1,9 @@
-chromium (98.0.4758.80-2) UNRELEASED; urgency=high
+chromium (100.0.4867.0-1) UNRELEASED; urgency=high
 
   * Enable pipewire support in webrtc (closes: #954824).
+  * Switch to using a tarball of upstream's git repo rather than upstream's
+    generated (and broken) tarballs. This allows us to drop patches working
+    around missing files.
 
  -- Andres Salomon <dilinger@debian.org>  Sat, 05 Feb 2022 23:22:20 -0500
 
