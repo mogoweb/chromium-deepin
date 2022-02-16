@@ -1,3 +1,32 @@
+chromium (98.0.4758.102-1~deb11u1) bullseye-security; urgency=high
+
+  * Enable pipewire support in webrtc (closes: #954824).
+  * Enable optimize_webui. This UI speed improvement was originally
+    disabled due to nodejs deps, but recent upstream changes makes those
+    deps necessary either way (closes: #970571).
+  * Switch to using bundled node modules, to deal with (frequent) build
+    failures (closes: #1005466).
+  * Manually depend on xdg-desktop-portal-* packages. The file saving
+    dialog needs a UI toolkit (closes: #1005230).
+  * New upstream security release.
+    - CVE-2022-0603: Use after free in File Manager.
+      Reported by Chaoyuan Peng (@ret2happy).
+    - CVE-2022-0604: Heap buffer overflow in Tab Groups. Reported by Krace.
+    - CVE-2022-0605: Use after free in Webstore API.
+      Reported by Thomas Orlita.
+    - CVE-2022-0606: Use after free in ANGLE.
+    - CVE-2022-0606: Use after free in ANGLE. Reported by Cassidy Kim of
+      Amber Security Lab, OPPO Mobile Telecommunications Corp. Ltd.
+    - CVE-2022-0607: Use after free in GPU. Reported by 0x74960.
+    - CVE-2022-0608: Integer overflow in Mojo.
+      Reported by Sergei Glazunov of Google Project Zero.
+    - CVE-2022-0609: Use after free in Animation. Reported by
+      Adam Weidemann and Clément Lecigne of Google's Threat Analysis Group.
+    - CVE-2022-0610: Inappropriate implementation in Gamepad API.
+      Reported by Anonymous.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 15 Feb 2022 20:15:03 -0500
+
 chromium (98.0.4758.80-1~deb11u1) bullseye-security; urgency=high
 
   * Update manpage for package rename and everyone moving to https.
@@ -387,7 +416,7 @@ chromium (93.0.4577.82-1) unstable; urgency=medium
       @dnpushme of 360 ATA
     - CVE-2021-30614: Heap buffer overflow in TabStrip. Reported by Huinian
       Yang @vmth6 of Amber Security Lab, OPPO Mobile Telecommunications Corp.
-      Ltd. 
+      Ltd.
     - CVE-2021-30615: Cross-origin data leak in Navigation. Reported by NDevTK
     - CVE-2021-30616: Use after free in Media. Reported by Anonymous
     - CVE-2021-30617: Policy bypass in Blink. Reported by NDevTK
@@ -411,7 +440,7 @@ chromium (93.0.4577.82-1) unstable; urgency=medium
     - CVE-2021-30601: Use after free in Extensions API. Reported by koocola
       @alo_cook and Nan Wang @eternalsakura13 of 360 Alpha Lab
     - CVE-2021-30602: Use after free in WebRTC. Reported by Marcin Towalski of
-      Cisco Talos 
+      Cisco Talos
     - CVE-2021-30603: Race in WebAudio. Reported by Sergei Glazunov of Google
       Project Zero
     - CVE-2021-30604: Use after free in ANGLE. Reported by Seong-Hwan Park
