@@ -10,9 +10,6 @@ fixes/widevine-revision.patch
 fixes/widevine-locations.patch
 fixes/connection-message.patch
 
-upstream/quiche-include.patch
-upstream/restrict.patch
-upstream/sequence-point.patch
 upstream/mojo.patch
 upstream/libdrm.patch
 
@@ -43,12 +40,12 @@ system/jpeg.patch
 system/zlib.patch
 system/event.patch
 system/jsoncpp.patch
-system/harfbuzz.patch
 system/openjpeg.patch
 system/convertutf.patch
 system/clang-format.patch
 system/opus.patch
 system/eu-strip.patch
+system/rapidjson.patch
 
 bullseye/nomerge.patch
 bullseye/icu-types.patch
