@@ -71,6 +71,7 @@ defines+=is_debug=false \
          enable_nacl=false \
          enable_nacl_nonsfi=false \
          enable_swiftshader=false \
+         dawn_use_swiftshader=false \
          enable_reading_list=false \
          enable_one_click_signin=false \
          enable_iterator_debugging=false \
@@ -90,6 +91,7 @@ defines+=use_gio=true \
          use_pulseaudio=true \
          link_pulseaudio=true \
          rtc_use_pipewire=true \
+         icu_use_data_file=true \
          enable_widevine=true \
          v8_enable_backtrace=true \
          use_system_zlib=true \
@@ -159,7 +161,7 @@ override_dh_auto_clean:
 url=https://gsdview.appspot.com/chromium-browser-official
 version=$(shell dpkg-parsechangelog -S Version | sed s/-.*//)
 extract=chromium-$(version)
-tarfile=$(extract)-lite.tar
+tarfile=$(extract).tar
 tarball=$(tarfile).xz
 debvers=../chromium_$(version)
 seconds=$(debvers).seconds
@@ -184,7 +186,7 @@ get-orig-source:
 	@echo $$(($$(date +%s) - $$(cat $(seconds)))) seconds
 	@echo
 	test ! -e $(origtxz) || rm -f $(origtxz)
-	tar $(options) -cf - $(extract) | xz -6 -T $(njobs) - > $(origtxz)
+	tar $(options) -cf - $(extract) | xz -6 -T0 - > $(origtxz)
 	@echo $$(($$(date +%s) - $$(cat $(seconds)))) seconds
 	@echo
 	rm -rf $(extract)
