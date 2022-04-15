@@ -1,3 +1,11 @@
+chromium (100.0.4896.127-1~deb11u1) bullseye-security; urgency=high
+
+  * New upstream security release.
+    - CVE-2022-1364: Type Confusion in V8.
+      Reported by Clément Lecigne of Google's Threat Analysis Group
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 15 Apr 2022 13:12:11 -0400
+
 chromium (100.0.4896.88-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.
