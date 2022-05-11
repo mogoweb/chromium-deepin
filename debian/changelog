@@ -1,3 +1,35 @@
+chromium (101.0.4951.64-1~deb11u1) bullseye-security; urgency=high
+
+  * New upstream security release.
+    - CVE-2022-1633: Use after free in Sharesheet. Reported by Khalil Zhani
+    - CVE-2022-1634: Use after free in Browser UI. Reported by Khalil Zhani
+    - CVE-2022-1635: Use after free in Permission Prompts.
+      Reported by Anonymous
+    - CVE-2022-1636: Use after free in Performance APIs.
+      Reported by Seth Brenith, Microsoft
+    - CVE-2022-1637: Inappropriate implementation in Web Contents.
+      Reported by Alesandro Ortiz
+    - CVE-2022-1638: Heap buffer overflow in V8 Internationalization.
+      Reported by DoHyun Lee (@l33d0hyun) of DNSLab, Korea University
+    - CVE-2022-1639: Use after free in ANGLE.
+      Reported by SeongHwan Park (SeHwa)
+    - CVE-2022-1640: Use after free in Sharing. Reported by Weipeng
+      Jiang (@Krace) and Guang Gong of 360 Vulnerability Research Institute
+    - CVE-2022-1641: Use after free in Web UI Diagnostics.
+      Reported by Rong Jian of VRI
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 11 May 2022 11:08:36 -0400
+
+chromium (101.0.4951.54-1) unstable; urgency=low
+
+  * Depend on sse3-support to ensure that chromium is only installed on
+    machines that support the SSE3 instruction set. Otherwise we crash,
+    as described in #1010407. We can also remove the manual sse2 check now.
+    Upstream describes the SSE3 requirement @ http://crbug.com/1123353
+  * New upstream stable release.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 03 May 2022 12:16:07 -0400
+
 chromium (101.0.4951.41-1~deb11u1) bullseye-security; urgency=high
 
   * debian/copyright:
