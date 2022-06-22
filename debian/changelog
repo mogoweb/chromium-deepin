@@ -7,6 +7,7 @@ chromium (103.0.5060.53-2) UNRELEASED; urgency=high
       workaround.
     - bullseye/nomerge.patch: drop, same reason.
     - bullseye/byteswap-constexpr2.patch: drop (I think?)
+  * Switch to using the vendored libre2.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 21 Jun 2022 21:51:11 +0000
 
