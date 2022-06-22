@@ -23,7 +23,8 @@ export LDFLAGS+=-Wl,--stats
 
 # initial flags from dpkg-buildflags
 export DEB_CXXFLAGS_MAINT_STRIP=-g
-export CXXFLAGS=$(shell dpkg-buildflags --get CXXFLAGS)
+export CXXFLAGS=$(shell dpkg-buildflags --get CXXFLAGS) -stdlib=libc++ -I/usr/lib/llvm-13/include/c++/v1
+export LDFLAGS=$(shell dpkg-buildflags --get LDFLAGS) -stdlib=libc++ -Wl,-rpath,/usr/lib/llvm-13/lib
 
 # extra flags to reduce warnings that aren't very useful
 export CXXFLAGS+=-Wno-conversion \

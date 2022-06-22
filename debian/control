@@ -91,6 +91,8 @@ Build-Depends:
  libcurl4-openssl-dev,
  fonts-ipafont-gothic,
  fonts-ipafont-mincho,
+ libc++-13-dev,
+ libc++abi-13-dev,
 
 Package: chromium
 Architecture: i386 amd64 arm64 armhf

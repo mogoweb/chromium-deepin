@@ -1,3 +1,15 @@
+chromium (103.0.5060.53-2) UNRELEASED; urgency=high
+
+  * Build against libc++ (llvm/clang's c++ std library) instead of
+    libstdc++ (gcc's c++ std library).
+  * debian/patches:
+    - fixes/clang-and-gcc11.patch: drop, as this was a libstdc++-specific
+      workaround.
+    - bullseye/nomerge.patch: drop, same reason.
+    - bullseye/byteswap-constexpr2.patch: drop (I think?)
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 21 Jun 2022 21:51:11 +0000
+
 chromium (103.0.5060.53-1) unstable; urgency=high
 
   * New upstream stable release.
