@@ -79,7 +79,6 @@ Files-Excluded:
  third_party/webgl
  third_party/libpng
  third_party/libdrm
- third_party/snappy
  third_party/libxslt
  third_party/libwebp
  third_party/freetype
