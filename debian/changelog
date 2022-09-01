@@ -1,3 +1,99 @@
+chromium (105.0.5195.52-1~deb11u1) bullseye-security; urgency=high
+
+  * New upstream stable release.
+    - CVE-2022-3038: Use after free in Network Service.
+      Reported by Sergei Glazunov of Google Project Zero.
+    - CVE-2022-3039: Use after free in WebSQL. Reported by
+      Nan Wang(@eternalsakura13) and Guang Gong of 360 Vulnerability
+      Research Institute.
+    - CVE-2022-3040: Use after free in Layout. Reported by Anonymous.
+    - CVE-2022-3041: Use after free in WebSQL. Reported by Ziling Chen and
+      Nan Wang(@eternalsakura13) of 360 Vulnerability Research Institute.
+    - CVE-2022-3042: Use after free in PhoneHub. Reported by koocola
+      (@alo_cook) and Guang Gong of 360 Vulnerability Research Institute.
+    - CVE-2022-3043: Heap buffer overflow in Screen Capture.
+      Reported by @ginggilBesel.
+    - CVE-2022-3044: Inappropriate implementation in Site Isolation.
+      Reported by Lucas Pinheiro, Microsoft Browser Vulnerability Research
+    - CVE-2022-3045: Insufficient validation of untrusted input in V8.
+      Reported by Ben Noordhuis <info@bnoordhuis.nl>.
+    - CVE-2022-3046: Use after free in Browser Tag.
+      Reported by Rong Jian of VRI.
+    - CVE-2022-3071: Use after free in Tab Strip.
+      Reported by @ginggilBesel.
+    - CVE-2022-3047: Insufficient policy enforcement in Extensions API.
+      Reported by Maurice Dauer.
+    - CVE-2022-3048: Inappropriate implementation in Chrome OS lockscreen.
+      Reported by Andr.Ess.
+    - CVE-2022-3049: Use after free in SplitScreen.
+      Reported by @ginggilBesel.
+    - CVE-2022-3050: Heap buffer overflow in WebUI.
+      Reported by Zhihua Yao of KunLun Lab.
+    - CVE-2022-3051: Heap buffer overflow in Exosphere.
+      Reported by @ginggilBesel.
+    - CVE-2022-3052: Heap buffer overflow in Window Manager.
+      Reported by Khalil Zhani.
+    - CVE-2022-3053: Inappropriate implementation in Pointer Lock.
+      Reported by Jesper van den Ende (Pelican Party Studios).
+    - CVE-2022-3054: Insufficient policy enforcement in DevTools.
+      Reported by Kuilin Li.
+    - CVE-2022-3055: Use after free in Passwords. Reported by Weipeng
+      Jiang (@Krace) and Guang Gong of 360 Vulnerability Research
+      Institute.
+    - CVE-2022-3056: Insufficient policy enforcement in Content
+      Security Policy. Reported by Anonymous.
+    - CVE-2022-3057: Inappropriate implementation in iframe Sandbox.
+      Reported by Gareth Heyes.
+    - CVE-2022-3058: Use after free in Sign-In Flow.
+      Reported by raven at KunLun lab.
+  * Drop workaround for lack of older clang's -ffile-prefix-map. This
+    should make reproducible builds happy.
+  * debian/copyright:
+    - Update for new libevent location (moved out of base/).
+    - libopenjpeg20 -> libopenjpeg
+  * debian/patches:
+    - debianization/support-i386.patch: refresh.
+    - disable/catapult.patch: refresh.
+    - disable/libaom-arm.patch: refresh.
+    - system/event.patch: update for new libevent location.
+    - system/openjpeg.patch: refresh.
+    - bullseye/clang13.patch: drop part of patch dropped upstream.
+    - upstream/disk-cache.patch: build fix pulled from upstream.
+    - upstream/browser-finder.patch: build fix pulled from upstream.
+    - upstream/masklayer-geom.patch: build fix pulled from upstream.
+    - system/jsoncpp.patch: drop, merged upstream.
+    - fixes/angle-wayland: build fix due to mismatched wayland headers
+      on sid. Only needed until angle updates its copy of wayland.
+    - disable/welcome-page.patch: drop. Upstream fixed the original
+      issue some time ago, and this new version finally cleaned up
+      the workaround.
+    - fixes/connection-message.patch: drop it. I looked at sending this
+      upstream, but the original extension doesn't exist any more,
+      and chromium properly prints an error if a proxy is unreachable.
+      If you can still reproduce the issue (described in
+      http://bugs.debian.org/864539), let me know so I can get it fixed
+      upstream.
+  * debian/scripts/unbundle: upstream tripled the number of (previously
+    vendored) libraries that we can use system versions of. However,
+    the majority of them are either not in bullseye or are too old, so
+    we'll have to wait to use the debian versions for the ones not newly
+    added as build-deps.
+  * Disable optimize_webui, due to a build failure using nodejs from
+    bullseye. I'll reenable this when it either gets fixed or we're done
+    with bullseye security support.
+  * Remove sse3-support dependency and just refuse to run if SSE3 is
+    not present. Breaking via preinst script isn't appropriate for
+    packages that might be installed by default (eg, by Debian Edu).
+  * debian/control: add build-deps for brotli, libdouble-conversion-dev,
+    libwoff-dev, and libxnvctrl-dev (closes: #987292).
+  * Rework default search engine stuff. People did not like the "Your
+    browser is managed" and "Your administrator can change your browser
+    setup remotely" messages, which are admittedly alarming.
+    Instead of using /etc/chromium/policies/recommended/duckduckgo.json,
+    delete that and use /etc/chromium/master_preferences instead.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 31 Aug 2022 20:48:11 -0400
+
 chromium (104.0.5112.101-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.

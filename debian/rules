@@ -6,9 +6,6 @@ export DH_VERBOSE=1
 # enable all build hardening flags
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
-# disable unsupported flag in clang 7
-export DEB_BUILD_MAINT_OPTIONS+=reproducible=-fixfilepath
-
 # indicate that binary targets do not require root
 export DEB_RULES_REQUIRES_ROOT=no
 
@@ -66,6 +63,7 @@ defines+=is_debug=false \
          use_libjpeg_turbo=true \
          use_custom_libcxx=false \
          use_gnome_keyring=false \
+         optimize_webui=false \
          use_unofficial_version_number=false \
          enable_vr=false \
          enable_nacl=false \

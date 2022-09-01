@@ -31,6 +31,7 @@ Build-Depends:
  wdiff,
  gperf,
  bison,
+ brotli,
  nodejs,
  valgrind,
  xz-utils,
@@ -73,6 +74,9 @@ Build-Depends:
  libpulse-dev,
  libpam0g-dev,
  libbrotli-dev,
+ libdouble-conversion-dev,
+ libxnvctrl-dev,
+ libwoff-dev,
  libsnappy-dev,
  libglib2.0-dev,
  libasound2-dev,
@@ -175,7 +179,6 @@ Depends:
  ${shlibs:Depends},
  x11-utils,
  xdg-utils,
- sse3-support [i386 amd64]
 Recommends:
  upower,
  libu2f-udev,

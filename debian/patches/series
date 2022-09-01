@@ -8,10 +8,13 @@ fixes/ps-print.patch
 fixes/clang-and-gcc11.patch
 fixes/widevine-revision.patch
 fixes/widevine-locations.patch
-fixes/connection-message.patch
 fixes/tflite.patch
+fixes/angle-wayland.patch
 
 upstream/mojo.patch
+upstream/disk-cache.patch
+upstream/browser-finder.patch
+upstream/masklayer-geom.patch
 
 disable/tests.patch
 disable/unrar.patch
@@ -23,7 +26,6 @@ disable/installer.patch
 disable/font-tests.patch
 disable/swiftshader.patch
 disable/swiftshader-2.patch
-disable/welcome-page.patch
 disable/google-api-warning.patch
 disable/third-party-cookies.patch
 disable/driver-chrome-path.patch
@@ -35,7 +37,6 @@ system/icu-shim.patch
 system/jpeg.patch
 system/zlib.patch
 system/event.patch
-system/jsoncpp.patch
 system/openjpeg.patch
 system/convertutf.patch
 system/clang-format.patch
