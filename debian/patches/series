@@ -8,14 +8,13 @@ fixes/ps-print.patch
 fixes/clang-and-gcc11.patch
 fixes/widevine-revision.patch
 fixes/widevine-locations.patch
-fixes/tflite.patch
 fixes/angle-wayland.patch
+fixes/fix-arm-vfpv3-d16-libaom.patch
 
 upstream/mojo.patch
-upstream/disk-cache.patch
-upstream/browser-finder.patch
-upstream/masklayer-geom.patch
 upstream/armhf-ftbfs.patch
+upstream/fix-missing-cmath.patch
+upstream/fix-nullptr-qual.patch
 
 disable/tests.patch
 disable/unrar.patch
@@ -23,7 +22,6 @@ disable/signin.patch
 disable/android.patch
 disable/openh264.patch
 disable/catapult.patch
-disable/installer.patch
 disable/font-tests.patch
 disable/swiftshader.patch
 disable/swiftshader-2.patch
@@ -32,7 +30,6 @@ disable/third-party-cookies.patch
 disable/driver-chrome-path.patch
 disable/widevine-cdm-cu.patch
 disable/angle-perftests.patch
-disable/libaom-arm.patch
 
 system/icu-shim.patch
 system/jpeg.patch
