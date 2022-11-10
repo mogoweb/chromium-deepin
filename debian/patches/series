@@ -44,6 +44,7 @@ system/rapidjson.patch
 
 bullseye/clang13.patch
 bullseye/lld-13.patch
+bullseye/mulodic.patch
 
 # POWER support
 ppc64le/sandbox/0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
