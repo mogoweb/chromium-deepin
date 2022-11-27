@@ -6,13 +6,13 @@ chromium (107.0.5304.121-1~deb11u1) bullseye-security; urgency=high
 
  -- Timothy Pearson <tpearson@raptorengineering.com>  Sat, 26 Nov 2022 12:34:00 -0600
 
-chromium (107.0.5304.110-1~deb11u1) bullseye-security; urgency=high
+chromium (107.0.5304.110-2) unstable; urgency=high
 
   * Fix bullseye/mulodic.patch to actually work right. Sigh.
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 10 Nov 2022 13:48:01 -0500
 
-chromium (107.0.5304.110-1) unstable; urgency=high
+chromium (107.0.5304.110-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.
     - CVE-2022-3885: Use after free in V8. Reported by gzobqq@.
