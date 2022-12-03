@@ -1,3 +1,11 @@
+chromium (108.0.5359.94-1~deb11u1) bullseye-security; urgency=high
+
+  * New upstream security release.
+    - CVE-2022-4262: Type Confusion in V8.
+      Reported by Clement Lecigne of Google's Threat Analysis Group.
+
+ -- Andres Salomon <dilinger@debian.org>  Sat, 03 Dec 2022 13:29:49 -0500
+
 chromium (108.0.5359.71-2~deb11u1) bullseye-security; urgency=high
 
   * Fix bullseye/mulodic.patch to actually work right on 32-bit platforms.
