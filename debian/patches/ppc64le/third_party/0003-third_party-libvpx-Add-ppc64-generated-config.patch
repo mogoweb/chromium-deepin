@@ -1,3 +1,6 @@
+diff --git a/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h b/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
+new file mode 100644
+index 0000000..3a166c0
 --- /dev/null
 +++ b/third_party/libvpx/source/config/linux/ppc64/vp8_rtcd.h
 @@ -0,0 +1,346 @@
@@ -347,6 +350,9 @@
 +#endif
 +
 +#endif
+diff --git a/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h b/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
+new file mode 100644
+index 0000000..73dc436
 --- /dev/null
 +++ b/third_party/libvpx/source/config/linux/ppc64/vp9_rtcd.h
 @@ -0,0 +1,271 @@
@@ -621,6 +627,9 @@
 +#endif
 +
 +#endif
+diff --git a/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm b/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
+new file mode 100644
+index 0000000..1f6ddd5
 --- /dev/null
 +++ b/third_party/libvpx/source/config/linux/ppc64/vpx_config.asm
 @@ -0,0 +1,102 @@
@@ -726,6 +735,9 @@
 +.equ DECODE_WIDTH_LIMIT ,  16384
 +.equ DECODE_HEIGHT_LIMIT ,  16384
 +    .section .note.GNU-stack,"",%progbits
+diff --git a/third_party/libvpx/source/config/linux/ppc64/vpx_config.c b/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
+new file mode 100644
+index 0000000..8aad25f
 --- /dev/null
 +++ b/third_party/libvpx/source/config/linux/ppc64/vpx_config.c
 @@ -0,0 +1,10 @@
@@ -739,6 +751,9 @@
 +#include "vpx/vpx_codec.h"
 +static const char* const cfg = "--target=generic-gnu --enable-vp9-highbitdepth --enable-external-build --enable-postproc --enable-multi-res-encoding --enable-temporal-denoising --enable-vp9-temporal-denoising --enable-vp9-postproc --size-limit=16384x16384 --enable-realtime-only --disable-install-docs --disable-libyuv";
 +const char *vpx_codec_build_config(void) {return cfg;}
+diff --git a/third_party/libvpx/source/config/linux/ppc64/vpx_config.h b/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
+new file mode 100644
+index 0000000..b7b528b
 --- /dev/null
 +++ b/third_party/libvpx/source/config/linux/ppc64/vpx_config.h
 @@ -0,0 +1,111 @@
@@ -853,6 +868,9 @@
 +#define DECODE_WIDTH_LIMIT 16384
 +#define DECODE_HEIGHT_LIMIT 16384
 +#endif /* VPX_CONFIG_H */
+diff --git a/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h b/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
+new file mode 100644
+index 0000000..8d32166
 --- /dev/null
 +++ b/third_party/libvpx/source/config/linux/ppc64/vpx_dsp_rtcd.h
 @@ -0,0 +1,3787 @@
@@ -4643,6 +4661,9 @@
 +#endif
 +
 +#endif
+diff --git a/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h b/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
+new file mode 100644
+index 0000000..c5196db
 --- /dev/null
 +++ b/third_party/libvpx/source/config/linux/ppc64/vpx_scale_rtcd.h
 @@ -0,0 +1,96 @@
@@ -4742,3 +4763,4 @@
 +#endif
 +
 +#endif
+
