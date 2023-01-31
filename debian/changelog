@@ -1,3 +1,10 @@
+chromium (109.0.5414.119-1~deb11u2) UNRELEASED; urgency=high
+
+  * Disable v4l2 on bullseye; I forgot that it doesn't have new enough kernel
+    headers (closes: #1030160).
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 25 Jan 2023 01:19:49 -0500
+
 chromium (109.0.5414.119-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.
