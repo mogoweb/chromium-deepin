@@ -1,9 +1,54 @@
-chromium (109.0.5414.119-1~deb11u2) UNRELEASED; urgency=high
+chromium (110.0.5481.77-1~deb11u1) bullseye-security; urgency=high
 
+  [ Andres Salomon ]
+  * New upstream stable release.
+    - CVE-2023-0696: Type Confusion in V8.
+      Reported by Haein Lee at KAIST Hacking Lab.
+    - CVE-2023-0697: Inappropriate implementation in Full screen mode.
+      Reported by Ahmed ElMasry.
+    - CVE-2023-0698: Out of bounds read in WebRTC.
+      Reported by Cassidy Kim(@cassidy6564).
+    - CVE-2023-0699: Use after free in GPU.
+      Reported by 7o8v and Cassidy Kim(@cassidy6564).
+    - CVE-2023-0700: Inappropriate implementation in Download.
+      Reported by Axel Chong.
+    - CVE-2023-0701: Heap buffer overflow in WebUI.
+      Reported by Sumin Hwang of SSD Labs.
+    - CVE-2023-0702: Type Confusion in Data Transfer. Reported by Sri.
+    - CVE-2023-0703: Type Confusion in DevTools.
+      Reported by raven at KunLun lab.
+    - CVE-2023-0704: Insufficient policy enforcement in DevTools.
+      Reported by Rhys Elsmore and Zac Sims of the Canva security team.
+    - CVE-2023-0705: Integer overflow in Core.
+      Reported by SorryMybad (@S0rryMybad) of Kunlun Lab.
+  * d/copyright: libpng16 binaries are gone, no longer need to exclude them.
+  * d/scripts/unbundle: drop libjxl, which is dropped upstream. Add absl_log*.
+  * d/patches:
+    - debianization/optimization.patch: drop. This is unnecessary, as
+      Debian's optimization flags override Chromium's by default.
+    - disable/android.patch: upstream removed android_crazy_linker, so we can
+      remove half of this patch.
+    - disable/catapult.patch: refresh.
+    - disable/google-api-warning.patch: refresh.
+    - upstream/mojo.patch: refresh w/ what's in 110.
+    - system/openjpeg.patch: completely rework due to upstream changes.
+    - upstream/clamp.patch: backport a build fix.
+    - upstream/blink-dbl-float.patch: another build fix.
+  * Drop unused use_allocator="none" argument. This was used previously
+    to switch from the default "partition" allocator. Upstream dropped
+    the build flag in chromium v109. So in v109 we switched to the default
+    "partition" allocator and I don't think anyone noticed, so let's just
+    leave it on. Report issues if you notice any.
   * Disable v4l2 on bullseye; I forgot that it doesn't have new enough kernel
     headers (closes: #1030160).
 
- -- Andres Salomon <dilinger@debian.org>  Wed, 25 Jan 2023 01:19:49 -0500
+  [ Timothy Pearson ]
+  * d/patches:
+    - Refresh ppc64le patches for v110
+    - Add upstream patches to fix build errors when use_custom_libcxx=false
+    - Drop stack smashing fix patch for ppc64le due to fix included upstream
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 08 Feb 2023 00:20:01 -0500
 
 chromium (109.0.5414.119-1~deb11u1) bullseye-security; urgency=high
 

@@ -1,6 +1,5 @@
 debianization/manpage.patch
 debianization/sandbox.patch
-debianization/optimization.patch
 debianization/master-preferences.patch
 debianization/support-i386.patch
 
@@ -10,6 +9,10 @@ fixes/widevine-revision.patch
 fixes/widevine-locations.patch
 
 upstream/mojo.patch
+upstream/clamp.patch
+upstream/pwman-const.patch
+upstream/move-stack-to-isolate.patch
+upstream/blink-dbl-float.patch
 
 disable/tests.patch
 disable/unrar.patch
@@ -90,7 +93,6 @@ ppc64le/crashpad/0001-Implement-support-for-PPC64-on-Linux.patch
 ppc64le/database/0001-Properly-detect-little-endian-PPC64-systems.patch
 ppc64le/third_party/0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
 ppc64le/fixes/fix-breakpad-compile.patch
-ppc64le/v8/0001-Fix-ppc64-stack-corruption.patch
 ppc64le/v8/0002-Add-ppc64-trap-instructions.patch
 
 ppc64le/third_party/0001-Add-PPC64-support-for-libdav1d.patch
