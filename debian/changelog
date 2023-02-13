@@ -1,3 +1,10 @@
+chromium (110.0.5481.77-1~deb11u2) UNRELEASED; urgency=high
+
+  * d/patches/bullseye/mulodic.patch: add another workaround for clang-13
+    failure in v8.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 08 Feb 2023 00:20:01 -0500
+
 chromium (110.0.5481.77-1~deb11u1) bullseye-security; urgency=high
 
   [ Andres Salomon ]
