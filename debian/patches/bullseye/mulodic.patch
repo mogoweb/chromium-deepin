@@ -31,7 +31,15 @@ bookworm, only in bullseye.
      "${tint_root_dir}/include/",
 --- a/v8/BUILD.gn
 +++ b/v8/BUILD.gn
-@@ -648,6 +648,15 @@ config("internal_config_base") {
+@@ -16,6 +16,7 @@ if (is_android) {
+ 
+ import("gni/snapshot_toolchain.gni")
+ import("gni/v8.gni")
++import("//build/config/sysroot.gni")
+ 
+ # Specifies if the target build is a simulator build. Comparing target cpu
+ # with v8 target cpu to not affect simulator builds for making cross-compile
+@@ -648,6 +649,15 @@ config("internal_config_base") {
      "$target_gen_dir",
      "$target_gen_dir/include",
    ]

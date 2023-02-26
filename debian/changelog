@@ -1,3 +1,9 @@
+chromium (110.0.5481.177-1~deb11u2) UNRELEASED; urgency=high
+
+  * d/patches/bullseye/mulodic.patch: add missing import.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 22 Feb 2023 16:11:07 -0500
+
 chromium (110.0.5481.177-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.
