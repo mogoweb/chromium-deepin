@@ -39,6 +39,7 @@ system/rapidjson.patch
 bullseye/clang13.patch
 bullseye/lld-13.patch
 bullseye/mulodic.patch
+bullseye/downgrade-rollup.patch
 
 # i386 support
 i386/support-i386.patch
