@@ -6,8 +6,11 @@ chromium (112.0.5615.49-2~deb11u1) bullseye-security; urgency=high
     & populate that d/patches/i386/ directory, since we now have multiple
     i386 patches.
   * Remove enable_js_type_check=false build arg; upstream dropped it.
-  * Downgrade the bundled rollup back to 2.58, as rollup 3.x requires
-    nodejs >= 14.
+  * d/patches/bullseye:
+    - downgrade-rollup.patch: downgrade the bundled rollup back to 2.58,
+      as rollup 3.x requires nodejs >= 14.
+    - default-equality-op.patch: work around an issue with clang-13 and
+      setting the default equality operator.
 
   [ Timothy Pearson ]
    * d/patches:   
