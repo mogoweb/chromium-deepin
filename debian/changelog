@@ -1,3 +1,64 @@
+chromium (112.0.5615.49-2~deb11u1) bullseye-security; urgency=high
+
+
+  [ Andres Salomon ]
+  * Add d/patches/i386/angle-lockfree.patch to fix FTBFS on i386. Also create
+    & populate that d/patches/i386/ directory, since we now have multiple
+    i386 patches.
+  * Remove enable_js_type_check=false build arg; upstream dropped it.
+
+  [ Timothy Pearson ]
+   * d/patches:   
+    - Re-add boringssl support for ppc64le (dropped by Google upstream)
+    - Add ppc64le detection to partition allocator build
+    - Regenerate 0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 07 Apr 2023 03:40:50 -0400
+
+chromium (112.0.5615.49-1) unstable; urgency=high
+
+  * New upstream stable release.
+    - CVE-2023-1810: Heap buffer overflow in Visuals.
+      Reported by Weipeng Jiang (@Krace) of VRI.
+    - CVE-2023-1811: Use after free in Frames. Reported by Thomas Orlita.
+    - CVE-2023-1812: Out of bounds memory access in DOM Bindings.
+      Reported by Shijiang Yu.
+    - CVE-2023-1813: Inappropriate implementation in Extensions.
+      Reported by Axel Chong.
+    - CVE-2023-1814: Insufficient validation of untrusted input in
+      Safe Browsing. Reported by Young Min Kim (@ylemkimon),
+      CompSec Lab at Seoul National University.
+    - CVE-2023-1815: Use after free in Networking APIs. Reported by DDV_UA.
+    - CVE-2023-1816: Incorrect security UI in Picture In Picture.
+      Reported by NDevTK.
+    - CVE-2023-1817: Insufficient policy enforcement in Intents.
+      Reported by Axel Chong.
+    - CVE-2023-1818: Use after free in Vulkan. Reported by Abdulrahman
+      Alqabandi, Microsoft Browser Vulnerability Research, Eric Lawrence,
+      Microsoft, Patrick Walker (@HomeSen), & Kirtikumar Anandrao Ramchandani.
+    - CVE-2023-1819: Out of bounds read in Accessibility.
+      Reported by Microsoft Edge Team.
+    - CVE-2023-1820: Heap buffer overflow in Browser History.
+      Reported by raven at KunLun lab.
+    - CVE-2023-1821: Inappropriate implementation in WebShare.
+      Reported by Axel Chong.
+    - CVE-2023-1822: Incorrect security UI in Navigation. Reported by 강우진.
+    - CVE-2023-1823: Inappropriate implementation in FedCM.
+      Reported by Jasper Rebane (popstonia).
+  * d/copyright: change location for deleted image_diff directory.
+  * d/patches:
+    - disable/unrar.patch: update for stuff dropped upstream.
+    - disable/swiftshader.patch: straight refresh.
+    - bullseye/clang13.patch: straight refresh.
+    - ppc64le/third_party/0001-third_party-angle-Include-missing-header-cstddef-in-.patch:
+      straight refresh.
+    - ppc64le/third_party/use-sysconf-page-size-on-ppc64.patch: straight
+      refresh.
+    - debian/patches/ppc64le/third_party/0003-third_party-ffmpeg-Add-ppc64-generated-config.patch:
+      change is_mac to is_apple.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 04 Apr 2023 18:44:47 -0400
+
 chromium (111.0.5563.110-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.
