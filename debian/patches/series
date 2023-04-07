@@ -41,6 +41,7 @@ bullseye/lld-13.patch
 bullseye/mulodic.patch
 bullseye/downgrade-rollup.patch
 bullseye/default-equality-op.patch
+bullseye/ptr-traits-bug.patch
 
 # i386 support
 i386/support-i386.patch
