@@ -48,6 +48,7 @@ defines+=custom_toolchain=\"//build/toolchain/linux/unbundle:default\"
 DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 ifeq (i386,$(DEB_HOST_ARCH))
 defines+=host_cpu=\"x86\" use_vaapi=true
+defines+=use_v8_context_snapshot=false
 endif
 ifeq (amd64,$(DEB_HOST_ARCH))
 defines+=host_cpu=\"x64\" use_vaapi=true

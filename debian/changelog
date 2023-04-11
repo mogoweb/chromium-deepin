@@ -1,6 +1,7 @@
 chromium (112.0.5615.49-2~deb11u2) UNRELEASED; urgency=high
 
   * Add d/patches/upstream/protobuf.patch to fix FTBFS due to race.
+  * Disable v8_context_snapshot on i386, which was failing to build.
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 07 Apr 2023 03:40:50 -0400
 
