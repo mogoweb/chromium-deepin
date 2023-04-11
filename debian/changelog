@@ -1,9 +1,9 @@
-chromium (112.0.5615.49-2~deb11u2) UNRELEASED; urgency=high
+chromium (112.0.5615.49-2~deb11u2) bullseye-security; urgency=high
 
   * Add d/patches/upstream/protobuf.patch to fix FTBFS due to race.
   * Disable v8_context_snapshot on i386, which was failing to build.
 
- -- Andres Salomon <dilinger@debian.org>  Fri, 07 Apr 2023 03:40:50 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 11 Apr 2023 12:50:44 -0400
 
 chromium (112.0.5615.49-2~deb11u1) bullseye-security; urgency=high
 
