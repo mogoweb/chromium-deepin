@@ -13,7 +13,7 @@ chromium (112.0.5615.121-1~deb11u1) bullseye-security; urgency=high
   * (Re-)enable optimize_webui.
   * Add d/patches/upstream/protobuf.patch to fix FTBFS due to race.
 
- -- Andres Salomon <dilinger@debian.org>  Sat, 15 Apr 2023 00:24:54 -0400
+ -- Andres Salomon <dilinger@debian.org>  Sat, 15 Apr 2023 03:20:13 -0400
 
 chromium (112.0.5615.49-2~deb11u2) bullseye-security; urgency=high
 
