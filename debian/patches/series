@@ -36,6 +36,7 @@ system/clang-format.patch
 system/opus.patch
 system/eu-strip.patch
 system/rapidjson.patch
+system/rollup.patch
 
 bullseye/clang13.patch
 bullseye/lld-13.patch
