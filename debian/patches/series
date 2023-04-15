@@ -41,7 +41,6 @@ system/rollup.patch
 bullseye/clang13.patch
 bullseye/lld-13.patch
 bullseye/mulodic.patch
-bullseye/downgrade-rollup.patch
 bullseye/default-equality-op.patch
 bullseye/ptr-traits-bug.patch
 

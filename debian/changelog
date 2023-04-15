@@ -6,6 +6,8 @@ chromium (112.0.5615.121-1~deb11u1) bullseye-security; urgency=high
   * Build-dep on rollup.
   * Delete the bundled acorn & rollup node modules, and build using the
     debian packaged version of those and other modules.
+  * Drop d/patches/bullseye/downgrade-rollup.patch, since we're now using
+    bullseye's rollup.
   * (Re-)enable optimize_webui.
   * Add d/patches/upstream/protobuf.patch to fix FTBFS due to race.
 
