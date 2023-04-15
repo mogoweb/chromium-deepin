@@ -8,6 +8,8 @@ chromium (112.0.5615.121-1~deb11u1) bullseye-security; urgency=high
     debian packaged version of those and other modules.
   * Drop d/patches/bullseye/downgrade-rollup.patch, since we're now using
     bullseye's rollup.
+  * Add d/patches/bullseye/disable-mojo-ipcz.patch to fix i386 issue
+    (closes: #1034406).
   * (Re-)enable optimize_webui.
   * Add d/patches/upstream/protobuf.patch to fix FTBFS due to race.
 
