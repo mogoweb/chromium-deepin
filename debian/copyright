@@ -34,7 +34,8 @@ Files-Excluded:
  base/mac
  base/test/data
  base/third_party/double_conversion
- chrome/android
+ chrome/android/[^m]*
+ chrome/build
  chrome/installer/mac
  chrome/installer/test
  chrome/installer/tools
@@ -44,9 +45,10 @@ Files-Excluded:
  chrome/installer/mini_installer
  chrome/installer/launcher_support
  chrome/common/safe_browsing/rar_analyzer.*
- chrome/browser/resources/chromeos
+ chrome/browser/resources/chromeos/[^a]*
  chrome/browser/resources/default_apps
  chrome/chrome_cleaner/test/resources/signed_dll
+ fuchsia*
  tools/emacs
  tools/luci-go
  tools/android
@@ -167,6 +169,7 @@ Files-Excluded:
  third_party/tflite/src/tensorflow/lite/experimental/acceleration/mini_benchmark/models/blazeface_mlkit_v1.tfl
  third_party/devtools-frontend/src/third_party/esbuild/esbuild
  third_party/nearby/src/third_party
+ third_party/updater
 
 
 Files: *

@@ -1,3 +1,63 @@
+chromium (113.0.5672.63-1~deb11u1) bullseye-security; urgency=high
+
+  * New upstream stable release.
+    - CVE-2023-2459: Inappropriate implementation in Prompts.
+      Reported by Rong Jian of VRI.
+    - CVE-2023-2460: Insufficient validation of untrusted input in Extensions.
+      Reported by Martin Bajanik, Fingerprint[.]com.
+    - CVE-2023-2461: Use after free in OS Inputs. Reported by @ginggilBesel.
+    - CVE-2023-2462: Inappropriate implementation in Prompts.
+      Reported by Alesandro Ortiz.
+    - CVE-2023-2463: Inappropriate implementation in Full Screen Mode.
+      Reported by Irvan Kurniawan (sourc7).
+    - CVE-2023-2464: Inappropriate implementation in PictureInPicture.
+      Reported by Thomas Orlita.
+    - CVE-2023-2465: Inappropriate implementation in CORS.
+      Reported by @kunte_ctf.
+    - CVE-2023-2466: Inappropriate implementation in Prompts.
+      Reported by Jasper Rebane (popstonia).
+    - CVE-2023-2467: Inappropriate implementation in Prompts.
+      Reported by Thomas Orlita.
+    - CVE-2023-2468: Inappropriate implementation in PictureInPicture.
+      Reported by Alesandro Ortiz.
+
+  [ Andres Salomon]
+   * Remove Michel from Uploaders.
+   * Build against libopenh264-dev (closes: #1031352).
+   * d/copyright:
+     - drop fuchsia*: entirely different OS.
+     - drop chrome/build: 200MB of PGO optimizations for official chrome builds.
+     - drop third_party/updater: upstream included update binary.
+     - re-add part of chrome/browser/resources/chromeos/ and chrome/android/ to
+       fix build errors.
+   * d/patches:
+     - debianization/master-preferences.patch: check for initial_preferences or
+       master_preferences, rather than just for the latter (closes: #992178).
+     - disable/unrar.patch: complete rewrite for upstream's nested archive changes.
+     - disable/catapult.patch: refresh.
+     - upstream/webview-cstr.patch: add simple build fix from upstream.
+     - upstream/monostate.patch: add simple build fix from upstream.
+     - bookworm/clang-attribs.patch: build fix for clang-14 to keep from
+       generating hundreds of warnings per compilation unit.
+     - bookworm/typename.patch: add another build fix for missing typename.
+     - bookworm/lamba-bug.patch: add to work around compiler bug (clang < 16).
+     - bullseye/constexpr.patch: work around build failure w/ bullseye's
+       clang/libstdc++.
+     - disable/openh264.patch -> bullseye/openh264.patch, and stop using it
+       for sid & bookworm.
+     - bullseye/disable-mojo-ipcz.patch: refresh.
+     - bullseye/mulodic.patch: refresh.
+
+  [ Timothy Pearson ]
+   * d/patches:
+     - Set baseline ppc64 CPU to POWER ISA 3.0 (OpenPOWER, POWER9)
+     - Enable VSX acceleration in Skia
+     - Refresh ppc64le/third_party/0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+     - Add fixes for new Highway library on ppc64
+     - Suppress harmless warning messages from compiler during ppc64 builds
+
+ -- Timothy Pearson <tpearson@raptorengineering.com>  Wed, 03 May 2023 00:42:00 -0500
+
 chromium (112.0.5615.138-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.

@@ -8,12 +8,13 @@ fixes/widevine-revision.patch
 fixes/widevine-locations.patch
 
 upstream/mojo.patch
+upstream/webview-cstr.patch
+upstream/monostate.patch
 
 disable/tests.patch
 disable/unrar.patch
 disable/signin.patch
 disable/android.patch
-disable/openh264.patch
 disable/catapult.patch
 disable/font-tests.patch
 disable/swiftshader.patch
@@ -37,13 +38,19 @@ system/eu-strip.patch
 system/rapidjson.patch
 system/rollup.patch
 
+bookworm/clang-attribs.patch
+bookworm/typename.patch
+bookworm/lambda-bug.patch
+
 bullseye/clang13.patch
+bullseye/constexpr.patch
 bullseye/lld-13.patch
 bullseye/mulodic.patch
 bullseye/default-equality-op.patch
 bullseye/ptr-traits-bug.patch
 bullseye/disable-mojo-ipcz.patch
 bullseye/webui.patch
+bullseye/openh264.patch
 
 # i386 support
 i386/support-i386.patch
@@ -102,14 +109,29 @@ ppc64le/third_party/0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.pa
 ppc64le/fixes/fix-breakpad-compile.patch
 ppc64le/fixes/fix-partition-alloc-compile.patch
 ppc64le/v8/0002-Add-ppc64-trap-instructions.patch
+ppc64le/third_party/0001-Fix-highway-ppc-hwcap.patch
 
 ppc64le/third_party/0001-Add-PPC64-support-for-libdav1d.patch
 ppc64le/third_party/0001-Fix-libdav1d-compilation-on-clang-ppc.patch
-# Multiple Clang 11 bugs hit with VSX enabled, including bug #50520 (D103386)
-#ppc64le/third_party/skia-vsx-instructions.patch
 ppc64le/sandbox/fix-ppc64-linux-syscalls-headers.patch
 ppc64le/third_party/0003-thirdparty-fix-dav1d-gn.patch
 ppc64le/third_party/use-sysconf-page-size-on-ppc64.patch
 
 ppc64le/third_party/dawn-fix-typos.patch
 ppc64le/third_party/dawn-fix-ppc64le-detection.patch
+
+# Suppress harmless compiler warning messages that appear on ppc64 due to arch-specific warning flags being passed
+ppc64le/fixes/fix-unknown-warning-option-messages.diff
+
+# Needed on Debian while POWER8 remains the build target
+# POWER9 enables hardware 128 bit vector support (ISA 3.0),
+# and Highway gets confused when building in POWER8 mode
+# (POWER8 compiler flags) on POWER9 hosts.
+ppc64le/third_party/0002-Highway-disable-128-bit-vsx.patch
+
+# These patches enable full POWER ISA 3.0 (POWER9) acceleration when applied
+# They will not work on POWER8 (ISA 2.07) or below
+ppc64le/core/baseline-isa-3-0.patch
+# Attempting to build with POWER8 support in Skia will yield the following error:
+# 'fatal error: error in backend: Cannot select: intrinsic %llvm.ppc.vsx.xvcvhpsp'
+ppc64le/third_party/skia-vsx-instructions.patch
