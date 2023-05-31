@@ -1,3 +1,69 @@
+chromium (114.0.5735.90-2~deb11u1) bullseye-security; urgency=high
+
+  [ Timothy Pearson ]
+  * d/patches:
+    - Add upstream/feature-list-static.patch
+      This patch fixes an out of scope array access that can lead to crashes at startup
+
+  [ Andres Salomon ]
+  * d/patches: add bullseye/av1-vaapi.patch to disable av1 encoding on bullseye;
+    libav-dev is too old.
+
+ -- Timothy Pearson <tpearson@raptorengineering.com>  Wed, 31 May 2023 12:36:00 -0500
+
+chromium (114.0.5735.90-1) unstable; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream stable release.
+    - CVE-2023-2929: Out of bounds write in Swiftshader.
+      Reported by Jaehun Jeong(@n3sk) of Theori.
+    - CVE-2023-2930: Use after free in Extensions. Reported by asnine.
+    - CVE-2023-2931: Use after free in PDF.
+      Reported by Huyna at Viettel Cyber Security.
+    - CVE-2023-2932: Use after free in PDF.
+      Reported by Huyna at Viettel Cyber Security.
+    - CVE-2023-2933: Use after free in PDF. Reported by
+      Quang Nguyễn (@quangnh89) of Viettel Cyber Security and Nguyen Phuong.
+    - CVE-2023-2934: Out of bounds memory access in Mojo.
+      Reported by Mark Brand of Google Project Zero.
+    - CVE-2023-2935: Type Confusion in V8.
+      Reported by Sergei Glazunov of Google Project Zero.
+    - CVE-2023-2936: Type Confusion in V8.
+      Reported by Sergei Glazunov of Google Project Zero.
+    - CVE-2023-2937: Inappropriate implementation in Picture In Picture.
+      Reported by NDevTK.
+    - CVE-2023-2938: Inappropriate implementation in Picture In Picture.
+      Reported by Alesandro Ortiz.
+    - CVE-2023-2939: Insufficient data validation in Installer.
+      Reported by ycdxsb from VARAS@IIE.
+    - CVE-2023-2940: Inappropriate implementation in Downloads.
+      Reported by Axel Chong.
+    - CVE-2023-2941: Inappropriate implementation in Extensions API.
+      Reported by Jasper Rebane.
+  * d/copyright: properly delete some android & chromeos stuff.
+  * d/patches:
+    - fixes/clang-and-gcc11.patch: refresh.
+    - upstream/webview-cstr.patch: drop, merged upstream.
+    - upstream/monostate.patch: drop, merged upstream.
+    - disable/unrar.patch: additional upstream changes required more reworking.
+    - disable/android.patch: refresh, & add one more build fix.
+    - disable/catapult.patch: refresh.
+    - disable/swiftshader.patch: refresh.
+    - disable/angle-perftest.patch: refresh.
+    - system/jpeg.patch: refresh.
+    - upstream/mojo.patch: regenerate from git.
+    - upstream/sizet.patch: add an upstream build fix.
+    - bookworm/typename.patch: include more build fixes.
+    - bookworm/lambda-bug.patch -> bookworm/structured-binding-scope-bug.patch,
+      and add another place it's happening (turns out it's not just lambdas).
+  * Add build-dep on libevdev-dev - now required by upstream.
+
+  [ Timothy Pearson ]
+   * d/patches:
+     - Refresh ppc64le patches
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 31 May 2023 03:06:35 -0400
+
 chromium (113.0.5672.126-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream security release.
