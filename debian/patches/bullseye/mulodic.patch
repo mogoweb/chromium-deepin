@@ -13,8 +13,8 @@ bookworm, only in bullseye.
 
 --- a/third_party/dawn/src/tint/BUILD.gn
 +++ b/third_party/dawn/src/tint/BUILD.gn
-@@ -85,6 +85,15 @@ config("tint_public_config") {
-     defines += [ "TINT_BUILD_SYNTAX_TREE_WRITER=0" ]
+@@ -91,6 +91,15 @@ config("tint_public_config") {
+     defines += [ "TINT_BUILD_IR=0" ]
    }
  
 +  # work around a bug with clang not being able to find the __mulodi4 symbol on 32-bit archs
@@ -39,7 +39,7 @@ bookworm, only in bullseye.
  
  # Specifies if the target build is a simulator build. Comparing target cpu
  # with v8 target cpu to not affect simulator builds for making cross-compile
-@@ -684,6 +685,15 @@ config("internal_config_base") {
+@@ -700,6 +701,15 @@ config("internal_config_base") {
      "$target_gen_dir",
      "$target_gen_dir/include",
    ]
