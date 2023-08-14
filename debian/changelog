@@ -22,6 +22,8 @@ chromium (116.0.5845.82-1~deb11u1) UNRELEASED; urgency=high
      to make clang-15 happy.
    - fixes/size.patch
    - bullseye/stringpiece.patch: drop, since we're bundling re2 now.
+   - bullseye/downgrade-typescript.patch: newer tsc 5.1 doesn't work with
+     bullseye's ancient nodejs, so we have to downgrade back to 5.0.
   * d/rules: automatically detect rust/clang versions & add needed rust args.
     But also continue disabling rust for now.
   * d/control: add build-dep on libclang-rt-dev for rust.
