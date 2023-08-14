@@ -72,3 +72,23 @@ constexpr std::string GetProductName() {
    return ""
  #if defined(ADDRESS_SANITIZER)
           "address "
+--- a/cc/paint/paint_op_writer.h
++++ b/cc/paint/paint_op_writer.h
+@@ -115,7 +115,7 @@ class CC_PAINT_EXPORT PaintOpWriter {
+   // deserialization, and make it possible to allow dynamic sizing for some
+   // data types (see the specialized/overloaded functions).
+   template <typename T>
+-  static constexpr size_t SerializedSize();
++  static inline size_t SerializedSize();
+   template <typename T>
+   static constexpr size_t SerializedSize(const T& data);
+   static size_t SerializedSize(const PaintImage& image);
+@@ -386,7 +386,7 @@ constexpr size_t PaintOpWriter::Serializ
+ }
+ 
+ template <typename T>
+-constexpr size_t PaintOpWriter::SerializedSize() {
++inline size_t PaintOpWriter::SerializedSize() {
+   static_assert(std::is_arithmetic_v<T> || std::is_enum_v<T>);
+   return SerializedSizeSimple<T>();
+ }
