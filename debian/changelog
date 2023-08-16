@@ -1,6 +1,6 @@
-chromium (116.0.5845.82-1~deb11u1) UNRELEASED; urgency=high
+chromium (116.0.5845.96-1~deb11u1) bullseye-security; urgency=high
 
-  * New upstream beta release.
+  * New upstream stable release.
   * d/patches:
    - fixes/cmath.patch: drop, merged upstream.
    - fixes/vector.patch: drop, merged upstream.
@@ -10,8 +10,10 @@ chromium (116.0.5845.82-1~deb11u1) UNRELEASED; urgency=high
    - upstream/statelessV4L2.patch: refresh.
    - ppc64le/third_party/0001-Add-PPC64-support-for-boringssl.patch: refresh.
    - ppc64le/libaom/0001-Add-ppc64-target-to-libaom.patch: refresh.
+   - ppc64le/breakpad/0001-Implement-support-for-ppc64-on-Linux.patch: refresh.
+   - ppc64le/third_party/use-sysconf-page-size-on-ppc64.patch: refresh.
    - fixes/rust-clanglib.patch: add patch to handle new clang deps for rust.
-   - debianization/clang-13.patch: move from bullseye/lld-13.patch.
+   - debianization/clang-version.patch: move from bullseye/lld-13.patch.
    - bookworm/typename.patch: more typename fixes needed.
    - fixes/variant.patch: add a missing header that libstdc++ needs.
    - fixes/vector.patch: add a missing header that libstdc++ needs.
@@ -27,7 +29,8 @@ chromium (116.0.5845.82-1~deb11u1) UNRELEASED; urgency=high
    - bullseye/constexpr.patch: add another build fix.
   * d/rules: automatically detect rust/clang versions & add needed rust args.
     But also continue disabling rust for now.
-  * d/control: add build-dep on libclang-rt-dev for rust.
+  * d/rules: drop use_gnome_keyring=false, upstream has completely removed
+    libgnome-keyring support in favor of gnome's libsecret.
   * Use bundled re2 (for now) instead of libre2-dev due to random crashes
     we're seeing. Adjust build-deps, Files-Excluded, d/clean,
     and d/scripts/unbundle accordingly.
@@ -38,10 +41,13 @@ chromium (116.0.5845.82-1~deb11u1) UNRELEASED; urgency=high
        for upstream changes
      - third_party/0002-third_party-libvpx-Remove-bad-ppc64-config.patch:
        refresh for upstream changes
+     - third_party/0002-third-party-boringssl-add-generated-files.patch:
+       refresh, no changes
      - third_party/use-sysconf-page-size-on-ppc64.patch: refresh for upstream
        changes
+     - third_party/skia-vsx-instructions.patch: refresh for upstream changes
 
- -- Andres Salomon <dilinger@debian.org>  Wed, 02 Aug 2023 19:26:52 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 15 Aug 2023 17:46:56 -0400
 
 chromium (115.0.5790.170-1~deb11u1) bullseye-security; urgency=high
 
