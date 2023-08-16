@@ -66,7 +66,7 @@ to the class declarations. This isn't necessary with clang-14.
    // The value of the field.
 --- a/components/password_manager/core/browser/passkey_credential.cc
 +++ b/components/password_manager/core/browser/passkey_credential.cc
-@@ -81,7 +81,5 @@ int PasskeyCredential::GetAuthenticatorL
+@@ -103,7 +103,5 @@ int PasskeyCredential::GetAuthenticatorL
    }
  }
  
@@ -76,7 +76,7 @@ to the class declarations. This isn't necessary with clang-14.
  }  // namespace password_manager
 --- a/components/password_manager/core/browser/passkey_credential.h
 +++ b/components/password_manager/core/browser/passkey_credential.h
-@@ -84,7 +84,6 @@ class PasskeyCredential {
+@@ -93,7 +93,6 @@ class PasskeyCredential {
    std::string display_name_;
  };
  
@@ -105,3 +105,29 @@ to the class declarations. This isn't necessary with clang-14.
  };
  
  }  // namespace net
+--- a/chrome/browser/web_applications/web_app.cc
++++ b/chrome/browser/web_applications/web_app.cc
+@@ -817,10 +817,6 @@ void WebApp::IsolationData::SetPendingUp
+   pending_update_info_ = pending_update_info;
+ }
+ 
+-bool WebApp::IsolationData::PendingUpdateInfo::operator==(
+-    const WebApp::IsolationData::PendingUpdateInfo& other) const = default;
+-bool WebApp::IsolationData::PendingUpdateInfo::operator!=(
+-    const WebApp::IsolationData::PendingUpdateInfo& other) const = default;
+ 
+ bool WebApp::operator==(const WebApp& other) const {
+   auto AsTuple = [](const WebApp& app) {
+--- a/chrome/browser/web_applications/web_app.h
++++ b/chrome/browser/web_applications/web_app.h
+@@ -344,8 +344,8 @@ class WebApp {
+       PendingUpdateInfo(const PendingUpdateInfo&);
+       PendingUpdateInfo& operator=(const PendingUpdateInfo&);
+ 
+-      bool operator==(const PendingUpdateInfo&) const;
+-      bool operator!=(const PendingUpdateInfo&) const;
++      bool operator==(const PendingUpdateInfo&) const = default;
++      bool operator!=(const PendingUpdateInfo&) const = default;
+ 
+       base::Value AsDebugValue() const;
+       friend std::ostream& operator<<(std::ostream& os,
