@@ -1,3 +1,29 @@
+chromium (116.0.5845.110-1~deb11u1) bullseye-security; urgency=high
+
+  [ Timothy Pearson ]
+  * New upstream security release.
+    - CVE-2023-4430: Use after free in Vulkan.
+      Reported by Cassidy Kim(@cassidy6564).
+    - CVE-2023-4429: Use after free in Loader. Reported by Anonymous.
+    - CVE-2023-4428: Out of bounds memory access in CSS.
+      Reported by Francisco Alonso (@revskills).
+    - CVE-2023-4427: Out of bounds memory access in V8.
+      Reported by Sergei Glazunov of Google Project Zero.
+    - CVE-2023-4431: Out of bounds memory access in Fonts.
+      Reported by Microsoft Security Researcher.
+
+  [ Andres Salomon ]
+  * d/patches/upstream hvec.patch: add arm* v4l2 build fix.
+  * d/rules: FTBFS if we're uploading to -security distribution w/out CVEs.
+
+ -- Timothy Pearson <tpearson@raptorengineering.com>  Wed, 23 Aug 2023 08:58:00 -0500
+
+chromium (116.0.5845.96-2) unstable; urgency=high
+
+  * d/patches/upstream/limits.patch: Add a build fix for arm64.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 16 Aug 2023 04:48:02 -0400
+
 chromium (116.0.5845.96-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream stable release.
