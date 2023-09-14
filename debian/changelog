@@ -55,6 +55,8 @@ chromium (117.0.5938.62-1~deb11u1) bullseye-security; urgency=high
     - bookworm/generate-ninja.patch: fix build failure w/ bullseye's older gn.
     - bullseye/default-equality-op.patch: refresh.
     - bullseye/lerp.patch: add a new build fix for libstdc++ 10.
+    - bullseye/downgrade-typescript.patch: drop parts of patch that don't
+      apply and simply update typescript node dependencies.
   * Switch to using bundled brotli, as the version in debian is too old.
     And so we can drop d/patches/bookworm/brotli.patch, too.
 
@@ -76,7 +78,7 @@ chromium (117.0.5938.62-1~deb11u1) bullseye-security; urgency=high
     - core/ungoogled-chromium/disable-web-environment-integrity.patch: disable
       "Web Environment Integrity" trial and remove from build (closes: #1042111)
 
- -- Andres Salomon <dilinger@debian.org>  Wed, 13 Sep 2023 22:26:10 -0400
+ -- Andres Salomon <dilinger@debian.org>  Thu, 14 Sep 2023 19:16:28 -0400
 
 chromium (116.0.5845.180-1~deb11u1) bullseye-security; urgency=high
 
