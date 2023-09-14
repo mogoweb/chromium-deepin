@@ -1,0 +1,23 @@
+../../chrome/browser/ui/views/tabs/tab_style_views.cc:490:10: error: call to 'lerp' is ambiguous
+  return std::lerp(static_cast<float>(base_opacity), GetHoverOpacity(), GetHoverAnimationValue());
+         ^~~~~~~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/cmath:1911:3: note: candidate function
+  lerp(float __a, float __b, float __t) noexcept
+  ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/cmath:1915:3: note: candidate function
+  lerp(double __a, double __b, double __t) noexcept
+  ^
+1 error generated.
+
+
+--- a/chrome/browser/ui/views/tabs/tab_style_views.cc
++++ b/chrome/browser/ui/views/tabs/tab_style_views.cc
+@@ -487,7 +487,7 @@ float GM2TabStyleViews::GetCurrentActive
+   if (!IsHoverAnimationActive()) {
+     return base_opacity;
+   }
+-  return std::lerp(float(base_opacity), GetHoverOpacity(), GetHoverAnimationValue());
++  return std::lerp(base_opacity, GetHoverOpacity(), static_cast<float>(GetHoverAnimationValue()));
+ }
+ 
+ TabActive GM2TabStyleViews::GetApparentActiveState() const {

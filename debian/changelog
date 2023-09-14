@@ -53,6 +53,8 @@ chromium (117.0.5938.62-1~deb11u1) bullseye-security; urgency=high
     - disable/privacy-sandbox.patch: ensure Privacy Sandbox "features" are
       off by default.
     - bookworm/generate-ninja.patch: fix build failure w/ bullseye's older gn.
+    - bullseye/default-equality-op.patch: refresh.
+    - bullseye/lerp.patch: add a new build fix for libstdc++ 10.
   * Switch to using bundled brotli, as the version in debian is too old.
     And so we can drop d/patches/bookworm/brotli.patch, too.
 

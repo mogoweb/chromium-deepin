@@ -61,6 +61,7 @@ bullseye/webui.patch
 bullseye/openh264.patch
 bullseye/av1-vaapi.patch
 bullseye/downgrade-typescript.patch
+bullseye/lerp.patch
 
 # i386 support
 i386/support-i386.patch

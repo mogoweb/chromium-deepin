@@ -12,7 +12,7 @@ to the class declarations. This isn't necessary with clang-14.
 
 --- a/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.cc
 +++ b/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.cc
-@@ -179,7 +179,5 @@ void AffiliationFetcherBase::OnSimpleLoa
+@@ -185,7 +185,5 @@ void AffiliationFetcherBase::OnSimpleLoa
    }
  }
  
@@ -45,7 +45,7 @@ to the class declarations. This isn't necessary with clang-14.
    AffiliationFetcherInterface() = default;
 --- a/components/password_manager/core/browser/password_form.cc
 +++ b/components/password_manager/core/browser/password_form.cc
-@@ -230,7 +230,6 @@ AlternativeElement& AlternativeElement::
+@@ -239,7 +239,6 @@ AlternativeElement& AlternativeElement::
  
  AlternativeElement::~AlternativeElement() = default;
  
@@ -66,8 +66,8 @@ to the class declarations. This isn't necessary with clang-14.
    // The value of the field.
 --- a/components/password_manager/core/browser/passkey_credential.cc
 +++ b/components/password_manager/core/browser/passkey_credential.cc
-@@ -103,7 +103,5 @@ int PasskeyCredential::GetAuthenticatorL
-   }
+@@ -96,7 +96,5 @@ std::u16string PasskeyCredential::GetAut
+   return l10n_util::GetStringUTF16(id);
  }
  
 -bool operator==(const PasskeyCredential& lhs,
@@ -76,8 +76,8 @@ to the class declarations. This isn't necessary with clang-14.
  }  // namespace password_manager
 --- a/components/password_manager/core/browser/passkey_credential.h
 +++ b/components/password_manager/core/browser/passkey_credential.h
-@@ -93,7 +93,6 @@ class PasskeyCredential {
-   std::string display_name_;
+@@ -106,7 +106,6 @@ class PasskeyCredential {
+   absl::optional<std::u16string> authenticator_label_;
  };
  
 -bool operator==(const PasskeyCredential& lhs, const PasskeyCredential& rhs);
@@ -107,7 +107,7 @@ to the class declarations. This isn't necessary with clang-14.
  }  // namespace net
 --- a/chrome/browser/web_applications/web_app.cc
 +++ b/chrome/browser/web_applications/web_app.cc
-@@ -817,10 +817,6 @@ void WebApp::IsolationData::SetPendingUp
+@@ -893,10 +893,6 @@ void WebApp::IsolationData::SetPendingUp
    pending_update_info_ = pending_update_info;
  }
  
@@ -120,7 +120,7 @@ to the class declarations. This isn't necessary with clang-14.
    auto AsTuple = [](const WebApp& app) {
 --- a/chrome/browser/web_applications/web_app.h
 +++ b/chrome/browser/web_applications/web_app.h
-@@ -344,8 +344,8 @@ class WebApp {
+@@ -347,8 +347,8 @@ class WebApp {
        PendingUpdateInfo(const PendingUpdateInfo&);
        PendingUpdateInfo& operator=(const PendingUpdateInfo&);
  
