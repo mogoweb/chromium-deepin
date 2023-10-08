@@ -15,6 +15,7 @@ chromium (118.0.5993.54-1~deb11u1) UNRELEASED; urgency=high
     - bookworm/structured-binding-scope-bug.patch: drop part of the patch.
     - ungoogled/.../disable-web-environment-integrity.patch: sync with
       ungoogled-chromium for upstream changes.
+    - bookworm/i386-lock-free.patch: refresh.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
