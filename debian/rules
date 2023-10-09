@@ -78,6 +78,7 @@ defines+=is_debug=false \
          use_unofficial_version_number=false \
          enable_vr=false \
          enable_nacl=false \
+         simple_template_names=false \
          enable_swiftshader=false \
          dawn_use_swiftshader=false \
          build_dawn_tests=false \
