@@ -17,6 +17,8 @@ chromium (118.0.5993.54-1~deb11u1) UNRELEASED; urgency=high
       ungoogled-chromium for upstream changes.
     - bookworm/i386-lock-free.patch: refresh.
     - bullseye/clang13.patch: drop removal of -gsimple-template-names.
+    - bullseye/openh264.patch: refresh.
+    - bullseye/default-equality-op.patch: add more clang13 workarounds.
   * d/rules: set simple_template_names=false (moved from clang13.patch into
     a config option).
 

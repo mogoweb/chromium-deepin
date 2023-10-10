@@ -45,7 +45,7 @@ to the class declarations. This isn't necessary with clang-14.
    AffiliationFetcherInterface() = default;
 --- a/components/password_manager/core/browser/password_form.cc
 +++ b/components/password_manager/core/browser/password_form.cc
-@@ -239,7 +239,6 @@ AlternativeElement& AlternativeElement::
+@@ -242,7 +242,6 @@ AlternativeElement& AlternativeElement::
  
  AlternativeElement::~AlternativeElement() = default;
  
@@ -55,7 +55,7 @@ to the class declarations. This isn't necessary with clang-14.
    return std::tie(value, field_renderer_id, name) <
 --- a/components/password_manager/core/browser/password_form.h
 +++ b/components/password_manager/core/browser/password_form.h
-@@ -44,7 +44,7 @@ struct AlternativeElement {
+@@ -45,7 +45,7 @@ struct AlternativeElement {
    AlternativeElement& operator=(AlternativeElement&& rhs);
    ~AlternativeElement();
  
@@ -66,7 +66,7 @@ to the class declarations. This isn't necessary with clang-14.
    // The value of the field.
 --- a/components/password_manager/core/browser/passkey_credential.cc
 +++ b/components/password_manager/core/browser/passkey_credential.cc
-@@ -96,7 +96,5 @@ std::u16string PasskeyCredential::GetAut
+@@ -99,7 +99,5 @@ std::u16string PasskeyCredential::GetAut
    return l10n_util::GetStringUTF16(id);
  }
  
@@ -76,7 +76,7 @@ to the class declarations. This isn't necessary with clang-14.
  }  // namespace password_manager
 --- a/components/password_manager/core/browser/passkey_credential.h
 +++ b/components/password_manager/core/browser/passkey_credential.h
-@@ -106,7 +106,6 @@ class PasskeyCredential {
+@@ -107,7 +107,6 @@ class PasskeyCredential {
    absl::optional<std::u16string> authenticator_label_;
  };
  
@@ -107,7 +107,7 @@ to the class declarations. This isn't necessary with clang-14.
  }  // namespace net
 --- a/chrome/browser/web_applications/web_app.cc
 +++ b/chrome/browser/web_applications/web_app.cc
-@@ -893,10 +893,6 @@ void WebApp::IsolationData::SetPendingUp
+@@ -886,10 +886,6 @@ void WebApp::IsolationData::SetPendingUp
    pending_update_info_ = pending_update_info;
  }
  
@@ -131,3 +131,24 @@ to the class declarations. This isn't necessary with clang-14.
  
        base::Value AsDebugValue() const;
        friend std::ostream& operator<<(std::ostream& os,
+--- a/components/cloud_devices/common/printer_description.cc
++++ b/components/cloud_devices/common/printer_description.cc
+@@ -1073,7 +1073,6 @@ MediaType::MediaType(const std::string&
+                      const std::string& custom_display_name)
+     : vendor_id(vendor_id), custom_display_name(custom_display_name) {}
+ 
+-bool MediaType::operator==(const MediaType& other) const = default;
+ 
+ bool MediaType::IsValid() const {
+   return !vendor_id.empty();
+--- a/components/cloud_devices/common/printer_description.h
++++ b/components/cloud_devices/common/printer_description.h
+@@ -574,7 +574,7 @@ struct MediaType {
+   MediaType(const std::string& vendor_id,
+             const std::string& custom_display_name);
+ 
+-  bool operator==(const MediaType& other) const;
++  bool operator==(const MediaType& other) const = default;
+   bool operator!=(const MediaType& other) const { return !(*this == other); }
+ 
+   bool IsValid() const;

@@ -3,7 +3,7 @@ author: Michael Gilbert <mgilbert@debian.org>
 
 --- a/third_party/webrtc/webrtc.gni
 +++ b/third_party/webrtc/webrtc.gni
-@@ -174,8 +174,7 @@ declare_args() {
+@@ -186,8 +186,7 @@ declare_args() {
    #
    # Enabling H264 when building with MSVC is currently not supported, see
    # bugs.webrtc.org/9213#c13 for more info.
@@ -11,11 +11,11 @@ author: Michael Gilbert <mgilbert@debian.org>
 -      proprietary_codecs && !is_android && !is_ios && !(is_win && !is_clang)
 +  rtc_use_h264 = false
  
-   # Enable this flag to make webrtc::Mutex be implemented by absl::Mutex.
-   rtc_use_absl_mutex = false
+   # Enable to use H265
+   rtc_use_h265 = proprietary_codecs
 --- a/media/media_options.gni
 +++ b/media/media_options.gni
-@@ -37,12 +37,9 @@ declare_args() {
+@@ -57,12 +57,9 @@ declare_args() {
      media_use_libvpx = false
    }
  
