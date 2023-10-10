@@ -151,6 +151,7 @@ override_dh_auto_configure: test_armhf_neon
 	cp -ra /usr/share/nodejs/rollup third_party/node/node_modules/
 	# bullseye workarounds; delete this post-bullseye
 	cp -ra /usr/share/nodejs/acorn  third_party/node/node_modules/
+	cp -ra /usr/share/nodejs/acorn-class-fields third_party/node/node_modules/
 	cp -ra /usr/share/nodejs/acorn-walk third_party/node/node_modules/walk
 	sed -i -e "s#'acorn-walk'#'walk'#" third_party/node/node_modules/rollup/dist/es/shared/rollup.js
 	sed -i -e "s#'acorn-walk'#'walk'#" third_party/node/node_modules/rollup/dist/shared/rollup.js
@@ -192,6 +193,7 @@ override_dh_auto_clean:
 	rm -rf third_party/node/node_modules/rollup
 	# bullseye workarounds; delete this post-bullseye
 	rm -rf third_party/node/node_modules/acorn
+	rm -rf third_party/node/node_modules/acorn-class-fields
 	rm -rf third_party/node/node_modules/walk
 	find . -name \*.pyc -execdir rm -f {} \;
 	dh_auto_clean
