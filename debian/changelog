@@ -59,6 +59,7 @@ chromium (118.0.5993.70-1~deb11u1) UNRELEASED; urgency=high
   * d/copyright:
     - blanket.js is gone, no need to remove it any more.
     - delete some khronos images marked executable.
+  * d/control: switch from clang-13 to clang-16 for building.
   * d/patches:
     - upstream/memory.patch: drop, merged upstream.
     - upstream/sensor-reading.patch: add, gcc13 build fix from upstream.
@@ -74,10 +75,12 @@ chromium (118.0.5993.70-1~deb11u1) UNRELEASED; urgency=high
     - bookworm/i386-lock-free.patch: refresh.
     - bullseye/openh264.patch: refresh.
     - bullseye/default-equality-op.patch: add more clang13 workarounds.
+    - debianization/clang-version.patch: switch to using clang-16.
   * d/rules:
     - set simple_template_names=false (moved from clang13.patch into
       a config option).
     - pull acorn-class-fields node module into build tree to fix rollup.
+    - switch to using clang-16, which is now backported to bullseye.
 
  -- Timothy Pearson <tpearson@raptorengineering.com>  Tue, 10 Oct 2023 22:03:00 -0500
 
