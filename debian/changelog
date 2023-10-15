@@ -1,4 +1,4 @@
-chromium (118.0.5993.70-1~deb11u1) UNRELEASED; urgency=high
+chromium (118.0.5993.70-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream stable release.
     - CVE-2023-5218: Use after free in Site Isolation.
@@ -82,7 +82,7 @@ chromium (118.0.5993.70-1~deb11u1) UNRELEASED; urgency=high
     - pull acorn-class-fields node module into build tree to fix rollup.
     - switch to using clang-16, which is now backported to bullseye.
 
- -- Timothy Pearson <tpearson@raptorengineering.com>  Tue, 10 Oct 2023 22:03:00 -0500
+ -- Timothy Pearson <tpearson@raptorengineering.com>  Sun, 15 Oct 2023 13:44:10 -0400
 
 chromium (117.0.5938.149-1~deb11u1) bullseye-security; urgency=high
 
