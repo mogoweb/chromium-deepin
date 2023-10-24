@@ -49,10 +49,6 @@ system/rollup.patch
 
 bookworm/generate-ninja.patch
 
-bullseye/constexpr.patch
-bullseye/mulodic.patch
-bullseye/default-equality-op.patch
-bullseye/ptr-traits-bug.patch
 bullseye/disable-mojo-ipcz.patch
 bullseye/webui.patch
 bullseye/openh264.patch
