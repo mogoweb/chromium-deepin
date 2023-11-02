@@ -1,4 +1,4 @@
-chromium (119.0.6045.105-1~deb11u1) UNRELEASED; urgency=high
+chromium (119.0.6045.105-1~deb11u1) bullseye-security; urgency=high
 
   * New upstream stable release.
     - CVE-2023-5480: Inappropriate implementation in Payments.
