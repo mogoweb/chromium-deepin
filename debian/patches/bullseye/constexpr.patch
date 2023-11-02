@@ -2,14 +2,13 @@ author: Timothy Pearson <tpearson@raptorengineering.com>
 description: work around build failure with bullseye's libstdc++
 
 
-In file included from ../../chrome/common/channel_info.cc:7:
-../../components/version_info/version_info.h:30:23: error: constexpr function's return type 'std::string' (aka 'basic_string<char>') is not a literal type
-constexpr std::string GetProductName() {
-                      ^
+../../components/miracle_parameter/common/public/miracle_parameter.h:98:42: error: constexpr constructor's 3rd parameter type 'std::string' (aka 'basic_string<char>') is not a literal type
+                             std::string default_value)
+                             ~~~~~~~~~~~~^~~~~~~~~~~~~
 /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/basic_string.h:77:11: note: 'basic_string<char>' is not literal because it is not an aggregate and has no constexpr constructors other than copy or move constructors
     class basic_string
           ^
-
+1 error generated.
 
 
 --- a/components/miracle_parameter/common/public/miracle_parameter.h

@@ -1,4 +1,4 @@
-chromium (119.0.6045.105-1~deb11u1) bullseye-security; urgency=high
+chromium (119.0.6045.105-1~deb11u1) UNRELEASED; urgency=high
 
   * New upstream stable release.
     - CVE-2023-5480: Inappropriate implementation in Payments.
@@ -45,6 +45,8 @@ chromium (119.0.6045.105-1~deb11u1) bullseye-security; urgency=high
     - fixes/blink-frags.patch: additional build fix for libstdc++13.
     - fixes/gcc13-with-clang14.patch: drop, now that we've switched to clang-16.
     - fixes/atspi.patch: fix build failure with atspi >= 2.50.
+    - bullseye/av1-vaapi2.patch: revert another upstream vaapi patch due to
+      bullseye's old libva.
   * d/rules: set enable_nocompile_tests_new=false to make older gn happy.
 
  -- Timothy Pearson <tpearson@raptorengineering.com>  Tue, 31 Oct 2023 23:50:00 -0500

@@ -44,10 +44,12 @@ system/rollup.patch
 
 bookworm/generate-ninja.patch
 
+bullseye/constexpr.patch
 bullseye/disable-mojo-ipcz.patch
 bullseye/webui.patch
 bullseye/openh264.patch
 bullseye/av1-vaapi.patch
+bullseye/av1-vaapi2.patch
 bullseye/downgrade-typescript.patch
 bullseye/lerp.patch
 
