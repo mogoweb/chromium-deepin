@@ -82,6 +82,8 @@ defines+=is_debug=false \
          enable_swiftshader=false \
          dawn_use_swiftshader=false \
          build_dawn_tests=false \
+         enable_nocompile_tests=false \
+         enable_nocompile_tests_new=false \
          enable_reading_list=false \
          enable_iterator_debugging=false \
          enable_hangout_services_extension=false \
