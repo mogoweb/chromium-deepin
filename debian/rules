@@ -151,6 +151,8 @@ override_dh_auto_configure: test_armhf_neon
 	cp /usr/bin/node third_party/node/linux/node-linux-x64/bin
 	# use system rollup
 	cp -ra /usr/share/nodejs/rollup third_party/node/node_modules/
+	if [ ! -d third_party/node/node_modules/typescript-bak ]; then mv third_party/node/node_modules/typescript third_party/node/node_modules/typescript-bak; cp -ra third_party/devtools-frontend/src/node_modules/typescript third_party/node/node_modules/; fi
+
 	# bullseye workarounds; delete this post-bullseye
 	cp -ra /usr/share/nodejs/acorn  third_party/node/node_modules/
 	cp -ra /usr/share/nodejs/acorn-class-fields third_party/node/node_modules/
@@ -194,6 +196,7 @@ override_dh_auto_clean:
 	rm -rf out
 	rm -rf third_party/node/node_modules/rollup
 	# bullseye workarounds; delete this post-bullseye
+	if [ -d third_party/node/node_modules/typescript-bak ]; then rm -rf third_party/node/node_modules/typescript; mv third_party/node/node_modules/typescript-bak third_party/node/node_modules/typescript; fi
 	rm -rf third_party/node/node_modules/acorn
 	rm -rf third_party/node/node_modules/acorn-class-fields
 	rm -rf third_party/node/node_modules/walk
