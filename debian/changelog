@@ -34,6 +34,8 @@ chromium (120.0.6099.71-1~deb11u1) UNRELEASED; urgency=high
     - bookworm/constcountrycode.patch: add workaround for older libstdc++.
     - bullseye/constexpr.patch: drop due to upstream changes.
     - bullseye/downgrade-typescript.patch: refresh.
+    - bullseye/devtools-ts-return.patch: add build fix needed for older
+      typescript.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:

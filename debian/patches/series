@@ -55,6 +55,7 @@ bullseye/av1-vaapi.patch
 bullseye/av1-vaapi2.patch
 bullseye/downgrade-typescript.patch
 bullseye/lerp.patch
+bullseye/devtools-ts-return.patch
 
 # Ungoogled Chromium
 ungoogled/disable-web-environment-integrity.patch
