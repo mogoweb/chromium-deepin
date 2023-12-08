@@ -48,7 +48,6 @@ bookworm/clang16.patch
 bookworm/generate-ninja.patch
 bookworm/constcountrycode.patch
 
-bullseye/constexpr.patch
 bullseye/disable-mojo-ipcz.patch
 bullseye/webui.patch
 bullseye/openh264.patch

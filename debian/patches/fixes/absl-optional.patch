@@ -43,13 +43,14 @@ I just copied over /usr/include/c++/13/optional, and changed a few of the
 functions (where you see an '#if 0' commenting out the original function).
 We'll need to update this patch with major libstdc++ upgrades.
 
+Index: chromium-120.0.6099.71/optional
+===================================================================
 --- /dev/null
-+++ b/optional
-@@ -0,0 +1,1549 @@
++++ chromium-120.0.6099.71/optional
+@@ -0,0 +1,1308 @@
 +// <optional> -*- C++ -*-
 +
-+// Copyright (C) 2013-2023 Free Software Foundation, Inc.
-+// Copyright The GNU Toolchain Authors.
++// Copyright (C) 2013-2020 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
 +// software; you can redistribute it and/or modify it under the
@@ -82,21 +83,16 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +#if __cplusplus >= 201703L
 +
++#include <utility>
 +#include <type_traits>
 +#include <exception>
 +#include <new>
 +#include <initializer_list>
-+#include <bits/enable_special_members.h>
 +#include <bits/exception_defines.h>
 +#include <bits/functional_hash.h>
-+#include <bits/stl_construct.h> // _Construct
-+#include <bits/utility.h> // in_place_t
++#include <bits/enable_special_members.h>
 +#if __cplusplus > 201703L
 +# include <compare>
-+# include <bits/invoke.h> // std::__invoke
-+#endif
-+#if __cplusplus > 202002L
-+# include <concepts>
 +#endif
 +
 +namespace std _GLIBCXX_VISIBILITY(default)
@@ -108,13 +104,7 @@ We'll need to update this patch with major libstdc++ upgrades.
 +   *  @{
 +   */
 +
-+#if __cplusplus > 202002L && __cpp_lib_concepts
-+# define __cpp_lib_optional 202110L
-+#elif __cplusplus >= 202002L
-+# define __cpp_lib_optional 202106L
-+#else
-+# define __cpp_lib_optional 201606L
-+#endif
++#define __cpp_lib_optional 201606L
 +
 +  template<typename _Tp>
 +    class optional;
@@ -130,13 +120,11 @@ We'll need to update this patch with major libstdc++ upgrades.
 +    enum class _Construct { _Token };
 +
 +    // Must be constexpr for nullopt_t to be literal.
-+    explicit constexpr nullopt_t(_Construct) noexcept { }
++    explicit constexpr nullopt_t(_Construct) { }
 +  };
 +
 +  /// Tag to disengage optional objects.
 +  inline constexpr nullopt_t nullopt { nullopt_t::_Construct::_Token };
-+
-+  template<typename _Fn> struct _Optional_func { _Fn& _M_f; };
 +
 +  /**
 +   *  @brief Exception class thrown when a disengaged optional object is
@@ -146,15 +134,20 @@ We'll need to update this patch with major libstdc++ upgrades.
 +  class bad_optional_access : public exception
 +  {
 +  public:
-+    bad_optional_access() = default;
-+    virtual ~bad_optional_access() = default;
++    bad_optional_access() { }
 +
-+    const char* what() const noexcept override
++    virtual const char* what() const noexcept override
 +    { return "bad optional access"; }
++
++    virtual ~bad_optional_access() noexcept = default;
 +  };
 +
++  void
++  __throw_bad_optional_access()
++  __attribute__((__noreturn__));
++
 +  // XXX Does not belong here.
-+  [[__noreturn__]] inline void
++  inline void
 +  __throw_bad_optional_access()
 +  { _GLIBCXX_THROW_OR_ABORT(bad_optional_access()); }
 +
@@ -186,7 +179,7 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      // Constructor used by _Optional_base copy constructor when the
 +      // contained value is not trivially copy constructible.
 +      constexpr
-+      _Optional_payload_base(bool /* __engaged */,
++      _Optional_payload_base(bool __engaged,
 +			     const _Optional_payload_base& __other)
 +      {
 +	if (__other._M_engaged)
@@ -196,7 +189,7 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      // Constructor used by _Optional_base move constructor when the
 +      // contained value is not trivially move constructible.
 +      constexpr
-+      _Optional_payload_base(bool /* __engaged */,
++      _Optional_payload_base(bool __engaged,
 +			     _Optional_payload_base&& __other)
 +      {
 +	if (__other._M_engaged)
@@ -221,9 +214,9 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      constexpr void
 +      _M_copy_assign(const _Optional_payload_base& __other)
 +      {
-+	if (this->_M_engaged && __other._M_engaged)
-+	  this->_M_get() = __other._M_get();
-+	else
++        if (this->_M_engaged && __other._M_engaged)
++          this->_M_get() = __other._M_get();
++        else
 +	  {
 +	    if (__other._M_engaged)
 +	      this->_M_construct(__other._M_get());
@@ -268,17 +261,8 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	    : _M_value(__il, std::forward<_Args>(__args)...)
 +	    { }
 +
-+#if __cplusplus >= 202002L
-+	  template<typename _Fn, typename _Arg>
-+	    constexpr
-+	    _Storage(_Optional_func<_Fn> __f, _Arg&& __arg)
-+	    : _M_value(std::__invoke(std::forward<_Fn>(__f._M_f),
-+				     std::forward<_Arg>(__arg)))
-+	    { }
-+#endif
-+
 +	  _Empty_byte _M_empty;
-+	  _Up _M_value;
++          _Up _M_value;
 +	};
 +
 +      template<typename _Up>
@@ -298,20 +282,11 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	    : _M_value(__il, std::forward<_Args>(__args)...)
 +	    { }
 +
-+#if __cplusplus >= 202002L
-+	  template<typename _Fn, typename _Arg>
-+	    constexpr
-+	    _Storage(_Optional_func<_Fn> __f, _Arg&& __arg)
-+	    : _M_value(std::__invoke(std::forward<_Fn>(__f._M_f),
-+				     std::forward<_Arg>(__arg)))
-+	    { }
-+#endif
-+
 +	  // User-provided destructor is needed when _Up has non-trivial dtor.
-+	  _GLIBCXX20_CONSTEXPR ~_Storage() { }
++	  ~_Storage() { }
 +
 +	  _Empty_byte _M_empty;
-+	  _Up _M_value;
++          _Up _M_value;
 +	};
 +
 +      _Storage<_Stored_type> _M_payload;
@@ -319,14 +294,14 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      bool _M_engaged = false;
 +
 +      template<typename... _Args>
-+	constexpr void
-+	_M_construct(_Args&&... __args)
-+	noexcept(is_nothrow_constructible_v<_Stored_type, _Args...>)
-+	{
-+	  std::_Construct(std::__addressof(this->_M_payload._M_value),
-+			  std::forward<_Args>(__args)...);
-+	  this->_M_engaged = true;
-+	}
++        void
++        _M_construct(_Args&&... __args)
++        noexcept(is_nothrow_constructible_v<_Stored_type, _Args...>)
++        {
++          ::new ((void *) std::__addressof(this->_M_payload))
++            _Stored_type(std::forward<_Args>(__args)...);
++          this->_M_engaged = true;
++        }
 +
 +      constexpr void
 +      _M_destroy() noexcept
@@ -334,17 +309,6 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	_M_engaged = false;
 +	_M_payload._M_value.~_Stored_type();
 +      }
-+
-+#if __cplusplus >= 202002L
-+      template<typename _Fn, typename _Up>
-+	constexpr void
-+	_M_apply(_Optional_func<_Fn> __f, _Up&& __x)
-+	{
-+	  std::construct_at(std::__addressof(this->_M_payload),
-+			    __f, std::forward<_Up>(__x));
-+	  _M_engaged = true;
-+	}
-+#endif
 +
 +      // The _M_get() operations have _M_engaged as a precondition.
 +      // They exist to access the contained value with the appropriate
@@ -484,7 +448,7 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      _Optional_payload& operator=(_Optional_payload&&) = default;
 +
 +      // Destructor needs to destroy the contained value:
-+      _GLIBCXX20_CONSTEXPR ~_Optional_payload() { this->_M_reset(); }
++      ~_Optional_payload() { this->_M_reset(); }
 +    };
 +
 +  // Common base class for _Optional_base<T> to avoid repeating these
@@ -498,15 +462,17 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      // The _M_construct operation has !_M_engaged as a precondition
 +      // while _M_destruct has _M_engaged as a precondition.
 +      template<typename... _Args>
-+	constexpr void
++	void
 +	_M_construct(_Args&&... __args)
 +	noexcept(is_nothrow_constructible_v<_Stored_type, _Args...>)
 +	{
-+	  static_cast<_Dp*>(this)->_M_payload._M_construct(
-+	    std::forward<_Args>(__args)...);
++	  ::new
++	    (std::__addressof(static_cast<_Dp*>(this)->_M_payload._M_payload))
++	    _Stored_type(std::forward<_Args>(__args)...);
++	  static_cast<_Dp*>(this)->_M_payload._M_engaged = true;
 +	}
 +
-+      constexpr void
++      void
 +      _M_destruct() noexcept
 +      { static_cast<_Dp*>(this)->_M_payload._M_destroy(); }
 +
@@ -556,7 +522,7 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	   bool = is_trivially_copy_constructible_v<_Tp>,
 +	   bool = is_trivially_move_constructible_v<_Tp>>
 +    struct _Optional_base
-+    : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
++      : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
 +    {
 +      // Constructors for disengaged optionals.
 +      constexpr _Optional_base() = default;
@@ -564,38 +530,36 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      // Constructors for engaged optionals.
 +#if 0
 +      template<typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp, _Args...>, bool> = false>
++	       enable_if_t<is_constructible_v<_Tp, _Args&&...>, bool> = false>
 +#else
 +// Drop is_constructible_v to work around a clang bug
 +      template<typename... _Args>
 +#endif
-+	constexpr explicit
-+	_Optional_base(in_place_t, _Args&&... __args)
-+	: _M_payload(in_place, std::forward<_Args>(__args)...)
-+	{ }
++        constexpr explicit _Optional_base(in_place_t, _Args&&... __args)
++        : _M_payload(in_place,
++		     std::forward<_Args>(__args)...) { }
 +
 +      template<typename _Up, typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp,
++               enable_if_t<is_constructible_v<_Tp,
 +					      initializer_list<_Up>&,
-+					      _Args...>, bool> = false>
-+	constexpr explicit
-+	_Optional_base(in_place_t,
-+		       initializer_list<_Up> __il,
-+		       _Args&&... __args)
-+	: _M_payload(in_place, __il, std::forward<_Args>(__args)...)
-+	{ }
++					      _Args&&...>, bool> = false>
++        constexpr explicit _Optional_base(in_place_t,
++                                          initializer_list<_Up> __il,
++                                          _Args&&... __args)
++        : _M_payload(in_place,
++		     __il, std::forward<_Args>(__args)...)
++        { }
 +
 +      // Copy and move constructors.
-+      constexpr
-+      _Optional_base(const _Optional_base& __other)
-+      : _M_payload(__other._M_payload._M_engaged, __other._M_payload)
++      constexpr _Optional_base(const _Optional_base& __other)
++	: _M_payload(__other._M_payload._M_engaged,
++		     __other._M_payload)
 +      { }
 +
-+      constexpr
-+      _Optional_base(_Optional_base&& __other)
++      constexpr _Optional_base(_Optional_base&& __other)
 +      noexcept(is_nothrow_move_constructible_v<_Tp>)
-+      : _M_payload(__other._M_payload._M_engaged,
-+		   std::move(__other._M_payload))
++	: _M_payload(__other._M_payload._M_engaged,
++		     std::move(__other._M_payload))
 +      { }
 +
 +      // Assignment operators.
@@ -607,33 +571,33 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +  template<typename _Tp>
 +    struct _Optional_base<_Tp, false, true>
-+    : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
++      : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
 +    {
 +      // Constructors for disengaged optionals.
 +      constexpr _Optional_base() = default;
 +
 +      // Constructors for engaged optionals.
 +      template<typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp, _Args...>, bool> = false>
-+	constexpr explicit
-+	_Optional_base(in_place_t, _Args&&... __args)
-+	: _M_payload(in_place, std::forward<_Args>(__args)...)
-+	{ }
++	       enable_if_t<is_constructible_v<_Tp, _Args&&...>, bool> = false>
++        constexpr explicit _Optional_base(in_place_t, _Args&&... __args)
++        : _M_payload(in_place,
++		     std::forward<_Args>(__args)...) { }
 +
 +      template<typename _Up, typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp,
++               enable_if_t<is_constructible_v<_Tp,
 +					      initializer_list<_Up>&,
-+					      _Args...>, bool> = false>
-+	constexpr explicit
-+	_Optional_base(in_place_t,
-+		       initializer_list<_Up> __il,
-+		       _Args... __args)
-+	: _M_payload(in_place, __il, std::forward<_Args>(__args)...)
-+	{ }
++					      _Args&&...>, bool> = false>
++        constexpr explicit _Optional_base(in_place_t,
++                                          initializer_list<_Up> __il,
++                                          _Args&&... __args)
++        : _M_payload(in_place,
++		     __il, std::forward<_Args>(__args)...)
++        { }
 +
 +      // Copy and move constructors.
 +      constexpr _Optional_base(const _Optional_base& __other)
-+      : _M_payload(__other._M_payload._M_engaged, __other._M_payload)
++	: _M_payload(__other._M_payload._M_engaged,
++		     __other._M_payload)
 +      { }
 +
 +      constexpr _Optional_base(_Optional_base&& __other) = default;
@@ -647,38 +611,36 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +  template<typename _Tp>
 +    struct _Optional_base<_Tp, true, false>
-+    : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
++      : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
 +    {
 +      // Constructors for disengaged optionals.
 +      constexpr _Optional_base() = default;
 +
 +      // Constructors for engaged optionals.
 +      template<typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp, _Args...>, bool> = false>
-+	constexpr explicit
-+	_Optional_base(in_place_t, _Args&&... __args)
-+	: _M_payload(in_place, std::forward<_Args>(__args)...)
-+	{ }
++	       enable_if_t<is_constructible_v<_Tp, _Args&&...>, bool> = false>
++        constexpr explicit _Optional_base(in_place_t, _Args&&... __args)
++        : _M_payload(in_place,
++		     std::forward<_Args>(__args)...) { }
 +
 +      template<typename _Up, typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp,
++               enable_if_t<is_constructible_v<_Tp,
 +					      initializer_list<_Up>&,
-+					      _Args...>, bool> = false>
-+	constexpr explicit
-+	_Optional_base(in_place_t,
-+		       initializer_list<_Up> __il,
-+		       _Args&&... __args)
-+	: _M_payload(in_place, __il, std::forward<_Args>(__args)...)
-+	{ }
++					      _Args&&...>, bool> = false>
++        constexpr explicit _Optional_base(in_place_t,
++                                          initializer_list<_Up> __il,
++                                          _Args&&... __args)
++        : _M_payload(in_place,
++		     __il, std::forward<_Args>(__args)...)
++        { }
 +
 +      // Copy and move constructors.
 +      constexpr _Optional_base(const _Optional_base& __other) = default;
 +
-+      constexpr
-+      _Optional_base(_Optional_base&& __other)
++      constexpr _Optional_base(_Optional_base&& __other)
 +      noexcept(is_nothrow_move_constructible_v<_Tp>)
-+      : _M_payload(__other._M_payload._M_engaged,
-+		   std::move(__other._M_payload))
++	: _M_payload(__other._M_payload._M_engaged,
++		     std::move(__other._M_payload))
 +      { }
 +
 +      // Assignment operators.
@@ -690,29 +652,28 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +  template<typename _Tp>
 +    struct _Optional_base<_Tp, true, true>
-+    : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
++      : _Optional_base_impl<_Tp, _Optional_base<_Tp>>
 +    {
 +      // Constructors for disengaged optionals.
 +      constexpr _Optional_base() = default;
 +
 +      // Constructors for engaged optionals.
 +      template<typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp, _Args...>, bool> = false>
-+	constexpr explicit
-+	_Optional_base(in_place_t, _Args&&... __args)
-+	: _M_payload(in_place, std::forward<_Args>(__args)...)
-+	{ }
++	       enable_if_t<is_constructible_v<_Tp, _Args&&...>, bool> = false>
++        constexpr explicit _Optional_base(in_place_t, _Args&&... __args)
++        : _M_payload(in_place,
++		     std::forward<_Args>(__args)...) { }
 +
 +      template<typename _Up, typename... _Args,
-+	       enable_if_t<is_constructible_v<_Tp,
++               enable_if_t<is_constructible_v<_Tp,
 +					      initializer_list<_Up>&,
-+					      _Args...>, bool> = false>
-+	constexpr explicit
-+	_Optional_base(in_place_t,
-+		       initializer_list<_Up> __il,
-+		       _Args&&... __args)
-+	: _M_payload(in_place, __il, std::forward<_Args>(__args)...)
-+	{ }
++					      _Args&&...>, bool> = false>
++        constexpr explicit _Optional_base(in_place_t,
++                                          initializer_list<_Up> __il,
++                                          _Args&&... __args)
++        : _M_payload(in_place,
++		     __il, std::forward<_Args>(__args)...)
++        { }
 +
 +      // Copy and move constructors.
 +      constexpr _Optional_base(const _Optional_base& __other) = default;
@@ -727,11 +688,6 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +  template<typename _Tp>
 +  class optional;
-+
-+  template<typename _Tp>
-+    inline constexpr bool __is_optional_v = false;
-+  template<typename _Tp>
-+    inline constexpr bool __is_optional_v<optional<_Tp>> = true;
 +
 +  template<typename _Tp, typename _Up>
 +    using __converts_from_optional =
@@ -771,7 +727,7 @@ We'll need to update this patch with major libstdc++ upgrades.
 +    {
 +      static_assert(!is_same_v<remove_cv_t<_Tp>, nullopt_t>);
 +      static_assert(!is_same_v<remove_cv_t<_Tp>, in_place_t>);
-+      static_assert(is_object_v<_Tp> && !is_array_v<_Tp>);
++      static_assert(!is_reference_v<_Tp>);
 +
 +    private:
 +      using _Base = _Optional_base<_Tp>;
@@ -787,28 +743,26 @@ We'll need to update this patch with major libstdc++ upgrades.
 +    public:
 +      using value_type = _Tp;
 +
-+      constexpr optional() noexcept { }
++      constexpr optional() = default;
 +
 +      constexpr optional(nullopt_t) noexcept { }
 +
 +      // Converting constructors for engaged optionals.
 +      template<typename _Up = _Tp,
 +	       _Requires<__not_self<_Up>, __not_tag<_Up>,
-+			 is_constructible<_Tp, _Up>,
-+			 is_convertible<_Up, _Tp>> = true>
++			 is_constructible<_Tp, _Up&&>,
++			 is_convertible<_Up&&, _Tp>> = true>
 +	constexpr
 +	optional(_Up&& __t)
-+	noexcept(is_nothrow_constructible_v<_Tp, _Up>)
 +	: _Base(std::in_place, std::forward<_Up>(__t)) { }
 +
 +      template<typename _Up = _Tp,
 +	       _Requires<__not_self<_Up>, __not_tag<_Up>,
-+			 is_constructible<_Tp, _Up>,
-+			 __not_<is_convertible<_Up, _Tp>>> = false>
++			 is_constructible<_Tp, _Up&&>,
++			 __not_<is_convertible<_Up&&, _Tp>>> = false>
 +	explicit constexpr
 +	optional(_Up&& __t)
-+	noexcept(is_nothrow_constructible_v<_Tp, _Up>)
-+	: _Base(std::in_place, std::forward<_Up>(__t)) { }
++        : _Base(std::in_place, std::forward<_Up>(__t)) { }
 +
 +      template<typename _Up,
 +	       _Requires<__not_<is_same<_Tp, _Up>>,
@@ -817,7 +771,6 @@ We'll need to update this patch with major libstdc++ upgrades.
 +			 __not_<__converts_from_optional<_Tp, _Up>>> = true>
 +	constexpr
 +	optional(const optional<_Up>& __t)
-+	noexcept(is_nothrow_constructible_v<_Tp, const _Up&>)
 +	{
 +	  if (__t)
 +	    emplace(*__t);
@@ -830,33 +783,30 @@ We'll need to update this patch with major libstdc++ upgrades.
 +			 __not_<__converts_from_optional<_Tp, _Up>>> = false>
 +	explicit constexpr
 +	optional(const optional<_Up>& __t)
-+	noexcept(is_nothrow_constructible_v<_Tp, const _Up&>)
 +	{
 +	  if (__t)
 +	    emplace(*__t);
 +	}
 +
-+      template<typename _Up,
-+	       _Requires<__not_<is_same<_Tp, _Up>>,
-+			 is_constructible<_Tp, _Up>,
-+			 is_convertible<_Up, _Tp>,
-+			 __not_<__converts_from_optional<_Tp, _Up>>> = true>
++      template <typename _Up,
++		_Requires<__not_<is_same<_Tp, _Up>>,
++			  is_constructible<_Tp, _Up&&>,
++			  is_convertible<_Up&&, _Tp>,
++			  __not_<__converts_from_optional<_Tp, _Up>>> = true>
 +	constexpr
 +	optional(optional<_Up>&& __t)
-+	noexcept(is_nothrow_constructible_v<_Tp, _Up>)
 +	{
 +	  if (__t)
 +	    emplace(std::move(*__t));
 +	}
 +
-+      template<typename _Up,
-+	       _Requires<__not_<is_same<_Tp, _Up>>,
-+			 is_constructible<_Tp, _Up>,
-+			 __not_<is_convertible<_Up, _Tp>>,
-+			 __not_<__converts_from_optional<_Tp, _Up>>> = false>
++      template <typename _Up,
++		_Requires<__not_<is_same<_Tp, _Up>>,
++			  is_constructible<_Tp, _Up&&>,
++			  __not_<is_convertible<_Up&&, _Tp>>,
++			  __not_<__converts_from_optional<_Tp, _Up>>> = false>
 +	explicit constexpr
 +	optional(optional<_Up>&& __t)
-+	noexcept(is_nothrow_constructible_v<_Tp, _Up>)
 +	{
 +	  if (__t)
 +	    emplace(std::move(*__t));
@@ -864,31 +814,25 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +#if 0
 +      template<typename... _Args,
-+	       _Requires<is_constructible<_Tp, _Args...>> = false>
-+	explicit constexpr
-+	optional(in_place_t, _Args&&... __args)
-+	noexcept(is_nothrow_constructible_v<_Tp, _Args...>)
++	       _Requires<is_constructible<_Tp, _Args&&...>> = false>
 +#else
 +// Drop the constructible checks
 +      template<typename... _Args>
++#endif
 +	explicit constexpr
 +	optional(in_place_t, _Args&&... __args)
-+#endif
 +	: _Base(std::in_place, std::forward<_Args>(__args)...) { }
 +
 +      template<typename _Up, typename... _Args,
 +	       _Requires<is_constructible<_Tp,
 +					  initializer_list<_Up>&,
-+					  _Args...>> = false>
++					  _Args&&...>> = false>
 +	explicit constexpr
 +	optional(in_place_t, initializer_list<_Up> __il, _Args&&... __args)
-+	noexcept(is_nothrow_constructible_v<_Tp, initializer_list<_Up>&,
-+					    _Args...>)
 +	: _Base(std::in_place, __il, std::forward<_Args>(__args)...) { }
 +
-+
 +      // Assignment operators.
-+      _GLIBCXX20_CONSTEXPR optional&
++      optional&
 +      operator=(nullopt_t) noexcept
 +      {
 +	this->_M_reset();
@@ -896,7 +840,6 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      }
 +
 +      template<typename _Up = _Tp>
-+	_GLIBCXX20_CONSTEXPR
 +	enable_if_t<__and_v<__not_self<_Up>,
 +			    __not_<__and_<is_scalar<_Tp>,
 +					  is_same<_Tp, decay_t<_Up>>>>,
@@ -904,8 +847,6 @@ We'll need to update this patch with major libstdc++ upgrades.
 +			    is_assignable<_Tp&, _Up>>,
 +		    optional&>
 +	operator=(_Up&& __u)
-+	noexcept(__and_v<is_nothrow_constructible<_Tp, _Up>,
-+			 is_nothrow_assignable<_Tp&, _Up>>)
 +	{
 +	  if (this->_M_is_engaged())
 +	    this->_M_get() = std::forward<_Up>(__u);
@@ -916,16 +857,13 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	}
 +
 +      template<typename _Up>
-+	_GLIBCXX20_CONSTEXPR
 +	enable_if_t<__and_v<__not_<is_same<_Tp, _Up>>,
 +			    is_constructible<_Tp, const _Up&>,
-+			    is_assignable<_Tp&, const _Up&>,
++			    is_assignable<_Tp&, _Up>,
 +			    __not_<__converts_from_optional<_Tp, _Up>>,
 +			    __not_<__assigns_from_optional<_Tp, _Up>>>,
 +		    optional&>
 +	operator=(const optional<_Up>& __u)
-+	noexcept(__and_v<is_nothrow_constructible<_Tp, const _Up&>,
-+			 is_nothrow_assignable<_Tp&, const _Up&>>)
 +	{
 +	  if (__u)
 +	    {
@@ -942,16 +880,13 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	}
 +
 +      template<typename _Up>
-+	_GLIBCXX20_CONSTEXPR
-+	enable_if_t<__and_v<__not_<is_same<_Tp, _Up>>,
++        enable_if_t<__and_v<__not_<is_same<_Tp, _Up>>,
 +			    is_constructible<_Tp, _Up>,
 +			    is_assignable<_Tp&, _Up>,
 +			    __not_<__converts_from_optional<_Tp, _Up>>,
 +			    __not_<__assigns_from_optional<_Tp, _Up>>>,
 +		    optional&>
 +	operator=(optional<_Up>&& __u)
-+	noexcept(__and_v<is_nothrow_constructible<_Tp, _Up>,
-+			 is_nothrow_assignable<_Tp&, _Up>>)
 +	{
 +	  if (__u)
 +	    {
@@ -969,15 +904,13 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	}
 +
 +      template<typename... _Args>
-+	_GLIBCXX20_CONSTEXPR
 +#if 0
-+	enable_if_t<is_constructible_v<_Tp, _Args...>, _Tp&>
-+	emplace(_Args&&... __args)
-+	noexcept(is_nothrow_constructible_v<_Tp, _Args...>)
++	enable_if_t<is_constructible_v<_Tp, _Args&&...>, _Tp&>
 +#else
 +// Drop the constructible checks
-+	_Tp& emplace(_Args&&... __args)
++       _Tp&
 +#endif
++	emplace(_Args&&... __args)
 +	{
 +	  this->_M_reset();
 +	  this->_M_construct(std::forward<_Args>(__args)...);
@@ -985,12 +918,9 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	}
 +
 +      template<typename _Up, typename... _Args>
-+	_GLIBCXX20_CONSTEXPR
-+	enable_if_t<is_constructible_v<_Tp, initializer_list<_Up>&, _Args...>,
-+		    _Tp&>
++	enable_if_t<is_constructible_v<_Tp, initializer_list<_Up>&,
++				       _Args&&...>, _Tp&>
 +	emplace(initializer_list<_Up> __il, _Args&&... __args)
-+	noexcept(is_nothrow_constructible_v<_Tp, initializer_list<_Up>&,
-+					    _Args...>)
 +	{
 +	  this->_M_reset();
 +	  this->_M_construct(__il, std::forward<_Args>(__args)...);
@@ -1000,7 +930,7 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      // Destructor is implicit, implemented in _Optional_base.
 +
 +      // Swap.
-+      _GLIBCXX20_CONSTEXPR void
++      void
 +      swap(optional& __other)
 +      noexcept(is_nothrow_move_constructible_v<_Tp>
 +	       && is_nothrow_swappable_v<_Tp>)
@@ -1023,27 +953,27 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +      // Observers.
 +      constexpr const _Tp*
-+      operator->() const noexcept
++      operator->() const
 +      { return std::__addressof(this->_M_get()); }
 +
 +      constexpr _Tp*
-+      operator->() noexcept
++      operator->()
 +      { return std::__addressof(this->_M_get()); }
 +
 +      constexpr const _Tp&
-+      operator*() const& noexcept
++      operator*() const&
 +      { return this->_M_get(); }
 +
 +      constexpr _Tp&
-+      operator*()& noexcept
++      operator*()&
 +      { return this->_M_get(); }
 +
 +      constexpr _Tp&&
-+      operator*()&& noexcept
++      operator*()&&
 +      { return std::move(this->_M_get()); }
 +
 +      constexpr const _Tp&&
-+      operator*() const&& noexcept
++      operator*() const&&
 +      { return std::move(this->_M_get()); }
 +
 +      constexpr explicit operator bool() const noexcept
@@ -1055,33 +985,33 @@ We'll need to update this patch with major libstdc++ upgrades.
 +      constexpr const _Tp&
 +      value() const&
 +      {
-+	if (this->_M_is_engaged())
-+	  return this->_M_get();
-+	__throw_bad_optional_access();
++	return this->_M_is_engaged()
++	  ? this->_M_get()
++	  : (__throw_bad_optional_access(), this->_M_get());
 +      }
 +
 +      constexpr _Tp&
 +      value()&
 +      {
-+	if (this->_M_is_engaged())
-+	  return this->_M_get();
-+	__throw_bad_optional_access();
++	return this->_M_is_engaged()
++	  ? this->_M_get()
++	  : (__throw_bad_optional_access(), this->_M_get());
 +      }
 +
 +      constexpr _Tp&&
 +      value()&&
 +      {
-+	if (this->_M_is_engaged())
-+	  return std::move(this->_M_get());
-+	__throw_bad_optional_access();
++	return this->_M_is_engaged()
++	  ? std::move(this->_M_get())
++	  : (__throw_bad_optional_access(), std::move(this->_M_get()));
 +      }
 +
 +      constexpr const _Tp&&
 +      value() const&&
 +      {
-+	if (this->_M_is_engaged())
-+	  return std::move(this->_M_get());
-+	__throw_bad_optional_access();
++	return this->_M_is_engaged()
++	  ? std::move(this->_M_get())
++	  : (__throw_bad_optional_access(), std::move(this->_M_get()));
 +      }
 +
 +      template<typename _Up>
@@ -1091,10 +1021,8 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	  static_assert(is_copy_constructible_v<_Tp>);
 +	  static_assert(is_convertible_v<_Up&&, _Tp>);
 +
-+	  if (this->_M_is_engaged())
-+	    return this->_M_get();
-+	  else
-+	    return static_cast<_Tp>(std::forward<_Up>(__u));
++	  return this->_M_is_engaged()
++	    ? this->_M_get() : static_cast<_Tp>(std::forward<_Up>(__u));
 +	}
 +
 +      template<typename _Up>
@@ -1104,159 +1032,12 @@ We'll need to update this patch with major libstdc++ upgrades.
 +	  static_assert(is_move_constructible_v<_Tp>);
 +	  static_assert(is_convertible_v<_Up&&, _Tp>);
 +
-+	  if (this->_M_is_engaged())
-+	    return std::move(this->_M_get());
-+	  else
-+	    return static_cast<_Tp>(std::forward<_Up>(__u));
++	  return this->_M_is_engaged()
++	    ? std::move(this->_M_get())
++	    : static_cast<_Tp>(std::forward<_Up>(__u));
 +	}
 +
-+#if __cpp_lib_optional >= 202110L
-+      // [optional.monadic]
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	and_then(_Fn&& __f) &
-+	{
-+	  using _Up = remove_cvref_t<invoke_result_t<_Fn, _Tp&>>;
-+	  static_assert(__is_optional_v<remove_cvref_t<_Up>>,
-+			"the function passed to std::optional<T>::and_then "
-+			"must return a std::optional");
-+	  if (has_value())
-+	    return std::__invoke(std::forward<_Fn>(__f), **this);
-+	  else
-+	    return _Up();
-+	}
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	and_then(_Fn&& __f) const &
-+	{
-+	  using _Up = remove_cvref_t<invoke_result_t<_Fn, const _Tp&>>;
-+	  static_assert(__is_optional_v<_Up>,
-+			"the function passed to std::optional<T>::and_then "
-+			"must return a std::optional");
-+	  if (has_value())
-+	    return std::__invoke(std::forward<_Fn>(__f), **this);
-+	  else
-+	    return _Up();
-+	}
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	and_then(_Fn&& __f) &&
-+	{
-+	  using _Up = remove_cvref_t<invoke_result_t<_Fn, _Tp>>;
-+	  static_assert(__is_optional_v<remove_cvref_t<_Up>>,
-+			"the function passed to std::optional<T>::and_then "
-+			"must return a std::optional");
-+	  if (has_value())
-+	    return std::__invoke(std::forward<_Fn>(__f), std::move(**this));
-+	  else
-+	    return _Up();
-+	}
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	and_then(_Fn&& __f) const &&
-+	{
-+	  using _Up = remove_cvref_t<invoke_result_t<_Fn, const _Tp>>;
-+	  static_assert(__is_optional_v<remove_cvref_t<_Up>>,
-+			"the function passed to std::optional<T>::and_then "
-+			"must return a std::optional");
-+	  if (has_value())
-+	    return std::__invoke(std::forward<_Fn>(__f), std::move(**this));
-+	  else
-+	    return _Up();
-+	}
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	transform(_Fn&& __f) &
-+	{
-+	  using _Up = remove_cv_t<invoke_result_t<_Fn, _Tp&>>;
-+	  if (has_value())
-+	    return optional<_Up>(_Optional_func<_Fn>{__f}, **this);
-+	  else
-+	    return optional<_Up>();
-+	}
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	transform(_Fn&& __f) const &
-+	{
-+	  using _Up = remove_cv_t<invoke_result_t<_Fn, const _Tp&>>;
-+	  if (has_value())
-+	    return optional<_Up>(_Optional_func<_Fn>{__f}, **this);
-+	  else
-+	    return optional<_Up>();
-+	}
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	transform(_Fn&& __f) &&
-+	{
-+	  using _Up = remove_cv_t<invoke_result_t<_Fn, _Tp>>;
-+	  if (has_value())
-+	    return optional<_Up>(_Optional_func<_Fn>{__f}, std::move(**this));
-+	  else
-+	    return optional<_Up>();
-+	}
-+
-+      template<typename _Fn>
-+	constexpr auto
-+	transform(_Fn&& __f) const &&
-+	{
-+	  using _Up = remove_cv_t<invoke_result_t<_Fn, const _Tp>>;
-+	  if (has_value())
-+	    return optional<_Up>(_Optional_func<_Fn>{__f}, std::move(**this));
-+	  else
-+	    return optional<_Up>();
-+	}
-+
-+      template<typename _Fn> requires invocable<_Fn> && copy_constructible<_Tp>
-+	constexpr optional
-+	or_else(_Fn&& __f) const&
-+	{
-+	  using _Up = invoke_result_t<_Fn>;
-+	  static_assert(is_same_v<remove_cvref_t<_Up>, optional>,
-+			"the function passed to std::optional<T>::or_else "
-+			"must return a std::optional<T>");
-+
-+	  if (has_value())
-+	    return *this;
-+	  else
-+	    return std::forward<_Fn>(__f)();
-+	}
-+
-+      template<typename _Fn> requires invocable<_Fn> && move_constructible<_Tp>
-+	constexpr optional
-+	or_else(_Fn&& __f) &&
-+	{
-+	  using _Up = invoke_result_t<_Fn>;
-+	  static_assert(is_same_v<remove_cvref_t<_Up>, optional>,
-+			"the function passed to std::optional<T>::or_else "
-+			"must return a std::optional<T>");
-+
-+	  if (has_value())
-+	    return std::move(*this);
-+	  else
-+	    return std::forward<_Fn>(__f)();
-+	}
-+#endif
-+
-+      _GLIBCXX20_CONSTEXPR void reset() noexcept { this->_M_reset(); }
-+
-+    private:
-+#if __cplusplus >= 202002L
-+      template<typename _Up> friend class optional;
-+
-+      template<typename _Fn, typename _Value>
-+	explicit constexpr
-+	optional(_Optional_func<_Fn> __f, _Value&& __v)
-+	{
-+	  this->_M_payload._M_apply(__f, std::forward<_Value>(__v));
-+	}
-+#endif
++      void reset() noexcept { this->_M_reset(); }
 +    };
 +
 +  template<typename _Tp>
@@ -1496,8 +1277,6 @@ We'll need to update this patch with major libstdc++ upgrades.
 +
 +#ifdef __cpp_lib_three_way_comparison
 +  template<typename _Tp, typename _Up>
-+    requires (!__is_optional_v<_Up>)
-+      && three_way_comparable_with<_Tp, _Up>
 +    constexpr compare_three_way_result_t<_Tp, _Up>
 +    operator<=>(const optional<_Tp>& __x, const _Up& __v)
 +    { return bool(__x) ? *__x <=> __v : strong_ordering::less; }
@@ -1508,7 +1287,6 @@ We'll need to update this patch with major libstdc++ upgrades.
 +  // _GLIBCXX_RESOLVE_LIB_DEFECTS
 +  // 2748. swappable traits for optionals
 +  template<typename _Tp>
-+    _GLIBCXX20_CONSTEXPR
 +    inline enable_if_t<is_move_constructible_v<_Tp> && is_swappable_v<_Tp>>
 +    swap(optional<_Tp>& __lhs, optional<_Tp>& __rhs)
 +    noexcept(noexcept(__lhs.swap(__rhs)))
@@ -1519,51 +1297,34 @@ We'll need to update this patch with major libstdc++ upgrades.
 +    swap(optional<_Tp>&, optional<_Tp>&) = delete;
 +
 +  template<typename _Tp>
-+    constexpr
-+    enable_if_t<is_constructible_v<decay_t<_Tp>, _Tp>,
-+		optional<decay_t<_Tp>>>
++    constexpr optional<decay_t<_Tp>>
 +    make_optional(_Tp&& __t)
-+    noexcept(is_nothrow_constructible_v<optional<decay_t<_Tp>>, _Tp>)
-+    { return optional<decay_t<_Tp>>{ std::forward<_Tp>(__t) }; }
++    { return optional<decay_t<_Tp>> { std::forward<_Tp>(__t) }; }
 +
-+#if 0
-+  template<typename _Tp, typename... _Args>
-+    constexpr
-+    enable_if_t<is_constructible_v<_Tp, _Args...>,
-+		optional<_Tp>>
++  template<typename _Tp, typename ..._Args>
++    constexpr optional<_Tp>
 +    make_optional(_Args&&... __args)
-+    noexcept(is_nothrow_constructible_v<_Tp, _Args...>)
-+#else
-+// Drop is_constructible assertions, that's all that's needed
-+  template<typename _Tp, typename... _Args>
-+    constexpr
-+		optional<_Tp>
-+    make_optional(_Args&&... __args)
-+#endif
-+    { return optional<_Tp>{ in_place, std::forward<_Args>(__args)... }; }
++    { return optional<_Tp> { in_place, std::forward<_Args>(__args)... }; }
 +
-+  template<typename _Tp, typename _Up, typename... _Args>
-+    constexpr
-+    enable_if_t<is_constructible_v<_Tp, initializer_list<_Up>&, _Args...>,
-+		optional<_Tp>>
++  template<typename _Tp, typename _Up, typename ..._Args>
++    constexpr optional<_Tp>
 +    make_optional(initializer_list<_Up> __il, _Args&&... __args)
-+    noexcept(is_nothrow_constructible_v<_Tp, initializer_list<_Up>&, _Args...>)
-+    { return optional<_Tp>{ in_place, __il, std::forward<_Args>(__args)... }; }
++    { return optional<_Tp> { in_place, __il, std::forward<_Args>(__args)... }; }
 +
 +  // Hash.
 +
 +  template<typename _Tp, typename _Up = remove_const_t<_Tp>,
-+	   bool = __poison_hash<_Up>::__enable_hash_call>
++           bool = __poison_hash<_Up>::__enable_hash_call>
 +    struct __optional_hash_call_base
 +    {
 +      size_t
 +      operator()(const optional<_Tp>& __t) const
 +      noexcept(noexcept(hash<_Up>{}(*__t)))
 +      {
-+	// We pick an arbitrary hash for disengaged optionals which hopefully
-+	// usual values of _Tp won't typically hash to.
-+	constexpr size_t __magic_disengaged_hash = static_cast<size_t>(-3333);
-+	return __t ? hash<_Up>{}(*__t) : __magic_disengaged_hash;
++        // We pick an arbitrary hash for disengaged optionals which hopefully
++        // usual values of _Tp won't typically hash to.
++        constexpr size_t __magic_disengaged_hash = static_cast<size_t>(-3333);
++        return __t ? hash<_Up>{}(*__t) : __magic_disengaged_hash;
 +      }
 +    };
 +
