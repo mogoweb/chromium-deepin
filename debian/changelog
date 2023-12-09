@@ -43,6 +43,7 @@ chromium (120.0.6099.71-1~deb11u1) UNRELEASED; urgency=high
   * d/rules: grab typescript from third_party/devtools (which is downgraded
     from 5.1 to 5.0 via downgrade-typescript.patch) to overwrite
     third_party/node/node_modules/typescript (which was upgraded to 5.2).
+  * d/NEWS: document the end of security support for bullseye.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:

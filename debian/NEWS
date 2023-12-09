@@ -1,3 +1,16 @@
+chromium (120.0.6099.71-1~deb11u1) bullseye-security; urgency=medium
+
+  Security support for Chromium in bullseye (Debian 11) is ending. Please
+  make plans to either upgrade to bookworm (Debian 12), or switch to using
+  the Firefox browser in bullseye.
+
+  Chromium 120.x will likely be the last of the chromium releases to be
+  packaged for bullseye. Chromium 121.x is slated for January 23rd, 2024, at
+  which point you will likely be running a browser with documented security
+  issues if you continue using chromium 120.x in bullseye.
+
+ -- Andres Salomon <dilinger@debian.org>  Sat, 09 Dec 2023 12:31:48 -0500
+
 chromium-browser (104.0.5112.79-2) unstable; urgency=low
 
   We've switched the default search engine from Google to DuckDuckGo.
