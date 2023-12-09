@@ -1,0 +1,16 @@
+author: Andres Salomon <dilinger@debian.org>
+
+PATH_MAX needs limits.h
+
+Index: chromium-120.0.6099.71/sandbox/linux/syscall_broker/remote_syscall_arg_handler.cc
+===================================================================
+--- chromium-120.0.6099.71.orig/sandbox/linux/syscall_broker/remote_syscall_arg_handler.cc
++++ chromium-120.0.6099.71/sandbox/linux/syscall_broker/remote_syscall_arg_handler.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "sandbox/linux/syscall_broker/remote_syscall_arg_handler.h"
+ 
++#include <limits.h>
+ #include <string.h>
+ #include <sys/ioctl.h>
+ #include <sys/syscall.h>

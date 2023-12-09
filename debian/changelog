@@ -36,6 +36,8 @@ chromium (120.0.6099.71-1~deb11u1) UNRELEASED; urgency=high
     - bullseye/downgrade-typescript.patch: refresh.
     - bullseye/devtools-ts-return.patch: add build fix needed for older
       typescript.
+    - bullseye/pathmax.patch: another simple missing header build fix.
+    - bullseye/framesensorconst.patch: constexpr -> const workaround.
   * d/rules: grab typescript from third_party/devtools (which is downgraded
     from 5.1 to 5.0 via downgrade-typescript.patch) to overwrite
     third_party/node/node_modules/typescript (which was upgraded to 5.2).
