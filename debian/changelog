@@ -39,6 +39,7 @@ chromium (128.0.6613.84-1) UNRELEASED; urgency=high
       Reported by Bharat (mrnoob).
     - CVE-2024-8035: Inappropriate implementation in Extensions.
       Reported by Microsoft.
+  * Enable swiftshader support (closes: #1064465).
   * d/copyright: delete third_party/siso/ which contains binaries.
   * d/rules: set safe_browsing_use_unrar=false to disable unrar.
   * d/patches:
