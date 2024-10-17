@@ -31,6 +31,7 @@ Files-Excluded:
  *config.sub
  *config.guess
  *jquery*.min.js
+ */icu*.dat
  ios
  buildtools
  build/linux/debian_bullseye_*
@@ -94,6 +95,9 @@ Files-Excluded:
  third_party/harfbuzz-ng/src
  third_party/harfbuzz-ng/harfbuzz.gni
  third_party/highway
+ third_party/icu/BUILD.gn
+ third_party/icu/common
+ third_party/icu/source
  third_party/llvm*
  third_party/libei
  third_party/webgl

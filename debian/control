@@ -62,6 +62,7 @@ Build-Depends:
  libpci-dev,
  libcap-dev,
  libdrm-dev,
+ libicu-dev,
  libffi-dev,
  libhwy-dev,
  libkrb5-dev,

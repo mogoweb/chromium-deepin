@@ -43,6 +43,7 @@ system/eu-strip.patch
 system/rapidjson.patch
 system/rollup.patch
 
+bookworm/icu.patch
 bookworm/libxml-parseerr.patch
 
 # Ungoogled Chromium

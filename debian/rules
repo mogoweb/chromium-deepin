@@ -110,7 +110,7 @@ defines+=use_gio=true \
          use_pulseaudio=true \
          link_pulseaudio=true \
          rtc_use_pipewire=true \
-         icu_use_data_file=true \
+         icu_use_data_file=false \
          enable_widevine=true \
          v8_enable_backtrace=true \
          use_system_zlib=true \

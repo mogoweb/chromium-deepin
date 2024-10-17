@@ -10,7 +10,6 @@ import replace_gn_files
 
 keepers = (
     'ffmpeg',
-    'icu',          # previously bundled due to bullseye. TODO: test w/ bookworm.
     'libvpx',       # currently broken with no easy fix; https://crbug.com/1307941
     'absl_algorithm',
     'absl_base',    # all absl bundled due to bullseye. TODO: test w/ bookworm.
