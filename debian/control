@@ -20,7 +20,7 @@ Build-Depends:
  rustc-web (>= 1.74),
  bindgen,
  python3,
- pkg-config,
+ pkgconf,
  ninja-build,
  python3-jinja2,
  python3-pkg-resources,

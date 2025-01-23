@@ -22,8 +22,8 @@ fixes/updater-test.patch
 fixes/absl-optional.patch
 fixes/font-gc-asan.patch
 fixes/lens-optional.patch
+fixes/libsync-rk3588-panthor.patch
 
-upstream/mojo.patch
 upstream/ruy-include.patch
 upstream/ink-isfinite.patch
 upstream/webrtc-optional.patch
@@ -65,6 +65,23 @@ bookworm/constexpr2.patch
 bookworm/bubble-contents.patch
 bookworm/rust-visibility.patch
 bookworm/less-void.patch
+
+# unused patches:
+# bookworm/blink-attrib.patch
+# bookworm/clang16.patch
+# bookworm/constexpr.patch
+# bookworm/lex-3way.patch
+# bookworm/more-spaceships.patch
+# bookworm/signer-lambda.patch
+# bookworm/spaceship-operator.patch
+# bookworm/traitors.patch
+# bookworm/urlhelper-ctor.patch
+# bookworm/v8-wrappable.patch
+# bullseye/av1-vaapi.patch
+# bullseye/constexpr.patch
+# bullseye/openh264.patch
+# bullseye/webui.patch
+
 
 # Ungoogled Chromium
 ungoogled/disable-privacy-sandbox.patch

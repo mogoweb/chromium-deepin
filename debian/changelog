@@ -1,3 +1,32 @@
+chromium (132.0.6834.110-1~deb12u1) bookworm-security; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream security release.
+    - CVE-2025-0611: Object corruption in V8. Reported by 303f06e3.
+    - CVE-2025-0612: Out of bounds memory access in V8.
+      Reported by Alan Goodman.
+  * d/patches/upstream/mojo.patch: drop, upstream tarballs are now fixed.
+  * d/chromium-shell.NEWS: ask users of the chromium-shell package to
+    email me; otherwise, chromium-shell will be removed in the future.
+
+  [ Ahmad Khalifa ]
+  * d/NEWS uses missing release, set it to nearest to silence lintian.
+  * d/control: replace obsolete pkg-config with pkgconf.
+  * d/upstream/metadata: switch fields to expected case.
+  * d/patches/series: help lintian ignore unused bullseye patches.
+
+  [ Daniel Richard G. ]
+  * d/etc/dev-shm: Add --disable-dev-shm-usage if the system has less than
+    ~4 GB available in /dev/shm to avoid crashes (closes: #1072299).
+
+  [ Jianfeng Liu ]
+  * d/patches:
+    - fixes/libsync-rk3588-panthor.patch: Fix upstream issue #343592370,
+      which can cause browser crash when running with ozone wayland on
+      rk3588 platform.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 22 Jan 2025 16:36:45 -0500
+
 chromium (132.0.6834.83-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
