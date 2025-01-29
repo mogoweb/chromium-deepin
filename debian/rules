@@ -20,8 +20,8 @@ export CXX=clang++-19
 
 # initial flags from dpkg-buildflags
 export DEB_CXXFLAGS_MAINT_STRIP=-g
-export CXXFLAGS=$(shell dpkg-buildflags --get CXXFLAGS)
-export LDFLAGS=$(shell dpkg-buildflags --get LDFLAGS)
+export CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+export LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 
 # more verbose linker output
 export LDFLAGS+=-Wl,--stats
@@ -43,11 +43,11 @@ export CXXFLAGS+=-faltivec-src-compat=mixed -Wno-deprecated-altivec-src-compat
 endif
 
 # disable clang plugins
-defines=clang_use_chrome_plugins=false
+defines:=clang_use_chrome_plugins=false
 
 # use system rust
 export RUSTC_BOOTSTRAP=1
-export CLANG_MVERS=$(shell $(CC) --version | sed -n 's/.* clang version //p' | cut -d. -f1)
+export CLANG_MVERS:=$(shell $(CC) --version | sed -n 's/.* clang version //p' | cut -d. -f1)
 rust_sysroot=/usr
 defines+=rust_sysroot_absolute=\"$(rust_sysroot)\"
 defines+=rust_bindgen_root=\"$(CURDIR)/debian/bindgen/root/usr\"
@@ -60,7 +60,8 @@ defines+=host_toolchain=\"//build/toolchain/linux/unbundle:default\"
 defines+=custom_toolchain=\"//build/toolchain/linux/unbundle:default\"
 
 # set the appropriate cpu architecture
-DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+DEB_HOST_ARCH_value := $(shell dpkg-architecture -qDEB_HOST_ARCH)
+DEB_HOST_ARCH ?= $(DEB_HOST_ARCH_value)
 ifeq (i386,$(DEB_HOST_ARCH))
 defines+=host_cpu=\"x86\" use_vaapi=true
 endif
@@ -218,9 +219,9 @@ override_dh_auto_clean:
 ###################### upstream source downloading ############################
 
 url=https://gsdview.appspot.com/chromium-browser-official
-version=$(shell dpkg-parsechangelog -S Version | sed s/-.*//)
+version:=$(shell dpkg-parsechangelog -S Version | sed s/-.*//)
 extract=chromium-$(version)
-tarfile=$(extract).tar
+tarfile=$(extract)-lite.tar
 tarball=$(tarfile).xz
 debvers=../chromium_$(version)
 seconds=$(debvers).seconds
@@ -242,6 +243,7 @@ get-orig-source:
 	@$(print_elapsed); echo
 	tar --exclude-from=$(debvers).excludes -xf ../$(tarball)
 	rm -f $(debvers).excludes
+	find $(extract) -depth -type d -empty -delete
 	@$(print_elapsed); echo
 	cd $(extract) && ../debian/scripts/check-upstream
 	chmod -R u+w $(extract)

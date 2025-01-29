@@ -1,3 +1,21 @@
+chromium (132.0.6834.159-1~deb12u1) bookworm-security; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream security release.
+    - CVE-2025-0762: Use after free in DevTools. Reported by Sakana.S.
+
+  [ Daniel Richard G. ]
+  * d/copyright: Sort the list of Files-Excluded: entries, remove a few
+    that are no longer needed, and consolidate some others with brackets.
+  * d/rules:
+    - Use simple assignments for variables defined using $(shell ...)
+      to avoid recursive-expansion issues with GNU Make 4.4.1.
+    - Download the upstream lite tarball instead of the regular one now
+      that the former has everything we need.
+    - Delete empty directories when making the orig-source tarball.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 28 Jan 2025 20:26:06 -0500
+
 chromium (132.0.6834.110-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
