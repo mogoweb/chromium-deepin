@@ -11,8 +11,8 @@ https://github.com/ungoogled-software/ungoogled-chromium/blob/master/patches/cor
 -             base::FEATURE_ENABLED_BY_DEFAULT);
 +             base::FEATURE_DISABLED_BY_DEFAULT);
  
- BASE_FEATURE(kAttributionAggregatableDebugReporting,
-              "AttributionAggregatableDebugReporting",
+ BASE_FEATURE(kAttributionAggregatableNamedBudgets,
+              "AttributionAggregatableNamedBudgets",
 --- a/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
 +++ b/components/privacy_sandbox/privacy_sandbox_settings_impl.cc
 @@ -131,7 +131,7 @@ std::set<browsing_topics::Topic> GetTopi
@@ -24,7 +24,7 @@ https://github.com/ungoogled-software/ungoogled-chromium/blob/master/patches/cor
  }
  
  // static
-@@ -853,7 +853,7 @@ void PrivacySandboxSettingsImpl::SetTopi
+@@ -851,7 +851,7 @@ void PrivacySandboxSettingsImpl::SetTopi
  }
  
  bool PrivacySandboxSettingsImpl::IsPrivacySandboxRestricted() const {
@@ -33,7 +33,7 @@ https://github.com/ungoogled-software/ungoogled-chromium/blob/master/patches/cor
  }
  
  bool PrivacySandboxSettingsImpl::IsPrivacySandboxCurrentlyUnrestricted() const {
-@@ -939,11 +939,7 @@ PrivacySandboxSettingsImpl::GetPrivacySa
+@@ -937,11 +937,7 @@ PrivacySandboxSettingsImpl::GetPrivacySa
      return Status::kIncognitoProfile;
    }
  
@@ -45,14 +45,3 @@ https://github.com/ungoogled-software/ungoogled-chromium/blob/master/patches/cor
  }
  
  PrivacySandboxSettingsImpl::Status
---- a/content/browser/aggregation_service/aggregation_service_features.cc
-+++ b/content/browser/aggregation_service/aggregation_service_features.cc
-@@ -8,7 +8,7 @@ namespace content {
- 
- BASE_FEATURE(kPrivacySandboxAggregationService,
-              "PrivacySandboxAggregationService",
--             base::FEATURE_ENABLED_BY_DEFAULT);
-+             base::FEATURE_DISABLED_BY_DEFAULT);
- 
- BASE_FEATURE(kPrivacySandboxAggregationServiceFilteringIds,
-              "PrivacySandboxAggregationServiceFilteringIds",

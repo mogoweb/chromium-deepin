@@ -1,3 +1,32 @@
+chromium (133.0.6943.35-1~deb12u1) UNRELEASED; urgency=high
+
+  * New upstream stable release.
+  * d/patches:
+    - upstream/array.patch: drop, merged upstream.
+    - upstream/ink-isfinite.patch: drop, merged upstream.
+    - upstream/ruy-include.patch: drop, merged upstream.
+    - upstream/uint.patch: drop, merged upstream.
+    - upstream/variant.patch: drop, merged upstream.
+    - upstream/webrtc-optional.patch: drop, merged upstream.
+    - fixes/perfetto.patch: drop, merged upstream.
+    - system/event.patch: drop, upstream no longer uses libevent.
+    - ungoogled/disable-privacy-sandbox.patch: refresh from upstream.
+    - fixes/highway-include-path.patch: delete a libhwy build test, add
+      another header build fix.
+    - bookworm/clang19.patch: add patch to disable unsupported build args
+    - fixes/optional.patch: add header build fix.
+
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - third_party/0001-Add-PPC64-support-for-boringssl.patch: Refresh for
+      upstream changes
+    - third_party/0002-Add-PPC64-generated-files-for-boringssl.patch:
+      Refresh for upstream changes
+    - third_party/0002-third_party-libvpx-Remove-bad-ppc64-config.patch:
+      Refresh for upstream changes
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 28 Jan 2025 20:26:06 -0500
+
 chromium (132.0.6834.159-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]

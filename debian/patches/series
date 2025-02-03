@@ -9,7 +9,6 @@ fixes/widevine-revision.patch
 fixes/widevine-locations.patch
 fixes/rust-clanglib.patch
 fixes/material-utils.patch
-fixes/perfetto.patch
 fixes/strlcpy.patch
 fixes/bindgen.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
@@ -23,13 +22,8 @@ fixes/absl-optional.patch
 fixes/font-gc-asan.patch
 fixes/lens-optional.patch
 fixes/libsync-rk3588-panthor.patch
+fixes/optional.patch
 
-upstream/ruy-include.patch
-upstream/ink-isfinite.patch
-upstream/webrtc-optional.patch
-upstream/variant.patch
-upstream/array.patch
-upstream/uint.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
@@ -46,13 +40,13 @@ disable/screen-ai-blob.patch
 
 system/icu-shim.patch
 system/jpeg.patch
-system/event.patch
 system/openjpeg.patch
 system/opus.patch
 system/eu-strip.patch
 system/rapidjson.patch
 system/rollup.patch
 
+bookworm/clang19.patch
 bookworm/constflatset.patch
 bookworm/libxml-parseerr.patch
 bookworm/freetype-COLRV1.patch

@@ -1,0 +1,12 @@
+warning: unknown warning option '-Wno-nontrivial-memcall'; did you mean '-Wno-nontrivial-memaccess'? [-Wunknown-warning-option]
+
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -1991,7 +1991,6 @@ config("default_warnings") {
+         cflags_cc += [ "-Wno-dangling-assignment-gsl" ]
+ 
+         # TODO(crbug.com/376641662): Fix and re-enable.
+-        cflags += [ "-Wno-nontrivial-memcall" ]
+       }
+     }
+ 
