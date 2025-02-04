@@ -16,6 +16,10 @@ chromium (133.0.6943.35-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/clang19.patch: add patch to disable unsupported build args
     - fixes/optional.patch: add header build fix.
     - bookworm/gn-absl.patch: add global visibilty for more symbols.
+    - bookworm/dq-forward-iterator.patch: add workaround for bookworm's
+      libstdc++ 12.
+    - bookworm/constflatset.patch: add another workaround for bookworm's
+      libstdc++ 12.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
