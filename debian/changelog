@@ -1,6 +1,12 @@
-chromium (133.0.6943.35-1~deb12u1) UNRELEASED; urgency=high
+chromium (133.0.6943.53-1~deb12u1) bookworm-security; urgency=high
 
+  [ Andres Salomon ]
   * New upstream stable release.
+    - CVE-2025-0444: Use after free in Skia.
+      Reported by Francisco Alonso (@revskills).
+    - CVE-2025-0445: Use after free in V8. Reported by 303f06e3.
+    - CVE-2025-0451: Inappropriate implementation in Extensions API.
+      Reported by Vitor Torres and Alesandro Ortiz.
   * Stop deleting third_party/highway, drop libhwy-dev build-dep, and
     build against the bundled libhwy due to new API requirements.
   * d/patches:
@@ -25,7 +31,6 @@ chromium (133.0.6943.35-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/constflatset.patch, bookworm/constexpr.patch: add another
       workaround for bookworm's libstdc++ 12.
 
-
   [ Timothy Pearson ]
   * d/patches/ppc64le:
     - third_party/0001-Add-PPC64-support-for-boringssl.patch: Refresh for
@@ -34,8 +39,10 @@ chromium (133.0.6943.35-1~deb12u1) UNRELEASED; urgency=high
       Refresh for upstream changes
     - third_party/0002-third_party-libvpx-Remove-bad-ppc64-config.patch:
       Refresh for upstream changes
+    - third_party/0001-third-party-hwy-wrong-include.patch: Work around
+      incorrect header include
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 28 Jan 2025 20:26:06 -0500
+ -- Andres Salomon <dilinger@debian.org>  Wed, 05 Feb 2025 00:18:56 -0500
 
 chromium (132.0.6834.159-1~deb12u1) bookworm-security; urgency=high
 
