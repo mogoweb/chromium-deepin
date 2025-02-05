@@ -114,7 +114,6 @@ Files-Excluded:
  third_party/google_input_tools/src/chrome/os/inputview/_locales/*.js
  third_party/harfbuzz-ng/harfbuzz.gni
  third_party/harfbuzz-ng/src
- third_party/highway
  third_party/icu/source/data
  third_party/instrumented_lib*
  third_party/libc++/src/test

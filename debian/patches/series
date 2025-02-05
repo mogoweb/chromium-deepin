@@ -13,7 +13,6 @@ fixes/strlcpy.patch
 fixes/bindgen.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
 fixes/clang-rust-target.patch
-fixes/highway-include-path.patch
 fixes/predictor-denial-of-service.patch
 fixes/fix-assert-in-vnc-sessions.patch
 fixes/armhf-timespec.patch
@@ -77,6 +76,8 @@ bookworm/less-void.patch
 # bullseye/openh264.patch
 # bullseye/webui.patch
 
+# patches for system libhwy-dev
+#fixes/highway-include-path.patch
 
 # Ungoogled Chromium
 ungoogled/disable-privacy-sandbox.patch

@@ -61,7 +61,6 @@ Build-Depends:
  libpci-dev,
  libcap-dev,
  libffi-dev,
- libhwy-dev,
  libkrb5-dev,
  libexif-dev,
  libflac-dev,

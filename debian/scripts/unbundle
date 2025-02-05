@@ -41,6 +41,8 @@ keepers = (
                     # having different schemas specifically for a serialization library"
                     # from Dec 2023
 
+    'highway',      # now requires >= 1.2 for new functions
+
     'libaom',       # broken - media/gpu/vaapi/BUILD.gn depends on libaomrc, but the
                     # shim doesn't provide it. Needs an upstream bug.
 
