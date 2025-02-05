@@ -5,6 +5,7 @@ chromium (133.0.6943.35-1~deb12u1) UNRELEASED; urgency=high
     build against the bundled libhwy due to new API requirements.
   * d/patches:
     - fixes/highway-include-path.patch: drop; switching to bundled hwy.
+    - bookworm/highway-blink.patch: drop; switching to bundled hwy.
     - upstream/array.patch: drop, merged upstream.
     - upstream/ink-isfinite.patch: drop, merged upstream.
     - upstream/ruy-include.patch: drop, merged upstream.

@@ -52,7 +52,6 @@ bookworm/libxml-parseerr.patch
 bookworm/freetype-COLRV1.patch
 bookworm/gn-funcs.patch
 bookworm/gn-absl.patch
-bookworm/highway-blink.patch
 bookworm/partially-deployed-mseal-syscall.patch
 bookworm/constexpr.patch
 bookworm/constexpr2.patch
@@ -78,6 +77,7 @@ bookworm/less-void.patch
 
 # patches for system libhwy-dev
 #fixes/highway-include-path.patch
+#bookworm/highway-blink.patch
 
 # Ungoogled Chromium
 ungoogled/disable-privacy-sandbox.patch
