@@ -58,6 +58,7 @@ bookworm/constexpr2.patch
 bookworm/bubble-contents.patch
 bookworm/rust-visibility.patch
 bookworm/less-void.patch
+bookworm/stdarch-arm.patch
 
 # unused patches:
 # bookworm/blink-attrib.patch

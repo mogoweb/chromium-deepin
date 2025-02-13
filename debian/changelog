@@ -1,3 +1,9 @@
+chromium (133.0.6943.53-2~deb12u1) UNRELEASED; urgency=high
+
+  - bookworm/stdarch-arm.patch: add workaround to build w/ rust 1.78.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 05 Feb 2025 00:18:56 -0500
+
 chromium (133.0.6943.53-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
