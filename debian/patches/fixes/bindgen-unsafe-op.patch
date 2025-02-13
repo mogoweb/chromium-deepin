@@ -1,0 +1,30 @@
+Author: Andres Salomon <dilinger@debian.org>
+
+error[E0133]: dereference of raw pointer is unsafe and requires unsafe block
+ --> ../../third_party/crabbyavif/src/sys/libyuv-sys/src/../../../../../../out/Release/gen/third_party/crabbyavif/crabbyavif_libyuv_sys/libyuv_bindgen.rs:3:1051
+  |
+3 | ...yte = * (core :: ptr :: addr_of ! ((* this) . storage) as * const u8) . offset (byte_index as isize) ; Self :: extract_bit (byte , ind...
+  |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ dereference of raw pointer
+  |
+  = note: for more information, see issue #71668 <https://github.com/rust-lang/rust/issues/71668>
+  = note: raw pointers may be null, dangling or unaligned; they can violate aliasing rules and cause data races: all of these are undefined behavior
+note: an unsafe function restricts its caller, but its body is safe by default
+
+
+This is due to a bug in bindgen 0.71.1:
+https://github.com/rust-lang/rust-bindgen/issues/3123
+
+A fix has been backported, but is currently in experimental; once it makes
+its way into sid, we should be able to drop this patch.
+
+
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -2022,7 +2022,6 @@ config("default_warnings") {
+   # Require `unsafe` blocks even in `unsafe` fns. This is intended to become
+   # an error by default eventually; see
+   # https://github.com/rust-lang/rust/issues/71668
+-  rustflags = [ "-Dunsafe_op_in_unsafe_fn" ]
+ }
+ 
+ # prevent_unsafe_narrowing ----------------------------------------------------
