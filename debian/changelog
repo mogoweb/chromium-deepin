@@ -10,7 +10,7 @@ chromium (133.0.6943.98-1~deb12u1) bookworm-security; urgency=high
   * d/patches:
     - fixes/bindgen-unsafe-op.patch: add a workaround for a bindgen bug
       that causes FTBFS on armhf.
-  - bookworm/stdarch-arm.patch: add workaround to build w/ rust 1.78.
+    - bookworm/stdarch-arm.patch: add workaround to build w/ rust 1.78.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 12 Feb 2025 21:35:00 -0500
 
