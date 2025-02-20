@@ -22,7 +22,6 @@ fixes/font-gc-asan.patch
 fixes/lens-optional.patch
 fixes/libsync-rk3588-panthor.patch
 fixes/optional.patch
-fixes/bindgen-unsafe-op.patch
 
 
 disable/tests.patch
