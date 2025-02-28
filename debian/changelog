@@ -1,3 +1,15 @@
+chromium (133.0.6943.141-1) unstable; urgency=high
+
+  * New upstream security release (no CVEs).
+  * Move various .pak files from chromium package to chromium-common.
+  * Have chromium-driver depend upon chromium-common instead of chromium.
+  * Double quote args in chromium-shell script (closes: #971906).
+  * Add new package 'chromium-headless-shell' that is equivalent to the
+    now-removed --headless=old argument (closes: #1081204).
+  * d/patches/fixes/headless-gn.patch: add build fix for headless_shell.
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 16:16:33 -0500
+
 chromium (133.0.6943.126-1) unstable; urgency=high
 
   * New upstream security release.

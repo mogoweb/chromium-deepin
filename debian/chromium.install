@@ -1,10 +1,5 @@
 out/Release/chromium usr/lib/chromium
 
-out/Release/chrome_*.pak usr/lib/chromium
-out/Release/resources.pak usr/lib/chromium
-
-out/Release/resources/en-US.pak usr/lib/chromium/locales
-
 debian/presubj usr/share/bug/chromium
 
 debian/initial_bookmarks.html usr/share/chromium
