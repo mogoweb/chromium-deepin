@@ -23,7 +23,9 @@ fixes/libsync-rk3588-panthor.patch
 fixes/optional.patch
 fixes/headless-gn.patch
 fixes/stdatomic.patch
+fixes/variant.patch
 
+upstream/qualifications.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
