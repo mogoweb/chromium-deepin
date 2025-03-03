@@ -22,6 +22,7 @@ fixes/lens-optional.patch
 fixes/libsync-rk3588-panthor.patch
 fixes/optional.patch
 fixes/headless-gn.patch
+fixes/stdatomic.patch
 
 
 disable/tests.patch
