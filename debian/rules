@@ -100,7 +100,7 @@ defines+=is_debug=false \
          angle_build_tests=false \
          build_angle_perftests=false \
          treat_warnings_as_errors=false \
-         use_qt=false \
+         use_qt5=false use_qt6=false \
          is_cfi=false \
          chrome_pgo_phase=0 \
 
