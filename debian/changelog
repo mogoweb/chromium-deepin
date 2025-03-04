@@ -13,6 +13,7 @@ chromium (134.0.6998.35-1) UNRELEASED; urgency=high
       used.
     - fixes/variant.patch: add missing header include.
     - upstream/qualifications.patch: add fix to silence annoying warnings.
+    - upstream/optional.patch: add more missing header includes.
   * d/rules: update to ensure both qt5 AND qt6 are disabled.
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 22:37:45 -0500

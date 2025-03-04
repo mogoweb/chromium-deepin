@@ -26,6 +26,7 @@ fixes/stdatomic.patch
 fixes/variant.patch
 
 upstream/qualifications.patch
+upstream/optional.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
