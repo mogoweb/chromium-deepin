@@ -100,7 +100,7 @@ defines+=is_debug=false \
          angle_build_tests=false \
          build_angle_perftests=false \
          treat_warnings_as_errors=false \
-         use_qt=false \
+         use_qt5=false use_qt6=false \
          is_cfi=false \
          chrome_pgo_phase=0 \
 
@@ -179,9 +179,10 @@ override_dh_auto_configure: test_armhf_neon set_up_bindgen
 
 override_dh_auto_build-arch:
 	gn gen out/Release --args="$(defines)"
-	ninja -j$(njobs) -C out/Release chrome chrome_sandbox content_shell chromedriver
+	ninja -j$(njobs) -C out/Release chrome chrome_sandbox content_shell chromedriver headless_shell
 	cp out/Release/chrome out/Release/chromium
 	cp out/Release/content_shell out/Release/chromium-shell
+	cp out/Release/headless_shell out/Release/chromium-headless-shell
 	cp out/Release/chrome_sandbox out/Release/chrome-sandbox
 	cp out/Release/locales/en-US.pak out/Release/resources
 	chmod 4755 out/Release/chrome-sandbox # suid sandbox

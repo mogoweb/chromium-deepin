@@ -1,3 +1,41 @@
+chromium (134.0.6998.35-1~deb12u1) UNRELEASED; urgency=high
+
+  * New upstream stable release.
+  * d/patches:
+    - fixes/widevine-revision.patch: drop. Upstream says "with CDMs using
+      manifest-based registration, no need to" hardcode version string.
+    - disable/catapult.patch: refresh.
+    - bookworm/clang19.patch: refresh.
+    - ungoogled/disable-privacy-sandbox.patch: refresh from ungoogled.
+    - bookworm/gn-allowlist.patch: add workaround for older gn.
+    - bookworm/adler1.patch: add workaround for older rust.
+    - fixes/stdatomic.patch: add build fix to ensure <stdatomic.h> isn't
+      used.
+    - fixes/variant.patch: add missing header include.
+    - upstream/qualifications.patch: add fix to silence annoying warnings.
+    - upstream/optional.patch: add more missing header includes.
+  * d/rules: update to ensure both qt5 AND qt6 are disabled.
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 22:37:45 -0500
+
+chromium (133.0.6943.141-2) unstable; urgency=high
+
+  * Add a bunch of lintian overrides for embedded libraries.
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 22:37:45 -0500
+
+chromium (133.0.6943.141-1) unstable; urgency=high
+
+  * New upstream security release (no CVEs).
+  * Move various .pak files from chromium package to chromium-common.
+  * Have chromium-driver depend upon chromium-common instead of chromium.
+  * Double quote args in chromium-shell script (closes: #971906).
+  * Add new package 'chromium-headless-shell' that is equivalent to the
+    now-removed --headless=old argument (closes: #1081204).
+  * d/patches/fixes/headless-gn.patch: add build fix for headless_shell.
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 16:16:33 -0500
+
 chromium (133.0.6943.126-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
