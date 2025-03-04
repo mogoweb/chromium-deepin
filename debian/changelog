@@ -16,6 +16,8 @@ chromium (134.0.6998.35-1~deb12u1) UNRELEASED; urgency=high
     - upstream/optional.patch: add more missing header includes.
     - bookworm/constflatset.patch: refresh.
     - bookworm/constexpr.patch: refresh.
+    - bookworm/modff.patch: add workaround for libstdc++ build issue.
+    - bookworm/foreach.patch: add workaround for libstdc++ build issue.
   * d/rules: update to ensure both qt5 AND qt6 are disabled.
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 22:37:45 -0500
