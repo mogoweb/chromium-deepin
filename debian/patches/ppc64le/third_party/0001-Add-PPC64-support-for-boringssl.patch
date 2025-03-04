@@ -1,7 +1,7 @@
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/abi_self_test.cc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/abi_self_test.cc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/abi_self_test.cc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/abi_self_test.cc
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/abi_self_test.cc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/abi_self_test.cc
 @@ -521,3 +521,289 @@ TEST(ABITest, AArch64) {
    CHECK_ABI_NO_UNWIND(abi_test_clobber_v15_upper);
  }
@@ -292,10 +292,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/abi_self_test.cc
 +  CHECK_ABI_NO_UNWIND(abi_test_clobber_lr);
 +}
 +#endif   // OPENSSL_PPC64LE && SUPPORTS_ABI_TEST
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/cpu_ppc64le.cc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/cpu_ppc64le.cc
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/cpu_ppc64le.cc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/cpu_ppc64le.cc
 @@ -0,0 +1,38 @@
 +/* Copyright (c) 2016, Google Inc.
 + *
@@ -335,10 +335,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/cpu_ppc64le.cc
 +}
 +
 +#endif  // OPENSSL_PPC64LE
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/crypto.cc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/crypto.cc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/crypto.cc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/crypto.cc
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/crypto.cc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/crypto.cc
 @@ -67,6 +67,10 @@ uint32_t OPENSSL_get_ia32cap(int idx) {
    return OPENSSL_ia32cap_P[idx];
  }
@@ -350,10 +350,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/crypto.cc
  #elif defined(OPENSSL_ARM) || defined(OPENSSL_AARCH64)
  
  #include <openssl/arm_arch.h>
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/aes/asm/aesp8-ppc.pl
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/asm/aesp8-ppc.pl
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/aes/asm/aesp8-ppc.pl
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/asm/aesp8-ppc.pl
 @@ -0,0 +1,3809 @@
 +#! /usr/bin/env perl
 +# Copyright 2014-2018 The OpenSSL Project Authors. All Rights Reserved.
@@ -4164,10 +4164,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/aes/as
 +}
 +
 +close STDOUT or die "error closing STDOUT: $!";
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/internal.h
 @@ -82,6 +82,12 @@ inline int vpaes_capable(void) { return
  inline int vpaes_capable(void) { return CRYPTO_is_NEON_capable(); }
  #endif
@@ -4181,10 +4181,24 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/aes/in
  #endif
  
  #endif  // !NO_ASM
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/bcm.cc
+@@ -504,6 +510,13 @@ void aes_gcm_dec_kernel(const uint8_t *i
+                         const u128 Htable[16]);
+ #endif
+ 
++#elif defined(OPENSSL_PPC64LE)
++#define GHASH_ASM_PPC64LE
++#define GCM_FUNCREF
++void gcm_init_p8(u128 Htable[16], const uint64_t Xi[2]);
++void gcm_gmult_p8(uint8_t Xi[16], const u128 Htable[16]);
++void gcm_ghash_p8(uint8_t Xi[16], const u128 Htable[16], const uint8_t *inp,
++                  size_t len);
+ #endif
+ #endif  // OPENSSL_NO_ASM
+ 
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/bcm.cc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/bcm.cc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/bcm.cc
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/bcm.cc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/bcm.cc
 @@ -105,6 +105,7 @@
  #include "self_check/fips.cc.inc"
  #include "self_check/self_check.cc.inc"
@@ -4193,11 +4207,11 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/bcm.cc
  #include "sha/sha1.cc.inc"
  #include "sha/sha256.cc.inc"
  #include "sha/sha512.cc.inc"
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/bn/bn.cc.inc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/bn/bn.cc.inc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/bn/bn.cc.inc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/bn/bn.cc.inc
-@@ -325,6 +325,23 @@ int bn_expand(BIGNUM *bn, size_t bits) {
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/bn/bn.cc.inc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/bn/bn.cc.inc
+@@ -330,6 +330,23 @@ int bn_expand(BIGNUM *bn, size_t bits) {
  }
  
  int bn_resize_words(BIGNUM *bn, size_t words) {
@@ -4221,11 +4235,11 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/bn/bn.
    if ((size_t)bn->width <= words) {
      if (!bn_wexpand(bn, words)) {
        return 0;
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/cipher/e_aes.cc.inc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/cipher/e_aes.cc.inc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/cipher/e_aes.cc.inc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/cipher/e_aes.cc.inc
-@@ -1230,6 +1230,8 @@ int EVP_has_aes_hardware(void) {
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/cipher/e_aes.cc.inc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/cipher/e_aes.cc.inc
+@@ -1234,6 +1234,8 @@ int EVP_has_aes_hardware(void) {
    return hwaes_capable() && crypto_gcm_clmul_enabled();
  #elif defined(OPENSSL_ARM) || defined(OPENSSL_AARCH64)
    return hwaes_capable() && CRYPTO_is_ARMv8_PMULL_capable();
@@ -4234,10 +4248,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/cipher
  #else
    return 0;
  #endif
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/asm/ghashp8-ppc.pl
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/asm/ghashp8-ppc.pl
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/asm/ghashp8-ppc.pl
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/asm/ghashp8-ppc.pl
 @@ -0,0 +1,671 @@
 +#! /usr/bin/env perl
 +# Copyright 2014-2016 The OpenSSL Project Authors. All Rights Reserved.
@@ -4910,11 +4924,11 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/
 +}
 +
 +close STDOUT or die "error closing STDOUT: $!"; # enforce flush
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/gcm.cc.inc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/gcm.cc.inc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/modes/gcm.cc.inc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/gcm.cc.inc
-@@ -228,6 +228,13 @@ void CRYPTO_ghash_init(gmult_func *out_m
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/aes/gcm.cc.inc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/gcm.cc.inc
+@@ -233,6 +233,13 @@ void CRYPTO_ghash_init(gmult_func *out_m
      *out_hash = gcm_ghash_neon;
      return;
    }
@@ -4928,10 +4942,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/
  #endif
  
    gcm_init_nohw(out_table, H);
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/gcm_test.cc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/gcm_test.cc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/modes/gcm_test.cc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/gcm_test.cc
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/aes/gcm_test.cc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/aes/gcm_test.cc
 @@ -170,5 +170,15 @@ TEST(GCMTest, ABI) {
      }
    }
@@ -4948,28 +4962,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/
 +#endif  // GHASH_ASM_PPC64LE
  }
  #endif  // SUPPORTS_ABI_TEST && !OPENSSL_NO_ASM
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/internal.h
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/modes/internal.h
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/modes/internal.h
-@@ -260,6 +260,13 @@ void aes_gcm_dec_kernel(const uint8_t *i
-                         const u128 Htable[16]);
- #endif
- 
-+#elif defined(OPENSSL_PPC64LE)
-+#define GHASH_ASM_PPC64LE
-+#define GCM_FUNCREF
-+void gcm_init_p8(u128 Htable[16], const uint64_t Xi[2]);
-+void gcm_gmult_p8(uint8_t Xi[16], const u128 Htable[16]);
-+void gcm_ghash_p8(uint8_t Xi[16], const u128 Htable[16], const uint8_t *inp,
-+                  size_t len);
- #endif
- #endif  // OPENSSL_NO_ASM
- 
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/rand_extra/getrandom_fillin.h
-===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/rand_extra/getrandom_fillin.h
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/rand_extra/getrandom_fillin.h
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
 @@ -30,6 +30,8 @@
  #define EXPECTED_NR_getrandom 278
  #elif defined(OPENSSL_ARM)
@@ -4979,10 +4975,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/rand_extra/getran
  #elif defined(OPENSSL_RISCV64)
  #define EXPECTED_NR_getrandom 278
  #endif
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
 @@ -431,6 +431,11 @@ bcm_infallible BCM_rand_bytes_with_addit
      // Take a read lock around accesses to |state->drbg|. This is needed to
      // avoid returning bad entropy if we race with
@@ -4995,10 +4991,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/rand/r
      CRYPTO_MUTEX_lock_read(&state->clear_drbg_lock);
  #endif
      if (!CTR_DRBG_reseed(&state->drbg, seed, reseed_additional_data,
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
 @@ -23,6 +23,16 @@
  extern "C" {
  #endif
@@ -5016,10 +5012,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/in
  // Define SHA{n}[_{variant}]_ASM if sha{n}_block_data_order[_{variant}] is
  // defined in assembly.
  
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1-altivec.cc.inc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1-altivec.cc.inc
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1-altivec.cc.inc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1-altivec.cc.inc
 @@ -0,0 +1,369 @@
 +/* Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.ccom)
 + * All rights reserved.
@@ -5390,11 +5386,11 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/sh
 +#undef BODY_20_39
 +#undef BODY_40_59
 +#undef BODY_60_79
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/internal.h
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/internal.h
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/internal.h
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/internal.h
-@@ -56,8 +56,9 @@ extern "C" {
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/internal.h
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/internal.h
+@@ -61,8 +61,9 @@ extern "C" {
  #if !defined(OPENSSL_NO_ASM) && !defined(OPENSSL_STATIC_ARMCAP) && \
      (defined(OPENSSL_X86) || defined(OPENSSL_X86_64) ||            \
       defined(OPENSSL_ARM) || defined(OPENSSL_AARCH64))
@@ -5406,7 +5402,7 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/internal.h
  #define NEED_CPUID
  
  // OPENSSL_cpuid_setup initializes the platform-specific feature cache. This
-@@ -1397,6 +1398,16 @@ inline int CRYPTO_is_ARMv8_SHA512_capabl
+@@ -1402,6 +1403,16 @@ inline int CRYPTO_is_ARMv8_SHA512_capabl
  
  #endif  // OPENSSL_ARM || OPENSSL_AARCH64
  
@@ -5423,10 +5419,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/internal.h
  #if defined(BORINGSSL_DISPATCH_TEST)
  // Runtime CPU dispatch testing support
  
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/perlasm/ppc-xlate.pl
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/perlasm/ppc-xlate.pl
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/perlasm/ppc-xlate.pl
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/perlasm/ppc-xlate.pl
 @@ -0,0 +1,320 @@
 +#! /usr/bin/env perl
 +# Copyright 2006-2016 The OpenSSL Project Authors. All Rights Reserved.
@@ -5748,10 +5744,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/perlasm/ppc-xlate
 +___
 +
 +close STDOUT or die "error closing STDOUT: $!";
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/test/abi_test.h
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/test/abi_test.h
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/test/abi_test.h
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/test/abi_test.h
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/test/abi_test.h
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/test/abi_test.h
 @@ -179,7 +179,78 @@ struct alignas(16) Reg128 {
    CALLER_STATE_REGISTER(uint64_t, x28)                               \
    CALLER_STATE_REGISTER(uint64_t, x29)
@@ -5858,10 +5854,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/test/abi_test.h
    static_assert(sizeof...(args) <= 8,
                  "too many arguments for abi_test_trampoline");
  
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/test/asm/trampoline-ppc.pl
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/test/asm/trampoline-ppc.pl
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/test/asm/trampoline-ppc.pl
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/test/asm/trampoline-ppc.pl
 @@ -0,0 +1,262 @@
 +#!/usr/bin/env perl
 +# Copyright (c) 2019, Google Inc.
@@ -6125,10 +6121,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/test/asm/trampoli
 +
 +print $code;
 +close STDOUT or die "error closing STDOUT: $!";
-Index: chromium-133.0.6943.35/third_party/boringssl/src/include/openssl/target.h
+Index: chromium-134.0.6998.35/third_party/boringssl/src/include/openssl/target.h
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/include/openssl/target.h
-+++ chromium-133.0.6943.35/third_party/boringssl/src/include/openssl/target.h
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/include/openssl/target.h
++++ chromium-134.0.6998.35/third_party/boringssl/src/include/openssl/target.h
 @@ -34,6 +34,9 @@
  #elif defined(__ARMEL__) || defined(_M_ARM)
  #define OPENSSL_32_BIT
@@ -6139,11 +6135,11 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/include/openssl/target.h
  #elif defined(__MIPSEL__) && !defined(__LP64__)
  #define OPENSSL_32_BIT
  #define OPENSSL_MIPS
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/acvp/modulewrapper/main.cc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/acvp/modulewrapper/main.cc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/util/fipstools/acvp/modulewrapper/main.cc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/acvp/modulewrapper/main.cc
-@@ -38,6 +38,8 @@ int main(int argc, char **argv) {
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/util/fipstools/acvp/modulewrapper/main.cc
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/acvp/modulewrapper/main.cc
+@@ -35,6 +35,8 @@ int main(int argc, char **argv) {
      puts("ARM (32-bit)");
  #elif defined(OPENSSL_AARCH64)
      puts("aarch64 (64-bit)");
@@ -6152,10 +6148,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/acvp/modu
  #else
  #error "FIPS build not supported on this architecture"
  #endif
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/delocate.go
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/delocate.go
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/util/fipstools/delocate/delocate.go
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/delocate.go
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/util/fipstools/delocate/delocate.go
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/delocate.go
 @@ -54,7 +54,8 @@ type stringWriter interface {
  type processorType int
  
@@ -6755,13 +6751,13 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
  		case "str", "bl", "ldr", "st1":
  			return aarch64
  		}
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/delocate.peg
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/delocate.peg
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/util/fipstools/delocate/delocate.peg
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/delocate.peg
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/util/fipstools/delocate/delocate.peg
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/delocate.peg
 @@ -12,9 +12,9 @@
- # OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
- # CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE. */
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
  
 -# This is a rough parser for x86-64 and aarch64 assembly designed to work with
 -# https://github.com/pointlander/peg. delocate.go has a go:generate line for
@@ -6772,10 +6768,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
  
  # To regenerate delocate.peg.go:
  #
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
 @@ -39,6 +39,11 @@ func (test *delocateTest) Path(file stri
  
  var delocateTests = []delocateTest{
@@ -6788,10 +6784,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
  	{"x86_64-Basic", []string{"in.s"}, "out.s"},
  	{"x86_64-BSS", []string{"in.s"}, "out.s"},
  	{"x86_64-GOTRewrite", []string{"in.s"}, "out.s"},
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/in.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/in.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/in.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/in.s
 @@ -0,0 +1,9 @@
 +	.text
 +foo:
@@ -6802,10 +6798,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +	.localentry foo,.-foo
 +.LVL0:
 +	bl
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/out.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/out.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/out.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-GlobalEntry/out.s
 @@ -0,0 +1,62 @@
 +.text
 +.file 1 "inserted_by_delocate.cc"
@@ -6869,19 +6865,19 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +.byte 0xff
 +.byte 0x31
 +.byte 0x80
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/in.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/in.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/in.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/in.s
 @@ -0,0 +1,4 @@
 +	.text
 +foo:
 +	addis 22,2,bar@toc@ha
 +	ld 0,bar@toc@l(22)
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/out.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/out.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/out.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-LoadToR0/out.s
 @@ -0,0 +1,72 @@
 +.text
 +.file 1 "inserted_by_delocate.cc"
@@ -6955,10 +6951,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +.byte 0xff
 +.byte 0x31
 +.byte 0x80
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/in.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/in.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/in.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/in.s
 @@ -0,0 +1,161 @@
 +	.file	"foo.cc"
 +	.abiversion 2
@@ -7121,10 +7117,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +	.size	exported_function,.-exported_function
 +	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
 +	.section	.note.GNU-stack,"",@progbits
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/out.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/out.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/out.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample/out.s
 @@ -0,0 +1,552 @@
 +.text
 +.file 1 "inserted_by_delocate.cc"
@@ -7678,10 +7674,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +.byte 0xff
 +.byte 0x31
 +.byte 0x80
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/in.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/in.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/in.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/in.s
 @@ -0,0 +1,226 @@
 +	.file	"foo.cc"
 +	.abiversion 2
@@ -7909,10 +7905,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +	.zero	20
 +	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
 +	.section	.note.GNU-stack,"",@progbits
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/out.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/out.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/out.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-Sample2/out.s
 @@ -0,0 +1,677 @@
 +.text
 +.file 1 "inserted_by_delocate.cc"
@@ -8591,10 +8587,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +.byte 0xff
 +.byte 0x31
 +.byte 0x80
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/in.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/in.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/in.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/in.s
 @@ -0,0 +1,23 @@
 +	.text
 +foo:
@@ -8619,10 +8615,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +
 +	addis 4, 2, 1+foo-2@toc@ha+3
 +	addi 4, 4, 1+foo-2@toc@l+3
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/out.s
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/out.s
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/out.s
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/fipstools/delocate/testdata/ppc64le-TOCWithOffset/out.s
 @@ -0,0 +1,178 @@
 +.text
 +.file 1 "inserted_by_delocate.cc"
@@ -8802,11 +8798,11 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/fipstools/delocate/
 +.byte 0xff
 +.byte 0x31
 +.byte 0x80
-Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1.cc.inc
+Index: chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1.cc.inc
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/crypto/fipsmodule/sha/sha1.cc.inc
-+++ chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1.cc.inc
-@@ -362,6 +362,10 @@ static void sha1_block_data_order(uint32
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/crypto/fipsmodule/sha/sha1.cc.inc
++++ chromium-134.0.6998.35/third_party/boringssl/src/crypto/fipsmodule/sha/sha1.cc.inc
+@@ -367,6 +367,10 @@ static void sha1_block_data_order(uint32
      return;
    }
  #endif
@@ -8817,17 +8813,17 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/crypto/fipsmodule/sha/sh
    sha1_block_data_order_nohw(state, data, num);
  }
  
-Index: chromium-133.0.6943.35/third_party/boringssl/src/build.json
+Index: chromium-134.0.6998.35/third_party/boringssl/src/build.json
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/build.json
-+++ chromium-133.0.6943.35/third_party/boringssl/src/build.json
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/build.json
++++ chromium-134.0.6998.35/third_party/boringssl/src/build.json
 @@ -126,6 +126,10 @@
              {"src": "crypto/fipsmodule/sha/asm/sha512-armv4.pl"},
              {"src": "crypto/fipsmodule/aes/asm/vpaes-armv7.pl"}
          ],
 +        "perlasm_ppc64le": [
 +            {"src": "crypto/fipsmodule/aes/asm/aesp8-ppc.pl"},
-+            {"src": "crypto/fipsmodule/modes/asm/ghashp8-ppc.pl"}
++            {"src": "crypto/fipsmodule/aes/asm/ghashp8-ppc.pl"}
 +        ],
          "perlasm_x86": [
              {"src": "crypto/fipsmodule/aes/asm/aesni-x86.pl"},
@@ -8840,7 +8836,7 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/build.json
              "crypto/crypto.cc",
              "crypto/curve25519/curve25519.cc",
              "crypto/curve25519/curve25519_64_adx.cc",
-@@ -786,6 +791,9 @@
+@@ -787,6 +792,9 @@
          "perlasm_arm": [
              {"src": "crypto/test/asm/trampoline-armv4.pl"}
          ],
@@ -8850,10 +8846,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/build.json
          "perlasm_x86": [
              {"src": "crypto/test/asm/trampoline-x86.pl"}
          ],
-Index: chromium-133.0.6943.35/third_party/boringssl/src/util/pregenerate/build.go
+Index: chromium-134.0.6998.35/third_party/boringssl/src/util/pregenerate/build.go
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/util/pregenerate/build.go
-+++ chromium-133.0.6943.35/third_party/boringssl/src/util/pregenerate/build.go
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/util/pregenerate/build.go
++++ chromium-134.0.6998.35/third_party/boringssl/src/util/pregenerate/build.go
 @@ -38,6 +38,7 @@ type InputTarget struct {
  	// architecture.
  	PerlasmAarch64 []PerlasmSource `json:"perlasm_aarch64,omitempty"`
@@ -8872,10 +8868,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/src/util/pregenerate/build.g
  	for _, p := range in.PerlasmX86 {
  		addPerlasmTask(&out.Asm, &p, "-apple.S", []string{"macosx", "-fPIC"})
  		addPerlasmTask(&out.Asm, &p, "-linux.S", []string{"elf", "-fPIC"})
-Index: chromium-133.0.6943.35/third_party/boringssl/README.ppc64le
+Index: chromium-134.0.6998.35/third_party/boringssl/README.ppc64le
 ===================================================================
 --- /dev/null
-+++ chromium-133.0.6943.35/third_party/boringssl/README.ppc64le
++++ chromium-134.0.6998.35/third_party/boringssl/README.ppc64le
 @@ -0,0 +1,8 @@
 +==============================================================
 +To recreate boringssl pregenerated files patch for ppc64le:
@@ -8885,10 +8881,10 @@ Index: chromium-133.0.6943.35/third_party/boringssl/README.ppc64le
 +go run ./util/pregenerate
 +cd ../../../../
 +diff -urN chromium-*/third_party/boringssl/src/gen.orig chromium-*/third_party/boringssl/src/gen
-Index: chromium-133.0.6943.35/third_party/boringssl/src/gen/sources.gni
+Index: chromium-134.0.6998.35/third_party/boringssl/src/gen/sources.gni
 ===================================================================
---- chromium-133.0.6943.35.orig/third_party/boringssl/src/gen/sources.gni
-+++ chromium-133.0.6943.35/third_party/boringssl/src/gen/sources.gni
+--- chromium-134.0.6998.35.orig/third_party/boringssl/src/gen/sources.gni
++++ chromium-134.0.6998.35/third_party/boringssl/src/gen/sources.gni
 @@ -119,6 +119,7 @@ bcm_sources_asm = [
    "gen/bcm/aesv8-gcm-armv8-apple.S",
    "gen/bcm/aesv8-gcm-armv8-linux.S",

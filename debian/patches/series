@@ -24,6 +24,7 @@ fixes/optional.patch
 fixes/headless-gn.patch
 fixes/stdatomic.patch
 fixes/variant.patch
+fixes/swiftshader-llvm.patch
 
 upstream/qualifications.patch
 upstream/optional.patch
