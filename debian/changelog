@@ -1,6 +1,24 @@
-chromium (134.0.6998.35-1~deb12u1) UNRELEASED; urgency=high
+chromium (134.0.6998.35-1~deb12u1) bookworm-security; urgency=high
 
+  [ Andres Salomon ]
   * New upstream stable release.
+    - CVE-2025-1914: Out of bounds read in V8. Reported by
+      Zhenghang Xiao (@Kipreyyy) and Nan Wang (@eternalsakura13).
+    - CVE-2025-1915: Improper Limitation of a Pathname to a Restricted
+      Directory in DevTools. Reported by Topi Lassila.
+    - CVE-2025-1916: Use after free in Profiles.
+      Reported by parkminchan, SSD Labs Korea.
+    - CVE-2025-1917: Inappropriate Implementation in Browser UI.
+      Reported by Khalil Zhani.
+    - CVE-2025-1918: Out of bounds read in PDFium. Reported by asnine.
+    - CVE-2025-1919: Out of bounds read in Media.
+      Reported by @Bl1nnnk and @Pisanbao.
+    - CVE-2025-1921: Inappropriate Implementation in Media Stream.
+      Reported by Kaiido.
+    - CVE-2025-1922: Inappropriate Implementation in Selection.
+      Reported by Alesandro Ortiz.
+    - CVE-2025-1923: Inappropriate Implementation in Permission Prompts.
+      Reported by Khalil Zhani.
   * d/patches:
     - fixes/widevine-revision.patch: drop. Upstream says "with CDMs using
       manifest-based registration, no need to" hardcode version string.
@@ -20,7 +38,15 @@ chromium (134.0.6998.35-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/foreach.patch: add workaround for libstdc++ build issue.
   * d/rules: update to ensure both qt5 AND qt6 are disabled.
 
- -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 22:37:45 -0500
+  [ Timothy Pearson ]
+  * d/patches:
+    - fixes/swiftshader-llvm.patch: Add LLVM patches from upstream LLVM
+      project to fix integrated SwiftShader LLVM FTBFS
+  * d/patches/ppc64le:
+    - third_party/0001-Add-PPC64-support-for-boringssl.patch: Refresh for
+      upstream changes
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 05 Mar 2025 13:26:45 -0500
 
 chromium (133.0.6943.141-2) unstable; urgency=high
 
