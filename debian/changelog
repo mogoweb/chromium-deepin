@@ -1,4 +1,4 @@
-chromium (134.0.6998.35-1) UNRELEASED; urgency=high
+chromium (134.0.6998.35-1) unstable; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -42,7 +42,7 @@ chromium (134.0.6998.35-1) UNRELEASED; urgency=high
     - third_party/0001-Add-PPC64-support-for-boringssl.patch: Refresh for
       upstream changes
 
- -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 22:37:45 -0500
+ -- Andres Salomon <dilinger@debian.org>  Wed, 05 Mar 2025 13:26:45 -0500
 
 chromium (133.0.6943.141-2) unstable; urgency=high
 
