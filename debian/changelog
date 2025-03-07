@@ -1,3 +1,10 @@
+chromium (134.0.6998.35-2) unstable; urgency=high
+
+  * Revert "Have chromium-driver depend upon chromium-common instead of
+    chromium" to make autopkgtests of various packages happy.
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 07 Mar 2025 00:58:06 -0500
+
 chromium (134.0.6998.35-1) unstable; urgency=high
 
   [ Andres Salomon ]
