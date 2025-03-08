@@ -1,3 +1,9 @@
+chromium (134.0.6998.35-3) unstable; urgency=high
+
+  * Fix FTBFS with pipewire 1.4.0.
+
+ -- Andres Salomon <dilinger@debian.org>  Sat, 08 Mar 2025 13:35:36 -0500
+
 chromium (134.0.6998.35-2) unstable; urgency=high
 
   * Revert "Have chromium-driver depend upon chromium-common instead of
