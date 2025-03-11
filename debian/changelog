@@ -1,3 +1,29 @@
+chromium (134.0.6998.88-1~deb12u1) bookworm-security; urgency=high
+
+  * New upstream security release.
+    - CVE-2025-1920: Type Confusion in V8. Reported by Excello s.r.o.
+    - CVE-2025-2135: Type Confusion in V8.
+      Reported by Zhenghang Xiao (@Kipreyyy).
+    - CVE-2025-24201: Out of bounds write in GPU on Mac. Reported by
+      Apple Security Engineering and Architecture (SEAR).
+    - CVE-2025-2136: Use after free in Inspector. Reported by Sakana.S.
+    - CVE-2025-2137: Out of bounds read in V8. Reported by zeroxiaobai@.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 11 Mar 2025 14:28:43 -0400
+
+chromium (134.0.6998.35-3) unstable; urgency=high
+
+  * Fix FTBFS with pipewire 1.4.0.
+
+ -- Andres Salomon <dilinger@debian.org>  Sat, 08 Mar 2025 13:35:36 -0500
+
+chromium (134.0.6998.35-2) unstable; urgency=high
+
+  * Revert "Have chromium-driver depend upon chromium-common instead of
+    chromium" to make autopkgtests of various packages happy.
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 07 Mar 2025 00:58:06 -0500
+
 chromium (134.0.6998.35-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]

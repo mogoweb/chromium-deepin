@@ -180,7 +180,7 @@ Architecture: i386 amd64 arm64 armhf ppc64el
 Depends:
  ${misc:Depends},
  ${shlibs:Depends},
- chromium-common (= ${binary:Version}),
+ chromium (= ${binary:Version}),
 Description: web browser - WebDriver support
  Web browser that aims to build a safer, faster, and more stable internet
  browsing experience.
