@@ -1,3 +1,11 @@
+chromium (134.0.6998.117-1~deb12u1) bookworm-security; urgency=high
+
+  * New upstream security release.
+    - CVE-2025-2476: Use after free in Lens.
+      Reported by SungKwon Lee of Enki Whitehat.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 19 Mar 2025 20:04:39 -0400
+
 chromium (134.0.6998.88-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
