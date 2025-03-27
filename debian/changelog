@@ -1,3 +1,13 @@
+chromium (134.0.6998.117-1) UNRELEASED; urgency=low
+
+  * Enable pointer compression on ppc64le
+    This fixes V8 OOM conditions noted on e.g. https://trac.ffmpeg.org
+
+  * d/patches/ppc64le:
+    - ppc64le/v8/0001-Enable-ppc64-pointer-compression.patch
+
+ -- Timothy Pearson <tpearson@debian.org>  Thu, 27 Mar 2025 15:54:00 -0500
+
 chromium (134.0.6998.117-1) unstable; urgency=high
 
   * New upstream security release.
