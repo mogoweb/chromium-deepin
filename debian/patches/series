@@ -21,7 +21,6 @@ fixes/font-gc-asan.patch
 fixes/libsync-rk3588-panthor.patch
 fixes/headless-gn.patch
 fixes/stdatomic.patch
-fixes/swiftshader-llvm.patch
 fixes/pipewire14.patch
 
 
@@ -46,6 +45,7 @@ system/eu-strip.patch
 system/rapidjson.patch
 system/rollup.patch
 
+bookworm/gn-revert-path-exists.patch
 bookworm/clang19.patch
 bookworm/constflatset.patch
 bookworm/libxml-parseerr.patch

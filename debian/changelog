@@ -7,7 +7,12 @@ chromium (135.0.7049.41-1) UNRELEASED; urgency=high
     - upstream/qualifications.patch: drop, merged upstream.
     - fixes/lens-optional.patch: drop, merged upstream.
     - fixes/optional.patch: drop, merged upstream.
+    - fixes/swiftshader-llvm.patch: drop, merged upstream.
     - fixes/variant.patch: drop, merged upstream.
+    - bookworm/clang19.patch: refresh.
+    - bookworm/gn-revert-path-exists.patch: add build fix to work around
+      older gn.
+    - ungoogled/disable-privacy-sandbox.patch: refresh from ungoogled.
 
   [ Timothy Pearson ]
   * Enable pointer compression on ppc64le
