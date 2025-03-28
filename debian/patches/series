@@ -18,17 +18,12 @@ fixes/armhf-timespec.patch
 fixes/updater-test.patch
 fixes/absl-optional.patch
 fixes/font-gc-asan.patch
-fixes/lens-optional.patch
 fixes/libsync-rk3588-panthor.patch
-fixes/optional.patch
 fixes/headless-gn.patch
 fixes/stdatomic.patch
-fixes/variant.patch
 fixes/swiftshader-llvm.patch
 fixes/pipewire14.patch
 
-upstream/qualifications.patch
-upstream/optional.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
