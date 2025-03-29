@@ -13,6 +13,7 @@ chromium (135.0.7049.41-1) UNRELEASED; urgency=high
     - bookworm/gn-revert-path-exists.patch: add build fix to work around
       older gn.
     - ungoogled/disable-privacy-sandbox.patch: refresh from ungoogled.
+    - fixes/make-pair.patch: add a gcc-specific build fix.
 
   [ Timothy Pearson ]
   * Enable pointer compression on ppc64le
