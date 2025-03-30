@@ -15,6 +15,9 @@ chromium (135.0.7049.41-1~deb12u1) UNRELEASED; urgency=high
     - ungoogled/disable-privacy-sandbox.patch: refresh from ungoogled.
     - fixes/make-pair.patch: add a gcc-specific build fix.
     - disable/buildtools-libc.patch: add patch to remove libc build stuff.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/constexpr.patch: refresh.
+    - bookworm/stdarch-arm.patch: refresh.
 
   [ Timothy Pearson ]
   * Enable pointer compression on ppc64le
