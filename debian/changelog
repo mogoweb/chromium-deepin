@@ -1,3 +1,31 @@
+chromium (135.0.7049.41-1~deb12u1) UNRELEASED; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream stable release.
+  * d/patches:
+    - upstream/optional.patch: drop, merged upstream.
+    - upstream/qualifications.patch: drop, merged upstream.
+    - fixes/lens-optional.patch: drop, merged upstream.
+    - fixes/optional.patch: drop, merged upstream.
+    - fixes/swiftshader-llvm.patch: drop, merged upstream.
+    - fixes/variant.patch: drop, merged upstream.
+    - bookworm/clang19.patch: refresh.
+    - bookworm/gn-revert-path-exists.patch: add build fix to work around
+      older gn.
+    - ungoogled/disable-privacy-sandbox.patch: refresh from ungoogled.
+    - fixes/make-pair.patch: add a gcc-specific build fix.
+    - disable/buildtools-libc.patch: add patch to remove libc build stuff.
+
+  [ Timothy Pearson ]
+  * Enable pointer compression on ppc64le
+    This fixes V8 OOM conditions noted on e.g. https://trac.ffmpeg.org
+  * d/patches/ppc64le:
+    - v8/0001-Enable-ppc64-pointer-compression.patch
+    - sandbox/0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch:
+      refresh for upstream changes
+
+ -- Timothy Pearson <tpearson@debian.org>  Thu, 27 Mar 2025 15:54:00 -0500
+
 chromium (134.0.6998.117-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
