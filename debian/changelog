@@ -20,6 +20,7 @@ chromium (135.0.7049.41-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/stdarch-arm.patch: refresh.
     - bookworm/eslint.patch: add bookworm-specific build fix; thanks
       Daniel Richard G. <skunk@iSKUNK.ORG>!
+    - bookworm/crabbyav1f.patch: add rustc 1.78 build fix workaround.
 
   [ Timothy Pearson ]
   * Enable pointer compression on ppc64le
