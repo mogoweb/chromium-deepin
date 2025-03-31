@@ -66,6 +66,7 @@ bookworm/less-void.patch
 bookworm/stdarch-arm.patch
 bookworm/modff.patch
 bookworm/foreach.patch
+bookworm/eslint.patch
 
 # unused patches:
 # bookworm/blink-attrib.patch

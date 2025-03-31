@@ -18,6 +18,8 @@ chromium (135.0.7049.41-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/gn-absl.patch: refresh.
     - bookworm/constexpr.patch: refresh.
     - bookworm/stdarch-arm.patch: refresh.
+    - bookworm/eslint.patch: add bookworm-specific build fix; thanks
+      Daniel Richard G. <skunk@iSKUNK.ORG>!
 
   [ Timothy Pearson ]
   * Enable pointer compression on ppc64le
