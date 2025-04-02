@@ -1,7 +1,25 @@
-chromium (135.0.7049.41-1) UNRELEASED; urgency=high
+chromium (135.0.7049.52-1) unstable; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
+    - CVE-2025-3066: Use after free in Navigations.
+      Reported by Sven Dysthe (@svn-dys).
+    - CVE-2025-3067: Inappropriate implementation in Custom Tabs.
+      Reported by Philipp Beer (TU Wien).
+    - CVE-2025-3068: Inappropriate implementation in Intents.
+      Reported by Simon Rawet.
+    - CVE-2025-3069: Inappropriate implementation in Extensions.
+      Reported by NDevTK.
+    - CVE-2025-3070: Insufficient validation of untrusted input in
+      Extensions.
+    - CVE-2025-3071: Inappropriate implementation in Navigations.
+      Reported by David Erceg.
+    - CVE-2025-3072: Inappropriate implementation in Custom Tabs.
+      Reported by Om Apip.
+    - CVE-2025-3073: Inappropriate implementation in Autofill.
+      Reported by Hafiizh.
+    - CVE-2025-3074: Inappropriate implementation in Downloads.
+      Reported by Farras Givari.
   * d/patches:
     - upstream/optional.patch: drop, merged upstream.
     - upstream/qualifications.patch: drop, merged upstream.
@@ -28,7 +46,7 @@ chromium (135.0.7049.41-1) UNRELEASED; urgency=high
   * d/rules: Add switch to allow downloading either Google's upstream tarball,
     or an independently-created one from Gentoo. Default to the latter.
 
- -- Timothy Pearson <tpearson@debian.org>  Thu, 27 Mar 2025 15:54:00 -0500
+ -- Andres Salomon <dilinger@debian.org>  Wed, 02 Apr 2025 02:04:23 -0400
 
 chromium (134.0.6998.117-1) unstable; urgency=high
 
