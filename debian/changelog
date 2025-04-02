@@ -24,6 +24,10 @@ chromium (135.0.7049.41-1) UNRELEASED; urgency=high
     - sandbox/0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch:
       refresh for upstream changes
 
+  [ Daniel Richard G. ]
+  * d/rules: Add switch to allow downloading either Google's upstream tarball,
+    or an independently-created one from Gentoo. Default to the latter.
+
  -- Timothy Pearson <tpearson@debian.org>  Thu, 27 Mar 2025 15:54:00 -0500
 
 chromium (134.0.6998.117-1) unstable; urgency=high
