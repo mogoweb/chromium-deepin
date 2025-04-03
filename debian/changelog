@@ -1,6 +1,10 @@
 chromium (135.0.7049.84-1.1) UNRELEASED; urgency=high
 
   [ Daniel Richard G. ]
+  * d/copyright, d/patches/system/rapidjson.patch: Slightly narrow the scope
+    of the bundled RapidJSON deletion, and rework this patch so that it does
+    not require the deletion in order to apply. This allows applying the
+    debianization directly to the unrepackaged upstream tarball source.
   * d/rules: Add new check-version rule to validate the package version.
     Also squelch error messages due to absent clang and rustc executables.
 

@@ -75,7 +75,7 @@ Files-Excluded:
  third_party/angle/src/third_party/libXNVCtrl
  third_party/angle/third_party/VK-GL-CTS
  third_party/angle/third_party/glmark2
- third_party/angle/third_party/rapidjson
+ third_party/angle/third_party/rapidjson/src
  third_party/apache-linux
  third_party/apache-portable-runtime
  third_party/apache-win32
