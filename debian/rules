@@ -213,8 +213,7 @@ ifdef FROM_GOOGLE
 url=https://gsdview.appspot.com/chromium-browser-official
 tarfile=$(extract)-lite.tar
 else
-# https://github.com/chromium-linux-tarballs/chromium-tarballs
-url=https://chromium-tarballs.distfiles.gentoo.org
+url=https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/$(version)
 tarfile=$(extract)-linux.tar
 endif
 version:=$(shell dpkg-parsechangelog -S Version | sed s/-.*//)
