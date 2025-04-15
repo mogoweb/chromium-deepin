@@ -6,7 +6,8 @@ chromium (135.0.7049.84-1.1) UNRELEASED; urgency=high
     not require the deletion in order to apply. This allows applying the
     debianization directly to the unrepackaged upstream tarball source.
   * d/patches/system/gperf.patch: Import (self-authored) upstream patch to
-    prevent build breakage due to changes in gperf 3.2 generated code.
+    prevent build breakage due to changes in gperf 3.2 generated code
+    (closes: #1103226).
   * d/rules: Add new check-version rule to validate the package version.
     Also squelch error messages due to absent clang and rustc executables.
   * d/rules: Download Gentoo's upstream source tarball straight from GitHub.
