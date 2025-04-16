@@ -1,4 +1,9 @@
-chromium (135.0.7049.84-1.1) UNRELEASED; urgency=high
+chromium (135.0.7049.95-1) unstable; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream security release.
+    - CVE-2025-3619: Heap buffer overflow in Codecs. Reported by Elias Hohl.
+    - CVE-2025-3620: Use after free in USB. Reported by @retsew0x01.
 
   [ Daniel Richard G. ]
   * d/copyright, d/patches/system/rapidjson.patch: Slightly narrow the scope
@@ -12,7 +17,7 @@ chromium (135.0.7049.84-1.1) UNRELEASED; urgency=high
     Also squelch error messages due to absent clang and rustc executables.
   * d/rules: Download Gentoo's upstream source tarball straight from GitHub.
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 08 Apr 2025 16:57:38 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 15 Apr 2025 22:12:30 -0400
 
 chromium (135.0.7049.84-1) unstable; urgency=high
 
