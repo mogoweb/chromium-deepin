@@ -1,3 +1,24 @@
+chromium (135.0.7049.95-1~deb12u1) bookworm-security; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream security release.
+    - CVE-2025-3619: Heap buffer overflow in Codecs. Reported by Elias Hohl.
+    - CVE-2025-3620: Use after free in USB. Reported by @retsew0x01.
+
+  [ Daniel Richard G. ]
+  * d/copyright, d/patches/system/rapidjson.patch: Slightly narrow the scope
+    of the bundled RapidJSON deletion, and rework this patch so that it does
+    not require the deletion in order to apply. This allows applying the
+    debianization directly to the unrepackaged upstream tarball source.
+  * d/patches/system/gperf.patch: Import (self-authored) upstream patch to
+    prevent build breakage due to changes in gperf 3.2 generated code
+    (closes: #1103226).
+  * d/rules: Add new check-version rule to validate the package version.
+    Also squelch error messages due to absent clang and rustc executables.
+  * d/rules: Download Gentoo's upstream source tarball straight from GitHub.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 15 Apr 2025 22:12:30 -0400
+
 chromium (135.0.7049.84-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release (closes: #1101978).

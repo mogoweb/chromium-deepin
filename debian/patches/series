@@ -39,6 +39,7 @@ disable/clang-version-check.patch
 disable/screen-ai-blob.patch
 disable/buildtools-libc.patch
 
+system/gperf.patch
 system/icu-shim.patch
 system/jpeg.patch
 system/openjpeg.patch
