@@ -23,7 +23,6 @@ Build-Depends:
  pkgconf,
  ninja-build,
  python3-jinja2,
- python3-pkg-resources,
  ca-certificates,
  elfutils,
  wget,
