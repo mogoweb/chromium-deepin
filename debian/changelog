@@ -1,8 +1,9 @@
-chromium (135.0.7049.95-1) UNRELEASED; urgency=high
+chromium (135.0.7049.114-1) unstable; urgency=high
 
+  * New upstream security release.
   * Drop python3-pkg-resources build dep (closes: #1083336).
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 15 Apr 2025 22:12:30 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 
 chromium (135.0.7049.95-1) unstable; urgency=high
 
