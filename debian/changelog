@@ -17,6 +17,8 @@ chromium (136.0.7103.48-1~deb12u1) UNRELEASED; urgency=high
     - fixes/media-cstdint.patch: add missing header include.
     - upstream/media-optional.patch: add missing header include.
     - fixes/perfetto-nullptr.patch: add nullptr_t std qualification.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/crabbyav1f.patch: refresh.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 
