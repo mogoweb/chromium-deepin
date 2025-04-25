@@ -1,6 +1,7 @@
 chromium (136.0.7103.48-1) UNRELEASED; urgency=high
 
   * New upstream stable release.
+  * d/rules: disable warning-suppression-mappings; llvm too old.
   * d/control: drop libevent-dev build-dep, no longer used.
   * d/scripts/unbundle:
     - libavif no longer used, no need to specify bundling.
