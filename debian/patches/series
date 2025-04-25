@@ -21,7 +21,6 @@ fixes/font-gc-asan.patch
 fixes/libsync-rk3588-panthor.patch
 fixes/headless-gn.patch
 fixes/stdatomic.patch
-fixes/pipewire14.patch
 fixes/make-pair.patch
 
 
