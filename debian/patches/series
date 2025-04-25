@@ -72,6 +72,7 @@ bookworm/modff.patch
 bookworm/foreach.patch
 bookworm/eslint.patch
 bookworm/crabbyav1f.patch
+bookworm/minify.patch
 
 # unused patches:
 # bookworm/blink-attrib.patch

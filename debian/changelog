@@ -19,6 +19,8 @@ chromium (136.0.7103.48-1~deb12u1) UNRELEASED; urgency=high
     - fixes/perfetto-nullptr.patch: add nullptr_t std qualification.
     - bookworm/gn-absl.patch: refresh.
     - bookworm/crabbyav1f.patch: refresh.
+    - bookworm/minify.patch: add patch to work around bookworm's node 18
+      import rules.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 
