@@ -118,7 +118,6 @@ Files-Excluded:
  third_party/instrumented_lib*
  third_party/libc++/src/test
  third_party/libei
- third_party/libevent
  third_party/libjpeg.gni
  third_party/libjpeg_turbo
  third_party/libphonenumber/dist/javascript/i18n/phonenumbers/metadata.js

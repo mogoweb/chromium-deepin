@@ -21,9 +21,11 @@ fixes/font-gc-asan.patch
 fixes/libsync-rk3588-panthor.patch
 fixes/headless-gn.patch
 fixes/stdatomic.patch
-fixes/pipewire14.patch
 fixes/make-pair.patch
+fixes/media-cstdint.patch
+fixes/perfetto-nullptr.patch
 
+upstream/media-optional.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
@@ -38,6 +40,7 @@ disable/widevine-cdm-cu.patch
 disable/clang-version-check.patch
 disable/screen-ai-blob.patch
 disable/buildtools-libc.patch
+disable/node-version-ck.patch
 
 system/gperf.patch
 system/icu-shim.patch
