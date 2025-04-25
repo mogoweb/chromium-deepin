@@ -14,6 +14,8 @@ chromium (136.0.7103.48-1) UNRELEASED; urgency=high
       path_exists() users.
     - disable/node-version-ck.patch: add patch to disable upstream's strict
       nodejs version check.
+    - fixes/media-cstdint.patch: add missing header include.
+    - upstream/media-optional.patch: add missing header include.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 

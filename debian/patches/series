@@ -22,7 +22,9 @@ fixes/libsync-rk3588-panthor.patch
 fixes/headless-gn.patch
 fixes/stdatomic.patch
 fixes/make-pair.patch
+fixes/media-cstdint.patch
 
+upstream/media-optional.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
