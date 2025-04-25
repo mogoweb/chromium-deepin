@@ -23,6 +23,7 @@ fixes/headless-gn.patch
 fixes/stdatomic.patch
 fixes/make-pair.patch
 fixes/media-cstdint.patch
+fixes/perfetto-nullptr.patch
 
 upstream/media-optional.patch
 
