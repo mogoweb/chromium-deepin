@@ -1,7 +1,9 @@
 chromium (136.0.7103.48-1~deb12u1) UNRELEASED; urgency=high
 
   * New upstream stable release.
-  * d/rules: disable warning-suppression-mappings; llvm too old.
+  * d/rules:
+    - disable warning-suppression-mappings; llvm too old.
+    - add workaround for bookworm's nodejs (paired w/ node18-import.patch).
   * d/control: drop libevent-dev build-dep, no longer used.
   * d/scripts/unbundle:
     - libavif no longer used, no need to specify bundling.
@@ -19,8 +21,8 @@ chromium (136.0.7103.48-1~deb12u1) UNRELEASED; urgency=high
     - fixes/perfetto-nullptr.patch: add nullptr_t std qualification.
     - bookworm/gn-absl.patch: refresh.
     - bookworm/crabbyav1f.patch: refresh.
-    - bookworm/minify.patch: add patch to work around bookworm's node 18
-      import rules.
+    - bookworm/node18-import.patch: add patch to work around bookworm's
+      node 18 import rules.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 

@@ -9,21 +9,23 @@ SyntaxError: Cannot use import statement outside a module
 
 --- a/ui/webui/resources/tools/minify_js.py
 +++ b/ui/webui/resources/tools/minify_js.py
-@@ -32,10 +32,15 @@ def main(argv):
-   # Spawn a NodeJS script to use the programmatic Terser API, since the CLI API
+@@ -33,7 +33,7 @@ def main(argv):
    # does not allow compressing multiple files at once. This is done to avoid
    # launching NodeJS once for every input file.
--  node.RunNode([
+   node.RunNode([
 -      os.path.join(_HERE_PATH, 'minify_js.js'), '--in_folder', in_path,
-+  js = os.path.join(_HERE_PATH, 'minify_js.js')
-+  mjs = os.path.join(_HERE_PATH, 'minify_js.mjs')
-+  os.rename(js, mjs)
-+  try: node.RunNode([
-+      mjs, '--in_folder', in_path,
++      os.path.join(_HERE_PATH, 'minify_js.mjs'), '--in_folder', in_path,
        '--out_folder', out_path
    ] + args.in_files)
-+  finally:
-+    os.rename(mjs, js)
  
-   manifest_data = {}
-   manifest_data['base_dir'] = args.out_folder
+--- a/ui/webui/resources/tools/eslint_ts.config_base.mjs
++++ b/ui/webui/resources/tools/eslint_ts.config_base.mjs
+@@ -4,7 +4,7 @@
+ 
+ import typescriptEslint from '../../../../third_party/node/node_modules/@typescript-eslint/eslint-plugin/dist/index.js';
+ import tsParser from '../../../../third_party/node/node_modules/@typescript-eslint/parser/dist/index.js';
+-import webUiEslint from './webui_eslint_plugin.js';
++import webUiEslint from './webui_eslint_plugin.mjs';
+ 
+ export default {
+   languageOptions: {
