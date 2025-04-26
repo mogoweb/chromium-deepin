@@ -73,6 +73,7 @@ bookworm/foreach.patch
 bookworm/eslint.patch
 bookworm/crabbyav1f.patch
 bookworm/node18-import.patch
+bookworm/rust-is-none-or.patch
 
 # unused patches:
 # bookworm/blink-attrib.patch

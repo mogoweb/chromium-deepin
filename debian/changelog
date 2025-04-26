@@ -20,9 +20,11 @@ chromium (136.0.7103.48-1~deb12u1) UNRELEASED; urgency=high
     - upstream/media-optional.patch: add missing header include.
     - fixes/perfetto-nullptr.patch: add nullptr_t std qualification.
     - bookworm/gn-absl.patch: refresh.
-    - bookworm/crabbyav1f.patch: refresh.
+    - bookworm/crabbyav1f.patch: update for changed rustflags location.
     - bookworm/node18-import.patch: add patch to work around bookworm's
       node 18 import rules.
+    - bookworm/rust-is-none-or.patch: add patch to work around missing
+      is_none_or() function in bookworm's rust 1.78.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 
