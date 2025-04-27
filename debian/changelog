@@ -26,6 +26,7 @@ chromium (136.0.7103.48-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/rust-is-none-or.patch: add patch to work around missing
       is_none_or() function in bookworm's rust 1.78.
     - bookworm/fmodf.patch: add gcc-12 specific build fix.
+    - bookworm/dav1d-extern.patch: add linker fix for older libdav1d.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 
