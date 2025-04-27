@@ -18,6 +18,16 @@ chromium (136.0.7103.48-1) UNRELEASED; urgency=high
     - upstream/media-optional.patch: add missing header include.
     - fixes/perfetto-nullptr.patch: add nullptr_t std qualification.
 
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - third_party/0001-third_party-lss-Don-t-look-for-mmap2-on-ppc64.patch:
+      drop due to upstream fixes
+    - third_party/0002-third_party-lss-kernel-structs.patch: refresh for
+      upstream changes
+    - breakpad/0001-Implement-support-for-ppc64-on-Linux.patch: refresh for
+      upstream changes
+    - core/cargo-add-ppc64.diff: drop due to upstream fixes
+
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 
 chromium (135.0.7049.114-1) unstable; urgency=high
