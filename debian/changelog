@@ -1,6 +1,14 @@
-chromium (136.0.7103.48-1) UNRELEASED; urgency=high
+chromium (136.0.7103.59-1) unstable; urgency=high
 
+  [ Andres Salomon ]
   * New upstream stable release.
+    - CVE-2025-4096: Heap buffer overflow in HTML. Reported by Anonymous.
+    - CVE-2025-4050: Out of bounds memory access in DevTools.
+      Reported by Anonymous.
+    - CVE-2025-4051: Insufficient data validation in DevTools.
+      Reported by Daniel Fröjdendahl.
+    - CVE-2025-4052: Inappropriate implementation in DevTools.
+      Reported by vanillawebdev.
   * d/rules: disable warning-suppression-mappings; llvm too old.
   * d/control: drop libevent-dev build-dep, no longer used.
   * d/scripts/unbundle:
@@ -28,7 +36,7 @@ chromium (136.0.7103.48-1) UNRELEASED; urgency=high
       upstream changes
     - core/cargo-add-ppc64.diff: drop due to upstream fixes
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 29 Apr 2025 17:21:56 -0400
 
 chromium (135.0.7049.114-1) unstable; urgency=high
 
