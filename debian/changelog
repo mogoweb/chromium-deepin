@@ -1,4 +1,4 @@
-chromium (136.0.7103.59-1~deb12u1) UNRELEASED; urgency=high
+chromium (136.0.7103.59-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.

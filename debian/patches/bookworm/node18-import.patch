@@ -14,5 +14,5 @@ SyntaxError: Cannot use import statement outside a module
 +{
 +  "name": "webui-tools",
 +  "version": "1.0.0",
-+  "type": "module",
++  "type": "module"
 +}
