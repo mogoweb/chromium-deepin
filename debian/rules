@@ -159,17 +159,7 @@ set_up_bindgen:
 	ar --output debian/bindgen/root vx debian/bindgen/bindgen_0.66.1-3_$(DEB_HOST_ARCH).deb
 	tar -C debian/bindgen/root -Jxvf debian/bindgen/root/data.tar.xz
 
-# bookworm workaround for nodejs 18; coupled with bookworm/node18-import.patch
-JSCONV = ui/webui/resources/tools/minify_js ui/webui/resources/tools/webui_eslint_plugin
-
-bookworm_nodejs_workaround:
-	for f in $(JSCONV); do cp $$f.js $$f.mjs; done
-
-clean_bookworm_nodejs_workaround:
-	for f in $(JSCONV); do rm -f $$f.mjs; done
-
-
-override_dh_auto_configure: test_armhf_neon set_up_bindgen bookworm_nodejs_workaround
+override_dh_auto_configure: test_armhf_neon set_up_bindgen
 	# verify that we're not accidentally uploading to stable-security without CVEs
 	@echo "$(DIST)" | grep -q -- '-security' && { \
 		dpkg-parsechangelog -l debian/changelog | grep -q 'CVE-' || { \
@@ -216,7 +206,7 @@ override_dh_auto_install-arch:
 override_dh_fixperms:
 	dh_fixperms --exclude chrome-sandbox
 
-override_dh_auto_clean: clean_bookworm_nodejs_workaround
+override_dh_auto_clean:
 	rm -rf debian/bindgen/root
 	rm -rf third_party/node/linux/node-linux-x64
 	rm -rf out

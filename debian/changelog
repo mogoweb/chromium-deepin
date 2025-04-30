@@ -9,9 +9,7 @@ chromium (136.0.7103.59-1~deb12u1) UNRELEASED; urgency=high
       Reported by Daniel Fröjdendahl.
     - CVE-2025-4052: Inappropriate implementation in DevTools.
       Reported by vanillawebdev.
-  * d/rules:
-    - disable warning-suppression-mappings; llvm too old.
-    - add workaround for bookworm's nodejs (paired w/ node18-import.patch).
+  * d/rules: disable warning-suppression-mappings; llvm too old.
   * d/control: drop libevent-dev build-dep, no longer used.
   * d/scripts/unbundle:
     - libavif no longer used, no need to specify bundling.
