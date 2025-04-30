@@ -1,3 +1,9 @@
+chromium (136.0.7103.59-2) unstable; urgency=high
+
+  * Delete third_party/jetstream due to non-free ("do no evil") license.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 30 Apr 2025 17:38:38 -0400
+
 chromium (136.0.7103.59-1) unstable; urgency=high
 
   [ Andres Salomon ]
