@@ -116,6 +116,7 @@ Files-Excluded:
  third_party/harfbuzz-ng/src
  third_party/icu/source/data
  third_party/instrumented_lib*
+ third_party/jetstream
  third_party/libc++/src/test
  third_party/libei
  third_party/libjpeg.gni
