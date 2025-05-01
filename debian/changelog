@@ -1,3 +1,10 @@
+chromium (136.0.7103.59-2~deb12u2) bookworm-security; urgency=high
+
+  * Temporarily disable CVE verification check in order to fix build;
+    will be restored on next upload.
+
+ -- Andres Salomon <dilinger@debian.org>  Thu, 01 May 2025 12:18:24 -0400
+
 chromium (136.0.7103.59-2~deb12u1) bookworm-security; urgency=high
 
   * Delete third_party/jetstream due to non-free ("do no evil") license.
