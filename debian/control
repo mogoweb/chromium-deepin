@@ -27,7 +27,6 @@ Build-Depends:
  elfutils,
  wget,
  flex,
- yasm,
  xvfb,
  wdiff,
  gperf,
