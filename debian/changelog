@@ -1,7 +1,12 @@
 chromium (136.0.7103.59-3) UNRELEASED; urgency=high
 
+  [ Andres Salomon ]
   * Drop yasm build-dep; upstream switched to nasm about 5 years ago
     (closes: #1104218).
+
+  [ Daniel Richard G. ]
+  * d/patches/fixes/armhf-no-thumb.patch: Fix armhf FTBFS due to use of a
+    Rust target (thumbv7neon) that Debian does not ship.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 30 Apr 2025 17:38:38 -0400
 
