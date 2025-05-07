@@ -1,3 +1,16 @@
+chromium (136.0.7103.92-1~deb12u1) bookworm-security; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream security release.
+   - CVE-2025-4372: Use after free in WebAudio.
+      Reported by Huang Xilin of Ant Group Light-Year Security Lab.
+
+  [ Daniel Richard G. ]
+  * d/patches/fixes/armhf-no-thumb.patch: Fix armhf FTBFS due to use of a
+    Rust target (thumbv7neon) that Debian does not ship.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 06 May 2025 14:13:50 -0400
+
 chromium (136.0.7103.59-2~deb12u2) bookworm-security; urgency=high
 
   * Temporarily disable CVE verification check in order to fix build;
