@@ -12,6 +12,24 @@ export DEB_BUILD_MAINT_OPTIONS+=optimize=-lto
 # indicate that binary targets do not require root
 export DEB_RULES_REQUIRES_ROOT=no
 
+-include /usr/share/dpkg/architecture.mk
+
+# cross-build support
+ifneq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
+ifeq ($(filter cross,$(DEB_BUILD_PROFILES)),)
+$(error Please specify the "cross" build profile)
+endif
+export DEB_BUILD_OPTIONS+=crossbuildcanrunhostbinaries
+export HOST_EXEC_WRAPPER=qemu-$(DEB_HOST_ARCH_CPU)
+pkg_config_arch=$(subst i686,i386,$(DEB_HOST_GNU_TYPE))
+export PKG_CONFIG_LIBDIR=/usr/share/pkgconfig:/usr/lib/$(pkg_config_arch)/pkgconfig
+ifeq (armhf,$(DEB_HOST_ARCH))
+# avoid "Unable to find a guest_base to satisfy all
+# guest address mapping requirements" error
+export QEMU_GUEST_BASE=0x80000000
+endif
+endif
+
 # compile with clang (gcc is currently not supported)
 export AR=ar
 export NM=nm
@@ -74,9 +92,12 @@ endif
 ifeq (armhf,$(DEB_HOST_ARCH))
 defines+=host_cpu=\"arm\" use_v4l2_codec=true use_vaapi=false arm_use_neon=true
 endif
+ifeq (ppc64el,$(DEB_HOST_ARCH))
+defines+=host_cpu=\"ppc64\" use_vaapi=true
+endif
 
-# thin lto requires >4 GB RAM, so avoid it on 32-bit architectures
-ifeq ($(filter armhf i386,$(DEB_HOST_ARCH)),)
+# thin lto requires >4 GB RAM, so avoid it on 32-bit build hosts
+ifeq ($(filter armhf i386,$(DEB_BUILD_ARCH)),)
 defines+=use_thin_lto=true
 else
 defines+=use_thin_lto=false \
