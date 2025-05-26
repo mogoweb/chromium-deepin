@@ -3,6 +3,7 @@ debianization/sandbox.patch
 debianization/master-preferences.patch
 debianization/clang-version.patch
 debianization/swiftshader-use-llvm-16.patch
+debianization/cross-build.patch
 
 fixes/ps-print.patch
 fixes/widevine-locations.patch
@@ -11,7 +12,6 @@ fixes/material-utils.patch
 fixes/strlcpy.patch
 fixes/bindgen.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
-fixes/clang-rust-target.patch
 fixes/predictor-denial-of-service.patch
 fixes/fix-assert-in-vnc-sessions.patch
 fixes/armhf-timespec.patch
@@ -28,6 +28,7 @@ fixes/armhf-no-thumb.patch
 
 upstream/media-optional.patch
 upstream/arm32-crel.patch
+upstream/cross-build-target.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch

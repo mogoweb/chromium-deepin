@@ -1,3 +1,21 @@
+chromium (136.0.7103.113-1.1) unstable; urgency=high
+
+  [ Daniel Richard G. ]
+  * d/control: Elaborate Build-Depends: clause for a cross build. Also drop
+    x11-apps, as it appears to be unused, as well as libmodpbase64-dev as
+    it is built in-tree under third_party/modp_b64/. Add a Build-Conflicts:
+    clause to avoid some snafus on Ubuntu.
+  * d/patches:
+    - debianization/cross-build.patch: New patch implementing the bulk of our
+      cross-build support.
+    - upstream/cross-build-target.patch: New upstream patch that sets
+      --target=... explicitly on all builds. Needed for a cross build.
+    - fixes/clang-rust-target.patch: Drop, as this patch is made redundant by
+      the preceding one.
+  * d/rules: Add settings and environment exports needed for a cross build.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 14 May 2025 14:41:32 -0400
+
 chromium (136.0.7103.113-1) unstable; urgency=high
 
   * New upstream security release.
