@@ -33,6 +33,7 @@ chromium (137.0.7151.40-1) UNRELEASED; urgency=high
     - upstream/mojo-optional.patch: add build fix pulled from upstream.
     - bookworm/constexpr3.patch: add yet another constexpr workaround.
     - upstream/opener-heur.patch: add build fix pulled from upstream.
+    - upstream/allowed-state.patch: add build fix pulled from upstream.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 14 May 2025 14:41:32 -0400
 

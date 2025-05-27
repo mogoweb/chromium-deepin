@@ -30,6 +30,7 @@ upstream/cross-build-target.patch
 upstream/span-fwd.patch
 upstream/mojo-optional.patch
 upstream/opener-heur.patch
+upstream/allowed-state.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
