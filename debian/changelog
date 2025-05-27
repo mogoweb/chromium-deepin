@@ -30,6 +30,7 @@ chromium (137.0.7151.55-1) UNRELEASED; urgency=high
     - CVE-2025-5067: Inappropriate implementation in Tab Strip.
       Reported by Khalil Zhani.
   * d/control: switch bindgen:any build-dep to just bindgen.
+  * d/rules: disable optimize_webui for now due to a rollup 3.x issue.
   * d/patches:
     - upstream/media-optional.patch: drop, merged upstream.
     - fixes/media-cstdint.patch: drop part of patch merged upstream.
