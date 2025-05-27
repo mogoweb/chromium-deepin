@@ -23,10 +23,8 @@ fixes/headless-gn.patch
 fixes/stdatomic.patch
 fixes/make-pair.patch
 fixes/media-cstdint.patch
-fixes/perfetto-nullptr.patch
 fixes/armhf-no-thumb.patch
 
-upstream/media-optional.patch
 upstream/arm32-crel.patch
 upstream/cross-build-target.patch
 
@@ -45,7 +43,6 @@ disable/screen-ai-blob.patch
 disable/buildtools-libc.patch
 disable/node-version-ck.patch
 
-system/gperf.patch
 system/icu-shim.patch
 system/jpeg.patch
 system/openjpeg.patch

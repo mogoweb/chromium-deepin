@@ -1,4 +1,4 @@
-chromium (136.0.7103.113-1.1) unstable; urgency=high
+chromium (137.0.7151.40-1) UNRELEASED; urgency=high
 
   [ Daniel Richard G. ]
   * d/control: Elaborate Build-Depends: clause for a cross build. Also drop
@@ -13,6 +13,19 @@ chromium (136.0.7103.113-1.1) unstable; urgency=high
     - fixes/clang-rust-target.patch: Drop, as this patch is made redundant by
       the preceding one.
   * d/rules: Add settings and environment exports needed for a cross build.
+
+  [ Andres Salomon ]
+  * New upstream stable release.
+  * d/patches:
+    - upstream/media-optional.patch: drop, merged upstream.
+    - fixes/media-cstdint.patch: drop part of patch merged upstream.
+    - fixes/perfetto-nullptr.patch: drop due to upstream code changes.
+    - upstream/arm32-crel.patch: refresh.
+    - disable/tests.patch: refresh.
+    - system/gperf.patch: drop, merged upstream.
+    - bookworm/gn-revert-path-exists.patch: refresh.
+    - bookworm/gn-allowlist.patch: refresh.
+    - ungoogled/disable-privacy-sandbox.patch: update from upstream.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 14 May 2025 14:41:32 -0400
 
