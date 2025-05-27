@@ -35,6 +35,14 @@ chromium (137.0.7151.40-1) UNRELEASED; urgency=high
     - upstream/opener-heur.patch: add build fix pulled from upstream.
     - upstream/allowed-state.patch: add build fix pulled from upstream.
 
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - sandbox/features.gni: refresh for upstream changes
+    - third_party/0003-third_party-ffmpeg-Add-ppc64-generated-config.patch:
+      regenerate from upstream sources
+    - fixes/fix-partition-alloc-compile.patch: refresh for upstream changes
+    - third_party/skia-vsx-instructions.patch: refresh for upstream changes
+
  -- Andres Salomon <dilinger@debian.org>  Wed, 14 May 2025 14:41:32 -0400
 
 chromium (136.0.7103.113-1) unstable; urgency=high
