@@ -19,7 +19,7 @@ Build-Depends:
  libclang-rt-19-dev,
  rustc:any (>= 1.74),
  libstd-rust-dev (>= 1.74) <cross>,
- bindgen:any,
+ bindgen,
  python3:any,
  pkgconf,
  ninja-build,
