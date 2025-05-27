@@ -29,6 +29,7 @@ upstream/arm32-crel.patch
 upstream/cross-build-target.patch
 upstream/span-fwd.patch
 upstream/mojo-optional.patch
+upstream/opener-heur.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
