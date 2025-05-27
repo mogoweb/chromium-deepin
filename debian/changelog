@@ -26,6 +26,7 @@ chromium (137.0.7151.40-1) UNRELEASED; urgency=high
     - bookworm/gn-revert-path-exists.patch: refresh.
     - bookworm/gn-allowlist.patch: refresh.
     - ungoogled/disable-privacy-sandbox.patch: update from upstream.
+  * d/control: switch bindgen:any build-dep to just bindgen.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 14 May 2025 14:41:32 -0400
 
