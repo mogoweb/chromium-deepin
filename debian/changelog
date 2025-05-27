@@ -1,4 +1,4 @@
-chromium (137.0.7151.40-1) UNRELEASED; urgency=high
+chromium (137.0.7151.55-1) UNRELEASED; urgency=high
 
   [ Daniel Richard G. ]
   * d/control: Elaborate Build-Depends: clause for a cross build. Also drop
@@ -16,6 +16,19 @@ chromium (137.0.7151.40-1) UNRELEASED; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
+    - CVE-2025-5063: Use after free in Compositing. Reported by Anonymous.
+    - CVE-2025-5280: Out of bounds write in V8. Reported by [pwn2car].
+    - CVE-2025-5064: Inappropriate implementation in Background Fetch API.
+      Reported by Maurice Dauer .
+    - CVE-2025-5065: Inappropriate implementation in FileSystemAccess API.
+      Reported by NDevTK.
+    - CVE-2025-5066: Inappropriate implementation in Messages.
+      Reported by Mohit Raj (shadow2639) .
+    - CVE-2025-5281: Inappropriate implementation in BFCache.
+      Reported by Jesper van den Ende (Pelican Party Studios).
+    - CVE-2025-5283: Use after free in libvpx. Reported by Mozilla.
+    - CVE-2025-5067: Inappropriate implementation in Tab Strip.
+      Reported by Khalil Zhani.
   * d/control: switch bindgen:any build-dep to just bindgen.
   * d/patches:
     - upstream/media-optional.patch: drop, merged upstream.
