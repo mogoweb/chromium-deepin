@@ -16,6 +16,7 @@ chromium (137.0.7151.40-1) UNRELEASED; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
+  * d/control: switch bindgen:any build-dep to just bindgen.
   * d/patches:
     - upstream/media-optional.patch: drop, merged upstream.
     - fixes/media-cstdint.patch: drop part of patch merged upstream.
@@ -25,10 +26,12 @@ chromium (137.0.7151.40-1) UNRELEASED; urgency=high
     - system/gperf.patch: drop, merged upstream.
     - bookworm/gn-revert-path-exists.patch: refresh.
     - bookworm/gn-allowlist.patch: refresh.
-    - ungoogled/disable-privacy-sandbox.patch: update from upstream.
+    - ungoogled/disable-privacy-sandbox.patch: update from ungoogled.
     - bookworm/clang19.patch: add new unsupported arg removal
       (-fextend-variable-liveness).
-  * d/control: switch bindgen:any build-dep to just bindgen.
+    - upstream/span-fwd.patch: add build fix pulled from upstream.
+    - upstream/mojo-optional.patch: add build fix pulled from upstream.
+    - bookworm/constexpr3.patch: add yet another constexpr workaround.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 14 May 2025 14:41:32 -0400
 

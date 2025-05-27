@@ -27,6 +27,8 @@ fixes/armhf-no-thumb.patch
 
 upstream/arm32-crel.patch
 upstream/cross-build-target.patch
+upstream/span-fwd.patch
+upstream/mojo-optional.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
@@ -57,6 +59,7 @@ bookworm/constflatset.patch
 bookworm/libxml-parseerr.patch
 bookworm/gn-allowlist.patch
 bookworm/adler1.patch
+bookworm/constexpr3.patch
 
 # unused patches:
 # bookworm/blink-attrib.patch
