@@ -1,4 +1,10 @@
-chromium (137.0.7151.55-1~deb12u1) bookworm-security; urgency=high
+chromium (137.0.7151.55-2~deb12u1) bookworm-security; urgency=high
+
+  * Switch build-deps with :all to :native.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 28 May 2025 01:55:46 -0400
+
+chromium (137.0.7151.55-1) unstable; urgency=high
 
   [ Daniel Richard G. ]
   * d/control: Elaborate Build-Depends: clause for a cross build. Also drop
