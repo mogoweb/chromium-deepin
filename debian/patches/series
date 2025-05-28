@@ -32,6 +32,7 @@ upstream/mojo-optional.patch
 upstream/opener-heur.patch
 upstream/allowed-state.patch
 upstream/pdfium-libpng.patch
+upstream/safety-hub-set.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch

@@ -49,6 +49,7 @@ chromium (137.0.7151.55-1) UNRELEASED; urgency=high
     - upstream/opener-heur.patch: add build fix pulled from upstream.
     - upstream/allowed-state.patch: add build fix pulled from upstream.
     - upstream/pdfium-libpng.patch: add build fix pulled from upstream.
+    - upstream/safety-hub-set.patch: add build fix pulled from upstream.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
