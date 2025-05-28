@@ -3,6 +3,7 @@ debianization/sandbox.patch
 debianization/master-preferences.patch
 debianization/clang-version.patch
 debianization/swiftshader-use-llvm-16.patch
+debianization/cross-build.patch
 
 fixes/ps-print.patch
 fixes/widevine-locations.patch
@@ -11,7 +12,6 @@ fixes/material-utils.patch
 fixes/strlcpy.patch
 fixes/bindgen.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
-fixes/clang-rust-target.patch
 fixes/predictor-denial-of-service.patch
 fixes/fix-assert-in-vnc-sessions.patch
 fixes/armhf-timespec.patch
@@ -23,11 +23,16 @@ fixes/headless-gn.patch
 fixes/stdatomic.patch
 fixes/make-pair.patch
 fixes/media-cstdint.patch
-fixes/perfetto-nullptr.patch
 fixes/armhf-no-thumb.patch
 
-upstream/media-optional.patch
 upstream/arm32-crel.patch
+upstream/cross-build-target.patch
+upstream/span-fwd.patch
+upstream/mojo-optional.patch
+upstream/opener-heur.patch
+upstream/allowed-state.patch
+upstream/pdfium-libpng.patch
+upstream/safety-hub-set.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
@@ -44,7 +49,6 @@ disable/screen-ai-blob.patch
 disable/buildtools-libc.patch
 disable/node-version-ck.patch
 
-system/gperf.patch
 system/icu-shim.patch
 system/jpeg.patch
 system/openjpeg.patch
@@ -66,6 +70,7 @@ bookworm/gn-absl.patch
 bookworm/partially-deployed-mseal-syscall.patch
 bookworm/constexpr.patch
 bookworm/constexpr2.patch
+bookworm/constexpr3.patch
 bookworm/bubble-contents.patch
 bookworm/rust-visibility.patch
 bookworm/less-void.patch

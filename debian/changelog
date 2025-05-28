@@ -1,3 +1,66 @@
+chromium (137.0.7151.55-1~deb12u1) bookworm-security; urgency=high
+
+  [ Daniel Richard G. ]
+  * d/control: Elaborate Build-Depends: clause for a cross build. Also drop
+    x11-apps, as it appears to be unused, as well as libmodpbase64-dev as
+    it is built in-tree under third_party/modp_b64/. Add a Build-Conflicts:
+    clause to avoid some snafus on Ubuntu.
+  * d/patches:
+    - debianization/cross-build.patch: New patch implementing the bulk of our
+      cross-build support.
+    - upstream/cross-build-target.patch: New upstream patch that sets
+      --target=... explicitly on all builds. Needed for a cross build.
+    - fixes/clang-rust-target.patch: Drop, as this patch is made redundant by
+      the preceding one.
+  * d/rules: Add settings and environment exports needed for a cross build.
+
+  [ Andres Salomon ]
+  * New upstream stable release.
+    - CVE-2025-5063: Use after free in Compositing. Reported by Anonymous.
+    - CVE-2025-5280: Out of bounds write in V8. Reported by [pwn2car].
+    - CVE-2025-5064: Inappropriate implementation in Background Fetch API.
+      Reported by Maurice Dauer .
+    - CVE-2025-5065: Inappropriate implementation in FileSystemAccess API.
+      Reported by NDevTK.
+    - CVE-2025-5066: Inappropriate implementation in Messages.
+      Reported by Mohit Raj (shadow2639) .
+    - CVE-2025-5281: Inappropriate implementation in BFCache.
+      Reported by Jesper van den Ende (Pelican Party Studios).
+    - CVE-2025-5283: Use after free in libvpx. Reported by Mozilla.
+    - CVE-2025-5067: Inappropriate implementation in Tab Strip.
+      Reported by Khalil Zhani.
+  * d/control: switch bindgen:any build-dep to bindgen:native.
+  * d/rules: disable optimize_webui for now due to a rollup 3.x issue.
+  * d/patches:
+    - upstream/media-optional.patch: drop, merged upstream.
+    - fixes/media-cstdint.patch: drop part of patch merged upstream.
+    - fixes/perfetto-nullptr.patch: drop due to upstream code changes.
+    - upstream/arm32-crel.patch: refresh.
+    - disable/tests.patch: refresh.
+    - system/gperf.patch: drop, merged upstream.
+    - bookworm/gn-revert-path-exists.patch: refresh.
+    - bookworm/gn-allowlist.patch: refresh.
+    - ungoogled/disable-privacy-sandbox.patch: update from ungoogled.
+    - bookworm/clang19.patch: add new unsupported arg removal
+      (-fextend-variable-liveness).
+    - upstream/span-fwd.patch: add build fix pulled from upstream.
+    - upstream/mojo-optional.patch: add build fix pulled from upstream.
+    - bookworm/constexpr3.patch: add yet another constexpr workaround.
+    - upstream/opener-heur.patch: add build fix pulled from upstream.
+    - upstream/allowed-state.patch: add build fix pulled from upstream.
+    - upstream/pdfium-libpng.patch: add build fix pulled from upstream.
+    - upstream/safety-hub-set.patch: add build fix pulled from upstream.
+
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - sandbox/features.gni: refresh for upstream changes
+    - third_party/0003-third_party-ffmpeg-Add-ppc64-generated-config.patch:
+      regenerate from upstream sources
+    - fixes/fix-partition-alloc-compile.patch: refresh for upstream changes
+    - third_party/skia-vsx-instructions.patch: refresh for upstream changes
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 27 May 2025 23:46:49 -0400
+
 chromium (136.0.7103.113-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
