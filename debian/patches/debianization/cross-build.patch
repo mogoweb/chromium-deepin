@@ -39,6 +39,22 @@ See dpkg-architecture(1) for more information on the Debian side, and the
 generate-ninja reference for details on host_* versus target_* variables:
 https://gn.googlesource.com/gn/+/master/docs/reference.md#predefined_variables
 
+Quick-and-dirty guide to performing a cross build:
+
+(This is written to target armhf, but any other architecture supported by
+the package may be substituted. Note that this should be run in a temporary
+environment, as the first three steps will result in major changes to the
+system. Also, while cross-building via sbuild(1) or the like should work as
+a matter of course, the steps below represent a simpler, "manual" approach.)
+
+1. # dpkg --add-architecture armhf
+
+2. # apt-get update
+
+3. # mk-build-deps -ir --host-arch armhf -Pcross /path/to/chromium-src/debian/control
+
+4. (in source tree) $ dpkg-buildpackage -b --host-arch armhf -Pcross
+
 
 --- a/build/gn_run_binary.py
 +++ b/build/gn_run_binary.py
