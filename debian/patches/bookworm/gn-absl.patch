@@ -148,6 +148,14 @@ libs.
    deps = [
      ":container_memory",
      ":hash_container_defaults",
+@@ -132,6 +134,7 @@ absl_test("flat_hash_map_test") {
+ 
+ absl_source_set("flat_hash_set") {
+   public = [ "flat_hash_set.h" ]
++  visibility = [ "*" ]
+   deps = [
+     ":container_memory",
+     ":hash_container_defaults",
 --- a/third_party/abseil-cpp/absl/numeric/BUILD.gn
 +++ b/third_party/abseil-cpp/absl/numeric/BUILD.gn
 @@ -9,6 +9,7 @@ absl_source_set("bits") {
