@@ -1,5 +1,6 @@
 chromium (137.0.7151.55-3) unstable; urgency=high
 
+  [ Timothy Pearson ]
   * Fix FTBFS on ppc64el due to third party xnnpack library
   * d/patches/ppc64le:
     - third_party/0001-add-xnn-ppc64el-support.patch: Add ppc64el support to
@@ -7,7 +8,7 @@ chromium (137.0.7151.55-3) unstable; urgency=high
     - third_party/0002-regenerate-xnn-buildgn.patch: Regenerate xnn BUILD.gn
       file
 
- -- Timothy Pearson <tpearson@raptorengineering.com>  Wed, 28 May 2025 15:39:00 -0500
+ -- Andres Salomon <dilinger@debian.org>  Wed, 28 May 2025 18:47:40 -0400
 
 chromium (137.0.7151.55-2) unstable; urgency=high
 
