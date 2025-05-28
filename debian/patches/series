@@ -83,6 +83,8 @@ bookworm/node18-import.patch
 bookworm/rust-is-none-or.patch
 bookworm/fmodf.patch
 bookworm/dav1d-extern.patch
+bookworm/toktrie-utf8chunks.patch
+bookworm/derivre-create.patch
 
 # unused patches:
 # bookworm/blink-attrib.patch

@@ -54,6 +54,10 @@ chromium (137.0.7151.55-1~deb12u1) bookworm-security; urgency=high
     - bookworm/constexpr.patch: refresh.
     - bookworm/stdarch-arm.patch: update path for rust crate.
     - bookworm/rust-is-none-or.patch: update path for rust crate.
+    - bookworm/toktrie-utf8chunks.patch: add workaround for missing
+      utf8_chunks() in rustc-web 1.78.
+    - bookworm/derivre-create.patch: enable rust unstable features
+      everywhere, and add some that derivre requires (from newer rustc).
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
