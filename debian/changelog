@@ -1,4 +1,4 @@
-chromium (137.0.7151.55-1) UNRELEASED; urgency=high
+chromium (137.0.7151.55-1) unstable; urgency=high
 
   [ Daniel Richard G. ]
   * d/control: Elaborate Build-Depends: clause for a cross build. Also drop
@@ -59,7 +59,7 @@ chromium (137.0.7151.55-1) UNRELEASED; urgency=high
     - fixes/fix-partition-alloc-compile.patch: refresh for upstream changes
     - third_party/skia-vsx-instructions.patch: refresh for upstream changes
 
- -- Andres Salomon <dilinger@debian.org>  Wed, 14 May 2025 14:41:32 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 27 May 2025 23:46:49 -0400
 
 chromium (136.0.7103.113-1) unstable; urgency=high
 
