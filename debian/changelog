@@ -53,7 +53,8 @@ chromium (137.0.7151.55-1~deb12u1) bookworm-security; urgency=high
     - bookworm/gn-absl.patch: add global visibility for another type.
     - bookworm/constexpr.patch: refresh.
     - bookworm/stdarch-arm.patch: update path for rust crate.
-    - bookworm/rust-is-none-or.patch: update path for rust crate.
+    - bookworm/rust-is-none-or.patch: add another workaround for missing
+      is_none_or() function.
     - bookworm/toktrie-utf8chunks.patch: add workaround for missing
       utf8_chunks() in rustc-web 1.78.
     - bookworm/derivre-create.patch: enable rust unstable features
