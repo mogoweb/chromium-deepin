@@ -50,6 +50,10 @@ chromium (137.0.7151.55-1~deb12u1) bookworm-security; urgency=high
     - upstream/allowed-state.patch: add build fix pulled from upstream.
     - upstream/pdfium-libpng.patch: add build fix pulled from upstream.
     - upstream/safety-hub-set.patch: add build fix pulled from upstream.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/constexpr.patch: refresh.
+    - bookworm/stdarch-arm.patch: update path for rust crate.
+    - bookworm/rust-is-none-or.patch: update path for rust crate.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
