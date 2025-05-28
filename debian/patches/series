@@ -157,6 +157,9 @@ ppc64le/third_party/0003-third_party-libvpx-Add-ppc64-generated-config.patch
 ppc64le/third_party/0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
 ppc64le/third_party/0004-third_party-libvpx-work-around-ambiguous-vsx.patch
 
+ppc64le/third_party/0001-add-xnn-ppc64el-support.patch
+ppc64le/third_party/0002-regenerate-xnn-buildgn.patch
+
 # Enable VSX acceleration in Skia.  Requires POWER8 or higher.
 ppc64le/third_party/skia-vsx-instructions.patch
 

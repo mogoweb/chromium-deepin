@@ -1,4 +1,16 @@
-chromium (137.0.7151.55-2~deb12u1) bookworm-security; urgency=high
+chromium (137.0.7151.55-3~deb12u1) bookworm-security; urgency=high
+
+  [ Timothy Pearson ]
+  * Fix FTBFS on ppc64el due to third party xnnpack library
+  * d/patches/ppc64le:
+    - third_party/0001-add-xnn-ppc64el-support.patch: Add ppc64el support to
+      xnn build system
+    - third_party/0002-regenerate-xnn-buildgn.patch: Regenerate xnn BUILD.gn
+      file
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 28 May 2025 18:47:40 -0400
+
+chromium (137.0.7151.55-2) unstable; urgency=high
 
   * Switch build-deps with :all to :native.
 
