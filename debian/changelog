@@ -1,3 +1,9 @@
+chromium (137.0.7151.55-4) UNRELEASED; urgency=low
+
+  * d/patches/ppc64le: merge ppc64le sandbox syscall patches
+
+ -- Jianfeng Liu <liujianfeng1994@gmail.com>  Thu, 29 May 2025 22:50:58 +0800
+
 chromium (137.0.7151.55-3) unstable; urgency=high
 
   [ Timothy Pearson ]
