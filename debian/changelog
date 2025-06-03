@@ -1,8 +1,15 @@
-chromium (137.0.7151.55-4) UNRELEASED; urgency=low
+chromium (137.0.7151.68-1) unstable; urgency=high
 
+  [ Andres Salomon]
+  * New upstream security release.
+    - CVE-2025-5419: Out of bounds read and write in V8. Reported by
+      Clement Lecigne and Benoît Sevens of Google Threat Analysis Group.
+    - CVE-2025-5068: Use after free in Blink. Reported by Walkman.
+
+  [ Jianfeng Liu ]
   * d/patches/ppc64le: merge ppc64le sandbox syscall patches
 
- -- Jianfeng Liu <liujianfeng1994@gmail.com>  Thu, 29 May 2025 22:50:58 +0800
+ -- Andres Salomon <dilinger@debian.org>  Tue, 03 Jun 2025 12:23:46 -0400
 
 chromium (137.0.7151.55-3) unstable; urgency=high
 
