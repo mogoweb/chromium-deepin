@@ -1,3 +1,25 @@
+chromium (137.0.7151.103-1~deb12u1) bookworm-security; urgency=high
+
+  * New upstream security release.
+    - CVE-2025-5958: Use after free in Media.
+      Reported by Huang Xilin of Ant Group Light-Year Security Lab.
+    - CVE-2025-5959: Type Confusion in V8.
+      Reported by Seunghyun Lee as part of TyphoonPWN 2025.
+  * Add build-dep on libc++-19-dev and switch to building statically
+    against clang's libc++ (instead of gcc's libstdc++).
+  * d/patches:
+    - fixes/absl-optional.patch: drop, only needed for libstdc++.
+    - fixes/font-gc-asan.patch: drop, only needed for libstdc++.
+    - fixes/stdatomic.patch: drop, only needed for libstdc++.
+    - fixes/make-pair.patch: drop, only needed for libstdc++.
+    - bookworm/constflatset.patch: drop, only needed for libstdc++.
+    - bookworm/constexpr2.patch: drop, only needed for libstdc++.
+    - bookworm/constexpr3.patch: drop, only needed for libstdc++.
+    - bookworm/foreach.patch: add patch from bookworm branch to fix
+      clang-19 build failure.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 10 Jun 2025 15:08:42 -0400
+
 chromium (137.0.7151.68-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon]
