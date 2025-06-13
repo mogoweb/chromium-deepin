@@ -1,3 +1,11 @@
+chromium (137.0.7151.103-2) UNRELEASED; urgency=high
+
+  * d/patches:
+    - fixes/armhf-icf.patch: add workaround for build failure on armhf
+      (thanks Daniel Richard G!).
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 10 Jun 2025 15:08:42 -0400
+
 chromium (137.0.7151.103-1) unstable; urgency=high
 
   * New upstream security release.
