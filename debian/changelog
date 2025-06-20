@@ -3,6 +3,7 @@ chromium (137.0.7151.119-1.1) UNRELEASED; urgency=high
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
     "argument unused" warnings on armhf due to -fstack-clash-protection.
+  * d/control, d/rules: Apply cross-build feedback from Helmut Grohne.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 17 Jun 2025 19:12:17 -0400
 
