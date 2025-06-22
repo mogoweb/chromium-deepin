@@ -1,4 +1,18 @@
-chromium (137.0.7151.119-1.1) UNRELEASED; urgency=high
+chromium (138.0.7204.35-1) UNRELEASED; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream stable release.
+  * d/patches:
+    - upstream/arm32-crel.patch: drop, merged upstream.
+    - upstream/cross-build-target.patch: drop, merged upstream.
+    - upstream/span-fwd.patch: drop, merged upstream.
+    - upstream/mojo-optional.patch: drop, merged upstream.
+    - upstream/opener-heur.patch: drop, merged upstream.
+    - upstream/allowed-state.patch: drop, merged upstream.
+    - upstream/pdfium-libpng.patch: drop, merged upstream.
+    - upstream/safety-hub-set.patch: drop, merged upstream.
+    - fixes/media-cstdint.patch: drop, merged upstream.
+    - debianization/clang-version.patch: refresh.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
