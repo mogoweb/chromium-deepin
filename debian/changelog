@@ -2,6 +2,8 @@ chromium (138.0.7204.35-1) UNRELEASED; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
+  * d/rules: drop enable_reading_list=false, as Reading List is now
+    supported for all architectures.
   * d/patches:
     - upstream/arm32-crel.patch: drop, merged upstream.
     - upstream/cross-build-target.patch: drop, merged upstream.
@@ -19,8 +21,8 @@ chromium (138.0.7204.35-1) UNRELEASED; urgency=high
     - disable/google-api-warning.patch: refresh.
     - disable/buildtools-libc.patch: refresh.
     - bookworm/clang19.patch: drop part of patch.
-  * d/rules: drop enable_reading_list=false, as Reading List is now
-    supported for all architectures.
+    - fixes/memory-allocator-dcheck-assert-fix.patch: update for renamed
+      config variable kMaxBucketed.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
