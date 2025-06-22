@@ -19,6 +19,8 @@ chromium (138.0.7204.35-1) UNRELEASED; urgency=high
     - disable/google-api-warning.patch: refresh.
     - disable/buildtools-libc.patch: refresh.
     - bookworm/clang19.patch: drop part of patch.
+  * d/rules: drop enable_reading_list=false, as Reading List is now
+    supported for all architectures.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
