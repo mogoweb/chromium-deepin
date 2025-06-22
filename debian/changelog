@@ -13,6 +13,12 @@ chromium (138.0.7204.35-1) UNRELEASED; urgency=high
     - upstream/safety-hub-set.patch: drop, merged upstream.
     - fixes/media-cstdint.patch: drop, merged upstream.
     - debianization/clang-version.patch: refresh.
+    - fixes/bindgen.patch: refresh.
+    - fixes/armhf-icf.patch: refresh.
+    - disable/catapult.patch: refresh.
+    - disable/google-api-warning.patch: refresh.
+    - disable/buildtools-libc.patch: refresh.
+    - bookworm/clang19.patch: drop part of patch.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
