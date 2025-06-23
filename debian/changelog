@@ -25,6 +25,9 @@ chromium (138.0.7204.35-1~deb12u1) UNRELEASED; urgency=high
       config variable kMaxBucketed.
     - disable/node-version-ck.patch: disable nodejs version check in
       protobuf.
+    - bookworm/stdarch-arm.patch: drop redundant portion of patch.
+    - bookworm/rust-is-none-or.patch: drop portion of patch due to
+      upstream changes.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
