@@ -32,6 +32,13 @@ chromium (138.0.7204.35-1) UNRELEASED; urgency=high
   * d/control, d/rules: Apply cross-build feedback from Helmut Grohne.
   * d/control: Add myself to Uploaders:, with Andres's blessing of course :)
 
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - third_party/0001-Add-PPC64-support-for-boringssl.patch: Refresh for
+      upstream changes
+    - third_party/0002-regenerate-xnn-buildgn.patch: Refresh for upstream
+      changes
+
  -- Andres Salomon <dilinger@debian.org>  Tue, 17 Jun 2025 19:12:17 -0400
 
 chromium (137.0.7151.119-1) unstable; urgency=high
