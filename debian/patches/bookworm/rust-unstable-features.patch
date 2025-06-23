@@ -1,0 +1,35 @@
+error[E0658]: use of unstable library feature 'error_in_core'
+   --> ../../third_party/rust/chromium_crates_io/vendor/ixdtf-v0_5/src/error.rs:109:6
+    |
+109 | impl core::error::Error for ParseError {}
+    |      ^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #103765 <https://github.com/rust-lang/rust/issues/103765> for more information
+    = help: add `#![feature(error_in_core)]` to the crate attributes to enable
+
+
+..and other missing feature errors
+
+--- a/third_party/rust/chromium_crates_io/vendor/calendrical_calculations-v0_2/src/lib.rs
++++ b/third_party/rust/chromium_crates_io/vendor/calendrical_calculations-v0_2/src/lib.rs
+@@ -7,6 +7,9 @@
+ // the Apache License, Version 2.0 which can be found at the calendrical_calculations
+ // package root or at http://www.apache.org/licenses/LICENSE-2.0.
+ 
++#![feature(inline_const)]
++#![feature(error_in_core)]
++
+ //! Calendrical calculations
+ //!
+ //! This crate implements algorithms from
+--- a/third_party/rust/chromium_crates_io/vendor/ixdtf-v0_5/src/lib.rs
++++ b/third_party/rust/chromium_crates_io/vendor/ixdtf-v0_5/src/lib.rs
+@@ -2,6 +2,8 @@
+ // called LICENSE at the top level of the ICU4X source tree
+ // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
+ 
++#![feature(error_in_core)]
++
+ //! Parsers for extended date time string and Duration parsing.
+ //!
+ //! The [Internet Extended Date/Time Fmt (IXDTF)][rfc9557] is laid out by RFC 9557. RFC 9557

@@ -80,6 +80,7 @@ bookworm/derivre-create.patch
 bookworm/gn-hpp11.patch
 bookworm/rust-split-at-checked.patch
 bookworm/crabbyav1f-macro-scope.patch
+bookworm/rust-unstable-features.patch
 
 # unused patches:
 # bookworm/blink-attrib.patch
