@@ -22,18 +22,9 @@ fixes/libsync-rk3588-panthor.patch
 fixes/headless-gn.patch
 #fixes/stdatomic.patch
 #fixes/make-pair.patch
-fixes/media-cstdint.patch
 fixes/armhf-no-thumb.patch
 fixes/armhf-icf.patch
 
-upstream/arm32-crel.patch
-upstream/cross-build-target.patch
-upstream/span-fwd.patch
-upstream/mojo-optional.patch
-upstream/opener-heur.patch
-upstream/allowed-state.patch
-upstream/pdfium-libpng.patch
-upstream/safety-hub-set.patch
 
 disable/tests.patch
 disable/tests-swiftshader.patch
