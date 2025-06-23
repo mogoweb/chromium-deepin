@@ -23,6 +23,8 @@ chromium (138.0.7204.35-1) UNRELEASED; urgency=high
     - bookworm/clang19.patch: drop part of patch.
     - fixes/memory-allocator-dcheck-assert-fix.patch: update for renamed
       config variable kMaxBucketed.
+    - disable/node-version-ck.patch: disable nodejs version check in
+      protobuf.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
