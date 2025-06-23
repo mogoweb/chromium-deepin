@@ -28,6 +28,11 @@ chromium (138.0.7204.35-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/stdarch-arm.patch: drop redundant portion of patch.
     - bookworm/rust-is-none-or.patch: drop portion of patch due to
       upstream changes.
+    - bookworm/gn-hpp11.patch: add another workaround for older gn.
+    - bookworm/rust-split-at-checked.patch: enable unstable rust feature
+      split_at_checked.
+    - bookworm/crabbyav1f-macro-scope.patch: fix (macro-created) variable
+      going out of scope.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
