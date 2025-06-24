@@ -33,3 +33,64 @@ error[E0658]: use of unstable library feature 'error_in_core'
  //! Parsers for extended date time string and Duration parsing.
  //!
  //! The [Internet Extended Date/Time Fmt (IXDTF)][rfc9557] is laid out by RFC 9557. RFC 9557
+--- a/third_party/rust/chromium_crates_io/vendor/zerotrie-v0_2/src/lib.rs
++++ b/third_party/rust/chromium_crates_io/vendor/zerotrie-v0_2/src/lib.rs
+@@ -2,6 +2,9 @@
+ // called LICENSE at the top level of the ICU4X source tree
+ // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
+ 
++#![feature(split_at_checked)]
++#![feature(error_in_core)]
++
+ //! A data structure offering zero-copy storage and retrieval of byte strings, with a focus
+ //! on the efficient storage of ASCII strings. Strings are mapped to `usize` values.
+ //!
+--- a/third_party/rust/chromium_crates_io/vendor/zerovec-v0_11/src/lib.rs
++++ b/third_party/rust/chromium_crates_io/vendor/zerovec-v0_11/src/lib.rs
+@@ -2,6 +2,11 @@
+ // called LICENSE at the top level of the ICU4X source tree
+ // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
+ 
++#![feature(error_in_core)]
++#![feature(slice_split_at_unchecked)] 
++#![feature(split_at_checked)]
++#![feature(inline_const)]
++
+ //! Zero-copy vector abstractions for arbitrary types, backed by byte slices.
+ //!
+ //! `zerovec` enables a far wider range of types — beyond just `&[u8]` and `&str` — to participate in
+--- a/third_party/rust/chromium_crates_io/vendor/tinystr-v0_8/src/lib.rs
++++ b/third_party/rust/chromium_crates_io/vendor/tinystr-v0_8/src/lib.rs
+@@ -2,6 +2,8 @@
+ // called LICENSE at the top level of the ICU4X source tree
+ // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
+ 
++#![feature(error_in_core)]
++
+ //! `tinystr` is a utility crate of the [`ICU4X`] project.
+ //!
+ //! It includes [`TinyAsciiStr`], a core API for representing small ASCII-only bounded length strings.
+--- a/third_party/rust/chromium_crates_io/vendor/icu_collections-v2/src/lib.rs
++++ b/third_party/rust/chromium_crates_io/vendor/icu_collections-v2/src/lib.rs
+@@ -2,6 +2,8 @@
+ // called LICENSE at the top level of the ICU4X source tree
+ // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
+ 
++#![feature(error_in_core)]
++
+ //! Efficient collections for Unicode data.
+ //!
+ //! This module is published as its own crate ([`icu_collections`](https://docs.rs/icu_collections/latest/icu_collections/))
+--- a/third_party/rust/chromium_crates_io/vendor/icu_locale_core-v2/src/lib.rs
++++ b/third_party/rust/chromium_crates_io/vendor/icu_locale_core-v2/src/lib.rs
+@@ -2,6 +2,10 @@
+ // called LICENSE at the top level of the ICU4X source tree
+ // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
+ 
++#![feature(split_at_checked)]
++#![feature(slice_split_at_unchecked)]
++#![feature(inline_const)]
++
+ //! Parsing, manipulating, and serializing Unicode Language and Locale Identifiers.
+ //!
+ //! This module is published as its own crate ([`icu_locale_core`](https://docs.rs/icu_locale_core/latest/icu_locale_core/))
