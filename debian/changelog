@@ -1,7 +1,13 @@
-chromium (138.0.7204.35-1) UNRELEASED; urgency=high
+chromium (138.0.7204.49-1) unstable; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
+    - CVE-2025-6555: Use after free in Animation.
+      Reported by Lyra Rebane (rebane2001).
+    - CVE-2025-6556: Insufficient policy enforcement in Loader.
+      Reported by Shaheen Fazim.
+    - CVE-2025-6557: Insufficient data validation in DevTools.
+      Reported by Ameen Basha M K.
   * d/rules: drop enable_reading_list=false, as Reading List is now
     supported for all architectures.
   * d/patches:
@@ -39,7 +45,7 @@ chromium (138.0.7204.35-1) UNRELEASED; urgency=high
     - third_party/0002-regenerate-xnn-buildgn.patch: Refresh for upstream
       changes
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 17 Jun 2025 19:12:17 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 24 Jun 2025 16:01:10 -0400
 
 chromium (137.0.7151.119-1) unstable; urgency=high
 
