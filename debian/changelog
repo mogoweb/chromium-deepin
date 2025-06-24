@@ -35,6 +35,8 @@ chromium (138.0.7204.35-1~deb12u1) UNRELEASED; urgency=high
       going out of scope.
     - rust-unstable-features.patch: enable a bunch more unstable rust
       features.
+    - bookworm/rust-box-to-vec.patch: work around older rustc not being
+      able to implicitly handle converted a boxed slice into a vector.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
