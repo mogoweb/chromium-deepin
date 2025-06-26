@@ -105,7 +105,7 @@ ifeq (32,$(DEB_BUILD_ARCH_BITS))
 defines+=use_thin_lto=false \
          concurrent_links=1
 else
-defines+=use_thin_lto=true
+defines+=use_thin_lto=false
 endif
 
 # disabled features

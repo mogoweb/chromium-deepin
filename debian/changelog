@@ -2,8 +2,10 @@ chromium (138.0.7204.35-1~deb12u1) UNRELEASED; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
-  * d/rules: drop enable_reading_list=false, as Reading List is now
-    supported for all architectures.
+  * d/rules:
+    - drop enable_reading_list=false, as Reading List is now
+      supported for all architectures.
+    - disable ThinLTO due to build failure with older rust.
   * d/patches:
     - upstream/arm32-crel.patch: drop, merged upstream.
     - upstream/cross-build-target.patch: drop, merged upstream.
