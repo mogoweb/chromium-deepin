@@ -3,6 +3,8 @@ chromium (138.0.7204.92-1) unstable; urgency=high
   * New upstream security release.
     - CVE-2025-6554: Type Confusion in V8. Reported by
       Clément Lecigne of Google's Threat Analysis Group.
+  * Add lintian override for embedded libjsoncpp in
+    libtest_trace_processor.so.
 
  -- Andres Salomon <dilinger@debian.org>  Mon, 30 Jun 2025 19:59:35 -0400
 
