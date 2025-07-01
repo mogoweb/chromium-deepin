@@ -5,8 +5,10 @@ chromium (138.0.7204.92-1) unstable; urgency=high
       Clément Lecigne of Google's Threat Analysis Group.
   * Add lintian override for embedded libjsoncpp in
     libtest_trace_processor.so.
+  * Drop the text about extensions from d/presubj, and instead ask bug
+    reporters to include output from chrome://gpu which is super useful.
 
- -- Andres Salomon <dilinger@debian.org>  Mon, 30 Jun 2025 19:59:35 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 01 Jul 2025 13:17:05 -0400
 
 chromium (138.0.7204.49-1) unstable; urgency=high
 
