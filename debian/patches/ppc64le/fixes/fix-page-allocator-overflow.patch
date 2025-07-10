@@ -9,24 +9,22 @@
  #else
    constexpr static size_t AllocationChunkSize = 4096;
  #endif
+--- a/base/allocator/partition_allocator/src/partition_alloc/page_allocator_constants.h
++++ b/base/allocator/partition_allocator/src/partition_alloc/page_allocator_constants.h
+@@ -209,11 +209,7 @@
+   return ~SystemPageOffsetMask();
+ }
+
+-#if PA_BUILDFLAG(PA_ARCH_CPU_PPC64_FAMILY)
+-constexpr size_t kPageMetadataShift = 6;  // 64 bytes per partition page.
+-#else
+ constexpr size_t kPageMetadataShift = 5;  // 32 bytes per partition page.
+-#endif
+ constexpr size_t kPageMetadataSize = 1 << kPageMetadataShift;
+
+ }  // namespace internal
 --- a/base/allocator/partition_allocator/src/partition_alloc/partition_alloc_constants.h
 +++ b/base/allocator/partition_allocator/src/partition_alloc/partition_alloc_constants.h
-@@ -103,7 +103,15 @@
-     defined(PARTITION_ALLOCATOR_CONSTANTS_POSIX_NONCONST_PAGE_SIZE)
- PA_ALWAYS_INLINE PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR size_t
- PartitionPageShift() {
-+#if PA_BUILDFLAG(PA_ARCH_CPU_PPC64_FAMILY)
-+  // We have to use 64 bytes per partition page on ppc64, therefore
-+  // we can only store 1/2 the pages per super page as other architectures
-+  // If this is incorrect, we can't fit in the PROT_WRITE hole for metadata,
-+  // which is only one system page long...
-+  return PageAllocationGranularityShift() + 3;
-+#else
-   return PageAllocationGranularityShift() + 2;
-+#endif
- }
- #elif defined(_MIPS_ARCH_LOONGSON) || PA_BUILDFLAG(PA_ARCH_CPU_LOONGARCH64)
- PA_ALWAYS_INLINE PAGE_ALLOCATOR_CONSTANTS_DECLARE_CONSTEXPR size_t
 @@ -392,7 +400,7 @@
  // TODO(casey.smalley@arm.com): under 64k pages we can end up in a situation
  // where a normal slot span will be large enough to contain multiple items,
