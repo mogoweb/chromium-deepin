@@ -1,3 +1,22 @@
+chromium (138.0.7204.157-1~deb12u1) bookworm-security; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream security release.
+    - CVE-2025-7656: Integer overflow in V8. Reported by Shaheen Fazim.
+    - CVE-2025-6558: Incorrect validation of untrusted input in ANGLE and
+      GPU. Reported by Clément Lecigne and Vlad Stolyarov of Google's
+      Threat Analysis Group.
+    - CVE-2025-7657: Use after free in WebRTC. Reported by jakebiles.
+
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - fixes/fix-page-allocator-overflow.patch: add to fix sporadic
+      partition allocator failures on ppc64el systems.
+    - third_party/use-sysconf-page-size-on-ppc64.patch: drop, no longer
+      needed.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 15 Jul 2025 15:35:02 -0400
+
 chromium (138.0.7204.92-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
