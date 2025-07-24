@@ -7,7 +7,7 @@ chromium (138.0.7204.168-1) unstable; urgency=high
     - 0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch:
       refresh.
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 15 Jul 2025 15:35:02 -0400
+ -- Andres Salomon <dilinger@debian.org>  Thu, 24 Jul 2025 13:43:34 -0400
 
 chromium (138.0.7204.157-1) unstable; urgency=high
 
