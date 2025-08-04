@@ -1,8 +1,15 @@
-chromium (138.0.7204.183-1) UNRELEASED
+chromium (139.0.7258.66-1) UNRELEASED; urgency=high
 
+  * New upstream stable release.
+  * d/copyright: delete third_party/enterprise_companion, as it includes a
+    binary.
+
+  [ Timothy Pearson ]
   * d/patches/ppc64le:
     - sandbox/0009-sandbox-updates-138.patch: Properly handle IPC and send
       syscalls
+
+ -- Andres Salomon <dilinger@debian.org>  Thu, 31 Jul 2025 17:09:07 -0400
 
 chromium (138.0.7204.183-1) unstable; urgency=high
 
