@@ -14,6 +14,7 @@ Rules-Requires-Root: no
 Build-Depends:
  debhelper (>= 11),
  devscripts,
+ llvm-19:native,
  lld-19:native,
  clang-19:native,
  clang-format-19:native,
@@ -28,7 +29,6 @@ Build-Depends:
  python3-jinja2:native,
  python3-pkg-resources,
  ca-certificates,
- elfutils,
  wget,
  flex,
  yasm,
