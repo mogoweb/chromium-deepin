@@ -6,7 +6,7 @@ lld vs gold).
 
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -401,7 +401,7 @@ config("compiler") {
+@@ -411,7 +411,7 @@ config("compiler") {
      }
  
      if (use_lld) {
@@ -15,3 +15,16 @@ lld vs gold).
        if (lld_path != "") {
          ldflags += [ "-B" + rebase_path(lld_path, root_build_dir) ]
        }
+--- a/build/linux/strip_binary.gni
++++ b/build/linux/strip_binary.gni
+@@ -21,8 +21,8 @@ template("strip_binary") {
+                            "testonly",
+                          ])
+   action("${target_name}") {
+-    llvm_strip_binary = "${clang_base_path}/bin/llvm-strip"
+-    llvm_objcopy_binary = "${clang_base_path}/bin/llvm-objcopy"
++    llvm_strip_binary = "${clang_base_path}/bin/llvm-strip-19"
++    llvm_objcopy_binary = "${clang_base_path}/bin/llvm-objcopy-19"
+     script = "//build/linux/strip_binary.py"
+ 
+     if (defined(invoker.stripped_binary_output)) {

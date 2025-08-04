@@ -3,6 +3,17 @@ chromium (139.0.7258.66-1) UNRELEASED; urgency=high
   * New upstream stable release.
   * d/copyright: delete third_party/enterprise_companion, as it includes a
     binary.
+  * d/control: Replace elfutils build-dep with llvm-19 for switch to
+    llvm-strip.
+  * d/patches:
+    - disable/catapult.patch: refresh.
+    - disable/buildtools-libc.patch: refresh.
+    - system/eu-strip.patch: drop, upstream switched to llvm-strip.
+    - debianization/clang-version.patch: add llvm-strip & llvm-objcopy
+      major versioning.
+    - bookworm/gn-revert-path-exists.patch: refresh & drop unused part.
+    - ungoogled/disable-privacy-sandbox.patch: refresh.
+
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:

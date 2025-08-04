@@ -45,7 +45,6 @@ system/icu-shim.patch
 system/jpeg.patch
 system/openjpeg.patch
 system/opus.patch
-system/eu-strip.patch
 system/rapidjson.patch
 system/rollup.patch
 
