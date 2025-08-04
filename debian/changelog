@@ -12,8 +12,6 @@ chromium (139.0.7258.66-1) UNRELEASED; urgency=high
     - disable/catapult.patch: refresh.
     - disable/buildtools-libc.patch: refresh.
     - system/eu-strip.patch: drop, upstream switched to llvm-strip.
-    - debianization/clang-version.patch: add llvm-strip & llvm-objcopy
-      major versioning.
     - bookworm/gn-revert-path-exists.patch: refresh & drop unused part.
     - ungoogled/disable-privacy-sandbox.patch: refresh.
     - fixes/bindgen.patch: rename to bookworm/bindgen.patch, since trixie
