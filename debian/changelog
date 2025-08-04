@@ -3,8 +3,9 @@ chromium (139.0.7258.66-1~deb12u1) UNRELEASED; urgency=high
   * New upstream stable release.
   * d/copyright: delete third_party/enterprise_companion, as it includes a
     binary.
-  * d/control: Replace elfutils build-dep with llvm-19 for switch to
-    llvm-strip.
+  * d/control:
+    - Replace elfutils build-dep with llvm-19 for switch to llvm-strip.
+    - Update rustc-web build-dep to >= 1.84.
   * d/rules:
     - drop enable_nacl=false; upstream removed NaCL.
     - set enable_enterprise_companion=false.
@@ -16,6 +17,10 @@ chromium (139.0.7258.66-1~deb12u1) UNRELEASED; urgency=high
     - ungoogled/disable-privacy-sandbox.patch: refresh.
     - fixes/bindgen.patch: rename to bookworm/bindgen.patch, since trixie
       now has a newer bindgen.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/rust-is-none-or.patch: drop, thanks to newer rustc-web.
+    - bookworm/rust-unstable-features.patch: drop - newer rustc-web.
+
 
 
   [ Timothy Pearson ]

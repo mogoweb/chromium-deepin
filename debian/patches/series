@@ -71,7 +71,6 @@ bookworm/foreach.patch
 bookworm/eslint.patch
 bookworm/crabbyav1f.patch
 bookworm/node18-import.patch
-bookworm/rust-is-none-or.patch
 bookworm/fmodf.patch
 bookworm/dav1d-extern.patch
 bookworm/toktrie-utf8chunks.patch
@@ -79,7 +78,6 @@ bookworm/derivre-create.patch
 bookworm/gn-hpp11.patch
 bookworm/rust-split-at-checked.patch
 bookworm/crabbyav1f-macro-scope.patch
-bookworm/rust-unstable-features.patch
 bookworm/rust-box-to-vec.patch
 
 # unused patches:
