@@ -10,7 +10,6 @@ fixes/widevine-locations.patch
 fixes/rust-clanglib.patch
 fixes/material-utils.patch
 fixes/strlcpy.patch
-fixes/bindgen.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
 fixes/predictor-denial-of-service.patch
 fixes/fix-assert-in-vnc-sessions.patch
@@ -49,6 +48,7 @@ system/rapidjson.patch
 system/rollup.patch
 
 bookworm/gn-revert-path-exists.patch
+bookworm/bindgen.patch
 bookworm/clang19.patch
 #bookworm/constflatset.patch
 bookworm/libxml-parseerr.patch

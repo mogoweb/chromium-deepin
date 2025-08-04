@@ -13,6 +13,8 @@ chromium (139.0.7258.66-1) UNRELEASED; urgency=high
       major versioning.
     - bookworm/gn-revert-path-exists.patch: refresh & drop unused part.
     - ungoogled/disable-privacy-sandbox.patch: refresh.
+    - fixes/bindgen.patch: rename to bookworm/bindgen.patch, since trixie
+      now has a newer bindgen.
 
 
   [ Timothy Pearson ]
