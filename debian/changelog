@@ -20,8 +20,16 @@ chromium (139.0.7258.66-1) UNRELEASED; urgency=high
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
+    - sandbox/0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch:
+      Refresh for upstream changes
     - sandbox/0009-sandbox-updates-138.patch: Properly handle IPC and send
       syscalls
+    - third_party/0001-add-xnn-ppc64el-support.patch: Refresh for upstream
+      changes
+    - third_party/0002-regenerate-xnn-buildgn.patch: Regenerate from upstream
+      sources
+    - third_party/skia-vsx-instructions.patch: Refresh for upstream changes
+    - fixes/fix-partition-alloc-compile.patch: Refresh for upstream changes
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 31 Jul 2025 17:09:07 -0400
 

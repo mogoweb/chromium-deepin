@@ -1,8 +1,8 @@
-Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
+Index: chromium-139.0.7258.66/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
 ===================================================================
---- chromium-138.0.7204.183.orig/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
-+++ chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
-@@ -540,13 +540,14 @@ SANDBOX_EXPORT bpf_dsl::ResultExpr Restr
+--- chromium-139.0.7258.66.orig/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
++++ chromium-139.0.7258.66/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
+@@ -538,13 +538,14 @@ SANDBOX_EXPORT bpf_dsl::ResultExpr Restr
    size_t argIndex;
    switch (sysno) {
  #if defined(__arm__) || \
@@ -19,11 +19,11 @@ Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_paramet
      case __NR_sendto:  // Could specify destination.
        argIndex = 3;
        break;
-Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+Index: chromium-139.0.7258.66/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
 ===================================================================
---- chromium-138.0.7204.183.orig/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
-+++ chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
-@@ -674,11 +674,12 @@ bool SyscallSets::IsAllowedGeneralIo(int
+--- chromium-139.0.7258.66.orig/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
++++ chromium-139.0.7258.66/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+@@ -671,11 +671,12 @@ bool SyscallSets::IsAllowedGeneralIo(int
  bool SyscallSets::IsSockSendOneMsg(int sysno) {
    switch (sysno) {
  #if defined(__arm__) || \
@@ -38,7 +38,7 @@ Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
      case __NR_sendmsg:  // Could specify destination.
      case __NR_sendto:   // Could specify destination.
  #endif
-@@ -941,12 +942,15 @@ bool SyscallSets::IsKeyManagement(int sy
+@@ -938,12 +939,15 @@ bool SyscallSets::IsKeyManagement(int sy
  }
  
  #if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__) || \
@@ -55,7 +55,7 @@ Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
      case __NR_semtimedop:
  #if defined(__i386__) || defined(__arm__) || \
      (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
-@@ -978,7 +982,8 @@ bool SyscallSets::IsSystemVSharedMemory(
+@@ -975,7 +979,8 @@ bool SyscallSets::IsSystemVSharedMemory(
  #endif
  
  #if defined(__x86_64__) || defined(__arm__) || defined(__aarch64__) || \
@@ -65,7 +65,7 @@ Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
  bool SyscallSets::IsSystemVMessageQueue(int sysno) {
    switch (sysno) {
      case __NR_msgctl:
-@@ -1014,9 +1019,11 @@ bool SyscallSets::IsAnySystemV(int sysno
+@@ -1011,9 +1016,11 @@ bool SyscallSets::IsAnySystemV(int sysno
    return IsSystemVMessageQueue(sysno) || IsSystemVSemaphores(sysno) ||
           IsSystemVSharedMemory(sysno);
  #elif defined(__i386__) || \
@@ -79,10 +79,10 @@ Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
  #endif
  }
  
-Index: chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.h
+Index: chromium-139.0.7258.66/sandbox/linux/seccomp-bpf-helpers/syscall_sets.h
 ===================================================================
---- chromium-138.0.7204.183.orig/sandbox/linux/seccomp-bpf-helpers/syscall_sets.h
-+++ chromium-138.0.7204.183/sandbox/linux/seccomp-bpf-helpers/syscall_sets.h
+--- chromium-139.0.7258.66.orig/sandbox/linux/seccomp-bpf-helpers/syscall_sets.h
++++ chromium-139.0.7258.66/sandbox/linux/seccomp-bpf-helpers/syscall_sets.h
 @@ -81,7 +81,8 @@ class SANDBOX_EXPORT SyscallSets {
    static bool IsAsyncIo(int sysno);
    static bool IsKeyManagement(int sysno);
