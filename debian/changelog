@@ -5,6 +5,9 @@ chromium (139.0.7258.66-1) UNRELEASED; urgency=high
     binary.
   * d/control: Replace elfutils build-dep with llvm-19 for switch to
     llvm-strip.
+  * d/rules:
+    - drop enable_nacl=false; upstream removed NaCL.
+    - set enable_enterprise_companion=false.
   * d/patches:
     - disable/catapult.patch: refresh.
     - disable/buildtools-libc.patch: refresh.
