@@ -1,14 +1,29 @@
-chromium (139.0.7258.66-1~deb12u1) UNRELEASED; urgency=high
+chromium (139.0.7258.66-1~deb12u1) unstable; urgency=high
 
   * New upstream stable release.
-  * d/copyright: delete third_party/enterprise_companion, as it includes a
-    binary.
+    - CVE-2025-8576: Use after free in Extensions. Reported by asnine.
+    - CVE-2025-8577: Inappropriate implementation in Picture In Picture.
+      Reported by Umar Farooq.
+    - CVE-2025-8578: Use after free in Cast. Reported by Fayez.
+    - CVE-2025-8579: Inappropriate implementation in Gemini Live in
+      Chrome. Reported by Alesandro Ortiz.
+    - CVE-2025-8580: Inappropriate implementation in Filesystems.
+      Reported by Huuuuu.
+    - CVE-2025-8581: Inappropriate implementation in Extensions.
+      Reported by Vincent Dragnea.
+    - CVE-2025-8582: Insufficient validation of untrusted input in DOM.
+      Reported by Anonymous.
+    - CVE-2025-8583: Inappropriate implementation in Permissions.
+      Reported by Shaheen Fazim.
+  * d/copyright: delete third_party/enterprise_companion, as it includes
+    a binary.
   * d/control:
     - Replace elfutils build-dep with llvm-19 for switch to llvm-strip.
     - Update rustc-web build-dep to >= 1.84.
   * d/rules:
     - drop enable_nacl=false; upstream removed NaCL.
     - set enable_enterprise_companion=false.
+    - disable Gemini AI (enable_glic=false).
   * d/patches:
     - disable/catapult.patch: refresh.
     - disable/buildtools-libc.patch: refresh.
@@ -20,8 +35,6 @@ chromium (139.0.7258.66-1~deb12u1) UNRELEASED; urgency=high
     - bookworm/gn-absl.patch: refresh.
     - bookworm/rust-is-none-or.patch: drop, thanks to newer rustc-web.
     - bookworm/rust-unstable-features.patch: drop - newer rustc-web.
-
-
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -36,7 +49,7 @@ chromium (139.0.7258.66-1~deb12u1) UNRELEASED; urgency=high
     - third_party/skia-vsx-instructions.patch: Refresh for upstream changes
     - fixes/fix-partition-alloc-compile.patch: Refresh for upstream changes
 
- -- Andres Salomon <dilinger@debian.org>  Thu, 31 Jul 2025 17:09:07 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 05 Aug 2025 17:48:13 -0400
 
 chromium (138.0.7204.183-1~deb12u1) bookworm-security; urgency=high
 
