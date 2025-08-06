@@ -35,6 +35,7 @@ chromium (139.0.7258.66-1~deb12u1) unstable; urgency=high
     - bookworm/gn-absl.patch: refresh.
     - bookworm/rust-is-none-or.patch: drop, thanks to newer rustc-web.
     - bookworm/rust-unstable-features.patch: drop - newer rustc-web.
+    - bookworm/bubble-contents.patch: drop, no longer needed.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
