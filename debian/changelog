@@ -1,4 +1,4 @@
-chromium (139.0.7258.66-1~deb12u1) unstable; urgency=high
+chromium (139.0.7258.66-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2025-8576: Use after free in Extensions. Reported by asnine.
