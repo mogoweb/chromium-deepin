@@ -1,4 +1,4 @@
-chromium (139.0.7258.127-1) unstable; urgency=high
+chromium (139.0.7258.127-1~deb13u1) trixie-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-8879: Heap buffer overflow in libaom. Reported by Anonymous
