@@ -1,3 +1,12 @@
+chromium (139.0.7258.127-2) unstable; urgency=high
+
+  * d/patches:
+      - bookworm/adler1.patch: drop, rustc in sid is now new enough for
+        adler2. Also move it into trixie/adler1.patch.
+  * d/control: update build-deps to require rust >= 1.86.
+
+ -- Andres Salomon <dilinger@debian.org>  Fri, 15 Aug 2025 04:36:05 -0400
+
 chromium (139.0.7258.127-1) unstable; urgency=high
 
   * New upstream security release.
