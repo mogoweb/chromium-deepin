@@ -48,12 +48,12 @@ system/rapidjson.patch
 system/rollup.patch
 
 #trixie/adler1.patch
+#trixie/libxml-parseerr.patch
 
 bookworm/gn-revert-path-exists.patch
 bookworm/bindgen.patch
 bookworm/clang19.patch
 #bookworm/constflatset.patch
-bookworm/libxml-parseerr.patch
 bookworm/gn-allowlist.patch
 #bookworm/constexpr3.patch
 bookworm/foreach.patch

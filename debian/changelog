@@ -3,7 +3,9 @@ chromium (139.0.7258.127-2) unstable; urgency=high
   * d/patches:
       - bookworm/adler1.patch: drop, rustc in sid is now new enough for
         adler2. Also move it into trixie/adler1.patch.
-  * d/control: update build-deps to require rust >= 1.86.
+      - bookworm/libxml-parseerr.patch: drop, libxml in sid is upgraded.
+        Also move it to trixie/libxml-parseerr.patch.
+  * d/control: update build-deps to require rust >= 1.86, libxml >= 2.14.
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 15 Aug 2025 04:36:05 -0400
 
