@@ -1,3 +1,28 @@
+Index: chromium-139.0.7258.127/sandbox/linux/seccomp-bpf/trap.cc
+===================================================================
+--- chromium-139.0.7258.127.orig/sandbox/linux/seccomp-bpf/trap.cc
++++ chromium-139.0.7258.127/sandbox/linux/seccomp-bpf/trap.cc
+@@ -236,6 +236,20 @@ void Trap::SigSys(int nr, LinuxSigInfo*
+       SetIsInSigHandler();
+     }
+ 
++#if defined(__powerpc64__)
++    // On ppc64+glibc, some syscalls seem to accidentally negate the first
++    // parameter which causes checks against it to fail. For now, manually
++    // negate them back.
++    // TODO(sanastasio@raptorengineering.com): investigate this issue further
++    auto nr = SECCOMP_SYSCALL(ctx);
++    if (nr == __NR_openat || nr == __NR_mkdirat || nr == __NR_faccessat || nr == __NR_readlinkat ||
++        nr == __NR_renameat || nr == __NR_renameat2 || nr == __NR_newfstatat || nr == __NR_unlinkat) {
++        if (static_cast<int>(SECCOMP_PARM1(ctx)) > 0) {
++            SECCOMP_PARM1(ctx) = -SECCOMP_PARM1(ctx);
++        }
++    }
++#endif
++
+     // Copy the seccomp-specific data into a arch_seccomp_data structure. This
+     // is what we are showing to TrapFnc callbacks that the system call
+     // evaluator registered with the sandbox.
 Index: chromium-139.0.7258.127/sandbox/features.gni
 ===================================================================
 --- chromium-139.0.7258.127.orig/sandbox/features.gni
@@ -83,7 +108,7 @@ Index: chromium-139.0.7258.127/sandbox/linux/system_headers/ppc64_linux_syscalls
 ===================================================================
 --- /dev/null
 +++ chromium-139.0.7258.127/sandbox/linux/system_headers/ppc64_linux_syscalls.h
-@@ -0,0 +1,12 @@
+@@ -0,0 +1,25 @@
 +// Copyright 2014 The Chromium Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
 +// found in the LICENSE file.
@@ -94,6 +119,19 @@ Index: chromium-139.0.7258.127/sandbox/linux/system_headers/ppc64_linux_syscalls
 +#include <asm/unistd.h>
 +
 +//TODO: is it necessary to redefine syscall numbers for PPC64?
++// Needed for Ubuntu/Debian/Centos/RHEL:
++#if !defined(__NR_shmget)
++#define __NR_shmget     395
++#endif
++#if !defined(__NR_shmdt)
++#define __NR_shmdt      398
++#endif
++#if !defined(__NR_shmctl)
++#define __NR_shmctl     396
++#endif
++#if !defined(__NR_shmat)
++#define __NR_shmat      397
++#endif
 +
 +#endif  // SANDBOX_LINUX_SYSTEM_HEADERS_PPC64_LINUX_SYSCALLS_H_
 Index: chromium-139.0.7258.127/sandbox/linux/system_headers/ppc64_linux_ucontext.h
