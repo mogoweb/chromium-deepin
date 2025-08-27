@@ -1,9 +1,12 @@
-chromium (139.0.7258.138-1~deb12u1) UNRELEASED; urgency=high
+chromium (139.0.7258.154-1~deb12u1) bookworm-security; urgency=high
 
-  * bookworm/stdarch-arm.patch: drop to fix FTBFS on arm64 with newer
-    rustc-web.
+  * New upstream security release.
+    - CVE-2025-9478: Use after free in ANGLE.
+      Reported by Google Big Sleep.
+  * d/patches/bookworm/stdarch-arm.patch: drop to fix FTBFS on arm64
+    with newer rustc-web.
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 19 Aug 2025 18:51:36 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 26 Aug 2025 17:38:45 -0400
 
 chromium (139.0.7258.138-1~deb12u1) bookworm-security; urgency=high
 
