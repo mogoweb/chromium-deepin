@@ -9,7 +9,7 @@ chromium (140.0.7339.41-1) UNRELEASED; urgency=high
     - bookworm/clang19.patch: refresh.
     - disable/android.patch: delete a new reference to chrome/android/.
     - disable/buildtools-libc.patch: drop due to upstream cleanups.
-    - fixes/rust-no-alloc-shim.patch: add a build fix for rustc 1.86.
+    - fixes/rust-no-alloc-shim.patch: add a build fix for older rustc.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 26 Aug 2025 17:38:45 -0400
 
