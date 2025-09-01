@@ -8,6 +8,7 @@ debianization/cross-build.patch
 fixes/ps-print.patch
 fixes/widevine-locations.patch
 fixes/rust-clanglib.patch
+fixes/rust-no-alloc-shim.patch
 fixes/material-utils.patch
 fixes/strlcpy.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
@@ -37,7 +38,6 @@ disable/driver-chrome-path.patch
 disable/widevine-cdm-cu.patch
 disable/clang-version-check.patch
 disable/screen-ai-blob.patch
-disable/buildtools-libc.patch
 disable/node-version-ck.patch
 
 system/icu-shim.patch
