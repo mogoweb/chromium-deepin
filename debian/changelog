@@ -10,6 +10,13 @@ chromium (140.0.7339.41-1~deb12u1) UNRELEASED; urgency=high
     - disable/android.patch: delete a new reference to chrome/android/.
     - disable/buildtools-libc.patch: drop due to upstream cleanups.
     - fixes/rust-no-alloc-shim.patch: add a build fix for older rustc.
+    - bookworm/rust-visibility.patch: drop, not needed w/ new rust 1.85.
+    - bookworm/crabbyav1f.patch: drop, not needed w/ new rust 1.85.
+    - bookworm/toktrie-utf8chunks.patch: drop, not needed w/ new rust.
+    - bookworm/derivre-create.patch: drop, not needed w/ new rust.
+    - bookworm/rust-split-at-checked.patch: drop, not needed w/ new rust.
+    - bookworm/crabbyav1f-macro-scope.patch: drop, not needed w/ new rust.
+    - bookworm/rust-box-to-vec.patch: drop, not needed w/ new rust.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 26 Aug 2025 17:38:45 -0400
 
