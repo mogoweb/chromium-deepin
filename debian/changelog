@@ -1,4 +1,4 @@
-chromium (140.0.7339.41-1) UNRELEASED; urgency=high
+chromium (140.0.7339.80-1) unstable; urgency=medium
 
   * New upstream stable release.
   * d/patches:
@@ -20,12 +20,12 @@ chromium (140.0.7339.41-1) UNRELEASED; urgency=high
       changes
     - fixes/fix-unknown-warning-option-messages.diff: Refresh for upstream
       changes
-    - libaom/0001-Add-pregenerated-config-for-libaom-on-ppc64.patch: Regenerate
-      from new upstream version
+    - libaom/0001-Add-pregenerated-config-for-libaom-on-ppc64.patch:
+      Regenerate from new upstream version
     - third_party/0003-third_party-ffmpeg-Add-ppc64-generated-config.patch:
       Regenerate from new upstream version
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 26 Aug 2025 17:38:45 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 02 Sep 2025 20:12:17 -0400
 
 chromium (139.0.7258.154-1) unstable; urgency=high
 
