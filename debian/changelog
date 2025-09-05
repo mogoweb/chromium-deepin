@@ -1,4 +1,4 @@
-chromium (140.0.7339.80-1~deb12u1) unstable; urgency=medium
+chromium (140.0.7339.80-1~deb12u1) bookworm-security; urgency=medium
 
   * New upstream stable release.
     - CVE-2025-9864: Use after free in V8.
