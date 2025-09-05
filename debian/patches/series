@@ -8,7 +8,6 @@ debianization/cross-build.patch
 fixes/ps-print.patch
 fixes/widevine-locations.patch
 fixes/rust-clanglib.patch
-fixes/rust-no-alloc-shim.patch
 fixes/material-utils.patch
 fixes/strlcpy.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
@@ -49,6 +48,7 @@ system/rollup.patch
 
 trixie/adler1.patch
 trixie/libxml-parseerr.patch
+trixie/rust-no-alloc-shim.patch
 
 bookworm/gn-revert-path-exists.patch
 bookworm/bindgen.patch

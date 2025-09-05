@@ -1,4 +1,4 @@
-chromium (140.0.7339.41-1~deb13u1) UNRELEASED; urgency=high
+chromium (140.0.7339.80-1~deb13u1) trixie-security; urgency=medium
 
   * New upstream stable release.
   * d/patches:
@@ -9,9 +9,23 @@ chromium (140.0.7339.41-1~deb13u1) UNRELEASED; urgency=high
     - bookworm/clang19.patch: refresh.
     - disable/android.patch: delete a new reference to chrome/android/.
     - disable/buildtools-libc.patch: drop due to upstream cleanups.
-    - fixes/rust-no-alloc-shim.patch: add a build fix for rustc 1.86.
+    - trixie/rust-no-alloc-shim.patch: add a build fix for older rustc.
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 26 Aug 2025 17:38:45 -0400
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - third_party/0002-regenerate-xnn-buildgn.patch: Refresh for upstream
+      changes
+    - fixes/fix-study-crash.patch: Refresh for upstream changes
+    - core/add-ppc64-architecture-to-extensions.diff: Refresh for upstream
+      changes
+    - fixes/fix-unknown-warning-option-messages.diff: Refresh for upstream
+      changes
+    - libaom/0001-Add-pregenerated-config-for-libaom-on-ppc64.patch:
+      Regenerate from new upstream version
+    - third_party/0003-third_party-ffmpeg-Add-ppc64-generated-config.patch:
+      Regenerate from new upstream version
+
+ -- Andres Salomon <dilinger@debian.org>  Thu, 04 Sep 2025 23:24:57 -0400
 
 chromium (139.0.7258.154-1~deb13u1) trixie-security; urgency=high
 
