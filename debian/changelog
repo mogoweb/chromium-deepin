@@ -1,10 +1,17 @@
-chromium (140.0.7339.80-2) UNRELEASED; urgency=high
+chromium (140.0.7339.127-1) unstable; urgency=high
+
+  [ Andres Salomon ]
+  * New upstream security release.
+    - CVE-2025-10200: Use after free in Serviceworker.
+      Reported by Looben Yang.
+    - CVE-2025-10201: Inappropriate implementation in Mojo.
+      Reported by Sahan Fernando & Anon.
 
   [ Jianfeng Liu ]
   * drop not working fixes/libsync-rk3588-panthor.patch.
   * drop fixes/strlcpy.patch, which isn't needed w/ clang-19.
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 02 Sep 2025 20:12:17 -0400
+ -- Andres Salomon <dilinger@debian.org>  Tue, 09 Sep 2025 17:50:07 -0400
 
 chromium (140.0.7339.80-1) unstable; urgency=medium
 
