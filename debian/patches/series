@@ -9,7 +9,6 @@ fixes/ps-print.patch
 fixes/widevine-locations.patch
 fixes/rust-clanglib.patch
 fixes/material-utils.patch
-fixes/strlcpy.patch
 fixes/memory-allocator-dcheck-assert-fix.patch
 fixes/predictor-denial-of-service.patch
 fixes/fix-assert-in-vnc-sessions.patch
@@ -17,7 +16,6 @@ fixes/armhf-timespec.patch
 fixes/updater-test.patch
 #fixes/absl-optional.patch
 #fixes/font-gc-asan.patch
-fixes/libsync-rk3588-panthor.patch
 fixes/headless-gn.patch
 #fixes/stdatomic.patch
 #fixes/make-pair.patch
@@ -50,6 +48,7 @@ trixie/adler1.patch
 trixie/libxml-parseerr.patch
 trixie/rust-no-alloc-shim.patch
 
+#bookworm/strlcpy.patch
 bookworm/dq-forward-iterator.patch
 bookworm/gn-revert-path-exists.patch
 bookworm/bindgen.patch
