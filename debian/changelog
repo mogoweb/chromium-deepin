@@ -5,6 +5,8 @@ chromium (141.0.7390.37-1) UNRELEASED; urgency=high
     - fixes/rust-clanglib.patch: refresh.
     - trixie/rust-no-alloc-shim.patch: refresh.
     - ungoogled/disable-privacy-sandbox.patch: update from ungoogled.
+    - fixes/gentoo-stylesheet.patch: add patch from gentoo to fix build.
+    - fixes/libcpp-headers.patch: add build fix for unbundling clang.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 23 Sep 2025 16:50:58 -0400
 
