@@ -8,6 +8,12 @@ chromium (141.0.7390.37-1) UNRELEASED; urgency=high
     - fixes/gentoo-stylesheet.patch: add patch from gentoo to fix build.
     - fixes/libcpp-headers.patch: add build fix for unbundling clang.
 
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - sandbox/0001-sandbox-Enable-seccomp_bpf-for-ppc64.patch: Refresh for
+      upstream changes
+    - fixes/fix-rustc.patch: Refresh for upstream changes
+
  -- Andres Salomon <dilinger@debian.org>  Tue, 23 Sep 2025 16:50:58 -0400
 
 chromium (140.0.7339.207-1) unstable; urgency=high
