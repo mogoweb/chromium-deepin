@@ -1,4 +1,4 @@
-chromium (141.0.7390.37-1) UNRELEASED; urgency=high
+chromium (141.0.7390.54-1) unstable; urgency=high
 
   * New upstream stable release.
   * d/patches:
@@ -14,7 +14,7 @@ chromium (141.0.7390.37-1) UNRELEASED; urgency=high
       upstream changes
     - fixes/fix-rustc.patch: Refresh for upstream changes
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 23 Sep 2025 16:50:58 -0400
+ -- Andres Salomon <dilinger@debian.org>  Wed, 01 Oct 2025 02:24:37 -0400
 
 chromium (140.0.7339.207-1) unstable; urgency=high
 
