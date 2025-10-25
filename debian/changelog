@@ -1,3 +1,16 @@
+chromium (142.0.7444.53-1) UNRELEASED; urgency=high
+
+  * New upstream stable release.
+  * d/patches:
+    - disable/android.patch: drop part of patch related to md5sum tool.
+    - disable/catapult.patch: refresh.
+    - trixie/rust-no-alloc-shim.patch: refresh.
+    - bookworm/clang19.patch: also drop uninit-const-pointer warning.
+    - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
+    - i386/support-i386.patch: refresh.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 21 Oct 2025 22:21:26 -0400
+
 chromium (141.0.7390.122-1) unstable; urgency=high
 
   * New upstream security release.
