@@ -23,6 +23,8 @@ fixes/headless-gn.patch
 #fixes/make-pair.patch
 fixes/armhf-no-thumb.patch
 fixes/armhf-icf.patch
+fixes/dawn-commit-hash.patch
+fixes/chromium-142-iwyu-field-form-data.patch
 
 
 disable/tests.patch
@@ -49,6 +51,7 @@ system/rollup.patch
 trixie/adler1.patch
 trixie/libxml-parseerr.patch
 trixie/rust-no-alloc-shim.patch
+trixie/rust-sanitize.patch
 
 #bookworm/strlcpy.patch
 bookworm/dq-forward-iterator.patch

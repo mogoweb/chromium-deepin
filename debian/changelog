@@ -1,3 +1,21 @@
+chromium (142.0.7444.52-1~deb12u1) UNRELEASED; urgency=high
+
+  * New upstream stable release.
+  * d/patches:
+    - disable/android.patch: drop part of patch related to md5sum tool.
+    - disable/catapult.patch: refresh.
+    - trixie/rust-no-alloc-shim.patch: refresh.
+    - bookworm/clang19.patch: also drop uninit-const-pointer and
+      unnecessary-virtual-specifier warnings.
+    - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
+    - i386/support-i386.patch: refresh.
+    - dawn-commit-hash.patch: add a workaround for missing header file.
+    - trixie/rust-sanitize.patch: add a workaround for older rustc.
+    - fixes/chromium-142-iwyu-field-form-data.patch: pull in build fix
+      from gentoo.
+
+ -- Andres Salomon <dilinger@debian.org>  Tue, 21 Oct 2025 22:21:26 -0400
+
 chromium (141.0.7390.122-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
