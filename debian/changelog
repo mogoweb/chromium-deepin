@@ -8,6 +8,7 @@ chromium (142.0.7444.53-1) UNRELEASED; urgency=high
     - bookworm/clang19.patch: also drop uninit-const-pointer warning.
     - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
     - i386/support-i386.patch: refresh.
+    - dawn-commit-hash.patch: add a workaround for missing header file.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 21 Oct 2025 22:21:26 -0400
 
