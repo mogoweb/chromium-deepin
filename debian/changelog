@@ -10,6 +10,7 @@ chromium (142.0.7444.53-1) UNRELEASED; urgency=high
     - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
     - i386/support-i386.patch: refresh.
     - dawn-commit-hash.patch: add a workaround for missing header file.
+    - trixie/rust-sanitize.patch: add a workaround for older rustc.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 21 Oct 2025 22:21:26 -0400
 

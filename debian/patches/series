@@ -50,6 +50,7 @@ system/rollup.patch
 #trixie/adler1.patch
 #trixie/libxml-parseerr.patch
 trixie/rust-no-alloc-shim.patch
+trixie/rust-sanitize.patch
 
 #bookworm/strlcpy.patch
 bookworm/gn-revert-path-exists.patch
