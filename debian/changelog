@@ -1,4 +1,4 @@
-chromium (142.0.7444.53-1) UNRELEASED; urgency=high
+chromium (142.0.7444.52-1) UNRELEASED; urgency=high
 
   * New upstream stable release.
   * d/patches:
