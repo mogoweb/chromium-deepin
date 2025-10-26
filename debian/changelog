@@ -5,7 +5,8 @@ chromium (142.0.7444.53-1) UNRELEASED; urgency=high
     - disable/android.patch: drop part of patch related to md5sum tool.
     - disable/catapult.patch: refresh.
     - trixie/rust-no-alloc-shim.patch: refresh.
-    - bookworm/clang19.patch: also drop uninit-const-pointer warning.
+    - bookworm/clang19.patch: also drop uninit-const-pointer and
+      unnecessary-virtual-specifier warnings.
     - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
     - i386/support-i386.patch: refresh.
     - dawn-commit-hash.patch: add a workaround for missing header file.

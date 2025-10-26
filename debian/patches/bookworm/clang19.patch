@@ -13,3 +13,13 @@ warning: unknown warning option '-Wno-nontrivial-memcall'; did you mean '-Wno-no
      ]
  
      cflags_cc += [
+--- a/v8/BUILD.gn
++++ b/v8/BUILD.gn
+@@ -1777,7 +1777,6 @@ config("strict_warnings") {
+     }
+     cflags += [
+       "-Wmissing-field-initializers",
+-      "-Wunnecessary-virtual-specifier",
+     ]
+   }
+ }
