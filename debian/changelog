@@ -4,7 +4,6 @@ chromium (142.0.7444.52-1~deb12u1) UNRELEASED; urgency=high
   * d/patches:
     - disable/android.patch: drop part of patch related to md5sum tool.
     - disable/catapult.patch: refresh.
-    - trixie/rust-no-alloc-shim.patch: refresh.
     - bookworm/clang19.patch: also drop uninit-const-pointer and
       unnecessary-virtual-specifier warnings.
     - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
