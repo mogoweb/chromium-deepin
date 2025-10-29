@@ -1,4 +1,4 @@
-chromium (142.0.7444.52-1) UNRELEASED; urgency=high
+chromium (142.0.7444.59-1) UNRELEASED; urgency=high
 
   * New upstream stable release.
   * d/patches:
@@ -9,7 +9,6 @@ chromium (142.0.7444.52-1) UNRELEASED; urgency=high
       unnecessary-virtual-specifier warnings.
     - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
     - i386/support-i386.patch: refresh.
-    - dawn-commit-hash.patch: add a workaround for missing header file.
     - trixie/rust-sanitize.patch: add a workaround for older rustc.
     - fixes/chromium-142-iwyu-field-form-data.patch: pull in build fix
       from gentoo.
