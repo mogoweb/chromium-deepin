@@ -1,3 +1,11 @@
+chromium (142.0.7444.162-1~deb12u1) bookworm-security; urgency=high
+
+  * New upstream security release.
+    - CVE-2025-13042: Inappropriate implementation in V8.
+      Reported by 303f06e3.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 12 Nov 2025 00:42:36 -0500
+
 chromium (142.0.7444.134-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
