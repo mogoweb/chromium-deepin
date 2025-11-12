@@ -24,6 +24,7 @@ fixes/headless-gn.patch
 fixes/armhf-no-thumb.patch
 fixes/armhf-icf.patch
 fixes/chromium-142-iwyu-field-form-data.patch
+fixes/enable-v4l2-hevc-stateful-decoder.patch
 
 
 disable/tests.patch
