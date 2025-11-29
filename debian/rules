@@ -68,7 +68,7 @@ export RUSTC_BOOTSTRAP=1
 export CLANG_MVERS:=$(shell $(CC) --version 2>/dev/null | sed -n 's/.* clang version //p' | cut -d. -f1)
 rust_sysroot=/usr
 defines+=rust_sysroot_absolute=\"$(rust_sysroot)\"
-defines+=rust_bindgen_root=\"/usr\"
+defines+=rust_bindgen_root=\"$(CURDIR)/debian/bindgen/root/usr\"
 defines+=rustc_version=\"$(shell $(rust_sysroot)/bin/rustc --version 2>/dev/null)\"
 defines+=clang_base_path=\"/usr/lib/llvm-$(CLANG_MVERS)\"
 defines+=clang_version=\"$(CLANG_MVERS)\"
@@ -105,7 +105,7 @@ ifeq (32,$(DEB_BUILD_ARCH_BITS))
 defines+=use_thin_lto=false \
          concurrent_links=1
 else
-defines+=use_thin_lto=true
+defines+=use_thin_lto=false
 endif
 
 # disabled features
@@ -115,6 +115,7 @@ defines+=is_debug=false \
          use_custom_libcxx=false \
          optimize_webui=false \
          use_unofficial_version_number=false \
+         rtc_video_psnr=false \
          safe_browsing_use_unrar=false \
          enable_vr=false \
          enable_enterprise_companion=false \
@@ -175,7 +176,17 @@ test_armhf_neon:
 		}; \
 	fi
 
-override_dh_auto_configure: test_armhf_neon
+set_up_bindgen:
+	# Bookworm's bindgen is too old. This is a workaround using the
+	# packages from
+	# <https://snapshot.debian.org/package/rust-bindgen-cli/0.66.1-3/>, which
+	# are new enough to build chromium but old enough to not be linked against
+	# Trixie's libc6 2.38
+	mkdir -p debian/bindgen/root
+	ar --output debian/bindgen/root vx debian/bindgen/bindgen_0.66.1-3_$(DEB_HOST_ARCH).deb
+	tar -C debian/bindgen/root -Jxvf debian/bindgen/root/data.tar.xz
+
+override_dh_auto_configure: test_armhf_neon set_up_bindgen
 	# verify that we're not accidentally uploading to stable-security without CVEs
 	@echo "$(DIST)" | grep -q -- '-security' && { \
 		dpkg-parsechangelog -l debian/changelog | grep -q 'CVE-' || { \
@@ -223,6 +234,7 @@ override_dh_fixperms:
 	dh_fixperms --exclude chrome-sandbox
 
 override_dh_auto_clean:
+	rm -rf debian/bindgen/root
 	rm -rf third_party/node/linux/node-linux-x64
 	rm -rf out
 	rm -rf third_party/node/node_modules/rollup

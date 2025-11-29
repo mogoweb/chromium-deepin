@@ -1,4 +1,4 @@
-chromium (132.0.6834.110-1) unstable; urgency=high
+chromium (132.0.6834.110-1~deb12u1) bookworm-security; urgency=high
 
   We are planning to remove the chromium-shell package due to lack of
   use and build issues, unless we hear from people who are actively using

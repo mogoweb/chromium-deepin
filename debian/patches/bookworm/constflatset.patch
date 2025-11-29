@@ -33,3 +33,23 @@ switching to libc++.
  
  }  // namespace
  
+--- a/chrome/browser/task_manager/task_manager_metrics_recorder.cc
++++ b/chrome/browser/task_manager/task_manager_metrics_recorder.cc
+@@ -28,7 +28,7 @@ void RecordCloseEvent(const base::TimeTi
+ void RecordEndProcessEvent(const base::TimeTicks& start_time,
+                            const base::TimeTicks& end_time,
+                            size_t end_process_count) {
+-  constexpr static std::array<std::string, 5> kEndProcessCountToString = {
++  constexpr static std::array<std::string_view, 5> kEndProcessCountToString = {
+       "First", "Second", "Third", "Fourth", "Fifth"};
+ 
+   // Only record the first five end process events per task manager session.
+@@ -37,7 +37,7 @@ void RecordEndProcessEvent(const base::T
+     // Build the histogram name.
+     const auto histogram_name = base::StringPrintf(
+         kTimeToEndProcessHistogram,
+-        kEndProcessCountToString[end_process_count - 1].c_str());
++        std::string(kEndProcessCountToString[end_process_count - 1]).c_str());
+ 
+     // Record the event.
+     base::UmaHistogramLongTimes100(histogram_name, end_time - start_time);

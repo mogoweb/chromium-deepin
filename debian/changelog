@@ -1,4 +1,11 @@
-chromium (142.0.7444.175-1) unstable; urgency=high
+chromium (142.0.7444.175-deepin1) unstable; urgency=high
+
+  * New upstream stable release.
+  * build for deepin v25.
+
+ -- Zhengyong Chen <chenzhengyong@uniontech.com>  Sat, 29 Nov 2025 13:12:52 +0800
+
+chromium (142.0.7444.175-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-13223: Type Confusion in V8.
@@ -7,7 +14,7 @@ chromium (142.0.7444.175-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 18 Nov 2025 13:11:29 -0500
 
-chromium (142.0.7444.162-1) unstable; urgency=high
+chromium (142.0.7444.162-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-13042: Inappropriate implementation in V8.
@@ -15,7 +22,7 @@ chromium (142.0.7444.162-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 12 Nov 2025 00:42:36 -0500
 
-chromium (142.0.7444.134-1) unstable; urgency=high
+chromium (142.0.7444.134-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-12725: Out of bounds write in WebGPU. Reported by Anonymous.
@@ -30,7 +37,7 @@ chromium (142.0.7444.134-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 05 Nov 2025 21:47:42 -0500
 
-chromium (142.0.7444.59-1) unstable; urgency=high
+chromium (142.0.7444.59-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2025-12428: Type Confusion in V8.
@@ -68,7 +75,6 @@ chromium (142.0.7444.59-1) unstable; urgency=high
   * d/patches:
     - disable/android.patch: drop part of patch related to md5sum tool.
     - disable/catapult.patch: refresh.
-    - trixie/rust-no-alloc-shim.patch: refresh.
     - bookworm/clang19.patch: also drop uninit-const-pointer and
       unnecessary-virtual-specifier warnings.
     - ungoogled/disable-privacy-sandbox.patch: sync from upstream.
@@ -76,6 +82,19 @@ chromium (142.0.7444.59-1) unstable; urgency=high
     - trixie/rust-sanitize.patch: add a workaround for older rustc.
     - fixes/chromium-142-iwyu-field-form-data.patch: pull in build fix
       from gentoo.
+    - trixie/rust-no-alloc-shim.patch: add another missing symbol that's
+      provided by newer versions of rust.
+    - bookworm/gn-path-exists2.patch: add another workaround for lack of
+      path_exists() in older gn.
+
+  [ Timothy Pearson ]
+  * d/patches/ppc64le:
+    - third_party/0001-third-party-hwy-wrong-include.patch: Drop due to
+      upstream fixes
+    - ppc64le/third_party/0002-regenerate-xnn-buildgn.patch: Regenerate from
+      upstream sources
+    - core/add-ppc64-architecture-to-extensions.diff: Refresh for upstream
+      changes
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -88,7 +107,7 @@ chromium (142.0.7444.59-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 29 Oct 2025 13:44:37 -0400
 
-chromium (141.0.7390.122-1) unstable; urgency=high
+chromium (141.0.7390.122-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-12036: Inappropriate implementation in V8.
@@ -96,7 +115,7 @@ chromium (141.0.7390.122-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 21 Oct 2025 22:21:26 -0400
 
-chromium (141.0.7390.107-1) unstable; urgency=high
+chromium (141.0.7390.107-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-11756: Use after free in Safe Browsing. Reported by asnine.
@@ -104,7 +123,7 @@ chromium (141.0.7390.107-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 14 Oct 2025 19:25:54 -0400
 
-chromium (141.0.7390.65-1) unstable; urgency=high
+chromium (141.0.7390.65-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-11458: Heap buffer overflow in Sync.
@@ -115,7 +134,7 @@ chromium (141.0.7390.65-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 07 Oct 2025 20:11:58 -0400
 
-chromium (141.0.7390.54-1) unstable; urgency=high
+chromium (141.0.7390.54-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2025-11205: Heap buffer overflow in WebGPU.
@@ -144,6 +163,7 @@ chromium (141.0.7390.54-1) unstable; urgency=high
     - ungoogled/disable-privacy-sandbox.patch: update from ungoogled.
     - fixes/gentoo-stylesheet.patch: add patch from gentoo to fix build.
     - fixes/libcpp-headers.patch: add build fix for unbundling clang.
+  * d/rules: set rtc_video_psnr=false for bookworm's older openh264.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -153,7 +173,7 @@ chromium (141.0.7390.54-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 01 Oct 2025 02:24:37 -0400
 
-chromium (140.0.7339.207-1) unstable; urgency=high
+chromium (140.0.7339.207-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-10890: Side-channel information leakage in V8.
@@ -163,7 +183,7 @@ chromium (140.0.7339.207-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 23 Sep 2025 16:50:58 -0400
 
-chromium (140.0.7339.185-1) unstable; urgency=high
+chromium (140.0.7339.185-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-10585: Type Confusion in V8.
@@ -176,7 +196,7 @@ chromium (140.0.7339.185-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 17 Sep 2025 22:25:31 -0400
 
-chromium (140.0.7339.127-1) unstable; urgency=high
+chromium (140.0.7339.127-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -191,7 +211,7 @@ chromium (140.0.7339.127-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 09 Sep 2025 17:50:07 -0400
 
-chromium (140.0.7339.80-1) unstable; urgency=medium
+chromium (140.0.7339.80-1~deb12u1) bookworm-security; urgency=medium
 
   * New upstream stable release.
     - CVE-2025-9864: Use after free in V8.
@@ -211,6 +231,13 @@ chromium (140.0.7339.80-1) unstable; urgency=medium
     - disable/android.patch: delete a new reference to chrome/android/.
     - disable/buildtools-libc.patch: drop due to upstream cleanups.
     - trixie/rust-no-alloc-shim.patch: add a build fix for older rustc.
+    - bookworm/rust-visibility.patch: drop, not needed w/ new rust 1.85.
+    - bookworm/crabbyav1f.patch: drop, not needed w/ new rust 1.85.
+    - bookworm/toktrie-utf8chunks.patch: drop, not needed w/ new rust.
+    - bookworm/derivre-create.patch: drop, not needed w/ new rust.
+    - bookworm/rust-split-at-checked.patch: drop, not needed w/ new rust.
+    - bookworm/crabbyav1f-macro-scope.patch: drop, not needed w/ new rust.
+    - bookworm/rust-box-to-vec.patch: drop, not needed w/ new rust.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -226,17 +253,19 @@ chromium (140.0.7339.80-1) unstable; urgency=medium
     - third_party/0003-third_party-ffmpeg-Add-ppc64-generated-config.patch:
       Regenerate from new upstream version
 
- -- Andres Salomon <dilinger@debian.org>  Tue, 02 Sep 2025 20:12:17 -0400
+ -- Andres Salomon <dilinger@debian.org>  Thu, 04 Sep 2025 16:47:14 -0400
 
-chromium (139.0.7258.154-1) unstable; urgency=high
+chromium (139.0.7258.154-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-9478: Use after free in ANGLE.
       Reported by Google Big Sleep.
+  * d/patches/bookworm/stdarch-arm.patch: drop to fix FTBFS on arm64
+    with newer rustc-web.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 26 Aug 2025 17:38:45 -0400
 
-chromium (139.0.7258.138-1) unstable; urgency=high
+chromium (139.0.7258.138-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-9132: Out of bounds write in V8.
@@ -244,18 +273,7 @@ chromium (139.0.7258.138-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 19 Aug 2025 18:51:36 -0400
 
-chromium (139.0.7258.127-2) unstable; urgency=high
-
-  * d/patches:
-      - bookworm/adler1.patch: drop, rustc in sid is now new enough for
-        adler2. Also move it into trixie/adler1.patch.
-      - bookworm/libxml-parseerr.patch: drop, libxml in sid is upgraded.
-        Also move it to trixie/libxml-parseerr.patch.
-  * d/control: update build-deps to require rust >= 1.86, libxml >= 2.14.
-
- -- Andres Salomon <dilinger@debian.org>  Fri, 15 Aug 2025 04:36:05 -0400
-
-chromium (139.0.7258.127-1) unstable; urgency=high
+chromium (139.0.7258.127-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-8879: Heap buffer overflow in libaom. Reported by Anonymous
@@ -268,7 +286,7 @@ chromium (139.0.7258.127-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 12 Aug 2025 17:12:12 -0400
 
-chromium (139.0.7258.66-1) unstable; urgency=high
+chromium (139.0.7258.66-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2025-8576: Use after free in Extensions. Reported by asnine.
@@ -287,8 +305,9 @@ chromium (139.0.7258.66-1) unstable; urgency=high
       Reported by Shaheen Fazim.
   * d/copyright: delete third_party/enterprise_companion, as it includes
     a binary.
-  * d/control: Replace elfutils build-dep with llvm-19 for switch to
-    llvm-strip.
+  * d/control:
+    - Replace elfutils build-dep with llvm-19 for switch to llvm-strip.
+    - Update rustc-web build-dep to >= 1.84.
   * d/rules:
     - drop enable_nacl=false; upstream removed NaCL.
     - set enable_enterprise_companion=false.
@@ -301,6 +320,10 @@ chromium (139.0.7258.66-1) unstable; urgency=high
     - ungoogled/disable-privacy-sandbox.patch: refresh.
     - fixes/bindgen.patch: rename to bookworm/bindgen.patch, since trixie
       now has a newer bindgen.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/rust-is-none-or.patch: drop, thanks to newer rustc-web.
+    - bookworm/rust-unstable-features.patch: drop - newer rustc-web.
+    - bookworm/bubble-contents.patch: drop, no longer needed.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -317,14 +340,14 @@ chromium (139.0.7258.66-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 05 Aug 2025 17:48:13 -0400
 
-chromium (138.0.7204.183-1) unstable; urgency=high
+chromium (138.0.7204.183-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-8292: Use after free in Media Stream.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 29 Jul 2025 18:59:44 -0400
 
-chromium (138.0.7204.168-1) unstable; urgency=high
+chromium (138.0.7204.168-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-8010: Type Confusion in V8. Reported by Shaheen Fazim.
@@ -335,7 +358,7 @@ chromium (138.0.7204.168-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 24 Jul 2025 13:43:34 -0400
 
-chromium (138.0.7204.157-1) unstable; urgency=high
+chromium (138.0.7204.157-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -354,7 +377,7 @@ chromium (138.0.7204.157-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 15 Jul 2025 15:35:02 -0400
 
-chromium (138.0.7204.92-1) unstable; urgency=high
+chromium (138.0.7204.92-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-6554: Type Confusion in V8. Reported by
@@ -366,7 +389,7 @@ chromium (138.0.7204.92-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 01 Jul 2025 13:17:05 -0400
 
-chromium (138.0.7204.49-1) unstable; urgency=high
+chromium (138.0.7204.49-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -376,8 +399,10 @@ chromium (138.0.7204.49-1) unstable; urgency=high
       Reported by Shaheen Fazim.
     - CVE-2025-6557: Insufficient data validation in DevTools.
       Reported by Ameen Basha M K.
-  * d/rules: drop enable_reading_list=false, as Reading List is now
-    supported for all architectures.
+  * d/rules:
+    - drop enable_reading_list=false, as Reading List is now
+      supported for all architectures.
+    - disable ThinLTO due to build failure with older rust.
   * d/patches:
     - upstream/arm32-crel.patch: drop, merged upstream.
     - upstream/cross-build-target.patch: drop, merged upstream.
@@ -399,6 +424,18 @@ chromium (138.0.7204.49-1) unstable; urgency=high
       config variable kMaxBucketed.
     - disable/node-version-ck.patch: disable nodejs version check in
       protobuf.
+    - bookworm/stdarch-arm.patch: drop redundant portion of patch.
+    - bookworm/rust-is-none-or.patch: drop portion of patch due to
+      upstream changes.
+    - bookworm/gn-hpp11.patch: add another workaround for older gn.
+    - bookworm/rust-split-at-checked.patch: enable unstable rust feature
+      split_at_checked.
+    - bookworm/crabbyav1f-macro-scope.patch: fix (macro-created) variable
+      going out of scope.
+    - rust-unstable-features.patch: enable a bunch more unstable rust
+      features.
+    - bookworm/rust-box-to-vec.patch: work around older rustc not being
+      able to implicitly handle converted a boxed slice into a vector.
 
   [ Daniel Richard G. ]
   * d/rules: Rearrange DEB_BUILD_MAINT_OPTIONS assignments to avoid
@@ -415,7 +452,7 @@ chromium (138.0.7204.49-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 24 Jun 2025 16:01:10 -0400
 
-chromium (137.0.7151.119-1) unstable; urgency=high
+chromium (137.0.7151.119-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-6191: Integer overflow in V8. Reported by Shaheen Fazim.
@@ -429,7 +466,7 @@ chromium (137.0.7151.119-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 17 Jun 2025 19:12:16 -0400
 
-chromium (137.0.7151.103-1) unstable; urgency=high
+chromium (137.0.7151.103-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-5958: Use after free in Media.
@@ -444,13 +481,14 @@ chromium (137.0.7151.103-1) unstable; urgency=high
     - fixes/stdatomic.patch: drop, only needed for libstdc++.
     - fixes/make-pair.patch: drop, only needed for libstdc++.
     - bookworm/constflatset.patch: drop, only needed for libstdc++.
+    - bookworm/constexpr2.patch: drop, only needed for libstdc++.
     - bookworm/constexpr3.patch: drop, only needed for libstdc++.
     - bookworm/foreach.patch: add patch from bookworm branch to fix
       clang-19 build failure.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 10 Jun 2025 15:08:42 -0400
 
-chromium (137.0.7151.68-1) unstable; urgency=high
+chromium (137.0.7151.68-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon]
   * New upstream security release.
@@ -463,7 +501,7 @@ chromium (137.0.7151.68-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 03 Jun 2025 12:23:46 -0400
 
-chromium (137.0.7151.55-3) unstable; urgency=high
+chromium (137.0.7151.55-3~deb12u1) bookworm-security; urgency=high
 
   [ Timothy Pearson ]
   * Fix FTBFS on ppc64el due to third party xnnpack library
@@ -533,6 +571,15 @@ chromium (137.0.7151.55-1) unstable; urgency=high
     - upstream/allowed-state.patch: add build fix pulled from upstream.
     - upstream/pdfium-libpng.patch: add build fix pulled from upstream.
     - upstream/safety-hub-set.patch: add build fix pulled from upstream.
+    - bookworm/gn-absl.patch: add global visibility for another type.
+    - bookworm/constexpr.patch: refresh.
+    - bookworm/stdarch-arm.patch: update path for rust crate.
+    - bookworm/rust-is-none-or.patch: add another workaround for missing
+      is_none_or() function.
+    - bookworm/toktrie-utf8chunks.patch: add workaround for missing
+      utf8_chunks() in rustc-web 1.78.
+    - bookworm/derivre-create.patch: enable rust unstable features
+      everywhere, and add some that derivre requires (from newer rustc).
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -544,7 +591,7 @@ chromium (137.0.7151.55-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 27 May 2025 23:46:49 -0400
 
-chromium (136.0.7103.113-1) unstable; urgency=high
+chromium (136.0.7103.113-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-4664: Insufficient policy enforcement in Loader.
@@ -561,14 +608,12 @@ chromium (136.0.7103.92-2) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 07 May 2025 12:11:17 -0400
 
-chromium (136.0.7103.92-1) unstable; urgency=high
+chromium (136.0.7103.92-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
    - CVE-2025-4372: Use after free in WebAudio.
       Reported by Huang Xilin of Ant Group Light-Year Security Lab.
-  * Drop yasm build-dep; upstream switched to nasm about 5 years ago
-    (closes: #1104218).
 
   [ Daniel Richard G. ]
   * d/patches/fixes/armhf-no-thumb.patch: Fix armhf FTBFS due to use of a
@@ -576,13 +621,20 @@ chromium (136.0.7103.92-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 06 May 2025 14:13:50 -0400
 
-chromium (136.0.7103.59-2) unstable; urgency=high
+chromium (136.0.7103.59-2~deb12u2) bookworm-security; urgency=high
+
+  * Temporarily disable CVE verification check in order to fix build;
+    will be restored on next upload.
+
+ -- Andres Salomon <dilinger@debian.org>  Thu, 01 May 2025 12:18:24 -0400
+
+chromium (136.0.7103.59-2~deb12u1) bookworm-security; urgency=high
 
   * Delete third_party/jetstream due to non-free ("do no evil") license.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 30 Apr 2025 17:38:38 -0400
 
-chromium (136.0.7103.59-1) unstable; urgency=high
+chromium (136.0.7103.59-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -609,6 +661,14 @@ chromium (136.0.7103.59-1) unstable; urgency=high
     - fixes/media-cstdint.patch: add missing header include.
     - upstream/media-optional.patch: add missing header include.
     - fixes/perfetto-nullptr.patch: add nullptr_t std qualification.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/crabbyav1f.patch: update for changed rustflags location.
+    - bookworm/node18-import.patch: add patch to work around bookworm's
+      node 18 import rules.
+    - bookworm/rust-is-none-or.patch: add patch to work around missing
+      is_none_or() function in bookworm's rust 1.78.
+    - bookworm/fmodf.patch: add gcc-12 specific build fix.
+    - bookworm/dav1d-extern.patch: add linker fix for older libdav1d.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -625,11 +685,10 @@ chromium (136.0.7103.59-1) unstable; urgency=high
 chromium (135.0.7049.114-1) unstable; urgency=high
 
   * New upstream security release.
-  * Drop python3-pkg-resources build dep (closes: #1083336).
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Apr 2025 22:42:31 -0400
 
-chromium (135.0.7049.95-1) unstable; urgency=high
+chromium (135.0.7049.95-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -650,7 +709,7 @@ chromium (135.0.7049.95-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 15 Apr 2025 22:12:30 -0400
 
-chromium (135.0.7049.84-1) unstable; urgency=high
+chromium (135.0.7049.84-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release (closes: #1101978).
     - CVE-2025-3066: Use after free in Site Isolation.
@@ -659,7 +718,7 @@ chromium (135.0.7049.84-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 08 Apr 2025 16:57:37 -0400
 
-chromium (135.0.7049.52-1) unstable; urgency=high
+chromium (135.0.7049.52-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -694,6 +753,12 @@ chromium (135.0.7049.52-1) unstable; urgency=high
     - ungoogled/disable-privacy-sandbox.patch: refresh from ungoogled.
     - fixes/make-pair.patch: add a gcc-specific build fix.
     - disable/buildtools-libc.patch: add patch to remove libc build stuff.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/constexpr.patch: refresh.
+    - bookworm/stdarch-arm.patch: refresh.
+    - bookworm/eslint.patch: add bookworm-specific build fix; thanks
+      Daniel Richard G. <skunk@iSKUNK.ORG>!
+    - bookworm/crabbyav1f.patch: add rustc 1.78 build fix workaround.
 
   [ Timothy Pearson ]
   * Enable pointer compression on ppc64le
@@ -709,7 +774,7 @@ chromium (135.0.7049.52-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 02 Apr 2025 02:04:23 -0400
 
-chromium (134.0.6998.117-1) unstable; urgency=high
+chromium (134.0.6998.117-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-2476: Use after free in Lens.
@@ -717,7 +782,7 @@ chromium (134.0.6998.117-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 19 Mar 2025 20:04:39 -0400
 
-chromium (134.0.6998.88-1) unstable; urgency=high
+chromium (134.0.6998.88-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-1920: Type Confusion in V8. Reported by Excello s.r.o.
@@ -743,7 +808,7 @@ chromium (134.0.6998.35-2) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 07 Mar 2025 00:58:06 -0500
 
-chromium (134.0.6998.35-1) unstable; urgency=high
+chromium (134.0.6998.35-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -777,6 +842,10 @@ chromium (134.0.6998.35-1) unstable; urgency=high
     - fixes/variant.patch: add missing header include.
     - upstream/qualifications.patch: add fix to silence annoying warnings.
     - upstream/optional.patch: add more missing header includes.
+    - bookworm/constflatset.patch: refresh.
+    - bookworm/constexpr.patch: refresh.
+    - bookworm/modff.patch: add workaround for libstdc++ build issue.
+    - bookworm/foreach.patch: add workaround for libstdc++ build issue.
   * d/rules: update to ensure both qt5 AND qt6 are disabled.
 
   [ Timothy Pearson ]
@@ -807,7 +876,7 @@ chromium (133.0.6943.141-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 28 Feb 2025 16:16:33 -0500
 
-chromium (133.0.6943.126-1) unstable; urgency=high
+chromium (133.0.6943.126-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-0999: Heap buffer overflow in V8.
@@ -821,7 +890,7 @@ chromium (133.0.6943.126-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 20 Feb 2025 00:16:49 -0500
 
-chromium (133.0.6943.98-1) unstable; urgency=high
+chromium (133.0.6943.98-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2025-0995: Use after free in V8. Reported by Popax21.
@@ -833,10 +902,11 @@ chromium (133.0.6943.98-1) unstable; urgency=high
   * d/patches:
     - fixes/bindgen-unsafe-op.patch: add a workaround for a bindgen bug
       that causes FTBFS on armhf.
+    - bookworm/stdarch-arm.patch: add workaround to build w/ rust 1.78.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 12 Feb 2025 21:35:00 -0500
 
-chromium (133.0.6943.53-1) unstable; urgency=high
+chromium (133.0.6943.53-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -849,6 +919,7 @@ chromium (133.0.6943.53-1) unstable; urgency=high
     build against the bundled libhwy due to new API requirements.
   * d/patches:
     - fixes/highway-include-path.patch: drop; switching to bundled hwy.
+    - bookworm/highway-blink.patch: drop; switching to bundled hwy.
     - upstream/array.patch: drop, merged upstream.
     - upstream/ink-isfinite.patch: drop, merged upstream.
     - upstream/ruy-include.patch: drop, merged upstream.
@@ -862,6 +933,11 @@ chromium (133.0.6943.53-1) unstable; urgency=high
       another header build fix.
     - bookworm/clang19.patch: add patch to disable unsupported build args
     - fixes/optional.patch: add header build fix.
+    - bookworm/gn-absl.patch: add global visibilty for more symbols.
+    - bookworm/dq-forward-iterator.patch: add workaround for bookworm's
+      libstdc++ 12.
+    - bookworm/constflatset.patch, bookworm/constexpr.patch: add another
+      workaround for bookworm's libstdc++ 12.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -876,7 +952,7 @@ chromium (133.0.6943.53-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 05 Feb 2025 00:18:56 -0500
 
-chromium (132.0.6834.159-1) unstable; urgency=high
+chromium (132.0.6834.159-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -894,7 +970,7 @@ chromium (132.0.6834.159-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 28 Jan 2025 20:26:06 -0500
 
-chromium (132.0.6834.110-1) unstable; urgency=high
+chromium (132.0.6834.110-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -923,7 +999,7 @@ chromium (132.0.6834.110-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 22 Jan 2025 16:36:45 -0500
 
-chromium (132.0.6834.83-1) unstable; urgency=high
+chromium (132.0.6834.83-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -967,6 +1043,9 @@ chromium (132.0.6834.83-1) unstable; urgency=high
     - upstream/uint.patch: add gcc-specific build fix.
     - bookworm/constflatset.patch: add (probably) gcc-specific workaround.
     - fixes/lens-optional.patch: add gcc-specific build fix.
+    - bookworm/gn-absl.patch: modify for new dependency.
+    - bookworm/rust-visibility.patch: add build fix for older rustc.
+    - bookworm/less-void.patch: add build fix for older libstdc++/gcc.
   * Downgrade to rollup3 for devtools-frontend stuff, due to the bundled
     rollup4 including wasm blobs. Update d/patches/system/rollup.patch to
     point to the right place as well, and build-dep on
@@ -982,7 +1061,7 @@ chromium (132.0.6834.83-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 14 Jan 2025 21:20:43 -0500
 
-chromium (131.0.6778.264-1) unstable; urgency=high
+chromium (131.0.6778.264-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -996,7 +1075,7 @@ chromium (131.0.6778.264-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 08 Jan 2025 11:26:36 -0500
 
-chromium (131.0.6778.204-1) unstable; urgency=high
+chromium (131.0.6778.204-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -1015,7 +1094,7 @@ chromium (131.0.6778.204-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 18 Dec 2024 16:52:56 -0500
 
-chromium (131.0.6778.139-1) unstable; urgency=high
+chromium (131.0.6778.139-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -1037,6 +1116,10 @@ chromium (131.0.6778.139-1) unstable; urgency=high
     - fixes/font-gc-asan.patch: add a better workaround for bad font-gc
       behavior under libstdc++. This is self-contained and small, unlike
       the prior reverts of the switch to font garbage collection.
+    - bookworm/constexpr.patch: re-enable (and refresh) build fix
+      specifically for gcc 12.
+    - bookworm/constexpr2.patch: re-enable build fix for gcc 12.
+    - bookworm/bubble-contents.patch: re-enable build fix for gcc 12.
 
   [ Nathan Teodosio ]
   * Simplify fixes/bindgen.patch so it doesn't need frequent rebasing.
@@ -1050,15 +1133,16 @@ chromium (131.0.6778.139-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 11 Dec 2024 15:33:53 -0500
 
-chromium (131.0.6778.108-1) unstable; urgency=high
+chromium (131.0.6778.108-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-12053: Type Confusion in V8.
       Reported by gal1ium and chluo.
+  * Switch to clang-19 from clang-16 (closes: #1088162, #1088974).
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 04 Dec 2024 01:55:50 -0500
 
-chromium (131.0.6778.85-1) unstable; urgency=high
+chromium (131.0.6778.85-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -1088,6 +1172,17 @@ chromium (131.0.6778.85-1) unstable; urgency=high
       enable_freetype arg declaration.
     - fixes/updater-test.patch: add simple build fix for deleted
       third_party/updater/.
+    - upstream/stack-header.patch: drop, merged upstream.
+    - bookworm/clang16.patch: refresh.
+    - bookworm/bubble-contents.patch: refresh.
+    - bookworm/constexpr.patch: refresh.
+    - bookworm/gn-absl.patch: add a few more places where libs needed to
+      be made visible.
+    - bookworm/gn-funcs.patch: add another deletion of newer gn
+      features.
+    - bookworm/constexpr-assert.patch: add patch to work around more
+      clang-16 constexpr bugs; this time a fun one with branching
+      optimizations. Whee!
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -1100,7 +1195,7 @@ chromium (131.0.6778.85-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 21 Nov 2024 16:12:03 -0500
 
-chromium (130.0.6723.116-1) unstable; urgency=high
+chromium (130.0.6723.116-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-10826: Use after free in Family Experiences.
@@ -1115,7 +1210,7 @@ chromium (130.0.6723.91-2) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Sun, 03 Nov 2024 02:47:53 -0500
 
-chromium (130.0.6723.91-1) unstable; urgency=high
+chromium (130.0.6723.91-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-10487: Out of bounds write in Dawn.
@@ -1125,8 +1220,9 @@ chromium (130.0.6723.91-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 29 Oct 2024 20:36:38 -0400
 
-chromium (130.0.6723.69-1) unstable; urgency=high
+chromium (130.0.6723.69-1~deb12u1) bookworm-security; urgency=high
 
+  [ Andres Salomon ]
   * New upstream security release.
     - CVE-2024-10229: Inappropriate implementation in Extensions.
       Reported by Vsevolod Kokorin (Slonser) of Solidlab.
@@ -1135,9 +1231,14 @@ chromium (130.0.6723.69-1) unstable; urgency=high
     - CVE-2024-10231: Type Confusion in V8.
       Reported by Seunghyun Lee (@0x10n).
 
+  [ Timothy Pearson ]
+  * d/patches:
+    - bookworm/partially-deployed-mseal-syscall.patch: Work around newly
+      introduced `mseal` syscall being inconsistently available on Bookworm kernels
+
  -- Andres Salomon <dilinger@debian.org>  Tue, 22 Oct 2024 21:34:57 -0400
 
-chromium (130.0.6723.58-1) unstable; urgency=high
+chromium (130.0.6723.58-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -1177,6 +1278,13 @@ chromium (130.0.6723.58-1) unstable; urgency=high
     - system/event.patch: drop half of patch due to upstream deletions.
     - upstream/mojo-null.patch: merged into mojo.patch.
     - upstream/mojo.patch: update based on 130 test files.
+    - bookworm/gn-absl.patch: refresh.
+    - bookworm/gn-funcs.patch: refresh.
+    - bookworm/cacheline.patch: add patch to revert usage of
+      std::hardware_destructive_interference_size, which clang-16 lacks.
+    - bookworm/constexpr2.patch: add around clang16 build failure
+      workaround related to constexpr.
+    - upstream/stack-header.patch: add missing include.
 
   [ Daniel Richard G. ]
   * d/rules: Drop the clang-16 -I/-Wl,-rpath flags from CXXFLAGS/LDFLAGS as
@@ -1204,14 +1312,7 @@ chromium (130.0.6723.58-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Sat, 19 Oct 2024 01:12:11 -0400
 
-chromium (129.0.6668.100-2) unstable; urgency=high
-
-  * Switch to using clang-19, and drop all d/patches/bookworm/ workarounds
-    except for libxml-parsererr.patch (closes: #1081241).
-
- -- Andres Salomon <dilinger@debian.org>  Wed, 09 Oct 2024 14:13:00 -0400
-
-chromium (129.0.6668.100-1) unstable; urgency=high
+chromium (129.0.6668.100-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-9602: Type Confusion in V8.
@@ -1221,7 +1322,7 @@ chromium (129.0.6668.100-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 08 Oct 2024 19:36:09 -0400
 
-chromium (129.0.6668.89-1) unstable; urgency=high
+chromium (129.0.6668.89-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-7025: Integer overflow in Layout.
@@ -1241,7 +1342,7 @@ chromium (129.0.6668.89-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 02 Oct 2024 01:07:19 -0400
 
-chromium (129.0.6668.70-1) unstable; urgency=high
+chromium (129.0.6668.70-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -1262,7 +1363,7 @@ chromium (129.0.6668.70-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 25 Sep 2024 15:23:27 -0400
 
-chromium (129.0.6668.58-1) unstable; urgency=high
+chromium (129.0.6668.58-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -1291,6 +1392,7 @@ chromium (129.0.6668.58-1) unstable; urgency=high
     - bookworm/more-spaceships.patch: yet another clang-17 header
       backport for clang-16 inadequecies.
     - bookworm/signer-lambda.patch: clang-16 lambda bug workaround.
+    - bookworm/bubble-contents.patch: refresh.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -1303,7 +1405,7 @@ chromium (129.0.6668.58-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 18 Sep 2024 20:47:23 -0400
 
-chromium (128.0.6613.137-1) unstable; urgency=high
+chromium (128.0.6613.137-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -1331,7 +1433,7 @@ chromium (128.0.6613.137-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 10 Sep 2024 21:56:02 -0400
 
-chromium (128.0.6613.119-1) unstable; urgency=high
+chromium (128.0.6613.119-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -1354,7 +1456,7 @@ chromium (128.0.6613.119-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 04 Sep 2024 15:05:06 -0400
 
-chromium (128.0.6613.113-1) unstable; urgency=high
+chromium (128.0.6613.113-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -1366,14 +1468,20 @@ chromium (128.0.6613.113-1) unstable; urgency=high
     - CVE-2024-8198: Heap buffer overflow in Skia.
       Reported by Renan Rios (@hyhy_100).
   * d/control:
-    - Bump rustc build-dep up to >= 1.74.
+    - Bump rustc-web build-dep up to >= 1.74.
   * d/patches:
     - bookworm/rust-downgrade-osstr-users.patch: drop, now that we have a
       newer rust in bookworm.
+    - bookworm/crabbyav1f.patch: drop, no longer needed w/ new rust.
+    - bookworm/rust-no-thin-lto.patch: drop, we can now enable thinlto w/
+      new rust.
+    - fixes/clang-rust-target.patch: add, needed for thinlto in rust.
+    - ppc64le/fixes/fix-different-data-layouts.patch: add, needed for
+      mismatch between newer rust and older clang.
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 29 Aug 2024 01:10:43 -0400
 
-chromium (128.0.6613.84-1) unstable; urgency=high
+chromium (128.0.6613.84-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -1436,9 +1544,15 @@ chromium (128.0.6613.84-1) unstable; urgency=high
     - fixes/highway-include-path.patch: upstream fixed the original issue
       in a broken way, making this worse. Add more to this patch to work
       around that.
+    - bookworm/bubble-contents.patch: refresh.
+    - bookworm/crabbyav1f.patch: refresh.
+    - bookworm/gn-absl.patch: refresh.
 
   [ Daniel Richard G. ]
   * d/rules: Parameterize Rust sysroot to simplify using a different one.
+  * d/patches:
+    - bookworm/highway-blink.patch: Avoid armhf/arm64 FTBFS by disabling
+      Blink feature that requires newer libhwy-dev version.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -1462,13 +1576,11 @@ chromium (127.0.6533.119-1) unstable; urgency=high
   * d/patches:
     - ppc64le/crashpad/0002-Include-cstddef-to-fix-build.patch: Drop, as
       the original FTBFS that this fixed is no longer reproducible.
-    - ppc64le/fixes/fix-different-data-layouts.patch: Fix ppc64el FTBFS due
-      to minor LLVM data-layout clash between older clang and newer rustc.
   * d/rules: Add to ppc64el CXXFLAGS to quash copious AltiVec warnings.
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 14 Aug 2024 13:11:25 -0400
 
-chromium (127.0.6533.99-1) unstable; urgency=high
+chromium (127.0.6533.99-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream security release.
@@ -1505,7 +1617,7 @@ chromium (127.0.6533.99-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 07 Aug 2024 00:18:54 -0400
 
-chromium (127.0.6533.88-1) unstable; urgency=high
+chromium (127.0.6533.88-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -1567,6 +1679,9 @@ chromium (127.0.6533.88-1) unstable; urgency=high
     release). Instead, use d/scripts/get-exludes.pl and tar's
     --exclude-from to drastically speed things up (total run now takes
     8 mins).
+    - include bindgen 0.66.1-3 packages from snapshot.debian.org, as
+      bookworm's bindgen 0.60.1 is too old. The packages are
+      unpacked during build.
   * d/patches:
     - upstream/tabstrip-include.patch: drop, merged upstream.
     - upstream/quiche-deque.patch: drop, merged upstream.
@@ -1595,10 +1710,19 @@ chromium (127.0.6533.88-1) unstable; urgency=high
       std::to_address() issue.
     - bookworm/constexpr.patch: add more of the usual constexpr
       workarounds; only needed for clang-16.
+    - bookworm/constcountrycode.patch, bookworm/omnibox-constexpr.patch:
+      remove, now part of bookworm/constexpr.patch.
     - fixes/absl-optional.patch: drop, only needed for libstdc++-dev.
     - fixes/bad-font-gc*: drop, only needed for libstdc++-dev.
     - fixes/chromium-browser-ui-missing-deps.patch: add a bunch of
       mojo-related dependency build fixes.
+    - bookworm/bubble-contents.patch: refresh.
+    - bookworm/gn-funcs.patch: add workarounds for missing functions in
+      bookworm's older generate-ninja.
+    - bookworm/gn-absl.patch: add workarounds for absl changes that rely
+      on newer gn.
+    - bookworm/crabbyav1f.patch: add experimental feature toggle, needed
+      for older rustc.
 
   [ Timothy Pearson ]
   * d/patches:
@@ -1611,7 +1735,7 @@ chromium (127.0.6533.88-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 30 Jul 2024 23:50:29 -0400
 
-chromium (126.0.6478.182-1) unstable; urgency=high
+chromium (126.0.6478.182-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-6772: Inappropriate implementation in V8.
@@ -1632,7 +1756,7 @@ chromium (126.0.6478.182-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 16 Jul 2024 16:50:59 -0400
 
-chromium (126.0.6478.126-1) unstable; urgency=high
+chromium (126.0.6478.126-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-6290: Use after free in Dawn. Reported by wgslfuzz.
@@ -1645,7 +1769,7 @@ chromium (126.0.6478.126-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 25 Jun 2024 03:28:40 -0400
 
-chromium (126.0.6478.114-1) unstable; urgency=high
+chromium (126.0.6478.114-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-6100: Type Confusion in V8. Reported by Seunghyun Lee
@@ -1658,7 +1782,7 @@ chromium (126.0.6478.114-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 18 Jun 2024 15:55:14 -0400
 
-chromium (126.0.6478.56-1) unstable; urgency=high
+chromium (126.0.6478.56-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2024-5830: Type Confusion in V8.
@@ -1727,7 +1851,7 @@ chromium (126.0.6478.56-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 13 Jun 2024 21:31:56 -0400
 
-chromium (125.0.6422.141-1) unstable; urgency=high
+chromium (125.0.6422.141-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-5493: Heap buffer overflow in WebRTC.
@@ -1740,13 +1864,12 @@ chromium (125.0.6422.141-1) unstable; urgency=high
       Reported by zh1x1an1221 of Ant Group Tianqiong Security Lab.
     - CVE-2024-5498: Use after free in Presentation API.
     - CVE-2024-5499: Out of bounds write in Streams API.
-  * d/patches/fixes/libxml-parseerr.patch: delete, now that we have a
-    newer libxml2.
-  * d/control: add versioned build-dep on libxml2-dev >= 2.12.
+  * d/patches/fixes/libxml-parseerr.patch: move to bookworm directory.
+  * d/control: add versioned build-dep on libxml2-dev < 2.10.
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 30 May 2024 22:11:26 -0400
 
-chromium (125.0.6422.112-1) unstable; urgency=high
+chromium (125.0.6422.112-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-5274: Type Confusion in V8. Reported by Clément Lecigne of
@@ -1755,7 +1878,7 @@ chromium (125.0.6422.112-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 23 May 2024 20:51:14 -0400
 
-chromium (125.0.6422.76-1) unstable; urgency=high
+chromium (125.0.6422.76-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-5157: Use after free in Scheduling. Reported by Looben Yang.
@@ -1766,12 +1889,10 @@ chromium (125.0.6422.76-1) unstable; urgency=high
     - CVE-2024-5160: Heap buffer overflow in Dawn. Reported by wgslfuzz.
   * Don't silently ignore arguments meant for the wrapper script if chromium
     args happen to come first (closes: #1068096).
-  * d/patches:
-    - upstream/tabstrip-include.patch: add header build fix.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 21 May 2024 16:12:47 -0400
 
-chromium (125.0.6422.60-1) unstable; urgency=high
+chromium (125.0.6422.60-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2024-4947: Type Confusion in V8. Reported by Vasily
@@ -1804,11 +1925,14 @@ chromium (125.0.6422.60-1) unstable; urgency=high
     - bookworm/v8-wrappable.patch: add nvt2.patch build fix replacement
       that just defines a single struct member.
     - upstream/ninja.patch: add build fix for failure triggered by
-      ninja-1.12 (closes: #1071197).
+      ninja-1.12.
     - fixes/bad-font-gc00000.patch: add formatting patch revert to make
       other patches easier to apply.
     - fixes/bad-font-gc2.patch: add a build failure fix & refresh.
     - fixes/bad-font-gc11.patch: add a build failure fix & refresh.
+    - bookworm/bubble-contents.patch: refresh.
+    - bookworm/omnibox-constexpr.patch: add constexpr -> const build fix.
+    - upstream/tabstrip-include.patch: add header build fix.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -1825,21 +1949,21 @@ chromium (125.0.6422.60-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 16 May 2024 18:55:41 -0400
 
-chromium (124.0.6367.207-1) unstable; urgency=high
+chromium (124.0.6367.207-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-4761: Out of bounds write in V8. Reported by Anonymous.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 14 May 2024 22:17:42 -0400
 
-chromium (124.0.6367.201-1) unstable; urgency=high
+chromium (124.0.6367.201-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-4671: Use after free in Visuals. Reported by Anonymous.
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 09 May 2024 20:37:07 -0400
 
-chromium (124.0.6367.155-1) unstable; urgency=high
+chromium (124.0.6367.155-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-4558: Use after free in ANGLE. Reported by gelatin dessert.
@@ -1853,7 +1977,7 @@ chromium (124.0.6367.155-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 07 May 2024 14:47:32 -0400
 
-chromium (124.0.6367.118-1) unstable; urgency=high
+chromium (124.0.6367.118-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-4331: Use after free in Picture In Picture.
@@ -1882,7 +2006,7 @@ chromium (124.0.6367.118-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 30 Apr 2024 17:53:52 -0400
 
-chromium (124.0.6367.78-1) unstable; urgency=high
+chromium (124.0.6367.78-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-4058: Type Confusion in ANGLE.
@@ -1892,7 +2016,7 @@ chromium (124.0.6367.78-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 25 Apr 2024 19:07:35 -0400
 
-chromium (124.0.6367.60-2) unstable; urgency=high
+chromium (124.0.6367.60-2~deb12u1) bookworm-security; urgency=high
 
   * d/patches/ppc64le:
      - third_party/0001-Add-PPC64-support-for-boringssl.patch: update for
@@ -1907,9 +2031,9 @@ chromium (124.0.6367.60-2) unstable; urgency=high
     - upstream/ozone1.patch, upstream/ozone2.patch: backport fixes for
       broken wayland support (closes: #1069586).
 
- -- Timothy Pearson <tpearson@debian.org>  Thu, 25 Apr 2024 15:21:00 -0500
+ -- Timothy Pearson <tpearson@debian.org>  Thu, 25 Apr 2024 15:49:00 -0500
 
-chromium (124.0.6367.60-1) unstable; urgency=high
+chromium (124.0.6367.60-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2024-3832: Object corruption in V8.
@@ -1987,7 +2111,7 @@ chromium (124.0.6367.60-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 19 Apr 2024 12:33:38 -0400
 
-chromium (123.0.6312.122-1) unstable; urgency=high
+chromium (123.0.6312.122-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-3157: Out of bounds write in Compositing.
@@ -1998,14 +2122,7 @@ chromium (123.0.6312.122-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 10 Apr 2024 21:21:05 -0400
 
-chromium (123.0.6312.105-2) unstable; urgency=high
-
-  * Depend on libgtk-3-0t64 instead of libgtk-3-0 for time_t transition
-    (closes: #1068540).
-
- -- Andres Salomon <dilinger@debian.org>  Sun, 07 Apr 2024 12:43:26 -0400
-
-chromium (123.0.6312.105-1) unstable; urgency=high
+chromium (123.0.6312.105-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-3156: Inappropriate implementation in V8.
@@ -2017,7 +2134,7 @@ chromium (123.0.6312.105-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 02 Apr 2024 18:28:18 -0400
 
-chromium (123.0.6312.86-1) unstable; urgency=high
+chromium (123.0.6312.86-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2024-2883: Use after free in ANGLE.
@@ -2040,7 +2157,7 @@ chromium (123.0.6312.86-1) unstable; urgency=high
 
  -- Timothy Pearson <tpearson@debian.org>  Wed, 28 Mar 2024 16:58:00 -0500
 
-chromium (123.0.6312.58-1) unstable; urgency=high
+chromium (123.0.6312.58-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2024-2625: Object lifecycle issue in V8.
@@ -2081,6 +2198,12 @@ chromium (123.0.6312.58-1) unstable; urgency=high
       ~/.config/chromium/screen_ai/, and do OCR stuff (and who knows
       what else) in that opaque blob without warning you. We, uh, don't
       want that. (closes: #1066910).
+    - bookworm/generate-ninja.patch: drop, merged upstream.
+    - bookworm/bubble-contents.patch: update for renamed header.
+    - bookworm/eraseif0.patch, eraseif-lambda.patch: drop, upstream merged
+      a fix for g++-12 compilation.
+    - bookworm/constexpr.patch: add yet another constexpr g++-12 fix.
+    - bookworm/sizet.patch: another simple g++-12 build fix.
   * d/rules: add angle_build_tests=false build argument, which allows us to
     drop angle-perftests.patch.
 
@@ -2101,7 +2224,7 @@ chromium (123.0.6312.58-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Fri, 22 Mar 2024 12:45:06 -0400
 
-chromium (122.0.6261.128-1) unstable; urgency=high
+chromium (122.0.6261.128-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-2400: Use after free in Performance Manager.
@@ -2109,7 +2232,7 @@ chromium (122.0.6261.128-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 12 Mar 2024 18:43:05 -0400
 
-chromium (122.0.6261.111-1) unstable; urgency=high
+chromium (122.0.6261.111-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-2173: Out of bounds memory access in V8.
@@ -2117,10 +2240,13 @@ chromium (122.0.6261.111-1) unstable; urgency=high
     - CVE-2024-2174: Inappropriate implementation in V8.
       Reported by 5f46f4ee2e17957ba7b39897fb376be8.
     - CVE-2024-2176: Use after free in FedCM. Reported by Anonymous.
+  * d/rules: drop bullseye nodejs workaround.
+  * Add a build-dep on (the newly backported) rustc-web, drop
+    d/patches/bookworm/undo-rust-req.patch, and enable rust.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 05 Mar 2024 16:40:05 -0500
 
-chromium (122.0.6261.94-1) unstable; urgency=high
+chromium (122.0.6261.94-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - Type Confusion in V8. Reported by 5f46f4ee2e17957ba7b39897fb376be8.
@@ -2129,7 +2255,7 @@ chromium (122.0.6261.94-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 27 Feb 2024 15:15:03 -0500
 
-chromium (122.0.6261.57-1) unstable; urgency=high
+chromium (122.0.6261.57-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2024-1669: Out of bounds memory access in Blink.
@@ -2175,6 +2301,12 @@ chromium (122.0.6261.57-1) unstable; urgency=high
     - bookworm/nvt2.patch: revert another upstream c++-20 change for clang-16.
     - upstream/bitset.patch: add missing include.
     - ppc64le/v8/0002-Add-ppc64-trap-instructions.patch: refresh.
+    - bookworm/eraseif0.patch: revert another commit; needed by
+      eraseif-lambda.patch.
+    - bookworm/eraseif-lamba.patch: refresh.
+    - bookworm/undo-rust-req.patch: refresh.
+    - bookworm/bubble-contents.patch: remove static_assert() that fails with
+      libstdc++12.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -2187,7 +2319,7 @@ chromium (122.0.6261.57-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 21 Feb 2024 19:56:32 -0500
 
-chromium (121.0.6167.160-1) unstable; urgency=high
+chromium (121.0.6167.160-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-1284: Use after free in Mojo. Reported by Anonymous.
@@ -2196,7 +2328,7 @@ chromium (121.0.6167.160-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 06 Feb 2024 22:41:53 -0500
 
-chromium (121.0.6167.139-1) unstable; urgency=high
+chromium (121.0.6167.139-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-1060: Use after free in Canvas. Reported by Anonymous.
@@ -2207,7 +2339,7 @@ chromium (121.0.6167.139-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 31 Jan 2024 11:49:10 -0500
 
-chromium (121.0.6167.85-1) unstable; urgency=high
+chromium (121.0.6167.85-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2024-0807: Use after free in WebAudio.
@@ -2252,6 +2384,10 @@ chromium (121.0.6167.85-1) unstable; urgency=high
       clang-16.
     - fixes/libxml-parseerr.patch: revert change from a newer libxml than
       debian's.
+    - bookworm/undo-rust-req.patch: revert change that makes rust required
+      to build (for now).
+    - bookworm/eraseif-lamba.patch: revert changes switching to std::erase_if
+      to work around libstdc++-12 bug.
 
   [ Timothy Pearson ]
   * d/patches:
@@ -2277,7 +2413,7 @@ chromium (120.0.6099.224-2) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 18 Jan 2024 03:05:12 -0500
 
-chromium (120.0.6099.224-1) unstable; urgency=high
+chromium (120.0.6099.224-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-0517: Out of bounds write in V8.
@@ -2285,12 +2421,11 @@ chromium (120.0.6099.224-1) unstable; urgency=high
     - CVE-2024-0518: Type Confusion in V8.
       Reported by Ganjiang Zhou(@refrain_areu) of ChaMd5-H1 team.
     - CVE-2024-0519: Out of bounds memory access in V8. Reported by Anonymous.
-  * d/rules: enable rust and (relatedly) fix search path for clang libs.
-  * Add versioned build-dep on rustc >= 1.70.0+dfsg1-5 for profiler support.
+  * d/rules: fix search path for clang libs.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 16 Jan 2024 15:35:05 -0500
 
-chromium (120.0.6099.216-1) unstable; urgency=high
+chromium (120.0.6099.216-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-0333: Insufficient data validation in Extensions.
@@ -2298,7 +2433,7 @@ chromium (120.0.6099.216-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 09 Jan 2024 20:54:53 -0500
 
-chromium (120.0.6099.199-1) unstable; urgency=high
+chromium (120.0.6099.199-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2024-0222: Use after free in ANGLE.
@@ -2311,7 +2446,7 @@ chromium (120.0.6099.199-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 03 Jan 2024 22:53:21 -0500
 
-chromium (120.0.6099.129-1) unstable; urgency=high
+chromium (120.0.6099.129-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-7024: Heap buffer overflow in WebRTC. Reported by
@@ -2319,7 +2454,7 @@ chromium (120.0.6099.129-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 20 Dec 2023 21:05:12 -0500
 
-chromium (120.0.6099.109-1) unstable; urgency=high
+chromium (120.0.6099.109-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-6702: Type Confusion in V8. Reported by
@@ -2334,7 +2469,7 @@ chromium (120.0.6099.109-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 12 Dec 2023 19:52:08 -0500
 
-chromium (120.0.6099.71-1) unstable; urgency=high
+chromium (120.0.6099.71-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon ]
   * New upstream stable release.
@@ -2367,6 +2502,7 @@ chromium (120.0.6099.71-1) unstable; urgency=high
     - fixes/absl-optional.patch: add a workaround for a clang bug
       (https://github.com/llvm/llvm-project/issues/50248) by providing our
       own 'optional' header.
+    - bookworm/constcountrycode.patch: add workaround for older libstdc++.
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -2382,9 +2518,9 @@ chromium (120.0.6099.71-1) unstable; urgency=high
     - Mass refresh all other patches against 120 codebase.  No functional
       change.
 
- -- Andres Salomon <dilinger@debian.org>  Thu, 07 Dec 2023 15:00:36 -0500
+ -- Andres Salomon <dilinger@debian.org>  Fri, 08 Dec 2023 11:40:41 -0500
 
-chromium (119.0.6045.199-1) unstable; urgency=high
+chromium (119.0.6045.199-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-6348: Type Confusion in Spellcheck.
@@ -2401,7 +2537,7 @@ chromium (119.0.6045.199-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 28 Nov 2023 23:33:06 -0500
 
-chromium (119.0.6045.159-1) unstable; urgency=high
+chromium (119.0.6045.159-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-5997: Use after free in Garbage Collection.
@@ -2414,7 +2550,7 @@ chromium (119.0.6045.159-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 14 Nov 2023 20:04:30 -0500
 
-chromium (119.0.6045.123-1) unstable; urgency=high
+chromium (119.0.6045.123-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-5996: Use after free in WebAudio. Reported by
@@ -2428,7 +2564,7 @@ chromium (119.0.6045.123-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 07 Nov 2023 23:49:10 -0500
 
-chromium (119.0.6045.105-1) unstable; urgency=high
+chromium (119.0.6045.105-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2023-5480: Inappropriate implementation in Payments.
@@ -2478,11 +2614,12 @@ chromium (119.0.6045.105-1) unstable; urgency=high
 
  -- Timothy Pearson <tpearson@raptorengineering.com>  Tue, 31 Oct 2023 23:50:00 -0500
 
-chromium (118.0.5993.117-1) unstable; urgency=high
+chromium (118.0.5993.117-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-5472: Use after free in Profiles.
       Reported by @18楼梦想改造家.
+  * Switch from clang-14 to clang-16.
   * d/patches:
     - bookworm/clang-attribs.patch: drop, now that we've switched to clang-16.
     - bookworm/typename.patch: drop, now that we've switched to clang-16.
@@ -2492,13 +2629,15 @@ chromium (118.0.5993.117-1) unstable; urgency=high
     - bookworm/stringpiece3.patch: drop, now that we've switched to clang-16.
     - bookworm/initialize-const-ctor.patch: drop, now that we've switched to
       clang-16.
+    - bookworm/i386-lock-free.patch: drop, now that we've switched to clang-16.
+    - bullseye/clang13.patch: drop, now that we've switched to clang-16.
     - fixes/brandversion-construct.patch: drop, now that we've switched to
       clang-16.
     - fixes/SkColor4f-init.patch: drop, now that we've switched to clang-16.
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 24 Oct 2023 20:00:54 -0400
 
-chromium (118.0.5993.70-1) unstable; urgency=high
+chromium (118.0.5993.70-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2023-5218: Use after free in Site Isolation.
@@ -2568,14 +2707,14 @@ chromium (118.0.5993.70-1) unstable; urgency=high
     - disable/unrar.patch: update for minor upstream changes.
     - bookworm/struct-ctor.patch: add various new workarounds for clang-14.
     - bookworm/structured-binding-scope-bug.patch: drop part of the patch.
-    - bullseye/clang13.patch: drop bullseye patches from sid.
-    - bullseye/constexpr.patch: drop bullseye patches from sid.
+    - bullseye/constexpr.patch: drop bullseye patch from bookworm.
     - ungoogled/.../disable-web-environment-integrity.patch: sync with
       ungoogled-chromium for upstream changes.
+    - bookworm/i386-lock-free.patch: refresh.
 
  -- Timothy Pearson <tpearson@raptorengineering.com>  Tue, 10 Oct 2023 22:03:00 -0500
 
-chromium (117.0.5938.149-1) unstable; urgency=high
+chromium (117.0.5938.149-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-5346: Type Confusion in V8. Reported by Amit Kumar.
@@ -2588,13 +2727,17 @@ chromium (117.0.5938.132-2) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Sun, 01 Oct 2023 15:46:49 -0400
 
-chromium (117.0.5938.132-1) unstable; urgency=high
+chromium (117.0.5938.132-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-5217: Heap buffer overflow in vp8 encoding in libvpx.
       Reported by Clément Lecigne of Google's Threat Analysis Group.
     - CVE-2023-5186: Use after free in Passwords. Reported by [pwn2car].
     - CVE-2023-5187: Use after free in Extensions. Reported by Thomas Orlita.
+  * d/patches:
+    - bookworm/i386-lock-free.patch: add to fix i386 build failure.
+    - bookworm/freetype-COLRV1.patch: disable using freetype's COLRV1
+      (closes: #1053142).
 
  -- Andres Salomon <dilinger@debian.org>  Thu, 28 Sep 2023 00:41:20 -0400
 
@@ -2608,7 +2751,7 @@ chromium (117.0.5938.92-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 27 Sep 2023 01:00:07 -0400
 
-chromium (117.0.5938.62-1) unstable; urgency=high
+chromium (117.0.5938.62-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon]
   * New upstream stable release.
@@ -2662,9 +2805,9 @@ chromium (117.0.5938.62-1) unstable; urgency=high
     - ppc64le/libaom/0001-Add-ppc64-target-to-libaom.patch: refresh.
     - disable/privacy-sandbox.patch: ensure Privacy Sandbox "features" are
       off by default.
+    - bookworm/generate-ninja.patch: fix build failure w/ bookworm's older gn.
   * Switch to using bundled brotli, as the version in debian is too old.
     And so we can drop d/patches/bookworm/brotli.patch, too.
-  * Switch from clang-14 to clang-16 (closes: #1051355).
 
   [ Timothy Pearson ]
   * d/patches/ppc64le:
@@ -2686,7 +2829,7 @@ chromium (117.0.5938.62-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 13 Sep 2023 22:26:10 -0400
 
-chromium (116.0.5845.180-1) unstable; urgency=high
+chromium (116.0.5845.180-1~deb12u1) bookworm-security; urgency=high
 
   [ Andres Salomon]
   * New upstream security release.
@@ -2703,7 +2846,7 @@ chromium (116.0.5845.180-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 05 Sep 2023 19:10:10 -0400
 
-chromium (116.0.5845.140-1) unstable; urgency=high
+chromium (116.0.5845.140-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-4572: Use after free in MediaStream.
@@ -2714,13 +2857,7 @@ chromium (116.0.5845.140-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 30 Aug 2023 04:14:41 -0400
 
-chromium (116.0.5845.110-2) unstable; urgency=high
-
-  * Remove Bullseye-specific workarounds from debian/rules (closes: #1038679).
-
- -- Timothy Pearson <tpearson@raptorengineering.com>  Wed, 23 Aug 2023 13:25:00 -0500
-
-chromium (116.0.5845.110-1) unstable; urgency=high
+chromium (116.0.5845.110-1~deb12u1) bookworm-security; urgency=high
 
   [ Timothy Pearson ]
   * New upstream security release.
@@ -2743,7 +2880,12 @@ chromium (116.0.5845.110-1) unstable; urgency=high
 chromium (116.0.5845.96-2) unstable; urgency=high
 
   * d/patches/upstream/limits.patch: Add a build fix for arm64.
-  * The follow CVEs were fixed in the prior release and I forgot them.
+
+ -- Andres Salomon <dilinger@debian.org>  Wed, 16 Aug 2023 04:48:02 -0400
+
+chromium (116.0.5845.96-1~deb12u1) bookworm-security; urgency=high
+
+  * New upstream stable release.
     - CVE-2023-2312: Use after free in Offline. Reported by avaue at S.S.L..
     - CVE-2023-4349: Use after free in Device Trust Connectors.
       Reported by Weipeng Jiang (@Krace) of VRI.
@@ -2784,17 +2926,10 @@ chromium (116.0.5845.96-2) unstable; urgency=high
       Reported by Axel Chong.
     - CVE-2023-4368: Insufficient policy enforcement in Extensions API.
       Reported by Axel Chong.
-
- -- Andres Salomon <dilinger@debian.org>  Wed, 16 Aug 2023 04:48:02 -0400
-
-chromium (116.0.5845.96-1) unstable; urgency=high
-
-  * New upstream stable release.
   * d/patches:
    - fixes/cmath.patch: drop, merged upstream.
    - fixes/vector.patch: drop, merged upstream.
    - fixes/cookieresult.patch: drop, merged upstream.
-   - fixes/gcc13-headers.patch: drop portions which have been merged upstream.
    - upstream/feature-list-static.patch: drop, merged upstream.
    - disable/catapult.patch: refresh.
    - upstream/statelessV4L2.patch: refresh.
@@ -2818,7 +2953,6 @@ chromium (116.0.5845.96-1) unstable; urgency=high
     But also disable rust for now.
   * d/rules: drop use_gnome_keyring=false, upstream has completely removed
     libgnome-keyring support in favor of gnome's libsecret.
-  * d/control: add build-dep on libclang-rt-dev for rust.
   * Use bundled re2 (for now) instead of libre2-dev due to random crashes
     we're seeing. Adjust build-deps, Files-Excluded, d/clean,
     and d/scripts/unbundle accordingly.
@@ -2837,7 +2971,7 @@ chromium (116.0.5845.96-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 15 Aug 2023 17:46:56 -0400
 
-chromium (115.0.5790.170-1) unstable; urgency=high
+chromium (115.0.5790.170-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-4068: Type Confusion in V8. Reported by Jerry.
@@ -2883,7 +3017,7 @@ chromium (115.0.5790.98-2) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Wed, 19 Jul 2023 22:23:08 -0400
 
-chromium (115.0.5790.98-1) unstable; urgency=high
+chromium (115.0.5790.98-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream release
     - CVE-2023-3727: Use after free in WebRTC.
@@ -2943,9 +3077,6 @@ chromium (115.0.5790.98-1) unstable; urgency=high
     - fixes/brandversion-construct.patch: add to fix build failure.
     - fixes/SkColor4f-init.patch: another missing struct constructor fix.
     - fixes/cookieresult.patch: another struct ctor build fix.
-    - fixes/gcc13-with-clang14.patch: fix FTBFS with gcc-13 (closes: #1037604).
-    - fixes/gcc13-headers.patch: fix a bunch of missing includes which
-      gcc-13 wants
     - ppc64le/third_party/0001-Add-PPC64-support-for-boringssl.patch: refresh.
     - ppc64le/libaom/0001-Add-ppc64-target-to-libaom.patch: refresh.
     - ppc64le/third_party/0002-third-party-boringssl-add-generated-files.patch:
@@ -2953,7 +3084,7 @@ chromium (115.0.5790.98-1) unstable; urgency=high
 
  -- Timothy Pearson <tpearson@raptorengineering.com>  Tue, 18 Jul 2023 17:50:00 -0500
 
-chromium (114.0.5735.198-1) unstable; urgency=high
+chromium (114.0.5735.198-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-3420: Type Confusion in V8.
@@ -2964,7 +3095,7 @@ chromium (114.0.5735.198-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 27 Jun 2023 02:21:12 -0400
 
-chromium (114.0.5735.133-1) unstable; urgency=high
+chromium (114.0.5735.133-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
     - CVE-2023-3214: Use after free in Autofill payments.
@@ -2977,7 +3108,7 @@ chromium (114.0.5735.133-1) unstable; urgency=high
 
  -- Andres Salomon <dilinger@debian.org>  Tue, 13 Jun 2023 13:31:55 -0400
 
-chromium (114.0.5735.106-1) unstable; urgency=high
+chromium (114.0.5735.106-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream stable release.
     - CVE-2023-3079: Type Confusion in V8.
@@ -2988,7 +3119,7 @@ chromium (114.0.5735.106-1) unstable; urgency=high
 
  -- Timothy Pearson <tpearson@raptorengineering.com>  Mon, 05 Jun 2023 21:38:00 -0500
 
-chromium (114.0.5735.90-2) unstable; urgency=high
+chromium (114.0.5735.90-2~deb12u1) bookworm-security; urgency=high
 
   * d/patches:
     - Add upstream/feature-list-static.patch
