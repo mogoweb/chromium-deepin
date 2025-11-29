@@ -1,92 +1,67 @@
 
-# Debian Chromium packaging
+# deepin Chromium
 
-## Chromium Versioning
+本项目基于 debian Chromium，可以在 deepin V25 系统上构建 Chromium 浏览器，构建的 deb 包可以安装并运行在统信 UOS V20 / deepin V23 / deepin V25 等信创系统上。
 
-Chromium upstream releases come in three flavors - stable, beta, and dev. Each release is defined by the first number in the version string (eg, 99.0.4844.74 is release 99). They publish a [calendar](https://chromiumdash.appspot.com/schedule) for releases that show each major release, the date it will transition from dev to beta ("Beta Promotion"), the date it will transition from beta to stable ("Stable Release"), and sometimes when a stable release will receive a bug/security fix update ("Next Refresh").
+## 获取 deepin chromium 源码
 
-Debian sid will only ever have a stable release, but experimental may have a beta or dev release. This git repository contains an experimental branch for that.
+```bash
+git clone https://github.com/mogoweb/chromium-deepin.git
+```
 
-## Building
+## 安装构建依赖包
 
-If you're updating the Chromium package for a newer upstream version, first create a new changelog entry in debian/changelog with the new version. Then run the following, which will download Chromium's -lite tarball and strip non-free bits from it and create the necessary .orig.tar.xz file. The uscan program will not work on Chromium, which is why you must do this step.
+进入到 chromium-deepin 目录，安装构建所需的开发包。
+
+```
+cd chromium-deepin
+sudo dpkg -i ./debian/packages/libstd-rust-web-1.85_1.85.0+dfsg3-1~deb12u3_amd64.deb \
+    debian/packages/libstd-rust-web-dev_1.85.0+dfsg3-1~deb12u3_amd64.deb \
+    debian/packages/rustc-web_1.85.0+dfsg3-1~deb12u3_amd64.deb
+sudo apt-get build-dep .
+```
+
+## 构建流程
+
+执行以下命令，该命令会下载 Chromium 的精简版（-lite）压缩包，剔除其中的非自由组件，并生成所需的 `.orig.tar.xz` 源文件。
+
 ```
 ./debian/rules get-orig-source
 ```
-Otherwise, just use the existing orig.tar.xz that's already in Debian.
 
-Now unpack `chromium_<version>.orig.tar.xz` and copy the debian/ directory from this git repository into it.
-```
-tar Jxvf chromium_<version>.orig.tar.xz
-cp -ra chromium-git/debian chromium-<version>
-```
+生成的源码包位于上一级目录， 文件名形如： `chromium_<version>.orig.tar.xz` 。
 
-Finally you can continue with installing build-deps and build it like a normal Debian package.
-
-
-## Problems Building a Security Update
-
-The most likely problem you're going to run into is a patch not applying due to fuzz.
+接下来解压 `chromium_<version>.orig.tar.xz` 并将本 Git 仓库中的 `debian/` 目录复制到解压后的文件夹中：
 
 ```
-dpkg-source: info: applying disable/devtools-unittests.patch
-dpkg-source: info: applying disable/libaom-arm.patch
-dpkg-source: info: applying system/icu.patch
-patching file net/BUILD.gn
-patching file base/BUILD.gn
-Hunk #1 FAILED at 56.
-Hunk #2 succeeded at 3604 (offset 207 lines).
-1 out of 2 hunks FAILED
-dpkg-source: info: the patch has fuzz which is not allowed, or is malformed
-dpkg-source: info: if patch 'system/icu.patch' is correctly applied by quilt, use 'quilt refresh' to update it
-dpkg-source: info: if the file is present in the unpacked source, make sure it is also present in the orig tarball
-dpkg-source: info: restoring quilt backup files for system/icu.patch
-dpkg-source: error: LC_ALL=C patch -t -F 0 -N -p1 -u -V never -E -b -B .pc/system/icu.patch/ --reject-file=- < chromium-99.0.4844.74/debian/patches/system/icu.patch subprocess returned exit status 1
-dpkg-buildpackage: error: dpkg-source --before-build . subprocess returned exit status 2
-debuild: fatal error at line 1182:
-dpkg-buildpackage -us -uc -ui failed
+tar Jxvf chromium_142.0.7444.175.orig.tar.xz
+cp -ra chromium-deepin/debian chromium-142.0.7444.175
 ```
 
-To fix this, just install quilt and run the following:
+进入 `chromium_<version>` 目录，执行标准的 debian 包构建命令：
 
 ```
-quilt push -f
-quilt refresh
+cd chromium-142.0.7444.175
+dpkg-buildpackage -us -uc -b
 ```
-This will inform you that the patch has been refreshed, and you should be able to continue building. Don't forget to copy the refreshed patch (in the above example, it would be system/icu.patch) into the git repository and commit it, if this is going to be an official Debian upload.
 
+这个构建过程会非常长，一般需要 2 ~ 3 个小时，甚至更长时间。
 
-## Problems Building a New Stable Release
-
-Building the first stable release of a new series will likely run into a number of problems. The first is when running `./debian/rules get-orig-source`, the following errors:
-```
-perl debian/scripts/mk-origtargz ../chromium-100.0.4896.60-lite.tar.xz > ../chromium_100.0.4896.60.files-removed
-mk-origtargz warn: No files matched excluded pattern as the last matching glob: *.elf
-mk-origtargz warn: No files matched excluded pattern as the last matching glob: *.swf
-mk-origtargz warn: No files matched excluded pattern as the last matching glob: *fsevents.node
-mk-origtargz warn: No files matched excluded pattern as the last matching glob: third_party/tcmalloc
-```
-This is more of a warning than an error, but this means that upstream removed the directory `third_party/cmalloc` and it's safe to remove it from debian/copyright's `Files-Excluded:`. However, that directory is probably removed from debian for a reason, and it's worth doing a quick check to ensure the directory wasn't simply renamed. The tcmalloc directory contained `tcmalloc.h`, so I'm doing a quick `find chromium-<version>-lite -name tcmalloc.h` to ensure that the tcmalloc library was *actually* removed before I delete the line in debian/copyright.
+如果后续修改了 chromium 源码，不想重新构建，只需要编译修改的文件，可以使用如下命令：
 
 ```
-cd chromium-100.0.4896.60 && ../debian/scripts/check-upstream
-prebuilt binary files:
-./third_party/rust/libloading/v0_7/crate/tests/nagisa64.dll
-./third_party/rust/libloading/v0_7/crate/tests/nagisa32.dll
-./third_party/vulkan-deps/vulkan-loader/src/tests/framework/data/binaries/dummy_library_elf_64.dll
-./third_party/vulkan-deps/vulkan-loader/src/tests/framework/data/binaries/dummy_library_elf_32.dll
-./third_party/devtools-frontend/src/third_party/esbuild/esbuild
-make: *** [debian/rules:183: get-orig-source] Error 1
+dpkg-buildpackage -us -uc -nc
 ```
-This is telling us that upstream is now including additional binaries that we may not have the source for (and therefore we shouldn't distribute). Most of the time, we can simply add lines to debian/copyright's `Files-Excluded:` to simply delete the files (or the directory they're contained in) and the build will still work. That's because upstream's Win32 and Android  builds require those files, but the Linux build does not. In some less common cases, something in the Linux build will depend upon those files, and we'll need to patch a BUILD.gn file and/or modify some source code. That process is described below.
 
-Once debian/copyright has been modified appropriately, `debian/rules get-orig-source` can be run again and will hopefully succeed.
+构建出的包位于上一级目录，通常，我们需要的浏览器包是如下两个：
 
+```
+chromium-common_142.0.7444.175-deepin1_amd64.deb
+chromium_142.0.7444.175-deepin1_amd64.deb
+```
 
+## 安装chromium浏览器
 
-
-
-
-
-applying patches AND build errors. We are actively trying to drop the number of patches carried by our packaging to make this less likely, but it will always be an issue.
-TODO: document checking experimental for patches fixing issues, grabbing upstream/ diffs, vendoring/unbundling, etc.
+```
+sudo dpkg -i chromium-common_142.0.7444.175-deepin1_amd64.deb chromium_142.0.7444.175-deepin1_amd64.deb
+```
