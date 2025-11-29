@@ -109,7 +109,6 @@ Files-Excluded:
  third_party/ffmpeg/fftools
  third_party/ffmpeg/tests
  third_party/ffmpeg/tools
- third_party/flac
  third_party/fontconfig
  third_party/freetype
  third_party/google_input_tools/src/chrome/os/inputview/_locales/*.js

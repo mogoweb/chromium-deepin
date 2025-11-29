@@ -1,3 +1,10 @@
+chromium (142.0.7444.175-deepin1) unstable; urgency=high
+
+  * New upstream stable release.
+  * build for deepin v25.
+
+ -- Zhengyong Chen <chenzhengyong@uniontech.com>  Sat, 29 Nov 2025 13:12:52 +0800
+
 chromium (142.0.7444.175-1~deb12u1) bookworm-security; urgency=high
 
   * New upstream security release.
